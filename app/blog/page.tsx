@@ -24,9 +24,17 @@ type Post = {
 
 const fetchPosts = async ({ pageParam = 1 }) => {
   console.log(`Fetching page ${pageParam}`);
-  const res = await axios.get<Post[]>(`https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=9&page=${pageParam}&order=desc&orderby=date&_embed`);
-  console.log(`Fetched ${res.data.length} posts for page ${pageParam}`);
-  return res.data;
+  try {
+    const res = await axios.get<Post[]>(
+      `https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=9&page=${pageParam}&order=desc&orderby=date&_embed`,
+      { timeout: 10000 } // 10 seconds timeout
+    );
+    console.log(`Fetched ${res.data.length} posts for page ${pageParam}`);
+    return res.data;
+  } catch (error) {
+    console.error(`Error fetching page ${pageParam}:`, error);
+    throw error;
+  }
 };
 
 export default function BlogPage() {
@@ -74,9 +82,20 @@ export default function BlogPage() {
     }
   }, [status, isFetching, isLoading, hasNextPage, data, error]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (status === 'pending') {
+        console.error('Query timed out after 15 seconds');
+        // You might want to trigger a retry or show an error message here
+      }
+    }, 15000);
+
+    return () => clearTimeout(timer);
+  }, [status]);
+
   if (!isClient) return <div>Initializing client-side rendering...</div>;
 
-  if (isLoading) return <div>Loading posts... (Status: {status})</div>;
+  if (isLoading || status === 'pending') return <div>Loading posts... (Status: {status}, Is fetching: {isFetching.toString()})</div>;
   
   if (error) return <div>Error fetching posts: {(error as Error).message}</div>;
 
