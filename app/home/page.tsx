@@ -24,6 +24,11 @@ type Post = {
   excerpt: {
     rendered: string;
   };
+  _embedded?: {
+    'wp:featuredmedia'?: Array<{
+      source_url: string;
+    }>;
+  };
 };
 
 export default function HomePage() {
@@ -40,7 +45,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchInitialPosts = async () => {
       try {
-        const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date');
+        const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
         setPosts(res.data);
       } catch (error) {
         console.error('Failed to fetch posts:', error);
@@ -59,7 +64,7 @@ export default function HomePage() {
   const loadMorePosts = async () => {
     try {
       const nextPage = page + 1;
-      const res = await axios.get<Post[]>(`https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&page=${nextPage}`);
+      const res = await axios.get<Post[]>(`https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed&page=${nextPage}`);
       setPosts([...posts, ...res.data]);
       setPage(nextPage);
     } catch (error) {
