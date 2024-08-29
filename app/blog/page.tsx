@@ -32,7 +32,6 @@ const fetchPosts = async ({ pageParam = 1 }) => {
 export default function BlogPage() {
   const { ref, inView } = useInView();
   const [isClient, setIsClient] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -45,6 +44,7 @@ export default function BlogPage() {
     hasNextPage,
     isFetchingNextPage,
     status,
+    error,
     isLoading,
     isFetching,
   } = useInfiniteQuery({
@@ -54,19 +54,11 @@ export default function BlogPage() {
       return lastPage.length === 9 ? pages.length + 1 : undefined;
     },
     initialPageParam: 1,
-    onError: (err) => {
-      console.error("Query error:", err);
-      setError(err as Error);
-    },
   });
 
   useEffect(() => {
     if (inView && hasNextPage) {
-      console.log("Fetching next page");
-      fetchNextPage().catch(err => {
-        console.error("Error fetching next page:", err);
-        setError(err);
-      });
+      fetchNextPage();
     }
   }, [inView, fetchNextPage, hasNextPage]);
 
@@ -75,47 +67,47 @@ export default function BlogPage() {
     console.log("Is fetching:", isFetching);
     console.log("Is loading:", isLoading);
     console.log("Has next page:", hasNextPage);
+    console.log("Error:", error);
     if (data) {
       console.log("Number of pages:", data.pages.length);
       console.log("Total posts:", data.pages.reduce((acc, page) => acc + page.length, 0));
     }
-  }, [status, isFetching, isLoading, hasNextPage, data]);
+  }, [status, isFetching, isLoading, hasNextPage, data, error]);
 
-  if (!isClient) return <div>Loading...</div>;
+  if (!isClient) return <div>Initializing client-side rendering...</div>;
 
-  if (isLoading) return <div>Loading posts...</div>;
-  if (error) return <div>Error fetching posts: {error.message}</div>;
+  if (isLoading) return <div>Loading posts... (Status: {status})</div>;
+  
+  if (error) return <div>Error fetching posts: {(error as Error).message}</div>;
+
+  if (!data || data.pages.length === 0) return <div>No posts found. (Status: {status})</div>;
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-3xl font-bold mb-8">Latest Posts</h1>
-      {data && data.pages.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data.pages.map((page, i) => (
-            <React.Fragment key={i}>
-              {page.map((post) => (
-                <div key={post.id} className="border rounded-lg overflow-hidden">
-                  {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
-                    <Image
-                      src={post._embedded['wp:featuredmedia'][0].source_url}
-                      alt={post.title.rendered}
-                      width={600}
-                      height={400}
-                      className="w-full h-48 object-cover"
-                    />
-                  )}
-                  <div className="p-4">
-                    <h2 className="text-xl font-semibold mb-2" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                    <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-                  </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {data.pages.map((page, i) => (
+          <React.Fragment key={i}>
+            {page.map((post) => (
+              <div key={post.id} className="border rounded-lg overflow-hidden">
+                {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
+                  <Image
+                    src={post._embedded['wp:featuredmedia'][0].source_url}
+                    alt={post.title.rendered}
+                    width={600}
+                    height={400}
+                    className="w-full h-48 object-cover"
+                  />
+                )}
+                <div className="p-4">
+                  <h2 className="text-xl font-semibold mb-2" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
                 </div>
-              ))}
-            </React.Fragment>
-          ))}
-        </div>
-      ) : (
-        <div>No posts found</div>
-      )}
+              </div>
+            ))}
+          </React.Fragment>
+        ))}
+      </div>
       <div ref={ref} className="mt-8 text-center">
         {isFetchingNextPage ? 'Loading more...' : 'No more posts'}
       </div>
