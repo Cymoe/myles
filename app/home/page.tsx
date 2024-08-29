@@ -38,7 +38,7 @@ export default async function HomePage() {
             />
           </div>
           <div>
-            <CardTitle className="text-3xl sm:text-4xl mb-2">I'm Myles</CardTitle>
+            <CardTitle className="text-3xl sm:text-4xl mb-2">I&apos;m Myles</CardTitle>
             <CardDescription className="text-lg sm:text-xl">
               I build & teach AI business at ModernAI
             </CardDescription>
