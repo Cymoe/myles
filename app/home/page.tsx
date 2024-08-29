@@ -23,12 +23,29 @@ export default async function HomePage() {
   const latestPosts = posts.slice(3, 6);
 
   return (
-    <div className="container mx-auto px-4 py-8 min-h-[calc(100vh-theme(spacing.32))]">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
+        
       <Card className="mb-8">
         <CardHeader>
           <CardTitle>I&apos;m Myles</CardTitle>
-          <CardDescription>I build & teach AI business at ModernAI</CardDescription>
+          <CardDescription>I build & teach AI business skills at ModernHumanAI</CardDescription>
         </CardHeader>
+      </Card>
+
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>Learn AI skills today.</CardTitle>
+          <CardDescription>Join 1,788 builders on the best place on the internet to learn AI skills and become a top 1% AI user.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p></p>
+          <Button 
+            className="mt-4 mr-4 bg-background text-foreground border border-foreground hover:bg-background hover:text-foreground"
+          >
+            View Courses
+          </Button>
+          <Button className="mt-4">Join Modern AI</Button>
+        </CardContent>
       </Card>
 
       <Card className="mb-8">
@@ -59,17 +76,6 @@ export default async function HomePage() {
             <li>Began AI consulting for companies</li>
             <li>Been building systems & software ever since</li>
           </ul>
-        </CardContent>
-      </Card>
-
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle>Welcome to My Blog</CardTitle>
-          <CardDescription>Discover insightful articles, tips, and more!</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>This is a place where I share my thoughts, tutorials, and the latest news.</p>
-          <Button className="mt-4">Learn More</Button>
         </CardContent>
       </Card>
 
