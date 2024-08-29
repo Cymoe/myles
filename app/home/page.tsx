@@ -35,7 +35,7 @@ export default async function HomePage() {
       <Card className="mb-8">
         <CardHeader>
           <CardTitle>Learn AI skills today.</CardTitle>
-          <CardDescription>Join 1,788 builders on the best place on the internet to learn AI skills and become a top 1% AI user.</CardDescription>
+          <CardDescription>Join 1,788 entrepreneurs and learn practical AI business skills and become a top 1% AI user.</CardDescription>
         </CardHeader>
         <CardContent>
           <p></p>
@@ -56,9 +56,9 @@ export default async function HomePage() {
           <ul className="list-disc list-inside">
             <li>I&apos;m the founder of ModernAI</li>
             <li>I teach AI business skills at <strong>ModernAI</strong></li>
-            <li>I build & <strong>invest</strong> in AI driven startups</li>
-            <li>I share tools & frameworks for modern-day business at <a href="https://remotebusinessmodels.com/" className="text-primary hover:underline">Remote Business Models</a></li>
-            <li>Currently building while traveling full time</li>
+            <li>I run & <strong>invest</strong> in AI driven companies</li>
+            <li>Currently building remote companies</li>
+            <li>Traveling full time</li>
           </ul>
         </CardContent>
       </Card>

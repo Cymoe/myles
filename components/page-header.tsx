@@ -14,7 +14,7 @@ export default function Header() {
             <a href="/blog">About</a>
           </Button>
           <Button variant="ghost" asChild>
-            <a href="/blog">Invest</a>
+            <a href="/blog">Now</a>
           </Button>
         </nav>
       </div>
