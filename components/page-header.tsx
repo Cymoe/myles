@@ -11,10 +11,10 @@ export default function Header() {
             <a href="/home">Posts</a>
           </Button>
           <Button variant="ghost" asChild>
-            <a href="/blog">About</a>
+            <a href="/blog">Now</a>
           </Button>
           <Button variant="ghost" asChild>
-            <a href="/blog">Now</a>
+            <a href="/blog">About</a>
           </Button>
         </nav>
       </div>

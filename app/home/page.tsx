@@ -56,14 +56,11 @@ export default async function HomePage() {
           <ul className="list-disc list-inside">
             <li>I&apos;m the founder of ModernAI</li>
             <li>I teach AI business skills at <strong>ModernAI</strong></li>
-            <li>I run & <strong>invest</strong> in AI driven companies</li>
-            <li>Currently building remote companies</li>
-            <li>Traveling full time</li>
+            <li>I <strong>invest</strong> in AI driven startups</li>
+            <li>I build and run remote companies</li>
+            <li>Currently traveling full time (20 Countries)</li>
           </ul>
         </CardContent>
-      </Card>
-
-      <Card className="mb-8">
         <CardHeader>
           <CardTitle>Background</CardTitle>
         </CardHeader>
@@ -74,10 +71,11 @@ export default async function HomePage() {
             <li>Worked at a design agency and learned to code</li>
             <li>Started hacking on Dev projects in 2016</li>
             <li>Began AI consulting for companies</li>
-            <li>Been building systems & software ever since</li>
+            <li>Building systems & software ever since</li>
           </ul>
         </CardContent>
       </Card>
+
 
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Featured Posts</h2>
