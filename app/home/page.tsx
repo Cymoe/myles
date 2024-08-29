@@ -38,6 +38,13 @@ export default async function HomePage() {
       <div className="mb-8">
         <div className="flex items-center justify-between gap-4 py-4">
           <div className="flex items-center gap-4">
+            <Image
+              src="/images/myles.jpg"
+              alt="Myles Webb"
+              width={80}
+              height={80}
+              className="rounded-lg"
+            />
             <div>
               <h2 className="text-2xl sm:text-3xl mb-2 font-bold">I&apos;m Myles</h2>
               <p className="text-lg sm:text-xl text-muted-foreground">

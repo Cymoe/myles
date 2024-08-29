@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image'; // Added import for Image
+import { Orbitron } from 'next/font/google';
+
+const orbitron = Orbitron({ subsets: ['latin'] })
 
 const navigation = [
   { name: 'Posts', href: '/blog' },
@@ -21,14 +23,8 @@ export default function Header() {
     <header className="bg-black text-white">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl flex items-center justify-between py-6" aria-label="Global">
         <div className="flex lg:flex-1 items-center">
-          <Link href="/home" className="-m-1.5 p-1.5 flex items-center gap-4">
-            <Image
-              src="/images/myles.jpg"
-              alt="Myles Webb"
-              width={50}
-              height={50}
-              className="rounded-lg"
-            />
+          <Link href="/home" className="-m-1.5 p-1.5">
+            <span className={`text-2xl font-bold ${orbitron.className}`}>MK</span>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -91,7 +87,7 @@ export default function Header() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={`block py-4 text-xl font-semibold leading-7 transition-colors duration-200 hover:bg-white hover:text-black text-center ${
+                      className={`block py-3 text-base font-semibold leading-7 transition-colors duration-200 hover:bg-white hover:text-black text-center ${
                         index === 0 ? 'pt-2' : ''
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
