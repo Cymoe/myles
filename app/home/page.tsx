@@ -73,7 +73,7 @@ export default async function HomePage() {
 
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Now</CardTitle>
+          <CardTitle>Current</CardTitle>
         </CardHeader>
         <CardContent>
           <ul className="list-disc list-inside">
