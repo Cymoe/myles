@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion';
@@ -20,13 +19,9 @@ export default function Header() {
   return (
     <header className="bg-black text-white">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl flex items-center justify-between py-6" aria-label="Global">
-        <div className="flex items-center lg:flex-1 space-x-4">
-          <Avatar>
-            <AvatarImage src="/images/profile-pic.png" alt="Profile picture" />
-            <AvatarFallback>MK</AvatarFallback>
-          </Avatar>
+        <div className="flex lg:flex-1">
           <Link href="/home" className="-m-1.5 p-1.5">
-            <span className="text-2xl font-bold">My Blog</span>
+            <span className="text-2xl font-bold">Myles Kameron</span>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -75,7 +70,7 @@ export default function Header() {
             >
               <div className="flex items-center justify-between">
                 <Link href="/home" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
-                  <span className="text-2xl font-bold">My Blog</span>
+                  <span className="text-2xl font-bold">Myles Kameron</span>
                 </Link>
                 <button
                   type="button"
@@ -92,7 +87,7 @@ export default function Header() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={`block py-3 text-base font-semibold leading-7 transition-colors duration-200 hover:bg-white hover:text-black ${
+                      className={`block py-3 text-base font-semibold leading-7 transition-colors duration-200 hover:bg-white hover:text-black text-center ${
                         index === 0 ? 'pt-2' : ''
                       }`}
                       onClick={() => setMobileMenuOpen(false)}

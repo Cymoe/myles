@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import Image from 'next/image'
 import PostList from '../../components/PostList';
 import NewsletterSignup from '../../components/NewsletterSignup';
 
@@ -26,9 +27,22 @@ export default async function HomePage() {
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
         
       <Card className="mb-8">
-        <CardHeader>
-          <CardTitle>I&apos;m Myles</CardTitle>
-          <CardDescription>I build & teach AI business skills at ModernHumanAI</CardDescription>
+        <CardHeader className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+          <div className="w-32 h-32 sm:w-40 sm:h-40 relative overflow-hidden">
+            <Image
+              src="/images/myles.jpg"
+              alt="Myles Kameron"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-md"
+            />
+          </div>
+          <div>
+            <CardTitle className="text-3xl sm:text-4xl mb-2">I'm Myles</CardTitle>
+            <CardDescription className="text-lg sm:text-xl">
+              I build & teach AI business at ModernAI
+            </CardDescription>
+          </div>
         </CardHeader>
       </Card>
 
