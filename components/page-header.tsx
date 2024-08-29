@@ -25,7 +25,7 @@ export default function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl flex items-center justify-between py-3 sm:py-6" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className={`text-2xl font-bold ${orbitron.className}`}>MK</span>
+            <span className={`text-2xl font-light ${orbitron.className}`}>MK</span>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -63,7 +63,7 @@ export default function Header() {
               className="-m-1.5 p-1.5"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span className={`text-2xl font-bold ${orbitron.className}`}>MK</span>
+              <span className={`text-2xl font-light ${orbitron.className}`}>MK</span>
             </Link>
             <button
               type="button"
@@ -81,7 +81,7 @@ export default function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block text-center rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-white hover:bg-gray-800"
+                    className="block text-center rounded-lg px-3 py-2 text-2xl font-light leading-9 text-white hover:bg-gray-800"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
