@@ -1,26 +1,106 @@
-import React from 'react';
+"use client";  // Add this line at the top
+
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button"
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
+import { motion, AnimatePresence } from 'framer-motion';
+
+const navigation = [
+  { name: 'Home', href: '/home' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+]
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
-    <header className="bg-primary text-primary-foreground py-4">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Myles Kameron</h1>
-        <nav>
-          <Button variant="ghost" asChild>
-            <a href="/home">Posts</a>
-          </Button>
-          <Button variant="ghost" asChild>
-            <a href="/blog">Now</a>
-          </Button>
-          <Button variant="ghost" asChild>
-            <a href="/blog">About</a>
-          </Button>
-          <Button variant="ghost" asChild>
-            <a href="/blog">Invest</a>
-          </Button>
-        </nav>
-      </div>
+    <header className="bg-primary text-primary-foreground">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl flex items-center justify-between py-6" aria-label="Global">
+        <div className="flex lg:flex-1">
+          <Link href="/home" className="-m-1.5 p-1.5">
+            <span className="text-2xl font-bold">My Blog</span>
+          </Link>
+        </div>
+        <div className="flex lg:hidden">
+          <button
+            type="button"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors duration-200 hover:bg-primary-foreground hover:text-primary"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <span className="sr-only">Toggle menu</span>
+            {mobileMenuOpen ? (
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            )}
+          </button>
+        </div>
+        <div className="hidden lg:flex lg:gap-x-12">
+          {navigation.map((item) => (
+            <Link 
+              key={item.name} 
+              href={item.href} 
+              className="text-sm font-semibold leading-6 transition-colors duration-200 hover:text-primary-foreground/80"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      </nav>
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-primary px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+            >
+              <div className="flex items-center justify-between">
+                <Link href="/home" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
+                  <span className="text-2xl font-bold">My Blog</span>
+                </Link>
+                <button
+                  type="button"
+                  className="-m-2.5 rounded-md p-2.5 transition-colors duration-200 hover:bg-primary-foreground hover:text-primary"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span className="sr-only">Close menu</span>
+                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
+              <div className="mt-6 flow-root">
+                <div className="-my-6 divide-y divide-gray-500/10">
+                  <div className="space-y-2 py-6">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-colors duration-200 hover:bg-primary-foreground hover:text-primary"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
