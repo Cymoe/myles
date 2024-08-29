@@ -11,11 +11,11 @@ import { Dialog } from '@headlessui/react';
 const orbitron = Orbitron({ subsets: ['latin'] })
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
+  { name: 'Posts', href: '/blog' },
   { name: 'Courses', href: '/courses' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Invest', href: '/courses' },
+  { name: 'About', href: '/blog' },
+  { name: 'Now', href: '/contact' },
 ]
 
 export default function Header() {
@@ -59,7 +59,11 @@ export default function Header() {
         <div className="fixed inset-0 z-50" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <Link href="/" className="-m-1.5 p-1.5">
+            <Link 
+              href="/" 
+              className="-m-1.5 p-1.5"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               <span className={`text-2xl font-bold ${orbitron.className}`}>MK</span>
             </Link>
             <button
