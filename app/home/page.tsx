@@ -1,7 +1,4 @@
-"use client";  // Add this line at the top
-
-// components/NewsletterSignup.tsx
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -26,39 +23,18 @@ type Post = {
   };
 };
 
-export default function HomePage() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
+async function getPosts() {
+  try {
+    const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
+    return res.data;
+  } catch (error) {
+    console.error('Failed to fetch posts:', error);
+    return [];
+  }
+}
 
-  useEffect(() => {
-    const fetchInitialPosts = async () => {
-      try {
-        setIsLoading(true);
-        const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
-        console.log('Fetched posts:', res.data);
-        setPosts(res.data);
-      } catch (error) {
-        console.error('Failed to fetch posts:', error);
-        setPosts([]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchInitialPosts();
-  }, []);
-
-  const loadMorePosts = async () => {
-    try {
-      const nextPage = page + 1;
-      const res = await axios.get<Post[]>(`https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&page=${nextPage}&_embed`);
-      setPosts((prevPosts) => [...prevPosts, ...res.data]);
-      setPage(nextPage);
-    } catch (error) {
-      console.error('Failed to load more posts:', error);
-    }
-  };
+export default async function HomePage() {
+  const posts = await getPosts();
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
@@ -94,14 +70,11 @@ export default function HomePage() {
 
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
-        {isLoading ? (
-          <p>Loading posts...</p>
-        ) : posts.length > 0 ? (
+        {posts.length > 0 ? (
           <>
             <PostList posts={posts} />
             <div className="flex justify-center mt-6">
               <Button 
-                onClick={loadMorePosts}
                 variant="outline"
                 className="flex items-center gap-2"
               >
