@@ -51,6 +51,5 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
     </div>
   );
 };
-
 export default PostList;
 
