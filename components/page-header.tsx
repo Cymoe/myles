@@ -7,10 +7,10 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navigation = [
-  { name: 'Home', href: '/home' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Posts', href: '/blog' },
+  { name: 'Now', href: '/blog' },
   { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Invest', href: '/contact' },
 ]
 
 export default function Header() {
