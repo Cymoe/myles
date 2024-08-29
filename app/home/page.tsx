@@ -39,7 +39,7 @@ export default async function HomePage() {
         <div className="flex flex-col sm:flex-row items-start gap-4 py-2 sm:py-4">
           <div className="w-full sm:w-auto flex justify-start">
             <Image
-              src="/images/myles.jpg"
+              src="/images/myles-3.png"
               alt="Myles Webb"
               width={140}
               height={140}
@@ -49,7 +49,7 @@ export default async function HomePage() {
           <div>
             <h2 className="text-2xl sm:text-3xl mb-1 sm:mb-2 font-bold">I&apos;m Myles</h2>
             <p className="text-lg sm:text-xl text-muted-foreground">
-              I build & teach AI business skills at ModernHumanAI
+              I build & teach AI business at ModernHumanAI
             </p>
           </div>
         </div>
