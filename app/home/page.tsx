@@ -6,6 +6,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Image from 'next/image'
 import PostList from '../../components/PostList';
 import NewsletterSignup from '../../components/NewsletterSignup';
+import Link from 'next/link';
+
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Courses', href: '/courses' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/contact' },
+];
 
 type Post = {
   id: number;
@@ -27,19 +36,14 @@ export default async function HomePage() {
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
         
       <div className="mb-8">
-        <div className="flex items-center gap-4 py-4">
-          <Image
-            src="/images/myles.jpg"
-            alt="Myles Webb"
-            width={80}
-            height={80}
-            className="rounded-lg"  // Changed from rounded-full to rounded-lg
-          />
-          <div>
-            <h2 className="text-2xl sm:text-3xl mb-2 font-bold">I&apos;m Myles</h2>
-            <p className="text-lg sm:text-xl text-muted-foreground">
-              I build & teach AI business at ModernHumanAI
-            </p>
+        <div className="flex items-center justify-between gap-4 py-4">
+          <div className="flex items-center gap-4">
+            <div>
+              <h2 className="text-2xl sm:text-3xl mb-2 font-bold">I&apos;m Myles</h2>
+              <p className="text-lg sm:text-xl text-muted-foreground">
+                I build & teach AI business at ModernHumanAI
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -52,11 +56,11 @@ export default async function HomePage() {
         <CardContent>
           <p></p>
           <Button 
-            className="mt-4 mr-4 bg-background text-foreground border border-foreground hover:bg-background hover:text-foreground"
+            className="mt-4 mr-4 bg-background text-foreground border border-foreground hover:bg-background hover:text-foreground text-lg py-6 px-8"
           >
             View Courses
           </Button>
-          <Button className="mt-4">Join Modern AI</Button>
+          <Button className="mt-4 text-lg py-6 px-8">Join Modern AI</Button>
         </CardContent>
       </Card>
 

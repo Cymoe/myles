@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image'; // Added import for Image
 
 const navigation = [
   { name: 'Posts', href: '/blog' },
@@ -19,9 +20,15 @@ export default function Header() {
   return (
     <header className="bg-black text-white">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl flex items-center justify-between py-6" aria-label="Global">
-        <div className="flex lg:flex-1">
-          <Link href="/home" className="-m-1.5 p-1.5">
-            <span className="text-2xl font-bold">Myles Kameron</span>
+        <div className="flex lg:flex-1 items-center">
+          <Link href="/home" className="-m-1.5 p-1.5 flex items-center gap-4">
+            <Image
+              src="/images/myles.jpg"
+              alt="Myles Webb"
+              width={50}
+              height={50}
+              className="rounded-lg"
+            />
           </Link>
         </div>
         <div className="flex lg:hidden">
