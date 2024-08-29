@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from 'react';
 import Header from '../components/page-header';
 import Footer from '../components/Footer';
-
+import Providers from './providers';
 
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -19,9 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <Providers>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

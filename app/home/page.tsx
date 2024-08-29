@@ -1,4 +1,5 @@
-// app/home/page.tsx
+'use client';
+
 import React from 'react';
 import axios from 'axios';
 import { Button } from "@/components/ui/button"
@@ -7,6 +8,10 @@ import Image from 'next/image'
 import PostList from '../../components/PostList';
 import NewsletterSignup from '../../components/NewsletterSignup';
 import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 // This navigation array is not being used and can be removed
 // The main navigation is defined in components/page-header.tsx
@@ -21,20 +26,46 @@ type Post = {
   };
 };
 
-export default async function HomePage() {
-  let posts: Post[] = [];
-  try {
-    const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date');
-    posts = res.data;
-  } catch (error) {
-    console.error('Failed to fetch posts:', error);
-    // Fallback data
-    posts = [
-      { id: 1, title: { rendered: 'Sample Post 1' }, excerpt: { rendered: 'This is a sample post.' } },
-      { id: 2, title: { rendered: 'Sample Post 2' }, excerpt: { rendered: 'This is another sample post.' } },
-      // Add more sample posts as needed
-    ];
-  }
+export default function HomePage() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [page, setPage] = useState(1);
+  const router = useRouter();
+
+  let fallbackPosts: Post[] = [
+    { id: 1, title: { rendered: 'Sample Post 1' }, excerpt: { rendered: 'This is a sample post.' } },
+    { id: 2, title: { rendered: 'Sample Post 2' }, excerpt: { rendered: 'This is another sample post.' } },
+    // Add more sample posts as needed
+  ];
+
+  useEffect(() => {
+    const fetchInitialPosts = async () => {
+      try {
+        const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date');
+        setPosts(res.data);
+      } catch (error) {
+        console.error('Failed to fetch posts:', error);
+        // Fallback data
+        setPosts([
+          { id: 1, title: { rendered: 'Sample Post 1' }, excerpt: { rendered: 'This is a sample post.' } },
+          { id: 2, title: { rendered: 'Sample Post 2' }, excerpt: { rendered: 'This is another sample post.' } },
+          // Add more sample posts as needed
+        ]);
+      }
+    };
+
+    fetchInitialPosts();
+  }, []);
+
+  const loadMorePosts = async () => {
+    try {
+      const nextPage = page + 1;
+      const res = await axios.get<Post[]>(`https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&page=${nextPage}`);
+      setPosts([...posts, ...res.data]);
+      setPage(nextPage);
+    } catch (error) {
+      console.error('Failed to fetch more posts:', error);
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
@@ -106,6 +137,15 @@ export default async function HomePage() {
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
         <PostList posts={posts} />
+        <div className="flex justify-center mt-6">
+          <Button 
+            onClick={loadMorePosts}
+            variant="outline"
+            className="flex items-center gap-2"
+          >
+            Show More <ChevronDown className="h-4 w-4" />
+          </Button>
+        </div>
       </section>
 
       <Card>
