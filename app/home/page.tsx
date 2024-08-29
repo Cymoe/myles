@@ -36,7 +36,7 @@ export default async function HomePage() {
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
         
       <div className="mb-4 sm:mb-8">
-        <div className="flex flex-col sm:flex-row items-start gap-4 py-2 sm:py-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 py-2 sm:py-4">
           <div className="w-full sm:w-auto flex justify-start">
             <Image
               src="/images/myles-3.png"
@@ -81,7 +81,7 @@ export default async function HomePage() {
             <li>I teach AI business skills at <strong>ModernAI</strong></li>
             <li>I <strong>invest</strong> in AI driven startups</li>
             <li>I build and run remote companies</li>
-            <li>Currently traveling full time (20 Countries)</li>
+            <li>Currently traveling full time (25 Countries)</li>
           </ul>
         </CardContent>
         <CardHeader>
