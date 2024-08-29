@@ -42,6 +42,7 @@ export default function BlogPage() {
     getNextPageParam: (lastPage, pages) => {
       return lastPage.length === 9 ? pages.length + 1 : undefined;
     },
+    initialPageParam: 1, // Add this line
   });
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export default function BlogPage() {
     }
   }, [inView, fetchNextPage, hasNextPage]);
 
-  if (status === 'loading') return <div>Loading...</div>;
+  if (status === 'pending') return <div>Loading...</div>;
   if (status === 'error') return <div>Error fetching posts</div>;
 
   return (
