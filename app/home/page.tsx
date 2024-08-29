@@ -41,17 +41,22 @@ export default function HomePage() {
   useEffect(() => {
     const fetchInitialPosts = async () => {
       try {
+        console.log('Fetching posts...');
         const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
+        console.log('Fetched posts:', res.data);
         setPosts(res.data);
       } catch (error) {
         console.error('Failed to fetch posts:', error);
-        // Fallback data
         setPosts([]);
       }
     };
 
     fetchInitialPosts();
   }, []);
+
+  useEffect(() => {
+    console.log('Posts state updated:', posts);
+  }, [posts]);
 
   const loadMorePosts = async () => {
     try {
@@ -63,6 +68,8 @@ export default function HomePage() {
       console.error('Failed to fetch more posts:', error);
     }
   };
+
+  console.log('Rendering posts section, posts length:', posts.length);
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
@@ -147,7 +154,7 @@ export default function HomePage() {
             </div>
           </>
         ) : (
-          <p>Loading posts...</p>
+          <p>Loading posts... (Posts length: {posts.length})</p>
         )}
       </section>
 
