@@ -8,13 +8,8 @@ import PostList from '../../components/PostList';
 import NewsletterSignup from '../../components/NewsletterSignup';
 import Link from 'next/link';
 
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Courses', href: '/courses' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Contact', href: '/contact' },
-];
+// This navigation array is not being used and can be removed
+// The main navigation is defined in components/page-header.tsx
 
 type Post = {
   id: number;
@@ -27,10 +22,19 @@ type Post = {
 };
 
 export default async function HomePage() {
-  const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts');
-  const posts = res.data;
-  const featuredPosts = posts.slice(0, 3);
-  const latestPosts = posts.slice(3, 6);
+  let posts: Post[] = [];
+  try {
+    const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date');
+    posts = res.data;
+  } catch (error) {
+    console.error('Failed to fetch posts:', error);
+    // Fallback data
+    posts = [
+      { id: 1, title: { rendered: 'Sample Post 1' }, excerpt: { rendered: 'This is a sample post.' } },
+      { id: 2, title: { rendered: 'Sample Post 2' }, excerpt: { rendered: 'This is another sample post.' } },
+      // Add more sample posts as needed
+    ];
+  }
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
@@ -41,15 +45,15 @@ export default async function HomePage() {
             <Image
               src="/images/myles-3.png"
               alt="Myles Webb"
-              width={140}
-              height={140}
-              className="w-36 h-36 sm:w-24 sm:h-24 rounded-lg object-cover"
+              width={120}  // Decreased from 140
+              height={120}  // Decreased from 140
+              className="w-32 h-32 sm:w-20 sm:h-20 rounded-lg object-cover"  // Decreased from w-36 h-36 sm:w-24 sm:h-24
             />
           </div>
           <div>
             <h2 className="text-2xl sm:text-3xl mb-1 sm:mb-2 font-bold">I&apos;m Myles</h2>
             <p className="text-lg sm:text-xl text-muted-foreground">
-              I build & teach AI business at ModernHumanAI
+              I build & teach AI business at <Link href="https://modernhuman.co"><span className="underline">Modernhuman</span></Link>
             </p>
           </div>
         </div>
@@ -57,7 +61,7 @@ export default async function HomePage() {
 
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle className="text-3xl sm:text-4xl">Learn AI skills today.</CardTitle>
+          <CardTitle className="text-3xl sm:text-4xl">Learn AI Business today.</CardTitle>
           <CardDescription>Join 1,788 entrepreneurs and learn practical AI business skills and become a top 1% AI user.</CardDescription>
         </CardHeader>
         <CardContent>
@@ -77,9 +81,9 @@ export default async function HomePage() {
         </CardHeader>
         <CardContent>
           <ul className="list-disc list-inside">
-            <li>I&apos;m the founder of ModernAI</li>
-            <li>I teach AI business skills at <strong>ModernAI</strong></li>
-            <li>I <strong>invest</strong> in AI driven startups</li>
+            <li>I&apos;m the founder of Modernhuman</li>
+            <li>I teach AI business skills at <Link href="https://modernhuman.co"><span className="underline">Modernhuman</span></Link></li>
+            <li>I <Link href="https://modernhuman.co"><span className="underline">invest</span></Link> in AI driven startups</li>
             <li>I build and run remote companies</li>
             <li>Currently traveling full time (25 Countries)</li>
           </ul>
@@ -99,15 +103,9 @@ export default async function HomePage() {
         </CardContent>
       </Card>
 
-
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Featured Posts</h2>
-        <PostList posts={featuredPosts} />
-      </section>
-
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
-        <PostList posts={latestPosts} />
+        <PostList posts={posts} />
       </section>
 
       <Card>

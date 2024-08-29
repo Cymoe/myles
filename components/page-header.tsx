@@ -5,16 +5,38 @@ import { Button } from "@/components/ui/button"
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion';
-import { Orbitron } from 'next/font/google';
+import { Orbitron } from 'next/font/google'
+import localFont from 'next/font/local'
 import { Dialog } from '@headlessui/react';
 
-const orbitron = Orbitron({ subsets: ['latin'] })
+const googleOrbitron = Orbitron({
+  subsets: ['latin'],
+  display: 'swap',
+  fallback: ['sans-serif'],
+})
+
+const localOrbitron = localFont({
+  src: '../public/fonts/Orbitron/static/Orbitron-Regular.ttf',
+  display: 'swap',
+  fallback: ['sans-serif'],
+})
+
+const getOrbitronFont = () => {
+  try {
+    return googleOrbitron.className
+  } catch (error) {
+    console.error('Failed to load Google Font:', error)
+    return localOrbitron.className
+  }
+}
+
+const orbitronClass = getOrbitronFont()
 
 const navigation = [
   { name: 'Posts', href: '/blog' },
   { name: 'Courses', href: '/courses' },
-  { name: 'Invest', href: '/courses' },
-  { name: 'Now', href: '/blog' },
+  { name: 'Now', href: '/now' },
+  { name: 'About', href: '/about' },
 ]
 
 export default function Header() {
@@ -22,36 +44,38 @@ export default function Header() {
 
   return (
     <header className="bg-black text-white">
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl flex items-center justify-between py-3 sm:py-6" aria-label="Global">
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className={`text-2xl font-light ${orbitron.className}`}>MK</span>
-          </Link>
-        </div>
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors duration-200 hover:bg-white hover:text-black"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <span className="sr-only">Toggle menu</span>
-            {mobileMenuOpen ? (
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-            )}
-          </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <Link 
-              key={item.name} 
-              href={item.href} 
-              className="text-sm font-semibold leading-6 transition-colors duration-200 hover:text-gray-300"
-            >
-              {item.name}
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl py-3 sm:py-6" aria-label="Global">
+        <div className="flex items-center justify-between lg:justify-center lg:relative">
+          <div className="lg:absolute lg:left-0">
+            <Link href="/" className="-m-1.5 p-1.5">
+              <span className={`text-2xl font-light ${orbitronClass}`}>MK</span>
             </Link>
-          ))}
+          </div>
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors duration-200 hover:bg-white hover:text-black"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <span className="sr-only">Toggle menu</span>
+              {mobileMenuOpen ? (
+                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+              )}
+            </button>
+          </div>
+          <div className="hidden lg:flex lg:gap-x-6">
+            {navigation.map((item) => (
+              <Link 
+                key={item.name} 
+                href={item.href} 
+                className="text-lg font-thin leading-6 transition-colors duration-200 hover:text-gray-300"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -63,7 +87,7 @@ export default function Header() {
               className="-m-1.5 p-1.5"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span className={`text-2xl font-light ${orbitron.className}`}>MK</span>
+              <span className={`text-2xl font-light ${orbitronClass}`}>MK</span>
             </Link>
             <button
               type="button"
@@ -126,7 +150,7 @@ export default function Header() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={`block py-3 text-base font-semibold leading-7 transition-colors duration-200 hover:bg-white hover:text-black text-center ${
+                      className={`block py-4 text-7xl font-thin leading-none transition-colors duration-200 hover:bg-white hover:text-black text-center ${
                         index === 0 ? 'pt-2' : ''
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
