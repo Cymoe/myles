@@ -27,7 +27,7 @@ export default async function HomePage() {
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
         
       <Card className="mb-8">
-        <CardHeader className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-end gap-4 py-4">
           <div className="w-32 h-32 sm:w-40 sm:h-40 relative">
             <Image
               src="/images/myles.jpg"
@@ -37,7 +37,7 @@ export default async function HomePage() {
               className="rounded-md object-cover"
             />
           </div>
-          <div>
+          <div className="flex flex-col justify-start">
             <CardTitle className="text-3xl sm:text-4xl mb-2">I&apos;m Myles</CardTitle>
             <CardDescription className="text-lg sm:text-xl">
               I build & teach AI business at ModernAI
