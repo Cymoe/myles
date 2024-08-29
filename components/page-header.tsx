@@ -68,10 +68,7 @@ export default function Header() {
               transition={{ type: "spring", bounce: 0, duration: 0.4 }}
               className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
             >
-              <div className="flex items-center justify-between">
-                <Link href="/home" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
-                  <span className="text-2xl font-bold">Myles Kameron</span>
-                </Link>
+              <div className="flex items-center justify-end">
                 <button
                   type="button"
                   className="-m-2.5 rounded-md p-2.5 transition-colors duration-200 hover:bg-white hover:text-black"
@@ -87,7 +84,7 @@ export default function Header() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={`block py-3 text-base font-semibold leading-7 transition-colors duration-200 hover:bg-white hover:text-black text-center ${
+                      className={`block py-4 text-xl font-semibold leading-7 transition-colors duration-200 hover:bg-white hover:text-black text-center ${
                         index === 0 ? 'pt-2' : ''
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
