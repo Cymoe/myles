@@ -1,9 +1,6 @@
-// components/PostList.tsx
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import Image from 'next/image'
-import Link from 'next/link'
+import Link from 'next/link';
+import Image from 'next/image';
 
 type Post = {
   id: number;
@@ -20,32 +17,40 @@ type Post = {
   };
 };
 
-export default function PostList({ posts }: { posts: Post[] }) {
+interface PostListProps {
+  posts: Post[];
+}
+
+const PostList: React.FC<PostListProps> = ({ posts }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {posts.map((post) => (
-        <Card key={post.id}>
+        <div key={post.id} className="border rounded-lg overflow-hidden shadow-sm">
           {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
             <Image
               src={post._embedded['wp:featuredmedia'][0].source_url}
               alt={post.title.rendered}
-              width={600}
-              height={400}
+              width={400}
+              height={200}
               className="w-full h-48 object-cover"
             />
           )}
-          <CardHeader>
-            <CardTitle dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-          </CardHeader>
-          <CardContent>
-            <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} className="mb-4" />
-            <Button variant="outline">
-              <Link href={`/posts/${post.id}`}>Read more</Link>
-            </Button>
-          </CardContent>
-        </Card>
+          <div className="p-4">
+            <h3 className="text-xl font-semibold mb-2">
+              <Link href={`/post/${post.id}`}>
+                <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+              </Link>
+            </h3>
+            <div
+              className="text-sm text-gray-600"
+              dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+            />
+          </div>
+        </div>
       ))}
     </div>
   );
-}
+};
+
+export default PostList;
 

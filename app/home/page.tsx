@@ -31,6 +31,7 @@ type Post = {
 export default function HomePage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   let fallbackPosts: Post[] = [
     { id: 1, title: { rendered: 'Sample Post 1' }, excerpt: { rendered: 'This is a sample post.' } },
@@ -41,13 +42,15 @@ export default function HomePage() {
   useEffect(() => {
     const fetchInitialPosts = async () => {
       try {
-        console.log('Fetching posts...');
+        setIsLoading(true);
         const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
         console.log('Fetched posts:', res.data);
         setPosts(res.data);
       } catch (error) {
         console.error('Failed to fetch posts:', error);
         setPosts([]);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -140,7 +143,9 @@ export default function HomePage() {
 
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
-        {posts.length > 0 ? (
+        {isLoading ? (
+          <p>Loading posts...</p>
+        ) : posts.length > 0 ? (
           <>
             <PostList posts={posts} />
             <div className="flex justify-center mt-6">
@@ -154,7 +159,7 @@ export default function HomePage() {
             </div>
           </>
         ) : (
-          <p>Loading posts... (Posts length: {posts.length})</p>
+          <p>No posts found.</p>
         )}
       </section>
 
