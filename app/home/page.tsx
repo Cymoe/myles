@@ -1,4 +1,5 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,6 +8,8 @@ import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { useState } from 'react';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 type Post = {
   id: number;
@@ -33,8 +36,28 @@ async function getPosts() {
   }
 }
 
-export default async function HomePage() {
-  const posts = await getPosts();
+export default function HomePage() {
+  const fetchPosts = async ({ pageParam = 1 }) => {
+    const res = await axios.get<Post[]>(`https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed&page=${pageParam}`);
+    return res.data;
+  };
+
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+  } = useInfiniteQuery({
+    queryKey: ['posts'],
+    queryFn: fetchPosts,
+    getNextPageParam: (lastPage, pages) => {
+      return lastPage.length === 6 ? pages.length + 1 : undefined;
+    },
+    initialPageParam: 1, // Add this line
+  });
+
+  const allPosts = data?.pages.flat() || [];
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
@@ -70,15 +93,24 @@ export default async function HomePage() {
 
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
-        {posts.length > 0 ? (
+        {isLoading ? (
+          <p>Loading posts...</p>
+        ) : allPosts.length > 0 ? (
           <>
-            <PostList posts={posts} />
+            <PostList posts={allPosts} />
             <div className="flex justify-center mt-6">
               <Button 
                 variant="outline"
                 className="flex items-center gap-2"
+                onClick={() => fetchNextPage()}
+                disabled={!hasNextPage || isFetchingNextPage}
               >
-                Show More <ChevronDown className="h-4 w-4" />
+                {isFetchingNextPage
+                  ? 'Loading...'
+                  : hasNextPage
+                  ? 'Show More'
+                  : 'No More Posts'}
+                <ChevronDown className="h-4 w-4" />
               </Button>
             </div>
           </>
