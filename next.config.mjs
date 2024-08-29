@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ['wordpress-1322194-4833688.cloudwaysapps.com'],
+  },
+}
 
-export default nextConfig;
+export default nextConfig
