@@ -28,13 +28,13 @@ export default async function HomePage() {
         
       <Card className="mb-8">
         <CardHeader className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-          <div className="w-32 h-32 sm:w-40 sm:h-40 relative overflow-hidden">
+          <div className="w-32 h-32 sm:w-40 sm:h-40 relative">
             <Image
               src="/images/myles.jpg"
               alt="Myles Kameron"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-md"
+              fill
+              sizes="(max-width: 640px) 128px, 160px"
+              className="rounded-md object-cover"
             />
           </div>
           <div>
