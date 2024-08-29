@@ -37,6 +37,11 @@ const fetchPosts = async ({ pageParam = 1 }) => {
   }
 };
 
+const fallbackPosts = [
+  { id: 1, title: { rendered: 'Fallback Post 1' }, excerpt: { rendered: 'This is a fallback post.' } },
+  { id: 2, title: { rendered: 'Fallback Post 2' }, excerpt: { rendered: 'This is another fallback post.' } },
+];
+
 export default function BlogPage() {
   const { ref, inView } = useInView();
   const [isClient, setIsClient] = useState(false);
