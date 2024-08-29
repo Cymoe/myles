@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,7 +20,11 @@ export default function Header() {
   return (
     <header className="bg-primary text-primary-foreground">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl flex items-center justify-between py-6" aria-label="Global">
-        <div className="flex lg:flex-1">
+        <div className="flex items-center lg:flex-1 space-x-4">
+          <Avatar>
+            <AvatarImage src="/images/profile-pic.png" alt="Profile picture" />
+            <AvatarFallback>MK</AvatarFallback>
+          </Avatar>
           <Link href="/home" className="-m-1.5 p-1.5">
             <span className="text-2xl font-bold">My Blog</span>
           </Link>
@@ -82,19 +87,19 @@ export default function Header() {
                 </button>
               </div>
               <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-gray-500/10">
-                  <div className="space-y-2 py-6">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-colors duration-200 hover:bg-primary-foreground hover:text-primary"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
+                <div className="divide-y divide-gray-500/10">
+                  {navigation.map((item, index) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`block py-3 text-base font-semibold leading-7 transition-colors duration-200 hover:bg-primary-foreground hover:text-primary ${
+                        index === 0 ? 'pt-2' : ''
+                      }`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </motion.div>
