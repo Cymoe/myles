@@ -29,7 +29,7 @@ export default async function HomePage() {
       <div className="mb-8">
         <div className="flex items-center gap-4 py-4">
           <Image
-            src="/images/logo.jpg"
+            src="/images/myles.jpg"
             alt="Myles Webb"
             width={80}
             height={80}
