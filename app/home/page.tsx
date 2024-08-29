@@ -26,29 +26,27 @@ export default async function HomePage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
         
-      <Card className="mb-8">
-        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-end gap-4 py-4">
-          <div className="w-32 h-32 sm:w-40 sm:h-40 relative">
-            <Image
-              src="/images/myles.jpg"
-              alt="Myles Kameron"
-              fill
-              sizes="(max-width: 640px) 128px, 160px"
-              className="rounded-md object-cover"
-            />
-          </div>
-          <div className="flex flex-col justify-start">
-            <CardTitle className="text-3xl sm:text-4xl mb-2">I&apos;m Myles</CardTitle>
-            <CardDescription className="text-lg sm:text-xl">
+      <div className="mb-8">
+        <div className="flex items-center gap-4 py-4">
+          <Image
+            src="/images/logo.jpg"
+            alt="Myles Webb"
+            width={80}
+            height={80}
+            className="rounded-full"
+          />
+          <div>
+            <h2 className="text-2xl sm:text-3xl mb-2 font-bold">I&apos;m Myles</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground">
               I build & teach AI business at ModernAI
-            </CardDescription>
+            </p>
           </div>
-        </CardHeader>
-      </Card>
+        </div>
+      </div>
 
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Learn AI skills today.</CardTitle>
+          <CardTitle className="text-3xl sm:text-4xl">Learn AI skills today.</CardTitle>
           <CardDescription>Join 1,788 entrepreneurs and learn practical AI business skills and become a top 1% AI user.</CardDescription>
         </CardHeader>
         <CardContent>
