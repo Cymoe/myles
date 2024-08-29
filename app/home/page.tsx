@@ -33,24 +33,24 @@ export default async function HomePage() {
   const latestPosts = posts.slice(3, 6);
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
         
-      <div className="mb-8">
-        <div className="flex items-center justify-between gap-4 py-4">
-          <div className="flex items-center gap-4">
+      <div className="mb-4 sm:mb-8">
+        <div className="flex flex-col sm:flex-row items-start gap-4 py-2 sm:py-4">
+          <div className="w-full sm:w-auto flex justify-start">
             <Image
-              src="/images/myles-3.png"
+              src="/images/myles.jpg"
               alt="Myles Webb"
-              width={80}
-              height={80}
-              className="rounded-lg"
+              width={140}
+              height={140}
+              className="w-36 h-36 sm:w-24 sm:h-24 rounded-lg object-cover"
             />
-            <div>
-              <h2 className="text-2xl sm:text-3xl mb-2 font-bold">I&apos;m Myles</h2>
-              <p className="text-lg sm:text-xl text-muted-foreground">
-                I build & teach AI business at ModernHumanAI
-              </p>
-            </div>
+          </div>
+          <div>
+            <h2 className="text-2xl sm:text-3xl mb-1 sm:mb-2 font-bold">I&apos;m Myles</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground">
+              I build & teach AI business at ModernHumanAI
+            </p>
           </div>
         </div>
       </div>
