@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -8,9 +8,6 @@ import Image from 'next/image'
 import PostList from '../../components/PostList';
 import NewsletterSignup from '../../components/NewsletterSignup';
 import Link from 'next/link';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 // This navigation array is not being used and can be removed
@@ -34,7 +31,6 @@ type Post = {
 export default function HomePage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [page, setPage] = useState(1);
-  const router = useRouter();
 
   let fallbackPosts: Post[] = [
     { id: 1, title: { rendered: 'Sample Post 1' }, excerpt: { rendered: 'This is a sample post.' } },
@@ -50,11 +46,7 @@ export default function HomePage() {
       } catch (error) {
         console.error('Failed to fetch posts:', error);
         // Fallback data
-        setPosts([
-          { id: 1, title: { rendered: 'Sample Post 1' }, excerpt: { rendered: 'This is a sample post.' } },
-          { id: 2, title: { rendered: 'Sample Post 2' }, excerpt: { rendered: 'This is another sample post.' } },
-          // Add more sample posts as needed
-        ]);
+        setPosts([]);
       }
     };
 
@@ -141,16 +133,22 @@ export default function HomePage() {
 
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
-        <PostList posts={posts} />
-        <div className="flex justify-center mt-6">
-          <Button 
-            onClick={loadMorePosts}
-            variant="outline"
-            className="flex items-center gap-2"
-          >
-            Show More <ChevronDown className="h-4 w-4" />
-          </Button>
-        </div>
+        {posts.length > 0 ? (
+          <>
+            <PostList posts={posts} />
+            <div className="flex justify-center mt-6">
+              <Button 
+                onClick={loadMorePosts}
+                variant="outline"
+                className="flex items-center gap-2"
+              >
+                Show More <ChevronDown className="h-4 w-4" />
+              </Button>
+            </div>
+          </>
+        ) : (
+          <p>Loading posts...</p>
+        )}
       </section>
 
       <Card>
