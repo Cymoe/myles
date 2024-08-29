@@ -33,12 +33,12 @@ export default async function HomePage() {
             alt="Myles Webb"
             width={80}
             height={80}
-            className="rounded-full"
+            className="rounded-lg"  // Changed from rounded-full to rounded-lg
           />
           <div>
             <h2 className="text-2xl sm:text-3xl mb-2 font-bold">I&apos;m Myles</h2>
             <p className="text-lg sm:text-xl text-muted-foreground">
-              I build & teach AI business at ModernAI
+              I build & teach AI business at ModernHumanAI
             </p>
           </div>
         </div>
