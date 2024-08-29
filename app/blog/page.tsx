@@ -1,5 +1,8 @@
 import axios from 'axios';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 type Post = {
   id: number;
@@ -9,8 +12,7 @@ type Post = {
   excerpt: {
     rendered: string;
   };
-  featured_media: number;
-  _embedded: {
+  _embedded?: {
     'wp:featuredmedia'?: Array<{
       source_url: string;
     }>;
@@ -31,31 +33,43 @@ export default async function BlogPage() {
   const posts = await getPosts();
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <>
       <h1 className="text-3xl font-bold mb-8">Latest Posts</h1>
       {posts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-6">
           {posts.map((post) => (
-            <div key={post.id} className="border rounded-lg overflow-hidden">
-              {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
-                <Image
-                  src={post._embedded['wp:featuredmedia'][0].source_url}
-                  alt={post.title.rendered}
-                  width={600}
-                  height={400}
-                  className="w-full h-48 object-cover"
+            <Card key={post.id}>
+              <CardHeader>
+                <CardTitle>
+                  <Link href={`/posts/${post.id}`}>
+                    <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  </Link>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
+                  <Image
+                    src={post._embedded['wp:featuredmedia'][0].source_url}
+                    alt={post.title.rendered}
+                    width={600}
+                    height={400}
+                    className="w-full h-48 object-cover mb-4 rounded-md"
+                  />
+                )}
+                <div 
+                  className="text-sm text-muted-foreground mb-4"
+                  dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
                 />
-              )}
-              <div className="p-4">
-                <h2 className="text-xl font-semibold mb-2" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-              </div>
-            </div>
+                <Button variant="outline">
+                  <Link href={`/posts/${post.id}`}>Read more</Link>
+                </Button>
+              </CardContent>
+            </Card>
           ))}
         </div>
       ) : (
         <div>No posts found. Please try again later.</div>
       )}
-    </div>
+    </>
   );
 }

@@ -60,7 +60,7 @@ export default function HomePage() {
   const allPosts = data?.pages.flat() || [];
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
+    <>
       <div className="flex flex-col sm:flex-row items-center justify-between mb-8 sm:mb-12">
         <div className="text-center sm:text-left mb-4 sm:mb-0">
           <h2 className="text-2xl sm:text-3xl mb-1 sm:mb-2 font-bold">I&apos;m Myles</h2>
@@ -70,7 +70,7 @@ export default function HomePage() {
         </div>
         <Image
           src="/images/profile.jpg"
-          alt="Myles Webb"
+          alt="Myles Kameron"
           width={120}
           height={120}
           className="rounded-full"
@@ -128,6 +128,6 @@ export default function HomePage() {
           <NewsletterSignup />
         </CardContent>
       </Card>
-    </div>
+    </>
   );
 }
