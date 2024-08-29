@@ -67,8 +67,8 @@ export default async function HomePage() {
         <CardContent>
           <ul className="list-disc list-inside">
             <li>College dropout — straight to work</li>
-            <li>Built and ran a commercial contracting company to 7 Figures</li>
-            <li>Worked at a design agency and learned to code</li>
+            <li>Built a commercial contracting company to 7 Figures</li>
+            <li>Worked at a design agency-learned to code</li>
             <li>Started hacking on Dev projects in 2016</li>
             <li>Began AI consulting for companies</li>
             <li>Building systems & software ever since</li>
