@@ -26,7 +26,7 @@ export default async function HomePage() {
     <div className="container mx-auto px-4 py-8 min-h-[calc(100vh-theme(spacing.32))]">
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>I'm Myles</CardTitle>
+          <CardTitle>I&apos;m Myles</CardTitle>
           <CardDescription>I build & teach AI business at ModernAI</CardDescription>
         </CardHeader>
       </Card>
@@ -37,7 +37,7 @@ export default async function HomePage() {
         </CardHeader>
         <CardContent>
           <ul className="list-disc list-inside">
-            <li>I'm the founder of ModernAI</li>
+            <li>I&apos;m the founder of ModernAI</li>
             <li>I teach AI business skills at <strong>ModernAI</strong></li>
             <li>I build & <strong>invest</strong> in AI driven startups</li>
             <li>I share tools & frameworks for modern-day business at <a href="https://remotebusinessmodels.com/" className="text-primary hover:underline">Remote Business Models</a></li>
