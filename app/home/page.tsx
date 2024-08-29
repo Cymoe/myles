@@ -39,7 +39,7 @@ export default async function HomePage() {
         <div className="flex items-center justify-between gap-4 py-4">
           <div className="flex items-center gap-4">
             <Image
-              src="/images/myles.jpg"
+              src="/images/myles-3.png"
               alt="Myles Webb"
               width={80}
               height={80}
