@@ -1,10 +1,10 @@
 'use client';
 
+import React, { useEffect, useState } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
-import { useEffect, useState } from 'react';
 
 type Post = {
   id: number;
@@ -33,6 +33,7 @@ export default function BlogPage() {
 
   useEffect(() => {
     setIsClient(true);
+    console.log("Client-side rendering initialized");
   }, []);
 
   const {
@@ -55,9 +56,22 @@ export default function BlogPage() {
 
   useEffect(() => {
     if (inView && hasNextPage) {
+      console.log("Fetching next page");
       fetchNextPage();
     }
   }, [inView, fetchNextPage, hasNextPage]);
+
+  useEffect(() => {
+    console.log("Query status:", status);
+    console.log("Is fetching:", isFetching);
+    console.log("Is loading:", isLoading);
+    console.log("Has next page:", hasNextPage);
+    if (data) {
+      console.log("Number of pages:", data.pages.length);
+      console.log("Total posts:", data.pages.reduce((acc, page) => acc + page.length, 0));
+    }
+    if (error) console.error("Query error:", error);
+  }, [status, isFetching, isLoading, hasNextPage, data, error]);
 
   if (!isClient) return <div>Loading...</div>;
 
@@ -70,11 +84,10 @@ export default function BlogPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-3xl font-bold mb-8">Latest Posts</h1>
-      <div>Debug: {isFetching ? 'Fetching' : 'Not fetching'}</div>
       {data && data.pages.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.pages.map((page, i) => (
-            <>{/* Use empty brackets as a shorthand for Fragment */}
+            <React.Fragment key={i}>
               {page.map((post) => (
                 <div key={post.id} className="border rounded-lg overflow-hidden">
                   {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
@@ -92,7 +105,7 @@ export default function BlogPage() {
                   </div>
                 </div>
               ))}
-            </>
+            </React.Fragment>
           ))}
         </div>
       ) : (
