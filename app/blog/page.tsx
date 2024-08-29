@@ -23,13 +23,16 @@ type Post = {
 };
 
 const fetchPosts = async ({ pageParam = 1 }) => {
+  console.log(`Fetching page ${pageParam}`);
   const res = await axios.get<Post[]>(`https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=9&page=${pageParam}&order=desc&orderby=date&_embed`);
+  console.log(`Fetched ${res.data.length} posts for page ${pageParam}`);
   return res.data;
 };
 
 export default function BlogPage() {
   const { ref, inView } = useInView();
   const [isClient, setIsClient] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -42,7 +45,6 @@ export default function BlogPage() {
     hasNextPage,
     isFetchingNextPage,
     status,
-    error,
     isLoading,
     isFetching,
   } = useInfiniteQuery({
@@ -52,12 +54,19 @@ export default function BlogPage() {
       return lastPage.length === 9 ? pages.length + 1 : undefined;
     },
     initialPageParam: 1,
+    onError: (err) => {
+      console.error("Query error:", err);
+      setError(err as Error);
+    },
   });
 
   useEffect(() => {
     if (inView && hasNextPage) {
       console.log("Fetching next page");
-      fetchNextPage();
+      fetchNextPage().catch(err => {
+        console.error("Error fetching next page:", err);
+        setError(err);
+      });
     }
   }, [inView, fetchNextPage, hasNextPage]);
 
@@ -70,16 +79,12 @@ export default function BlogPage() {
       console.log("Number of pages:", data.pages.length);
       console.log("Total posts:", data.pages.reduce((acc, page) => acc + page.length, 0));
     }
-    if (error) console.error("Query error:", error);
-  }, [status, isFetching, isLoading, hasNextPage, data, error]);
+  }, [status, isFetching, isLoading, hasNextPage, data]);
 
   if (!isClient) return <div>Loading...</div>;
 
   if (isLoading) return <div>Loading posts...</div>;
-  if (status === 'error') {
-    console.error('Error fetching posts:', error);
-    return <div>Error fetching posts: {(error as Error).message}</div>;
-  }
+  if (error) return <div>Error fetching posts: {error.message}</div>;
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
