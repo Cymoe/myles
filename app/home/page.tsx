@@ -70,33 +70,19 @@ export default async function HomePage() {
         {posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => (
-              <Card key={post.id}>
-                <CardHeader>
-                  <CardTitle>
+              <div key={post.id} className="border rounded-lg overflow-hidden shadow-sm">
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold mb-2">
                     <Link href={`/posts/${post.id}`}>
                       <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
                     </Link>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
-                    <Image
-                      src={post._embedded['wp:featuredmedia'][0].source_url}
-                      alt={post.title.rendered}
-                      width={300}
-                      height={200}
-                      className="w-full h-48 object-cover mb-4 rounded-md"
-                    />
-                  )}
+                  </h3>
                   <div 
-                    className="text-sm text-muted-foreground mb-4"
+                    className="text-sm text-gray-600"
                     dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
                   />
-                  <Button variant="outline">
-                    <Link href={`/posts/${post.id}`}>Read more</Link>
-                  </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         ) : (

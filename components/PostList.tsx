@@ -25,7 +25,28 @@ interface PostListProps {
   posts: Post[]
 }
 
-export default function PostListComponent() {
-  // ... existing code ...
+export default function PostListComponent({ posts }: PostListProps) {
+  return (
+    <div className="container mx-auto px-4">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <div key={post.id} className="border rounded-lg overflow-hidden shadow-sm">
+            <div className="p-4">
+              <h3 className="text-xl font-semibold mb-2">
+                <Link href={`/blog/${post.id}`}>
+                  <span>{post.title.rendered}</span>
+                </Link>
+              </h3>
+              <div 
+                className="text-sm text-gray-600"
+                dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} 
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+      <NewsletterSignup />
+    </div>
+  );
 }
 
