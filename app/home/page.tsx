@@ -48,6 +48,7 @@ export default function HomePage() {
     hasNextPage,
     isFetchingNextPage,
     isLoading,
+    isError,
   } = useInfiniteQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
@@ -58,6 +59,9 @@ export default function HomePage() {
   });
 
   const allPosts = data?.pages.flat() || [];
+
+  if (isLoading) return <div>Loading posts...</div>;
+  if (isError) return <div>Error loading posts. Please try again later.</div>;
 
   return (
     <>
@@ -93,9 +97,7 @@ export default function HomePage() {
 
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
-        {isLoading ? (
-          <p>Loading posts...</p>
-        ) : allPosts.length > 0 ? (
+        {allPosts.length > 0 ? (
           <>
             <PostList posts={allPosts} />
             <div className="flex justify-center mt-6">
@@ -106,7 +108,7 @@ export default function HomePage() {
                 disabled={!hasNextPage || isFetchingNextPage}
               >
                 {isFetchingNextPage
-                  ? 'Loading...'
+                  ? 'Loading more...'
                   : hasNextPage
                   ? 'Show More'
                   : 'No More Posts'}
