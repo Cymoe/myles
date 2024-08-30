@@ -74,6 +74,18 @@ export default function HomePage() {
   const allPosts = data?.pages.flat() || [];
   console.log('All posts:', allPosts);
 
+  // Add this section to force a refetch after a delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (isLoading) {
+        console.log('Forcing refetch after delay');
+        refetch();
+      }
+    }, 5000); // 5 seconds delay
+
+    return () => clearTimeout(timer);
+  }, [isLoading, refetch]);
+
   return (
     <div className="container mx-auto px-4">
       <div className="flex flex-col sm:flex-row items-center justify-between mb-8 sm:mb-12">
