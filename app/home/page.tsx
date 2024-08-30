@@ -1,14 +1,9 @@
-"use client";
-
-import React from 'react';
 import axios from 'axios';
-import Link from 'next/link';
 import Image from 'next/image';
-import PostList from '@/components/PostList';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import Link from 'next/link';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import NewsletterSignup from '@/components/NewsletterSignup';
-import { useQuery } from '@tanstack/react-query';
 
 type Post = {
   id: number;
@@ -25,21 +20,18 @@ type Post = {
   };
 };
 
-const fetchPosts = async (): Promise<Post[]> => {
-  const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
-  console.log('API Response:', res.data);
-  return res.data;
-};
+async function getPosts() {
+  try {
+    const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
+    return res.data;
+  } catch (error) {
+    console.error('Failed to fetch posts:', error);
+    return [];
+  }
+}
 
-export default function HomePage() {
-  const { data: posts, isLoading, error } = useQuery<Post[], Error>({
-    queryKey: ['posts'],
-    queryFn: fetchPosts,
-  });
-
-  console.log('Posts:', posts);
-  console.log('Is Loading:', isLoading);
-  console.log('Error:', error);
+export default async function HomePage() {
+  const posts = await getPosts();
 
   return (
     <div className="container mx-auto px-4">
@@ -75,11 +67,7 @@ export default function HomePage() {
 
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
-        {isLoading ? (
-          <p>Loading posts... Please wait.</p>
-        ) : error ? (
-          <p>Error loading posts: {error.message}</p>
-        ) : posts && posts.length > 0 ? (
+        {posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => (
               <Card key={post.id}>
