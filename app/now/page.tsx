@@ -20,7 +20,6 @@ export default function NowPage() {
           <h2 className="text-xl font-semibold mb-2">Work</h2>
           <ul className="list-none p-0 space-y-2">
             <li>Sharing knowledge on how to build AI driven companies</li>
-            <li>Learning and implementing as much as I can with AI</li>
           </ul>
         </div>
 
