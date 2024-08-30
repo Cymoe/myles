@@ -54,7 +54,7 @@ export default function HomePage() {
     getNextPageParam: (lastPage, pages) => {
       return lastPage.length === 6 ? pages.length + 1 : undefined;
     },
-    initialPageParam: 1, // Add this line
+    initialPageParam: 1,
   });
 
   const allPosts = data?.pages.flat() || [];
