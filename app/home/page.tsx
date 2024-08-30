@@ -1,14 +1,14 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+
+import React from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
 import PostList from '@/components/PostList';
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import NewsletterSignup from '@/components/NewsletterSignup';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 type Post = {
   id: number;
@@ -25,66 +25,16 @@ type Post = {
   };
 };
 
+const fetchPosts = async (): Promise<Post[]> => {
+  const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
+  return res.data;
+};
+
 export default function HomePage() {
-  const [fetchError, setFetchError] = useState<string | null>(null);
-
-  const fetchPosts = async ({ pageParam = 1 }) => {
-    try {
-      console.log(`Fetching page ${pageParam}`);
-      const res = await axios.get<Post[]>(
-        `https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed&page=${pageParam}`,
-        { timeout: 10000 }
-      );
-      console.log(`Fetched ${res.data.length} posts`);
-      return res.data;
-    } catch (error) {
-      console.error('Error fetching posts:', error);
-      setFetchError(error.message);
-      throw error;
-    }
-  };
-
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    isLoading,
-    isError,
-    error,
-    refetch
-  } = useInfiniteQuery({
+  const { data: posts, isLoading, error } = useQuery<Post[], Error>({
     queryKey: ['posts'],
     queryFn: fetchPosts,
-    getNextPageParam: (lastPage, pages) => {
-      return lastPage.length === 6 ? pages.length + 1 : undefined;
-    },
-    initialPageParam: 1,
-    retry: 3,
-    retryDelay: 1000,
   });
-
-  useEffect(() => {
-    console.log('Query state:', { isLoading, isError, error, data, fetchError });
-    if (data) {
-      console.log('Data structure:', JSON.stringify(data, null, 2));
-    }
-  }, [isLoading, isError, error, data, fetchError]);
-
-  const allPosts = data?.pages.flat() || [];
-  console.log('All posts:', allPosts);
-
-  // Add this section to force a refetch after a delay
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (isLoading) {
-        console.log('Forcing refetch after delay');
-        refetch();
-      }
-    }, 5000); // 5 seconds delay
-
-    return () => clearTimeout(timer);
-  }, [isLoading, refetch]);
 
   return (
     <div className="container mx-auto px-4">
@@ -122,32 +72,42 @@ export default function HomePage() {
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
         {isLoading ? (
           <p>Loading posts... Please wait.</p>
-        ) : isError ? (
-          <div>
-            <p>Error loading posts: {error.message || fetchError}</p>
-            <Button onClick={() => refetch()} className="mt-2">Try Again</Button>
+        ) : error ? (
+          <p>Error loading posts: {error.message}</p>
+        ) : posts && posts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map((post) => (
+              <Card key={post.id}>
+                <CardHeader>
+                  <CardTitle>
+                    <Link href={`/posts/${post.id}`}>
+                      <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                    </Link>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
+                    <Image
+                      src={post._embedded['wp:featuredmedia'][0].source_url}
+                      alt={post.title.rendered}
+                      width={300}
+                      height={200}
+                      className="w-full h-48 object-cover mb-4 rounded-md"
+                    />
+                  )}
+                  <div 
+                    className="text-sm text-muted-foreground mb-4"
+                    dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+                  />
+                  <Button variant="outline">
+                    <Link href={`/posts/${post.id}`}>Read more</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        ) : allPosts.length > 0 ? (
-          <>
-            <PostList posts={allPosts} />
-            <div className="flex justify-center mt-6">
-              <Button 
-                variant="outline"
-                className="flex items-center gap-2"
-                onClick={() => fetchNextPage()}
-                disabled={!hasNextPage || isFetchingNextPage}
-              >
-                {isFetchingNextPage
-                  ? 'Loading more...'
-                  : hasNextPage
-                  ? 'Show More'
-                  : 'No More Posts'}
-                <ChevronDown className="h-4 w-4" />
-              </Button>
-            </div>
-          </>
         ) : (
-          <p>No posts found.</p>
+          <p>No posts found. Please try again later.</p>
         )}
       </section>
 
