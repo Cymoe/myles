@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import NewsletterSignup from '@/components/NewsletterSignup';
-import { useState } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 type Post = {
@@ -26,16 +25,6 @@ type Post = {
   };
 };
 
-async function getPosts() {
-  try {
-    const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
-    return res.data;
-  } catch (error) {
-    console.error('Failed to fetch posts:', error);
-    return [];
-  }
-}
-
 export default function HomePage() {
   const fetchPosts = async ({ pageParam = 1 }) => {
     const res = await axios.get<Post[]>(`https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed&page=${pageParam}`);
@@ -49,6 +38,7 @@ export default function HomePage() {
     isFetchingNextPage,
     isLoading,
     isError,
+    error
   } = useInfiniteQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
@@ -58,13 +48,14 @@ export default function HomePage() {
     initialPageParam: 1,
   });
 
+  useEffect(() => {
+    console.log('Query state:', { isLoading, isError, error, data });
+  }, [isLoading, isError, error, data]);
+
   const allPosts = data?.pages.flat() || [];
 
-  if (isLoading) return <div>Loading posts...</div>;
-  if (isError) return <div>Error loading posts. Please try again later.</div>;
-
   return (
-    <>
+    <div className="container mx-auto px-4">
       <div className="flex flex-col sm:flex-row items-center justify-between mb-8 sm:mb-12">
         <div className="text-center sm:text-left mb-4 sm:mb-0">
           <h2 className="text-2xl sm:text-3xl mb-1 sm:mb-2 font-bold">I&apos;m Myles</h2>
@@ -97,7 +88,11 @@ export default function HomePage() {
 
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
-        {allPosts.length > 0 ? (
+        {isLoading ? (
+          <p>Loading posts... Please wait.</p>
+        ) : isError ? (
+          <p>Error loading posts: {error.message}</p>
+        ) : allPosts.length > 0 ? (
           <>
             <PostList posts={allPosts} />
             <div className="flex justify-center mt-6">
@@ -130,6 +125,6 @@ export default function HomePage() {
           <NewsletterSignup />
         </CardContent>
       </Card>
-    </>
+    </div>
   );
 }
