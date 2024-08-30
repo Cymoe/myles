@@ -38,10 +38,10 @@ export default async function HomePage() {
         </CardHeader>
         <CardContent>
           <div className="flex justify-start gap-4">
-            <Button asChild size="xl" className="w-48 h-16 text-lg">
+            <Button asChild size="lg" className="w-44 h-14 text-base">
               <Link href="/courses">View Courses</Link>
             </Button>
-            <Button asChild variant="outline" size="xl" className="w-48 h-16 text-lg">
+            <Button asChild variant="outline" size="lg" className="w-44 h-14 text-base">
               <Link href="/blog">Get Started</Link>
             </Button>
           </div>
