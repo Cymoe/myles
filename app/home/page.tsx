@@ -54,7 +54,7 @@ export default async function HomePage() {
         </CardHeader>
         <CardContent>
           <ul className="list-disc pl-5 space-y-2 mb-6">
-            <li>I'm the founder of Modernhuman</li>
+            <li>I&apos;m the founder of Modernhuman</li>
             <li>I teach AI business skills at <Link href="https://remotebusinessmodels.com/"><span className="underline">Modernhuman</span></Link></li>
             <li>I build & <strong>invest</strong> in AI driven startups</li>
             <li>I build and run remote companies</li>
