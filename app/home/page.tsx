@@ -37,11 +37,11 @@ export default async function HomePage() {
           <CardDescription>Join 1,788 entrepreneurs and learn practical AI business skills and become a top 1% AI user.</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex justify-start gap-4">
-            <Button asChild size="lg" className="w-44 h-14 text-base">
+          <div className="flex flex-row justify-start gap-2 sm:gap-4">
+            <Button asChild size="lg" className="w-1/2 sm:w-auto h-14 text-base">
               <Link href="/courses">View Courses</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="w-44 h-14 text-base">
+            <Button asChild variant="outline" size="lg" className="w-1/2 sm:w-auto h-14 text-base">
               <Link href="/blog">Get Started</Link>
             </Button>
           </div>
@@ -55,7 +55,7 @@ export default async function HomePage() {
         <CardContent>
           <ul className="list-disc pl-5 space-y-2 mb-6">
             <li>I&apos;m the founder of Modernhuman</li>
-            <li>I teach AI business skills at <Link href="https://remotebusinessmodels.com/"><span className="underline">Modernhuman</span></Link></li>
+            <li>I teach AI business at <Link href="https://remotebusinessmodels.com/"><span className="underline">Modernhuman</span></Link></li>
             <li>I build & <strong>invest</strong> in AI driven startups</li>
             <li>I build and run remote companies</li>
             <li>Currently traveling full time (25 Countries)</li>
@@ -69,7 +69,7 @@ export default async function HomePage() {
             <li>College dropout — straight to work</li>
             <li>Built a 7-Fig commercial contracting company</li>
             <li>Worked at a design agency-learned to code</li>
-            <li>Started hacking on Dev projects in 2018</li>
+            <li>Started hacking on Dev projects in 2017</li>
             <li>Began AI consulting for companies</li>
             <li>Building systems & software ever since</li>
           </ul>
