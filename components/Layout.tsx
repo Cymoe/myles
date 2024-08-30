@@ -6,8 +6,10 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 max-w-5xl min-h-[calc(100vh-theme(spacing.32))]">
-      {children}
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 max-w-5xl">
+        {children}
+      </div>
     </div>
   );
 }

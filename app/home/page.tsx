@@ -48,7 +48,7 @@ export default async function HomePage() {
         </CardContent>
       </Card>
 
-      <Card className="mb-8">
+      <Card className="mb-8" id='about'>
         <CardHeader>
           <CardTitle>Currently</CardTitle>
         </CardHeader>

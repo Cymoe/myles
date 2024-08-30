@@ -4,6 +4,7 @@ import Header from '../components/page-header';
 import Footer from '../components/Footer';
 import Providers from './providers';
 import Layout from '@/components/Layout'; // Add this import
+import ConditionalFooter from '@/components/ConditionalFooter';
 
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -24,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Layout>
             <main>{children}</main>
           </Layout>
-          <Footer />
+          <ConditionalFooter />
         </Providers>
       </body>
     </html>

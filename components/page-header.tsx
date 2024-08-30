@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Orbitron } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Dialog } from '@headlessui/react';
+import { usePathname } from 'next/navigation';
 
 const googleOrbitron = Orbitron({
   subsets: ['latin'],
@@ -36,11 +37,19 @@ const navigation = [
   { name: 'Now', href: '/now' },
   { name: 'Posts', href: '/blog' },
   { name: 'Courses', href: '/courses' },
-  { name: 'Invest', href: '/invest' },
+  { name: 'About', href: '/#about' },
 ]
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === '/#about') {
+      return pathname === '/' || pathname === '/#about';
+    }
+    return pathname === href;
+  };
 
   return (
     <header className="bg-black text-white">
@@ -70,7 +79,11 @@ export default function Header() {
               <Link 
                 key={item.name} 
                 href={item.href} 
-                className="text-lg font-thin leading-6 transition-colors duration-200 hover:text-gray-300"
+                className={`text-lg font-thin leading-6 transition-colors duration-200 ${
+                  isActive(item.href) 
+                    ? 'text-white font-medium' 
+                    : 'text-gray-300 hover:text-white'
+                }`}
               >
                 {item.name}
               </Link>
