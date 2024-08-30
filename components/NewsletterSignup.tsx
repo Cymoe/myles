@@ -8,31 +8,12 @@ export default function NewsletterSignup() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your Mailchimp API endpoint and POST request here
-    // Example: POST email to Mailchimp API
-    try {
-      const res = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
-      if (res.ok) {
-        alert('Thank you for subscribing!');
-        setEmail(''); // Clear the input
-      } else {
-        alert('Failed to subscribe. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error subscribing:', error);
-      alert('An error occurred. Please try again.');
-    }
+    // Add your newsletter signup logic here
+    console.log('Signing up with email:', email);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Subscribe to our Newsletter</h3>
       <input
         type="email"
         value={email}

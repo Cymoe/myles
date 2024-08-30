@@ -1,37 +1,12 @@
-import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import NewsletterSignup from '@/components/NewsletterSignup';
-
-type Post = {
-  id: number;
-  title: {
-    rendered: string;
-  };
-  excerpt: {
-    rendered: string;
-  };
-  _embedded?: {
-    'wp:featuredmedia'?: Array<{
-      source_url: string;
-    }>;
-  };
-};
-
-async function getPosts() {
-  try {
-    const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
-    return res.data;
-  } catch (error) {
-    console.error('Failed to fetch posts:', error);
-    return [];
-  }
-}
+import ClientPostList from '@/components/ClientPostList';
+import { getPosts } from '@/lib/api';
 
 export default async function HomePage() {
-  const posts = await getPosts();
+  const initialPosts = await getPosts();
 
   return (
     <div className="container mx-auto px-4">
@@ -67,27 +42,7 @@ export default async function HomePage() {
 
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
-        {posts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => (
-              <div key={post.id} className="border rounded-lg overflow-hidden shadow-sm">
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2">
-                    <Link href={`/posts/${post.id}`}>
-                      <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                    </Link>
-                  </h3>
-                  <div 
-                    className="text-sm text-gray-600"
-                    dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>No posts found. Please try again later.</p>
-        )}
+        <ClientPostList initialPosts={initialPosts} />
       </section>
 
       <Card>

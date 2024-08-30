@@ -5,9 +5,14 @@ import axios from 'axios';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Post } from '@/lib/api';
-import { truncateToSentences } from '@/lib/utils';
 
-export default function PostList({ initialPosts }: { initialPosts: Post[] }) {
+function truncateToSentences(text: string, maxSentences: number = 2): string {
+  const strippedText = text.replace(/<\/?[^>]+(>|$)/g, "");
+  const sentences = strippedText.match(/[^\.!\?]+[\.!\?]+/g) || [];
+  return sentences.slice(0, maxSentences).join(' ').trim();
+}
+
+export default function ClientPostList({ initialPosts }: { initialPosts: Post[] }) {
   const [posts, setPosts] = useState(initialPosts);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -28,6 +33,10 @@ export default function PostList({ initialPosts }: { initialPosts: Post[] }) {
         setPosts(prevPosts => [...prevPosts, ...res.data]);
         setPage(nextPage);
         console.log(`Loaded ${res.data.length} more posts`);
+        // Check if we've reached the end of available posts
+        if (res.data.length < 6) { // Assuming we're fetching 6 posts per page
+          setHasMore(false);
+        }
       }
     } catch (error) {
       console.error('Failed to fetch more posts:', error);
@@ -70,4 +79,3 @@ export default function PostList({ initialPosts }: { initialPosts: Post[] }) {
     </>
   );
 }
-
