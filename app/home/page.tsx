@@ -24,7 +24,7 @@ export default async function HomePage() {
             <div>
               <h2 className="text-2xl sm:text-3xl mb-1 sm:mb-2 font-bold">I&apos;m Myles</h2>
               <p className="text-lg sm:text-xl text-muted-foreground">
-                I build & teach AI business at <Link href="https://modernhuman.co"><span className="underline">Modernhuman</span></Link>
+                I build & teach AI business at <Link href="http://joinmodernhuman.com/"><span className="underline">Modernhuman</span></Link>
               </p>
             </div>
           </div>
@@ -55,10 +55,9 @@ export default async function HomePage() {
         <CardContent>
           <ul className="list-disc pl-5 space-y-2 mb-6">
             <li>I&apos;m the founder of Modernhuman</li>
-            <li>I teach AI business at <Link href="https://remotebusinessmodels.com/"><span className="underline">Modernhuman</span></Link></li>
-            <li>I <Link href="https://remotebusinessmodels.com/"><span className="underline">invest</span></Link> in AI driven startups</li>
-            <li>I build and run remote companies</li>
-            <li>Currently traveling and building full-time (25 Countries)</li>
+            <li>I teach AI business at <Link href="http://joinmodernhuman.com/"><span className="underline">Modernhuman</span></Link></li>
+            <li>I build and run <Link href="https://remotebusinessmodels.com/"><span className="underline">remote companies</span></Link></li>
+            <li>Currently traveling full-time (25 Countries)</li>
           </ul>
         </CardContent>
         <CardHeader>

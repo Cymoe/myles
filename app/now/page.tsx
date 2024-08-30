@@ -1,6 +1,15 @@
+import Image from 'next/image';
+
 export default function NowPage() {
     return (
       <div className="space-y-8 text-center max-w-2xl mx-auto">
+        <Image
+          src="/images/goals.jpg"
+          alt="Hero image for Now page"
+          width={600}
+          height={300}
+          className="w-1/2 h-auto mb-6 mx-auto"
+        />
         
         <p className="text-lg">
           Here&apos;s what I&apos;m working on right now.<br />
@@ -10,24 +19,25 @@ export default function NowPage() {
         <div>
           <h2 className="text-xl font-semibold mb-2">Work</h2>
           <ul className="list-none p-0 space-y-2">
-            <li>Stabilizing the 5 properties we currently own. Have one new one under contract in PA</li>
-            <li>Trying to grow a new recruiting business I launched to help agencies and brands hire</li>
-            <li>Brainstorming some new ideas</li>
+            
+            <li>Learning and implementing as much as I can with AI</li>
+            <li>Exploring new ideas</li>
           </ul>
         </div>
 
         <div>
-          <h2 className="text-xl font-semibold mb-2">Health</h2>
           <ul className="list-none p-0 space-y-2">
-            <li>Entirely obsessed with developing my jiu jitsu game</li>
-            <li>Lifting heavy compound lifts</li>
+          <h2 className="text-xl font-semibold mb-2">Health</h2>
+            <li>Walking 10k-20k steps a day</li>
+            <li>Lifting as much weight as possible while maintaining a caloric deficit <br/>Goal is to remain jacked forever </li>
+            <li>Meditating alot these days</li>
           </ul>
         </div>
 
         <div>
-          <h2 className="text-xl font-semibold mb-2">Misc</h2>
+        <h2 className="text-xl font-semibold mb-2">Misc</h2>
           <p>
-            Not a whole lot… summarized by trying to drink less, be a better friend, and learn more every day. Pretty simple
+            Sustanably traveling and living abroad
           </p>
         </div>
       </div>
