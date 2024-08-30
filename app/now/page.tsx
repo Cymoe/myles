@@ -19,16 +19,15 @@ export default function NowPage() {
         <div>
           <h2 className="text-xl font-semibold mb-2">Work</h2>
           <ul className="list-none p-0 space-y-2">
-            <li>Scaling out a fully remote remodeling business ✅</li>
+            <li>Sharing knowledge on how to build AI driven companies</li>
             <li>Learning and implementing as much as I can with AI</li>
-            <li>Teaching others how to use AI to scale</li>
           </ul>
         </div>
 
         <div>
           <ul className="list-none p-0 space-y-2">
           <h2 className="text-xl font-semibold mb-2">Health</h2>
-            <li>Lifting as much weight as possible while maintaining a caloric deficit</li>
+            <li>Lifting a lot of weight and maintaining a caloric deficit</li>
             <li>Walking 10k-20k steps a day with daily fasting</li>
             <li>The goal is to remain jacked forever</li>
             <li>Meditating alot these days</li>
