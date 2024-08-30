@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -26,9 +26,22 @@ type Post = {
 };
 
 export default function HomePage() {
+  const [fetchError, setFetchError] = useState<string | null>(null);
+
   const fetchPosts = async ({ pageParam = 1 }) => {
-    const res = await axios.get<Post[]>(`https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed&page=${pageParam}`);
-    return res.data;
+    try {
+      console.log(`Fetching page ${pageParam}`);
+      const res = await axios.get<Post[]>(
+        `https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed&page=${pageParam}`,
+        { timeout: 10000 } // 10 second timeout
+      );
+      console.log(`Fetched ${res.data.length} posts`);
+      return res.data;
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+      setFetchError(error.message);
+      throw error;
+    }
   };
 
   const {
@@ -38,7 +51,8 @@ export default function HomePage() {
     isFetchingNextPage,
     isLoading,
     isError,
-    error
+    error,
+    refetch
   } = useInfiniteQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
@@ -46,11 +60,13 @@ export default function HomePage() {
       return lastPage.length === 6 ? pages.length + 1 : undefined;
     },
     initialPageParam: 1,
+    retry: 3,
+    retryDelay: 1000,
   });
 
   useEffect(() => {
-    console.log('Query state:', { isLoading, isError, error, data });
-  }, [isLoading, isError, error, data]);
+    console.log('Query state:', { isLoading, isError, error, data, fetchError });
+  }, [isLoading, isError, error, data, fetchError]);
 
   const allPosts = data?.pages.flat() || [];
 
@@ -91,7 +107,10 @@ export default function HomePage() {
         {isLoading ? (
           <p>Loading posts... Please wait.</p>
         ) : isError ? (
-          <p>Error loading posts: {error.message}</p>
+          <div>
+            <p>Error loading posts: {error.message || fetchError}</p>
+            <Button onClick={() => refetch()} className="mt-2">Try Again</Button>
+          </div>
         ) : allPosts.length > 0 ? (
           <>
             <PostList posts={allPosts} />
