@@ -33,7 +33,7 @@ export default function HomePage() {
       console.log(`Fetching page ${pageParam}`);
       const res = await axios.get<Post[]>(
         `https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed&page=${pageParam}`,
-        { timeout: 10000 } // 10 second timeout
+        { timeout: 10000 }
       );
       console.log(`Fetched ${res.data.length} posts`);
       return res.data;
