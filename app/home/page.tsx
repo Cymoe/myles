@@ -58,7 +58,7 @@ export default async function HomePage() {
             <li>I teach AI business at <Link href="https://remotebusinessmodels.com/"><span className="underline">Modernhuman</span></Link></li>
             <li>I build & <strong>invest</strong> in AI driven startups</li>
             <li>I build and run remote companies</li>
-            <li>Currently traveling full time (25 Countries)</li>
+            <li>Currently traveling and building full-time (25 Countries)</li>
           </ul>
         </CardContent>
         <CardHeader>
@@ -67,8 +67,8 @@ export default async function HomePage() {
         <CardContent>
           <ul className="list-disc pl-5 space-y-2 mb-6">
             <li>College dropout — straight to work</li>
-            <li>Built a 7-Fig commercial contracting company</li>
-            <li>Worked at a design agency-learned to code</li>
+            <li>Built a 7-Fig commercial contracting biz</li>
+            <li>Worked at design agency-learned to code</li>
             <li>Started hacking on Dev projects in 2017</li>
             <li>Began AI consulting for companies</li>
             <li>Building systems & software ever since</li>
