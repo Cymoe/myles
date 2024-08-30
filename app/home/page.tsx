@@ -42,7 +42,7 @@ export default async function HomePage() {
               <Link href="/courses">View Courses</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-1/2 sm:w-auto h-14 text-base">
-              <Link href="/blog">Get Started</Link>
+              <Link href="http://joinmodernhuman.com/">Get Started</Link>
             </Button>
           </div>
         </CardContent>
