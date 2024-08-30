@@ -27,6 +27,7 @@ type Post = {
 
 const fetchPosts = async (): Promise<Post[]> => {
   const res = await axios.get<Post[]>('https://wordpress-1322194-4833688.cloudwaysapps.com/wp-json/wp/v2/posts?per_page=6&order=desc&orderby=date&_embed');
+  console.log('API Response:', res.data);
   return res.data;
 };
 
@@ -35,6 +36,10 @@ export default function HomePage() {
     queryKey: ['posts'],
     queryFn: fetchPosts,
   });
+
+  console.log('Posts:', posts);
+  console.log('Is Loading:', isLoading);
+  console.log('Error:', error);
 
   return (
     <div className="container mx-auto px-4">
