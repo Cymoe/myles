@@ -33,7 +33,7 @@ export default async function HomePage() {
 
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle className="text-3xl sm:text-4xl">Learn AI Business today.</CardTitle>
+          <CardTitle className="text-3xl sm:text-4xl">Learn AI Business skills.</CardTitle>
           <CardDescription>Join 1,788 entrepreneurs and learn practical AI business skills and become a top 1% AI user.</CardDescription>
         </CardHeader>
         <CardContent>
