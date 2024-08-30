@@ -26,7 +26,7 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {posts.map((post) => {
-        console.log(`Rendering post ${post.id}`);
+        console.log(`Rendering post ${post.id}:`, post);
         return (
           <div key={post.id} className="border rounded-lg overflow-hidden shadow-sm">
             {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
@@ -40,7 +40,7 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
             )}
             <div className="p-4">
               <h3 className="text-xl font-semibold mb-2">
-                <Link href={`/post/${post.id}`}>
+                <Link href={`/posts/${post.id}`}>
                   <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
                 </Link>
               </h3>

@@ -66,9 +66,13 @@ export default function HomePage() {
 
   useEffect(() => {
     console.log('Query state:', { isLoading, isError, error, data, fetchError });
+    if (data) {
+      console.log('Data structure:', JSON.stringify(data, null, 2));
+    }
   }, [isLoading, isError, error, data, fetchError]);
 
   const allPosts = data?.pages.flat() || [];
+  console.log('All posts:', allPosts);
 
   return (
     <div className="container mx-auto px-4">
