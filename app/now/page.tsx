@@ -3,14 +3,6 @@ import Image from 'next/image';
 export default function NowPage() {
     return (
       <div className="space-y-8 text-center max-w-2xl mx-auto">
-        <Image
-          src="/images/goals.jpg"
-          alt="Hero image for Now page"
-          width={600}
-          height={300}
-          className="w-1/2 h-auto mb-6 mx-auto"
-        />
-        
         <p className="text-lg">
           Here&apos;s what I&apos;m working on right now.<br />
           <span className="underline">Updated Aug 31st from a coworking space in Vienna, Austria.</span>
