@@ -110,7 +110,7 @@ export default async function HomePage() {
       <Card>
         <CardHeader>
           <CardTitle>
-            <span class="text-2xl font-light __className_f8a07c">MK</span>
+            <span className="text-2xl font-light __className_f8a07c">MK</span>
           </CardTitle>
           <h2>Read how to build AI-powered businesses and live a wealthy life.</h2>
           <CardDescription>Join 7231 readers staying updated on topics spanning AI, remote business, and modern wealth building:
