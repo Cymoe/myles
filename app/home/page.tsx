@@ -24,7 +24,7 @@ export default async function HomePage() {
             <div>
               <h2 className="text-2xl sm:text-3xl mb-1 sm:mb-2 font-bold">I&apos;m Myles</h2>
               <p className="text-base sm:text-lg text-muted-foreground text-[#8a8f98]">
-                I build & teach AI business at <Link href="http://joinmodernhuman.com/"><span className="underline">Modernhuman</span></Link>
+                I build & teach AI business at <Link href="https://www.joinmodernhuman.com/"><span className="underline">Modernhuman</span></Link>
               </p>
             </div>
           </div>
@@ -42,7 +42,7 @@ export default async function HomePage() {
               <Link href="/courses">View Courses</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-1/2 sm:w-auto h-14 text-base">
-              <Link href="http://joinmodernhuman.com/">Get Started</Link>
+              <Link href="https://www.joinmodernhuman.com/">Get Started</Link>
             </Button>
           </div>
         </CardContent>
@@ -55,7 +55,7 @@ export default async function HomePage() {
         <CardContent>
           <ul className="list-disc pl-5 space-y-2 mb-6">
             <li className="text-[#8a8f98]">I&apos;m the founder of Modernhuman</li>
-            <li className="text-[#8a8f98]">I teach AI business at <Link href="http://joinmodernhuman.com/"><span className="underline">Modernhuman</span></Link></li>
+            <li className="text-[#8a8f98]">I teach AI business at <Link href="https://www.joinmodernhuman.com/"><span className="underline">Modernhuman</span></Link></li>
             <li className="text-[#8a8f98]">Join the newsletter <Link href="#news"><span className="underline">here</span></Link></li>
             <li className="text-[#8a8f98]">I build and run remote companies</li>
             <li className="text-[#8a8f98]">Currently traveling full-time (25 Countries)</li>
@@ -89,10 +89,10 @@ export default async function HomePage() {
           <p style={{ color: 'rgb(75 85 99)' }}>Master Essential Skills and Become a Top 1% AI-Driven Founder. Accelerate Your Success as a Top AI User.</p>
             <div className="flex gap-4 mt-4">
               <Button asChild className="bg-transparent text-white border border-white hover:bg-white hover:text-black">
-                <Link href="http://joinmodernhuman.com/">View Courses</Link>
+                <Link href="https://www.joinmodernhuman.com/">View Courses</Link>
               </Button>
               <Button asChild variant="outline" className="bg-white text-black border border-black hover:bg-black hover:text-white">
-                <Link href="/courses">Get Started</Link>
+                <Link href="https://www.joinmodernhuman.com/">Get Started</Link>
               </Button>
             </div>
           </CardContent>
