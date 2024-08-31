@@ -12,6 +12,7 @@ export default function NowPage() {
           <h2 className="text-xl font-semibold mb-2">Work</h2>
           <ul className="list-none p-0 space-y-2">
             <li>Sharing knowledge on how to build AI driven companies</li>
+            <li>Building software with AI</li>
           </ul>
         </div>
 
@@ -28,7 +29,7 @@ export default function NowPage() {
         <div>
         <h2 className="text-xl font-semibold mb-2">Misc</h2>
           <p>
-            Sustanably traveling and living abroad <br/>Slowmadding mostly in Europe and Asia. 
+          Sustainable Travel and Living Abroad: Slowmadding Across Europe and Asia.
           </p>
         </div>
       </div>

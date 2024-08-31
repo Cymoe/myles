@@ -21,7 +21,7 @@ export default function NewsletterSignup() {
         placeholder="Enter your email"
         required
       />
-      <button type="submit">Subscribe</button>
+      <button type="submit" className="bg-transparent text-white border border-white hover:bg-white hover:text-black px-4 py-2 rounded">Read for Free</button>
     </form>
   );
 }

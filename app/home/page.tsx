@@ -56,6 +56,7 @@ export default async function HomePage() {
           <ul className="list-disc pl-5 space-y-2 mb-6">
             <li className="text-[#8a8f98]">I&apos;m the founder of Modernhuman</li>
             <li className="text-[#8a8f98]">I teach AI business at <Link href="http://joinmodernhuman.com/"><span className="underline">Modernhuman</span></Link></li>
+            <li className="text-[#8a8f98]">Join the newsletter <Link href="#news"><span className="underline">here</span></Link></li>
             <li className="text-[#8a8f98]">I build and run remote companies</li>
             <li className="text-[#8a8f98]">Currently traveling full-time (25 Countries)</li>
           </ul>
@@ -108,11 +109,14 @@ export default async function HomePage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Subscribe to Our Newsletter</CardTitle>
-          <CardDescription>Join 7231 readers staying updated on topics spanning AI, remote business, and philosophy:
+          <CardTitle>
+            <span class="text-2xl font-light __className_f8a07c">MK</span>
+          </CardTitle>
+          <h2>Read how to build AI-powered businesses and live a wealthy life.</h2>
+          <CardDescription>Join 7231 readers staying updated on topics spanning AI, remote business, and modern wealth building:
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent id="news">
           <NewsletterSignup />
         </CardContent>
       </Card>
