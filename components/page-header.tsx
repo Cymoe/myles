@@ -36,7 +36,7 @@ const orbitronClass = getOrbitronFont()
 const navigation = [
   { name: 'Now', href: '/now' },
   { name: 'Posts', href: '/blog' },
-  { name: 'Courses', href: '/courses' },
+  { name: 'Resources', href: '/#resources' },
   { name: 'About', href: '/#about' },
 ]
 

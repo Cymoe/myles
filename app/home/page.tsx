@@ -23,7 +23,7 @@ export default async function HomePage() {
             />
             <div>
               <h2 className="text-2xl sm:text-3xl mb-1 sm:mb-2 font-bold">I&apos;m Myles</h2>
-              <p className="text-lg sm:text-xl text-muted-foreground">
+              <p className="text-base sm:text-lg text-muted-foreground text-[#8a8f98]">
                 I build & teach AI business at <Link href="http://joinmodernhuman.com/"><span className="underline">Modernhuman</span></Link>
               </p>
             </div>
@@ -34,7 +34,7 @@ export default async function HomePage() {
       <Card className="mb-8">
         <CardHeader>
           <CardTitle className="text-3xl sm:text-4xl">Learn AI Business skills.</CardTitle>
-          <CardDescription>Join 1,788 entrepreneurs and learn practical AI business skills and become a top 1% AI user.</CardDescription>
+          <CardDescription>Join modern-day entrepreneurs and learn practical AI business skills and become a top 1% AI user.</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-row justify-start gap-2 sm:gap-4">
@@ -54,10 +54,10 @@ export default async function HomePage() {
         </CardHeader>
         <CardContent>
           <ul className="list-disc pl-5 space-y-2 mb-6">
-            <li>I&apos;m the founder of Modernhuman</li>
-            <li>I teach AI business at <Link href="http://joinmodernhuman.com/"><span className="underline">Modernhuman</span></Link></li>
-            <li>I build and run <Link href="https://remotebusinessmodels.com/"><span className="underline">remote companies</span></Link></li>
-            <li>Currently traveling full-time (25 Countries)</li>
+            <li className="text-[#8a8f98]">I&apos;m the founder of Modernhuman</li>
+            <li className="text-[#8a8f98]">I teach AI business at <Link href="http://joinmodernhuman.com/"><span className="underline">Modernhuman</span></Link></li>
+            <li className="text-[#8a8f98]">I build and run <Link href="https://remotebusinessmodels.com/"><span className="underline">remote companies</span></Link></li>
+            <li className="text-[#8a8f98]">Currently traveling full-time (25 Countries)</li>
           </ul>
         </CardContent>
         <CardHeader>
@@ -65,18 +65,63 @@ export default async function HomePage() {
         </CardHeader>
         <CardContent>
           <ul className="list-disc pl-5 space-y-2 mb-6">
-            <li>College dropout — straight to work</li>
-            <li>Built a 7-Fig commercial contracting biz</li>
-            <li>Worked at design agency-learned code</li>
-            <li>Started hacking on Dev projects in 2017</li>
-            <li>Began AI consulting for companies</li>
-            <li>Building systems & software ever since</li>
+            <li className="text-[#8a8f98]">College dropout — straight to work</li>
+            <li className="text-[#8a8f98]">Built a 7-Fig commercial contracting biz</li>
+            <li className="text-[#8a8f98]">Worked at design agency-learned code</li>
+            <li className="text-[#8a8f98]">Started hacking on Dev projects in 2017</li>
+            <li className="text-[#8a8f98]">Began AI consulting for companies</li>
+            <li className="text-[#8a8f98]">Building systems & software ever since</li>
           </ul>
         </CardContent>
       </Card>
 
+      <h2 className="text-2xl font-light mt-20 mb-[-.5rem] font-sans text-center tracking-[0.25em] uppercase text-gray-600" id="resources">RESOURCES</h2>
+      <h2 className="text-4xl font-bold font-sans text-center tracking-widest">A Path Forward</h2>
+      <p className="text-center text-gray-600 mb-8">Discover key resources to embrace an autonomous, AI-powered lifestyle.</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <Card>
+          <CardHeader className="mb-4">
+            <CardTitle className="__className_f8a07c">Modernhuman</CardTitle>
+          </CardHeader>
+          <CardContent>
+          <h1 className="mb-2"><strong>Become an AI powerhouse</strong></h1>
+          <p style={{ color: 'rgb(75 85 99)' }}>Gain Practical Skills and Join the Top 1% of AI-Driven Founders</p>
+            <Button asChild className="mt-4 bg-transparent text-white border border-white hover:bg-white hover:text-black">
+              <Link href="http://joinmodernhuman.com/">Get Started</Link>
+            </Button>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="mb-4">
+            <CardTitle className="__className_f8a07c">AI Startup Ideas</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <h1 className="mb-2"><strong>100+ AI Startup Ideas</strong></h1>
+            <p style={{ color: 'rgb(75 85 99)' }}>Leverage Your AI Skills to Build a Successful AI-Driven Startup</p>
+            <Button asChild className="mt-4 bg-transparent text-white border border-white hover:bg-white hover:text-black">
+              <Link href="#">Free Download</Link>
+            </Button>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="mb-4">
+            <CardTitle className="__className_f8a07c">Remote Models</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <h1 className="mb-2"><strong>Unlock Location Freedom</strong></h1>
+            <p style={{ color: 'rgb(75 85 99)' }}>Frameworks for Running Boring Businesses Remotely</p>
+            <Button asChild className="mt-4 bg-transparent text-white border border-white hover:bg-white hover:text-black">
+              <Link href="https://remotebusinessmodels.com/">Get Access</Link>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+
+
       <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
+        <h2 className="text-2xl font-light mt-20 mb-[-.5rem] font-sans text-center tracking-[0.25em] uppercase text-gray-600">POSTS</h2>
+        <h2 className="text-4xl font-bold font-sans text-center tracking-widest">Latest Updates</h2>
+        <p className="text-center text-gray-600 mb-8">Explore my recent writings and insights.</p>
         <ClientPostList initialPosts={initialPosts} />
       </section>
 
