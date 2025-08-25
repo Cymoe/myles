@@ -5,19 +5,8 @@ import NewsletterSignup from '@/components/NewsletterSignup';
 export default function Home() {
   return (
     <>
-      {/* Hero Image - Full Viewport Width */}
-      <div className="relative w-full h-[400px] mt-20 mb-16 bg-gray-100">
-        <Image
-          src="/images/heromyles.png"
-          alt="Myles Kameron"
-          fill
-          className="object-contain"
-          priority
-        />
-      </div>
-
       {/* Hero Section - Editorial Style */}
-      <section className="flex items-center justify-center relative bg-white">
+      <section className="flex items-center justify-center relative bg-white pt-32">
         <div className="container mx-auto px-8 py-20">
           <div className="max-w-4xl mx-auto">
             
