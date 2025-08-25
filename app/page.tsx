@@ -100,23 +100,23 @@ export default function Home() {
                   </p>
                   
                   <p className="text-gray-600 font-light leading-snug">
-                    We're told success is about achievement. Status. Hustle. Obedience. But what if none of that actually makes us free?
+                    We&apos;re told success is about achievement. Status. Hustle. Obedience. But what if none of that actually makes us free?
                   </p>
                   
                   <p className="text-gray-600 font-light leading-snug">
-                    I don't have all the answers. I only have questions—good ones. Questions that gnaw at the edges of modern life, the kind that keep you up at night once you let them in. Like:
+                    I don&apos;t have all the answers. I only have questions—good ones. Questions that gnaw at the edges of modern life, the kind that keep you up at night once you let them in. Like:
                   </p>
                   
                   <div className="space-y-0.5 text-gray-600 font-light text-sm pl-4 mb-3 border-l-2 border-primary">
                     <p className="pl-4">• Why do we need to earn rest?</p>
                     <p className="pl-4">• Who profits from your confusion, your disconnection, your despair?</p>
                     <p className="pl-4">• Can contentment exist without stagnation?</p>
-                    <p className="pl-4">• What's the point of wealth if you're still a prisoner inside your own mind?</p>
+                    <p className="pl-4">• What&apos;s the point of wealth if you&apos;re still a prisoner inside your own mind?</p>
                     <p className="pl-4">• Why does freedom scare us more than servitude?</p>
                   </div>
                   
                   <p className="text-gray-600 font-light leading-snug">
-                    I'm Myles.
+                    I&apos;m Myles.
                   </p>
                   
                   <p className="text-gray-600 font-light leading-snug">
@@ -128,11 +128,11 @@ export default function Home() {
                   </p>
                   
                   <p className="text-gray-600 font-light leading-snug">
-                    Through boring businesses, systematic thinking, and experimental living, I'm exploring how to <span className="italic">opt out</span> of the default life script and choose a path that's both sovereign and sincere.
+                    Through boring businesses, systematic thinking, and experimental living, I&apos;m exploring how to <span className="italic">opt out</span> of the default life script and choose a path that&apos;s both sovereign and sincere.
                   </p>
                   
                   <p className="text-gray-600 font-light leading-snug">
-                    This isn't about aesthetic minimalism or vanlife porn. It's about taking your freedom seriously—<span className="italic">internally and structurally</span>. Not just talking about a better world. <span className="italic">Becoming it</span>.
+                    This isn&apos;t about aesthetic minimalism or vanlife porn. It&apos;s about taking your freedom seriously—<span className="italic">internally and structurally</span>. Not just talking about a better world. <span className="italic">Becoming it</span>.
                   </p>
                 </div>
                 
@@ -204,43 +204,30 @@ export default function Home() {
               <h2 className="text-2xl font-light text-gray-900 tracking-wide">Explore</h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <Link href="/now" className="group">
-                <div className="bg-white p-10 hover:shadow-lg transition-all duration-300 border border-gray-100">
-                  <h3 className="text-xl font-light text-gray-900 mb-4 tracking-wide">Now</h3>
-                  <p className="text-gray-600 font-light leading-relaxed">
-                    Current location, projects, and daily routine.
+            <div className="flex justify-center gap-8 max-w-2xl mx-auto">
+              <Link href="/now" className="group flex-1">
+                <div className="bg-white p-8 hover:shadow-lg transition-all duration-300 border border-gray-100 text-center">
+                  <h3 className="text-xl font-light text-gray-900 mb-3 tracking-wide">Now</h3>
+                  <p className="text-gray-600 font-light text-sm leading-relaxed">
+                    Current location & focus
                   </p>
-                  <div className="mt-6 text-primary group-hover:text-primary/80 transition-colors">
-                    <span className="text-sm tracking-wide">READ MORE →</span>
+                  <div className="mt-4 text-primary group-hover:text-primary/80 transition-colors">
+                    <span className="text-sm tracking-wide">VIEW →</span>
                   </div>
                 </div>
               </Link>
               
-              <Link href="/blueprint" className="group">
-                <div className="bg-white p-10 hover:shadow-lg transition-all duration-300 border border-gray-100">
-                  <h3 className="text-xl font-light text-gray-900 mb-4 tracking-wide">Blueprint</h3>
-                  <p className="text-gray-600 font-light leading-relaxed">
-                    The complete QLA playbook. $888.
+              <Link href="/archive" className="group flex-1">
+                <div className="bg-white p-8 hover:shadow-lg transition-all duration-300 border border-gray-100 text-center">
+                  <h3 className="text-xl font-light text-gray-900 mb-3 tracking-wide">Archive</h3>
+                  <p className="text-gray-600 font-light text-sm leading-relaxed">
+                    Essays & deeper thoughts
                   </p>
-                  <div className="mt-6 text-primary group-hover:text-primary/80 transition-colors">
-                    <span className="text-sm tracking-wide">READ MORE →</span>
+                  <div className="mt-4 text-primary group-hover:text-primary/80 transition-colors">
+                    <span className="text-sm tracking-wide">EXPLORE →</span>
                   </div>
                 </div>
               </Link>
-              
-              <Link href="/resources" className="group">
-                <div className="bg-white p-10 hover:shadow-lg transition-all duration-300 border border-gray-100">
-                  <h3 className="text-xl font-light text-gray-900 mb-4 tracking-wide">Resources</h3>
-                  <p className="text-gray-600 font-light leading-relaxed">
-                    Software and blueprints for boring business operators.
-                  </p>
-                  <div className="mt-6 text-primary group-hover:text-primary/80 transition-colors">
-                    <span className="text-sm tracking-wide">READ MORE →</span>
-                  </div>
-                </div>
-              </Link>
-
             </div>
           </div>
         </div>
