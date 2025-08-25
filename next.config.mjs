@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   images: {
-    domains: ['wordpress-1322194-4833688.cloudwaysapps.com'],
+    domains: ['cdn.sanity.io'],
   },
 }
 

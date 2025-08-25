@@ -1,38 +1,72 @@
+/* Font imports are handled by Next.js font optimization */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    /* Light Editorial Color System */
+    --background: 0 0% 100%; /* #FFFFFF - Pure White */
+    --foreground: 0 0% 20%; /* #333333 - Dark Gray */
     
-    --card: 0 0% 0%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 98%; /* #FAFAFA - Off White */
+    --card-foreground: 0 0% 20%;
  
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
  
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
+    /* Warm Brown Accent */
+    --primary: 20 19% 39%; /* #786254 - Warm Brown */
+    --primary-foreground: 0 0% 98%;
  
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%; /* #F5F5F5 - Light Gray */
+    --secondary-foreground: 0 0% 20%;
  
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 80%;
+    --muted: 0 0% 96%; /* #F5F5F5 */
+    --muted-foreground: 0 0% 45%; /* #737373 */
  
-    --accent: 0 0% 20%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 20 19% 39%; /* Warm Brown accent */
+    --accent-foreground: 0 0% 98%;
  
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 0 0% 98%;
  
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 0% 100%;
+    --border: 0 0% 90%; /* #E5E5E5 - Light Border */
+    --input: 0 0% 100%;
+    --ring: 20 19% 39%;
  
-    --radius: 0.5rem;
+    /* Design Tokens */
+    --radius: 0.375rem;
+    --radius-lg: 0.75rem;
+    --title-color: 0 0% 20%; /* Dark gray for headings */
+    
+    /* Typography Scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.75rem;
+    --font-size-7xl: 4.5rem;
+    
+    /* Spacing Scale */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 4rem;
+    --space-3xl: 6rem;
+    
+    /* Animation */
+    --transition-base: 200ms ease;
+    --transition-slow: 300ms ease;
+    --transition-slower: 500ms ease;
   }
 }
 
@@ -40,7 +74,173 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    @apply antialiased;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+  
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter), sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Typography Base Styles */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), serif;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    @apply text-[hsl(var(--title-color))];
+  }
+  
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+  
+  h5 {
+    @apply text-lg md:text-xl;
+  }
+  
+  h6 {
+    @apply text-base md:text-lg;
+  }
+  
+  p {
+    @apply text-base leading-relaxed;
+  }
+  
+  /* Selection Styles */
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+}
+
+@layer components {
+  /* Luxury Button Styles */
+  .btn-luxury {
+    @apply relative overflow-hidden transition-all duration-300;
+    @apply after:absolute after:inset-0 after:bg-primary/10 after:translate-y-full after:transition-transform after:duration-300;
+    @apply hover:after:translate-y-0;
+  }
+  
+  /* Elegant Link Styles */
+  .link-luxury {
+    @apply relative inline-block;
+    @apply after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary after:transition-all after:duration-300;
+    @apply hover:after:w-full;
+  }
+  
+  /* Premium Card Styles */
+  .card-luxury {
+    @apply bg-card/50 backdrop-blur-sm border border-border/50;
+    @apply transition-all duration-300;
+    @apply hover:bg-card/70 hover:border-border/70 hover:shadow-2xl hover:shadow-black/50;
+  }
+  
+  /* Smooth Fade In Animation */
+  .fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Subtle Gradient Overlays */
+  .gradient-fade {
+    @apply bg-gradient-to-b from-transparent via-background/50 to-background;
+  }
+  
+  .gradient-radial {
+    background: radial-gradient(circle at center, hsl(var(--primary) / 0.1) 0%, transparent 70%);
+  }
+}
+
+@layer utilities {
+  /* Text Shadow Utilities */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .text-shadow-md {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Luxury Spacing */
+  .luxury-spacing {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  /* Premium Border */
+  .border-luxury {
+    @apply border-border/30;
+  }
+  
+  /* Animation Delays */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+  
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+  
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+  
+  /* Fade In Animation */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+    animation-fill-mode: backwards;
+  }
+  
+  /* Slow Spin Animation */
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 }
