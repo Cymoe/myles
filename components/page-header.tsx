@@ -9,6 +9,7 @@ import { Orbitron } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Dialog } from '@headlessui/react';
 import { usePathname } from 'next/navigation';
+import { ThemeToggle } from './theme-toggle';
 
 const googleOrbitron = Orbitron({
   subsets: ['latin'],
@@ -52,14 +53,16 @@ export default function Header() {
   return (
     <header className="bg-background/80 backdrop-blur-md text-foreground fixed top-0 w-full z-50 border-b border-border/10">
       <nav className="container mx-auto px-6 lg:px-8 max-w-7xl py-4 sm:py-6" aria-label="Global">
-        <div className="flex items-center justify-between lg:justify-center lg:relative">
-          <div className="lg:absolute lg:left-0">
+        <div className="flex items-center justify-between">
+          <div className="">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="text-2xl font-serif tracking-wider text-primary">MK</span>
             </Link>
           </div>
-          {/* Mobile menu button hidden for cleaner look */}
-          {/* Navigation hidden for cleaner look */}
+          {/* Theme toggle positioned on the right */}
+          <div className="">
+            <ThemeToggle />
+          </div>
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>

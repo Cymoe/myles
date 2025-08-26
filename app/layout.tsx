@@ -6,6 +6,8 @@ import Footer from '../components/Footer';
 import Providers from './providers';
 import Layout from '@/components/Layout';
 import ConditionalFooter from '@/components/ConditionalFooter';
+import ExitIntentPopup from '@/components/ExitIntentPopup';
+import StickyHeaderBar from '@/components/StickyHeaderBar';
 
 import "./globals.css";
 
@@ -38,10 +40,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
       <body className={`${inter.className} bg-background text-foreground antialiased`}>
         <Providers>
+          <StickyHeaderBar />
           <Layout>
             <main className="min-h-screen">{children}</main>
           </Layout>
           <ConditionalFooter />
+          <ExitIntentPopup />
         </Providers>
       </body>
     </html>

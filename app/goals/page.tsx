@@ -12,7 +12,7 @@ export default function GoalsPage() {
               Goals
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground animate-fade-in animation-delay-200">
-              Roll-ups in progress. Zero personal capital.
+              Put it out into the ether and watch it return. <br/> Zero personal capital.
             </p>
           </div>
         </div>

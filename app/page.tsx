@@ -1,82 +1,49 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import DynamicGoalsSection from '@/components/DynamicGoalsSection';
+import RevenueTrackerV2 from '@/components/RevenueTrackerV2';
+import QuickStats from '@/components/QuickStats';
+import InlineLeadCapture from '@/components/InlineLeadCapture';
 
 export default function Home() {
   return (
     <>
       {/* Hero Section - Editorial Style */}
-      <section className="flex items-center justify-center relative bg-white pt-32">
-        <div className="container mx-auto px-8 py-20">
+      <section className="flex items-center justify-center relative bg-background pt-12">
+        <div className="container mx-auto px-8 py-12">
           <div className="max-w-4xl mx-auto">
             
             {/* Clean Typography */}
             <div className="space-y-6 text-center">
-              <h1 className="font-light text-5xl md:text-6xl lg:text-7xl tracking-wide text-gray-900">
+              <h1 className="font-light text-5xl md:text-6xl lg:text-7xl tracking-wide text-foreground">
                 Myles Kameron
               </h1>
               <div className="w-16 h-px bg-primary mx-auto"></div>
-              <p className="text-lg md:text-xl text-gray-600 font-light leading-relaxed max-w-2xl mx-auto">
-                I buy and operate boring businesses from a distance
+              <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed mx-auto px-4 text-center">
+                <span className="block md:inline">I buy, sell, and operate boring businesses</span>
               </p>
             </div>
             
-            {/* Public Goals Section - Now First */}
-            <div className="max-w-4xl mx-auto my-24 p-12 bg-gray-50 border-l-4 border-l-primary border-t border-b border-r border-gray-200">
-              <div className="space-y-12">
-                {/* Section Header */}
-                <div className="text-center">
-                  <h2 className="font-light text-3xl text-gray-900 tracking-wide mb-2">Public Goals</h2>
-                  <p className="text-gray-600 font-light">Roll-ups in progress. Zero personal capital.</p>
-                </div>
-                
-                {/* 2025 Goals */}
-                <div>
-                  <h3 className="font-light text-xl text-gray-900 mb-4 tracking-wide">2025</h3>
-                  <div className="space-y-2 text-gray-600 font-light">
-                    <p>• Exit HVAC roll-up to PE (Q2)</p>
-                    <p>• Acquire 10 dental practices</p>
-                    <p>• $50M combined portfolio revenue</p>
-                    <p>• Launch veterinary consolidation</p>
-                    <p>• 1,000 Blueprint students closing deals</p>
-                  </div>
-                </div>
-
-                {/* Current Focus */}
-                <div>
-                  <h3 className="font-light text-xl text-gray-900 mb-4 tracking-wide">Current Focus</h3>
-                  <div className="space-y-2 text-gray-600 font-light">
-                    <p>• HVAC: 5 more acquisitions lined up</p>
-                    <p>• Dental: LOIs on 3 practices</p>
-                    <p>• Training portfolio CEOs</p>
-                    <p>• Refining 100% OPM structures</p>
-                  </div>
-                </div>
-
-                {/* Long Term */}
-                <div>
-                  <h3 className="font-light text-xl text-gray-900 mb-4 tracking-wide">10 Years</h3>
-                  <div className="space-y-2 text-gray-600 font-light">
-                    <p>• 100 cash-flowing acquisitions</p>
-                    <p>• $1B portfolio value</p>
-                    <p>• Teaching QLA at scale</p>
-                    <p>• Zero personal capital deployed</p>
-                  </div>
-                </div>
-
-                {/* Philosophy */}
-                <div className="pt-6 border-t border-gray-200">
-                  <p className="text-gray-600 font-light leading-relaxed">
-                    Find fragmented sectors. Buy at 3-5x EBITDA. 
-                    Consolidate. Exit to PE at 10-15x. Repeat.
-                  </p>
-                  <p className="text-gray-600 font-light leading-relaxed mt-3">
-                    No personal money. No personal guarantees. 
-                    Just OPM, leverage, and execution.
-                  </p>
-                </div>
-              </div>
+            {/* Quick Stats Bar */}
+            <div className="mt-8 mb-12 animate-fade-in">
+              <QuickStats />
             </div>
+            
+            {/* Revenue Tracker - Dynamic from Notion */}
+            <RevenueTrackerV2 />
+            
+            {/* Revenue Tracking Lead Capture */}
+            <InlineLeadCapture 
+              title="Want My Revenue Tracking Template?"
+              description="The exact spreadsheet I use to track monthly revenue, growth rates, and progress to $1M. Includes automated calculations and goal tracking."
+              buttonText="Get the Free Template"
+              leadMagnet="Revenue Tracking Template"
+              className="my-12"
+            />
+            
+            {/* Public Goals Section - Dynamic from Notion */}
+            <DynamicGoalsSection />
             
             {/* Editorial Content Section - Sorelle Style Layout */}
             <div className="max-w-7xl mx-auto mb-20">
@@ -84,19 +51,19 @@ export default function Home() {
                 
                 {/* Left Column - Text Content */}
                 <div className="lg:col-span-2 space-y-3">
-                  <p className="text-gray-700 font-light leading-snug text-lg">
+                  <p className="text-foreground font-light leading-snug text-lg">
                     What does it mean to build wealth in a system designed to keep you busy?
                   </p>
                   
-                  <p className="text-gray-600 font-light leading-snug">
+                  <p className="text-muted-foreground font-light leading-snug">
                     We&apos;re told success is about achievement. Status. Hustle. Obedience. But what if none of that actually makes us free?
                   </p>
                   
-                  <p className="text-gray-600 font-light leading-snug">
+                  <p className="text-muted-foreground font-light leading-snug">
                     I don&apos;t have all the answers. I only have questions—good ones. Questions that gnaw at the edges of modern life, the kind that keep you up at night once you let them in. Like:
                   </p>
                   
-                  <div className="space-y-0.5 text-gray-600 font-light text-sm pl-4 mb-3 border-l-2 border-primary">
+                  <div className="space-y-0.5 text-muted-foreground font-light text-sm pl-4 mb-3 border-l-2 border-primary">
                     <p className="pl-4">• Why do we need to earn rest?</p>
                     <p className="pl-4">• Who profits from your confusion, your disconnection, your despair?</p>
                     <p className="pl-4">• Can contentment exist without stagnation?</p>
@@ -104,23 +71,23 @@ export default function Home() {
                     <p className="pl-4">• Why does freedom scare us more than servitude?</p>
                   </div>
                   
-                  <p className="text-gray-600 font-light leading-snug">
+                  <p className="text-muted-foreground font-light leading-snug">
                     I&apos;m Myles.
                   </p>
                   
-                  <p className="text-gray-600 font-light leading-snug">
+                  <p className="text-muted-foreground font-light leading-snug">
                     I became financially free at 33, escaped the performance treadmill, and now spend my days asking the questions most people are too busy—or too afraid—to ask.
                   </p>
                   
-                  <p className="text-gray-600 font-light leading-snug">
+                  <p className="text-muted-foreground font-light leading-snug">
                     I live between worlds: investor and philosopher, creator and recluse, nature and internet, rebellion and ritual.
                   </p>
                   
-                  <p className="text-gray-600 font-light leading-snug">
+                  <p className="text-muted-foreground font-light leading-snug">
                     Through boring businesses, systematic thinking, and experimental living, I&apos;m exploring how to <span className="italic">opt out</span> of the default life script and choose a path that&apos;s both sovereign and sincere.
                   </p>
                   
-                  <p className="text-gray-600 font-light leading-snug">
+                  <p className="text-muted-foreground font-light leading-snug">
                     This isn&apos;t about aesthetic minimalism or vanlife porn. It&apos;s about taking your freedom seriously—<span className="italic">internally and structurally</span>. Not just talking about a better world. <span className="italic">Becoming it</span>.
                   </p>
                 </div>
@@ -140,6 +107,15 @@ export default function Home() {
                 
               </div>
             </div>
+            
+            {/* About Section Lead Capture */}
+            <InlineLeadCapture 
+              title="Ready to Build Your Own Boring Empire?"
+              description="Get my weekly playbook on buying, operating, and selling businesses. Real deals, real numbers, no theory."
+              buttonText="Get the Weekly Playbook"
+              leadMagnet="Weekly Business Playbook"
+              className="my-16 max-w-3xl mx-auto"
+            />
             
             {/* Primary CTA */}
             <div className="mb-16 animate-fade-in animation-delay-800 text-center">
@@ -183,21 +159,21 @@ export default function Home() {
       </section>
 
       {/* Quick Links Section - Editorial Style */}
-      <section className="py-32 bg-gray-50">
+      <section className="py-32 bg-card dark:bg-card/50">
         <div className="container mx-auto px-8">
           <div className="max-w-5xl mx-auto">
             
             {/* Section Header */}
             <div className="text-center mb-16">
               <div className="w-16 h-px bg-primary mx-auto mb-8"></div>
-              <h2 className="text-2xl font-light text-gray-900 tracking-wide">Explore</h2>
+              <h2 className="text-2xl font-light text-foreground tracking-wide">Explore</h2>
             </div>
             
             <div className="flex justify-center gap-8 max-w-2xl mx-auto">
               <Link href="/now" className="group flex-1">
-                <div className="bg-white p-8 hover:shadow-lg transition-all duration-300 border border-gray-100 text-center">
-                  <h3 className="text-xl font-light text-gray-900 mb-3 tracking-wide">Now</h3>
-                  <p className="text-gray-600 font-light text-sm leading-relaxed">
+                <div className="bg-background dark:bg-card p-8 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 border border-border text-center">
+                  <h3 className="text-xl font-light text-foreground mb-3 tracking-wide">Now</h3>
+                  <p className="text-muted-foreground font-light text-sm leading-relaxed">
                     Current location & focus
                   </p>
                   <div className="mt-4 text-primary group-hover:text-primary/80 transition-colors">
@@ -207,9 +183,9 @@ export default function Home() {
               </Link>
               
               <Link href="/archive" className="group flex-1">
-                <div className="bg-white p-8 hover:shadow-lg transition-all duration-300 border border-gray-100 text-center">
-                  <h3 className="text-xl font-light text-gray-900 mb-3 tracking-wide">Archive</h3>
-                  <p className="text-gray-600 font-light text-sm leading-relaxed">
+                <div className="bg-background dark:bg-card p-8 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 border border-border text-center">
+                  <h3 className="text-xl font-light text-foreground mb-3 tracking-wide">Archive</h3>
+                  <p className="text-muted-foreground font-light text-sm leading-relaxed">
                     Essays & deeper thoughts
                   </p>
                   <div className="mt-4 text-primary group-hover:text-primary/80 transition-colors">
@@ -226,9 +202,11 @@ export default function Home() {
       <section className="py-24 bg-card/20">
         <div className="container mx-auto px-6">
           <div className="max-w-xl mx-auto text-center">
-            <h3 className="font-serif text-3xl mb-6">Stay Updated</h3>
+            <h3 className="font-serif text-3xl mb-6">The Boring Business Bulletin</h3>
             <p className="text-muted-foreground mb-8">
-              Monthly coordinates. No fluff.
+              Weekly deal flow, acquisition strategies, and revenue insights from someone actually doing it.
+              <br />
+              <span className="text-sm">No courses to sell. Just real business.</span>
             </p>
             <NewsletterSignup />
           </div>
