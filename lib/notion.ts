@@ -149,7 +149,6 @@ export async function getCountriesData(): Promise<CountriesData | null> {
       });
       
       if (!page) {
-        console.log('No countries entry found in shared database');
         return null;
       }
     }

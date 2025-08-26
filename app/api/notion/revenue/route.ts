@@ -69,25 +69,14 @@ export async function GET(request: Request) {
       revenueRow = response.results[0] as any;
     }
     
-    // Debug: Log what we found
-    console.log('Fetching revenue for year:', year);
-    console.log('Found rows:', response.results.length);
-    console.log('Selected row index:', year === '2024' ? 0 : 1);
-    
-    // Log the first few properties to see what data we have
-    if (revenueRow && revenueRow.properties) {
-      console.log('Row properties:', Object.keys(revenueRow.properties).slice(0, 5));
-      console.log('Jan value:', revenueRow.properties.Jan);
-    }
     const monthlyData: number[] = [];
     const labels: string[] = [];
     
     // Month names to look for in properties
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const fullMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     
     // Extract revenue for each month from column properties - always include all 12 months
-    monthNames.forEach((monthAbbr, index) => {
+    monthNames.forEach((monthAbbr) => {
       labels.push(monthAbbr);
       const monthProperty = revenueRow.properties[monthAbbr];
       

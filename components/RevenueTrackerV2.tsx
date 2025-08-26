@@ -143,37 +143,6 @@ export default function RevenueTrackerV2() {
     ? (revenueData.totalRevenue! / revenueData.yearTarget) * 100 
     : 0;
 
-  // Calculate growth streak
-  const calculateGrowthStreak = () => {
-    let streak = 0;
-    const data = revenueData.datasets[0].data;
-    
-    // Start from the most recent month with data and work backwards
-    for (let i = data.length - 1; i > 0; i--) {
-      if (data[i] > 0 && data[i-1] > 0 && data[i] > data[i-1]) {
-        streak++;
-      } else if (data[i] > 0) {
-        break;
-      }
-    }
-    return streak;
-  };
-
-  // Check for milestones
-  const checkMilestone = () => {
-    const data = revenueData.datasets[0].data;
-    const maxRevenue = Math.max(...data.filter(d => d > 0));
-    
-    if (maxRevenue >= 100000) return { text: "First $100k Month", emoji: "💯" };
-    if (maxRevenue >= 50000) return { text: "First $50k Month", emoji: "🎯" };
-    if (revenueData.totalRevenue! >= 500000) return { text: "$500k Total", emoji: "🚀" };
-    if (revenueData.totalRevenue! >= 250000) return { text: "$250k Total", emoji: "💰" };
-    return null;
-  };
-
-  const growthStreak = calculateGrowthStreak();
-  const milestone = checkMilestone();
-
   // Custom tooltip
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
@@ -310,27 +279,6 @@ export default function RevenueTrackerV2() {
         </div>
       </div>
 
-      {/* Momentum Indicators */}
-      <div className="flex flex-wrap justify-center gap-4 mb-6">
-        {growthStreak > 0 && (
-          <div className="flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-sm font-medium">
-            <span>🔥</span>
-            <span>{growthStreak} month{growthStreak !== 1 ? 's' : ''} growth streak</span>
-          </div>
-        )}
-        {milestone && (
-          <div className="flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-full text-sm font-medium">
-            <span>{milestone.emoji}</span>
-            <span>{milestone.text}</span>
-          </div>
-        )}
-        {progressPercentage >= 75 && (
-          <div className="flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-sm font-medium">
-            <span>📈</span>
-            <span>{Math.round(progressPercentage)}% to goal</span>
-          </div>
-        )}
-      </div>
 
       {/* Progress Bar */}
       <div className="mb-8">
