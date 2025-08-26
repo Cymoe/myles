@@ -5,8 +5,10 @@ const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 });
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const year = searchParams.get('year') || new Date().getFullYear().toString();
     // Use a separate database for revenue tracking
     const revenueDatabaseId = process.env.NOTION_REVENUE_DATABASE_ID || process.env.NOTION_DATABASE_ID;
     
@@ -17,7 +19,7 @@ export async function GET() {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
         datasets: [
           {
-            label: 'Monthly Revenue',
+            label: `Monthly Revenue ${year}`,
             data: [45000, 52000, 48000, 61000, 65000, 72000, 78000, 85000],
             backgroundColor: 'rgba(147, 51, 234, 0.1)',
             borderColor: 'rgb(147, 51, 234)',
@@ -33,7 +35,7 @@ export async function GET() {
     // Fetch revenue data from separate Notion database
     const response = await notion.databases.query({
       database_id: revenueDatabaseId,
-      // No filter needed - all entries in this database are revenue data
+      // Remove filter - we'll handle year selection differently
     });
 
     if (response.results.length === 0) {
@@ -55,21 +57,43 @@ export async function GET() {
       });
     }
 
-    // Process single row with revenue data
-    const revenueRow = response.results[0] as any;
+    // Find the row for the requested year
+    // For now, assume first row is 2024, second row is 2025
+    let revenueRow;
+    if (year === '2024' && response.results.length >= 1) {
+      revenueRow = response.results[0] as any;
+    } else if (year === '2025' && response.results.length >= 2) {
+      revenueRow = response.results[1] as any;
+    } else {
+      // Default to first row if year not found
+      revenueRow = response.results[0] as any;
+    }
+    
+    // Debug: Log what we found
+    console.log('Fetching revenue for year:', year);
+    console.log('Found rows:', response.results.length);
+    console.log('Selected row index:', year === '2024' ? 0 : 1);
+    
+    // Log the first few properties to see what data we have
+    if (revenueRow && revenueRow.properties) {
+      console.log('Row properties:', Object.keys(revenueRow.properties).slice(0, 5));
+      console.log('Jan value:', revenueRow.properties.Jan);
+    }
     const monthlyData: number[] = [];
     const labels: string[] = [];
     
     // Month names to look for in properties
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const fullMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     
-    // Extract revenue for each month from column properties
-    monthNames.forEach(month => {
-      const monthProperty = revenueRow.properties[month];
+    // Extract revenue for each month from column properties - always include all 12 months
+    monthNames.forEach((monthAbbr, index) => {
+      labels.push(monthAbbr);
+      const monthProperty = revenueRow.properties[monthAbbr];
+      
+      // Handle different property types
+      let revenue = 0;
       if (monthProperty) {
-        labels.push(month);
-        // Handle different property types
-        let revenue = 0;
         if (monthProperty.type === 'number') {
           revenue = monthProperty.number || 0;
         } else if (monthProperty.type === 'rich_text' && monthProperty.rich_text.length > 0) {
@@ -77,18 +101,18 @@ export async function GET() {
           const text = monthProperty.rich_text[0].plain_text;
           revenue = parseFloat(text.replace(/[^0-9.-]+/g, '')) || 0;
         }
-        monthlyData.push(revenue);
       }
+      monthlyData.push(revenue);
     });
 
     // If no monthly data found, check for alternative property names
     if (monthlyData.length === 0) {
       // Look for properties like "January 2024", "February 2024", etc.
-      const currentYear = new Date().getFullYear();
+      const yearToQuery = parseInt(year);
       const fullMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
       
       fullMonthNames.forEach((month, index) => {
-        const monthProperty = revenueRow.properties[month] || revenueRow.properties[`${month} ${currentYear}`];
+        const monthProperty = revenueRow.properties[month] || revenueRow.properties[`${month} ${yearToQuery}`];
         if (monthProperty) {
           labels.push(monthNames[index]);
           let revenue = 0;

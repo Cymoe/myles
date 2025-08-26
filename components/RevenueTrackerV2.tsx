@@ -26,6 +26,7 @@ interface RevenueData {
   totalRevenue?: number;
   monthlyGrowth?: number;
   yearTarget?: number;
+  debug?: any;
 }
 
 export default function RevenueTrackerV2() {
@@ -33,11 +34,13 @@ export default function RevenueTrackerV2() {
   const [loading, setLoading] = useState(true);
   const [chartType, setChartType] = useState<'line' | 'bar' | 'area'>('area');
   const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
+  const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
 
   useEffect(() => {
     async function fetchRevenue() {
+      setLoading(true);
       try {
-        const response = await fetch('/api/notion/revenue');
+        const response = await fetch(`/api/notion/revenue?year=${selectedYear}`);
         const data = await response.json();
         setRevenueData(data);
       } catch (error) {
@@ -61,14 +64,66 @@ export default function RevenueTrackerV2() {
     }
 
     fetchRevenue();
-  }, []);
+  }, [selectedYear]);
 
   if (loading) {
     return (
-      <div className="max-w-4xl mx-auto my-16 p-8 bg-card dark:bg-card border border-border rounded-lg shadow-sm">
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
-          <div className="h-64 bg-gray-100 rounded"></div>
+      <div className="max-w-4xl mx-auto my-16">
+        {/* Header skeleton */}
+        <div className="text-center mb-8">
+          <div className="h-9 bg-gray-200 dark:bg-gray-800 rounded w-64 mx-auto mb-2 animate-pulse"></div>
+          <div className="h-5 bg-gray-100 dark:bg-gray-900 rounded w-48 mx-auto animate-pulse"></div>
+          
+          {/* Year Selector skeleton */}
+          <div className="flex justify-center gap-2 mt-4">
+            <div className="h-10 w-20 bg-gray-200 dark:bg-gray-800 rounded-md animate-pulse"></div>
+            <div className="h-10 w-20 bg-gray-200 dark:bg-gray-800 rounded-md animate-pulse"></div>
+          </div>
+        </div>
+
+        {/* Stats Grid skeleton */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="bg-background dark:bg-card p-6 rounded-lg border border-border">
+              <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-24 mb-2 animate-pulse"></div>
+              <div className="h-7 bg-gray-200 dark:bg-gray-800 rounded w-32 animate-pulse"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Progress Bar skeleton */}
+        <div className="mb-8">
+          <div className="flex justify-between mb-2">
+            <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-32 animate-pulse"></div>
+            <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-12 animate-pulse"></div>
+          </div>
+          <div className="w-full bg-border dark:bg-border rounded-full h-3"></div>
+        </div>
+
+        {/* Chart skeleton */}
+        <div className="bg-background dark:bg-card p-6 rounded-lg border border-border">
+          <div className="flex justify-between items-center mb-4">
+            <div className="h-6 bg-gray-200 dark:bg-gray-800 rounded w-48 animate-pulse"></div>
+            <div className="flex gap-2">
+              {['Area', 'Line', 'Bar'].map((type) => (
+                <div key={type} className="h-8 w-16 bg-gray-200 dark:bg-gray-800 rounded animate-pulse"></div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="h-64 flex items-end justify-between px-4">
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className="bg-gray-200 dark:bg-gray-800 rounded-t animate-pulse"
+                style={{
+                  width: '7%',
+                  height: `${Math.random() * 60 + 20}%`,
+                  animationDelay: `${i * 100}ms`
+                }}
+              ></div>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -87,6 +142,37 @@ export default function RevenueTrackerV2() {
   const progressPercentage = revenueData.yearTarget 
     ? (revenueData.totalRevenue! / revenueData.yearTarget) * 100 
     : 0;
+
+  // Calculate growth streak
+  const calculateGrowthStreak = () => {
+    let streak = 0;
+    const data = revenueData.datasets[0].data;
+    
+    // Start from the most recent month with data and work backwards
+    for (let i = data.length - 1; i > 0; i--) {
+      if (data[i] > 0 && data[i-1] > 0 && data[i] > data[i-1]) {
+        streak++;
+      } else if (data[i] > 0) {
+        break;
+      }
+    }
+    return streak;
+  };
+
+  // Check for milestones
+  const checkMilestone = () => {
+    const data = revenueData.datasets[0].data;
+    const maxRevenue = Math.max(...data.filter(d => d > 0));
+    
+    if (maxRevenue >= 100000) return { text: "First $100k Month", emoji: "💯" };
+    if (maxRevenue >= 50000) return { text: "First $50k Month", emoji: "🎯" };
+    if (revenueData.totalRevenue! >= 500000) return { text: "$500k Total", emoji: "🚀" };
+    if (revenueData.totalRevenue! >= 250000) return { text: "$250k Total", emoji: "💰" };
+    return null;
+  };
+
+  const growthStreak = calculateGrowthStreak();
+  const milestone = checkMilestone();
 
   // Custom tooltip
   const CustomTooltip = ({ active, payload, label }: any) => {
@@ -183,6 +269,23 @@ export default function RevenueTrackerV2() {
         <p className="text-muted-foreground font-light">
           Building in public • Updated {getTimeAgo(lastUpdated)}
         </p>
+        
+        {/* Year Selector */}
+        <div className="flex justify-center gap-2 mt-4">
+          {[2024, 2025].map((year) => (
+            <button
+              key={year}
+              onClick={() => setSelectedYear(year)}
+              className={`px-4 py-2 text-sm rounded-md transition-colors ${
+                selectedYear === year 
+                  ? 'bg-primary text-white' 
+                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
+              }`}
+            >
+              {year}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Stats Grid */}
@@ -207,6 +310,28 @@ export default function RevenueTrackerV2() {
         </div>
       </div>
 
+      {/* Momentum Indicators */}
+      <div className="flex flex-wrap justify-center gap-4 mb-6">
+        {growthStreak > 0 && (
+          <div className="flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-sm font-medium">
+            <span>🔥</span>
+            <span>{growthStreak} month{growthStreak !== 1 ? 's' : ''} growth streak</span>
+          </div>
+        )}
+        {milestone && (
+          <div className="flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-full text-sm font-medium">
+            <span>{milestone.emoji}</span>
+            <span>{milestone.text}</span>
+          </div>
+        )}
+        {progressPercentage >= 75 && (
+          <div className="flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-sm font-medium">
+            <span>📈</span>
+            <span>{Math.round(progressPercentage)}% to goal</span>
+          </div>
+        )}
+      </div>
+
       {/* Progress Bar */}
       <div className="mb-8">
         <div className="flex justify-between text-sm text-muted-foreground mb-2">
@@ -224,7 +349,7 @@ export default function RevenueTrackerV2() {
       {/* Chart */}
       <div className="bg-background dark:bg-card p-6 rounded-lg border border-border">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold text-foreground">Monthly Revenue</h3>
+          <h3 className="text-lg font-semibold text-foreground">Monthly Revenue - {selectedYear}</h3>
           
           {/* Chart Type Selector */}
           <div className="flex gap-2">
