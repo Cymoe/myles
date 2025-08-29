@@ -73,9 +73,6 @@ export default function NewsletterSignup() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
-          <p className="text-sm text-muted-foreground/80 mt-3">
-            Join 2,300+ remote business owners
-          </p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="animate-fade-in">

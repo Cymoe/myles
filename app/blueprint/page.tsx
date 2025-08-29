@@ -12,7 +12,7 @@ export default function BlueprintPage() {
               The Blueprint
             </h1>
             <p className="text-xl text-muted-foreground animate-fade-in animation-delay-200">
-              The exact QLA acquisition playbook. No theory. Just deals.
+              Buy cash-flowing businesses without your own money. 67 battle-tested documents.
             </p>
           </div>
         </div>
@@ -22,72 +22,156 @@ export default function BlueprintPage() {
       <section className="luxury-spacing">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
-            {/* What You Get */}
+            {/* Free vs Paid */}
             <div className="mb-20">
-              <h2 className="font-serif text-2xl md:text-3xl mb-8">What&apos;s Inside:</h2>
+              <div className="bg-primary/5 border-2 border-primary p-8 rounded-lg text-center mb-12">
+                <h2 className="font-serif text-2xl mb-4">Start Free, Scale Fast</h2>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Get 20 core documents free. Prove they work. Upgrade when ready.
+                </p>
+                <Link 
+                  href="/blueprint-free" 
+                  className="inline-block bg-primary text-primary-foreground px-8 py-4 text-lg font-medium hover:opacity-90 transition-opacity"
+                >
+                  Get Starter Pack Free →
+                </Link>
+              </div>
+              
+              <h2 className="font-serif text-2xl md:text-3xl mb-8">The Full Arsenal: 67 Documents</h2>
               <div className="space-y-6 text-lg text-muted-foreground">
                 <div>
-                  <h3 className="font-serif text-xl text-foreground mb-2">The Sectors</h3>
-                  <p>HVAC, plumbing, dental practices, vet clinics. Why these print money. How to spot fragmented markets. The 100+ operator rule.</p>
+                  <h3 className="font-serif text-xl text-foreground mb-2">Find Hidden Deals</h3>
+                  <p>Off-market strategies that bypass brokers. Direct owner outreach templates. Distressed seller triggers. 10 deals per week on autopilot. The exact system behind $80M in closed transactions.</p>
                 </div>
                 
                 <div>
-                  <h3 className="font-serif text-xl text-foreground mb-2">The Acquisition Process</h3>
-                  <p>Finding motivated sellers. The retirement pitch. Due diligence checklist. Negotiation scripts. 3-5x EBITDA entry framework.</p>
+                  <h3 className="font-serif text-xl text-foreground mb-2">Buy With No Money Down</h3>
+                  <p>47 creative financing structures. SBA loan hacks for 90% financing. Seller finance domination scripts. Revenue share seduction. Make sellers pay YOU to take their business.</p>
                 </div>
                 
                 <div>
-                  <h3 className="font-serif text-xl text-foreground mb-2">The Financing</h3>
-                  <p>100% OPM deals. Bank pitch decks. Asset-based lending. No personal guarantees. The exact scripts that got me $2.7M.</p>
+                  <h3 className="font-serif text-xl text-foreground mb-2">Aggressive Due Diligence</h3>
+                  <p>200-point inspection that saves millions. Forensic financial analysis. Hidden liability scanner. Cut asking price by 50%. Find the bodies before you buy.</p>
                 </div>
                 
                 <div>
-                  <h3 className="font-serif text-xl text-foreground mb-2">The Roll-Up</h3>
-                  <p>Consolidation playbook. Back-office synergies. 5-10 acquisition timeline. Exit to PE at 10-15x. Every template included.</p>
+                  <h3 className="font-serif text-xl text-foreground mb-2">The Operator System</h3>
+                  <p>Hire GMs who run everything. Performance-based comp. Training checklists. Weekly reporting. Clone yourself at 1/10th the cost.</p>
+                </div>
+                
+                <div>
+                  <h3 className="font-serif text-xl text-foreground mb-2">Exit Strategy</h3>
+                  <p>Build to sell from day one. Financial packaging. Finding buyers. 3-8x EBITDA exits. Roll-up strategies. Every template included.</p>
                 </div>
               </div>
             </div>
 
-            {/* Format */}
+            {/* Documents Included */}
             <div className="mb-20">
-              <h2 className="font-serif text-2xl md:text-3xl mb-8">Format:</h2>
+              <h2 className="font-serif text-2xl md:text-3xl mb-8">67 Acquisition Weapons Including:</h2>
               <div className="space-y-4 text-lg text-muted-foreground">
-                <p>• 47 acquisition documents. Instant download.</p>
-                <p>• Live deal examples from my portfolio.</p>
-                <p>• Updated with every exit I complete.</p>
-                <p>• Cold-call scripts that actually work.</p>
+                <p>• The $50M Service Empire Formula</p>
+                <p>• Off-Market Deal Funnel (23% response rate)</p>
+                <p>• Shock & Awe Negotiation Scripts</p>
+                <p>• Deal Killer Checklist (200 points)</p>
+                <p>• Creative Deal Structure Bible</p>
+                <p>• No-Money-Down Playbook</p>
+                <p>• Velocity Acquisition Model</p>
+                <p>• Exit-on-Entry System (5x in 18 months)</p>
+                <p>• Service Business Mafia Builder</p>
+                <p>• Market Domination Blueprints</p>
+                <p>• Plus 57 more...</p>
               </div>
             </div>
 
             {/* No Bullshit */}
             <div className="mb-20">
-              <h2 className="font-serif text-2xl md:text-3xl mb-8">What This Isn&apos;t:</h2>
+              <h2 className="font-serif text-2xl md:text-3xl mb-8">Why This Crushes $10K Courses:</h2>
               <div className="space-y-4 text-lg text-muted-foreground">
-                <p>• Not Dan Pena theory. Actual executed deals.</p>
-                <p>• Not a mastermind. Do the work yourself.</p>
-                <p>• Not for wannabes. You need $50k minimum.</p>
-                <p>• Not magic. Just proven acquisition tactics.</p>
+                <p>• SMB Deal Hunter shows deals. We show HOW to steal them.</p>
+                <p>• Acquira charges $12,500 for hand-holding. We give you the playbook.</p>
+                <p>• QLA screams at you for thousands. We give you the tactics.</p>
+                <p>• No fluff. No community drama. Just documents that close deals.</p>
               </div>
             </div>
 
-            {/* Price */}
-            <div className="text-center border-t border-border/20 pt-20">
-              <p className="text-4xl font-serif text-primary mb-8">$888</p>
-              <p className="text-lg text-muted-foreground mb-12">
-                The complete QLA playbook.<br />
-                Execute or stay broke.
-              </p>
+            {/* Pricing Tiers */}
+            <div className="border-t border-border/20 pt-20">
+              <h2 className="font-serif text-2xl md:text-3xl mb-12 text-center">Choose Your Path</h2>
               
-              <a 
-                href="https://buy.stripe.com/your-link-here" 
-                className="inline-block btn-luxury px-16 py-5 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-lg"
-              >
-                Buy Now
-              </a>
+              <div className="grid md:grid-cols-3 gap-8 mb-16">
+                {/* Starter Pack */}
+                <div className="border border-border p-8 rounded-lg text-center">
+                  <h3 className="font-serif text-xl mb-4">Starter Pack</h3>
+                  <p className="text-4xl font-serif text-primary mb-4">Free</p>
+                  <ul className="text-sm text-muted-foreground space-y-2 mb-8 text-left">
+                    <li>• 20 core documents</li>
+                    <li>• $50M Empire Formula</li>
+                    <li>• Deal finding templates</li>
+                    <li>• Basic valuation tools</li>
+                  </ul>
+                  <Link 
+                    href="/blueprint-free"
+                    className="block w-full bg-primary text-primary-foreground px-6 py-3 font-medium hover:opacity-90 transition-opacity"
+                  >
+                    Start Free
+                  </Link>
+                </div>
+                
+                {/* Blueprint Pro */}
+                <div className="border-2 border-primary p-8 rounded-lg text-center relative">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-background px-4">
+                    <span className="text-xs font-semibold text-primary uppercase">Most Popular</span>
+                  </div>
+                  <h3 className="font-serif text-xl mb-4">Blueprint Pro</h3>
+                  <p className="text-4xl font-serif text-primary mb-4">$497</p>
+                  <ul className="text-sm text-muted-foreground space-y-2 mb-8 text-left">
+                    <li>• All 67 documents</li>
+                    <li>• Advanced strategies</li>
+                    <li>• Monthly updates</li>
+                    <li>• Bonus: Deal analyzer</li>
+                  </ul>
+                  <button 
+                    className="block w-full bg-muted text-muted-foreground px-6 py-3 cursor-not-allowed"
+                    disabled
+                  >
+                    Coming Soon
+                  </button>
+                </div>
+                
+                {/* Blueprint Elite */}
+                <div className="border border-border p-8 rounded-lg text-center">
+                  <h3 className="font-serif text-xl mb-4">Blueprint Elite</h3>
+                  <p className="text-4xl font-serif text-primary mb-4">$2,997</p>
+                  <ul className="text-sm text-muted-foreground space-y-2 mb-8 text-left">
+                    <li>• Everything in Pro</li>
+                    <li>• Weekly deal flow</li>
+                    <li>• Live deal analysis</li>
+                    <li>• Co-investment opps</li>
+                  </ul>
+                  <button 
+                    className="block w-full bg-muted text-muted-foreground px-6 py-3 cursor-not-allowed"
+                    disabled
+                  >
+                    Coming Soon
+                  </button>
+                </div>
+              </div>
               
-              <p className="mt-8 text-sm text-muted-foreground">
-                Instant access. No refunds.
-              </p>
+              {/* Deal Club */}
+              <div className="bg-muted/50 p-8 rounded-lg text-center max-w-2xl mx-auto">
+                <h3 className="font-serif text-xl mb-4">Deal Club Membership</h3>
+                <p className="text-3xl font-serif text-primary mb-2">$297/month</p>
+                <p className="text-muted-foreground mb-6">
+                  10 curated deals weekly with our analysis + financing connections
+                </p>
+                <button 
+                  className="inline-block px-8 py-3 bg-muted text-muted-foreground cursor-not-allowed"
+                  disabled
+                >
+                  Launching Q1 2025
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -164,7 +164,7 @@ export default function RevenueTrackerV2() {
       width: 500,
       height: 300,
       data: chartData,
-      margin: { top: 5, right: 30, left: 20, bottom: 5 },
+      margin: { top: 5, right: 10, left: 10, bottom: 5 },
     };
 
     switch (chartType) {
@@ -235,7 +235,10 @@ export default function RevenueTrackerV2() {
       {/* Header */}
       <div className="text-center mb-8">
         <h2 className="font-light text-3xl text-foreground tracking-wide mb-2">Revenue Tracker</h2>
-        <p className="text-muted-foreground font-light">
+        <p className="text-base text-foreground/80 font-light mb-3 max-w-2xl mx-auto">
+          Building boring service businesses that print money. Target: $1M/year in profit.
+        </p>
+        <p className="text-muted-foreground font-light text-sm">
           Building in public • Updated {getTimeAgo(lastUpdated)}
         </p>
         
@@ -258,22 +261,22 @@ export default function RevenueTrackerV2() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-background dark:bg-card p-6 rounded-lg border border-border hover:shadow-md dark:hover:shadow-xl transition-shadow">
-          <p className="text-sm text-muted-foreground mb-1">Total Revenue</p>
-          <p className="text-2xl font-semibold text-foreground">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="bg-background dark:bg-card p-4 md:p-6 rounded-lg border border-border hover:shadow-md dark:hover:shadow-xl transition-shadow">
+          <p className="text-xs md:text-sm text-muted-foreground mb-1">Total Revenue</p>
+          <p className="text-xl md:text-2xl font-semibold text-foreground">
             ${revenueData.totalRevenue?.toLocaleString() || '0'}
           </p>
         </div>
-        <div className="bg-background dark:bg-card p-6 rounded-lg border border-border hover:shadow-md dark:hover:shadow-xl transition-shadow">
-          <p className="text-sm text-muted-foreground mb-1">Monthly Growth</p>
-          <p className="text-2xl font-semibold text-green-600 dark:text-green-400">
+        <div className="bg-background dark:bg-card p-4 md:p-6 rounded-lg border border-border hover:shadow-md dark:hover:shadow-xl transition-shadow">
+          <p className="text-xs md:text-sm text-muted-foreground mb-1">Monthly Growth</p>
+          <p className="text-xl md:text-2xl font-semibold text-green-600 dark:text-green-400">
             +{revenueData.monthlyGrowth || 0}%
           </p>
         </div>
-        <div className="bg-background dark:bg-card p-6 rounded-lg border border-border hover:shadow-md dark:hover:shadow-xl transition-shadow">
-          <p className="text-sm text-muted-foreground mb-1">Year Target</p>
-          <p className="text-2xl font-semibold text-foreground">
+        <div className="bg-background dark:bg-card p-4 md:p-6 rounded-lg border border-border hover:shadow-md dark:hover:shadow-xl transition-shadow">
+          <p className="text-xs md:text-sm text-muted-foreground mb-1">Year Target</p>
+          <p className="text-xl md:text-2xl font-semibold text-foreground">
             ${revenueData.yearTarget?.toLocaleString() || '0'}
           </p>
         </div>
@@ -294,8 +297,8 @@ export default function RevenueTrackerV2() {
         </div>
       </div>
 
-      {/* Chart */}
-      <div className="bg-background dark:bg-card p-6 rounded-lg border border-border">
+      {/* Chart - Desktop Only */}
+      <div className="hidden md:block bg-background dark:bg-card p-6 rounded-lg border border-border">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-semibold text-foreground">Monthly Revenue - {selectedYear}</h3>
           
@@ -338,6 +341,31 @@ export default function RevenueTrackerV2() {
           <ResponsiveContainer width="100%" height="100%">
             {renderChart()}
           </ResponsiveContainer>
+        </div>
+      </div>
+
+      {/* Mobile Revenue List */}
+      <div className="md:hidden bg-background dark:bg-card p-4 rounded-lg border border-border">
+        <h3 className="text-base font-semibold text-foreground mb-4">Monthly Revenue - {selectedYear}</h3>
+        <div className="grid grid-cols-2 gap-3">
+          {chartData.map((item) => (
+            <div key={item.month} className="flex justify-between items-center p-2 bg-muted/30 rounded">
+              <span className="text-sm text-muted-foreground font-medium">{item.month}</span>
+              <span className="text-sm font-semibold">
+                {item.revenue > 0 ? `$${(item.revenue / 1000).toFixed(0)}k` : '-'}
+              </span>
+            </div>
+          ))}
+        </div>
+        
+        {/* Mobile Summary Stats */}
+        <div className="mt-4 pt-4 border-t border-border/50 text-xs text-muted-foreground">
+          <div className="flex justify-between">
+            <span>Avg/Month:</span>
+            <span className="font-medium">
+              ${(chartData.reduce((sum, item) => sum + item.revenue, 0) / chartData.filter(item => item.revenue > 0).length / 1000).toFixed(0)}k
+            </span>
+          </div>
         </div>
       </div>
     </div>

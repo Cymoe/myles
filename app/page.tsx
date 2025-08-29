@@ -5,6 +5,8 @@ import DynamicGoalsSection from '@/components/DynamicGoalsSection';
 import RevenueTrackerV2 from '@/components/RevenueTrackerV2';
 import QuickStats from '@/components/QuickStats';
 import InlineLeadCapture from '@/components/InlineLeadCapture';
+import ProductSystem from '@/components/ProductSystem';
+import WealthProfileCTA from '@/components/WealthProfileCTA';
 
 export default function Home() {
   return (
@@ -33,6 +35,16 @@ export default function Home() {
             {/* Revenue Tracker - Dynamic from Notion */}
             <RevenueTrackerV2 />
             
+            {/* Remote Ops Contextual CTA */}
+            <div className="text-center my-8 p-4 bg-primary/5 border border-primary/20 rounded-lg max-w-2xl mx-auto">
+              <p className="text-sm text-muted-foreground mb-2">
+                Want to learn how I manage these businesses remotely?
+              </p>
+              <Link href="https://www.remoteops.ai/" target="_blank" className="text-primary hover:underline text-sm font-semibold">
+                Check out Remote Ops →
+              </Link>
+            </div>
+            
             {/* Revenue Tracking Lead Capture */}
             <InlineLeadCapture 
               title="Want My Revenue Tracking Template?"
@@ -41,6 +53,9 @@ export default function Home() {
               leadMagnet="Revenue Tracking Template"
               className="my-12"
             />
+            
+            {/* Product System Section */}
+            <ProductSystem />
             
             {/* Public Goals Section - Dynamic from Notion */}
             <DynamicGoalsSection />
@@ -52,43 +67,40 @@ export default function Home() {
                 {/* Left Column - Text Content */}
                 <div className="lg:col-span-2 space-y-3">
                   <p className="text-foreground font-light leading-snug text-lg">
-                    What does it mean to build wealth in a system designed to keep you busy?
+                    Most people die at 25 and aren&apos;t buried until 75.
                   </p>
                   
                   <p className="text-muted-foreground font-light leading-snug">
-                    We&apos;re told success is about achievement. Status. Hustle. Obedience. But what if none of that actually makes us free?
+                    They trade their life for a paycheck. Clock in. Clock out. Retire broke. Die with regrets.
                   </p>
                   
                   <p className="text-muted-foreground font-light leading-snug">
-                    I don&apos;t have all the answers. I only have questions—good ones. Questions that gnaw at the edges of modern life, the kind that keep you up at night once you let them in. Like:
+                    Not me.
                   </p>
                   
-                  <div className="space-y-0.5 text-muted-foreground font-light text-sm pl-4 mb-3 border-l-2 border-primary">
-                    <p className="pl-4">• Why do we need to earn rest?</p>
-                    <p className="pl-4">• Who profits from your confusion, your disconnection, your despair?</p>
-                    <p className="pl-4">• Can contentment exist without stagnation?</p>
-                    <p className="pl-4">• What&apos;s the point of wealth if you&apos;re still a prisoner inside your own mind?</p>
-                    <p className="pl-4">• Why does freedom scare us more than servitude?</p>
+                  <div>
+                    <p className="text-muted-foreground font-light leading-snug">
+                      I&apos;m Myles. I buy boring service businesses that print money. ADUs. Turf. Painting.
+                    </p>
+                    <p className="text-muted-foreground font-light leading-snug">
+                      The stuff nobody talks about at parties but everyone needs.
+                    </p>
                   </div>
                   
                   <p className="text-muted-foreground font-light leading-snug">
-                    I&apos;m Myles.
+                    Hit financial freedom at 33. Now I run everything remotely. No office. No commute.
                   </p>
                   
                   <p className="text-muted-foreground font-light leading-snug">
-                    I became financially free at 33, escaped the performance treadmill, and now spend my days asking the questions most people are too busy—or too afraid—to ask.
+                    While everyone&apos;s chasing the next shiny tech startup, I&apos;m quietly rolling up service companies at 3-5x earnings. Boring? Yes. Profitable? Extremely.
                   </p>
                   
                   <p className="text-muted-foreground font-light leading-snug">
-                    I live between worlds: investor and philosopher, creator and recluse, nature and internet, rebellion and ritual.
+                    This site documents the playbook. The deals. The numbers. Everything.
                   </p>
                   
                   <p className="text-muted-foreground font-light leading-snug">
-                    Through boring businesses, systematic thinking, and experimental living, I&apos;m exploring how to <span className="italic">opt out</span> of the default life script and choose a path that&apos;s both sovereign and sincere.
-                  </p>
-                  
-                  <p className="text-muted-foreground font-light leading-snug">
-                    This isn&apos;t about aesthetic minimalism or vanlife porn. It&apos;s about taking your freedom seriously—<span className="italic">internally and structurally</span>. Not just talking about a better world. <span className="italic">Becoming it</span>.
+                    If you want inspiration, go watch a TED talk. If you want to get rich buying unglamorous businesses that actually make money, stick around.
                   </p>
                 </div>
                 
@@ -108,26 +120,9 @@ export default function Home() {
               </div>
             </div>
             
-            {/* About Section Lead Capture */}
-            <InlineLeadCapture 
-              title="Ready to Build Your Own Boring Empire?"
-              description="Get my weekly playbook on buying, operating, and selling businesses. Real deals, real numbers, no theory."
-              buttonText="Get the Weekly Playbook"
-              leadMagnet="Weekly Business Playbook"
-              className="my-16 max-w-3xl mx-auto"
-            />
+            {/* Wealth Profile CTA */}
+            <WealthProfileCTA />
             
-            {/* Primary CTA */}
-            <div className="mb-16 animate-fade-in animation-delay-800 text-center">
-              <Link 
-                href="/blueprint" 
-                className="inline-block"
-              >
-                <div className="border-2 border-primary px-12 py-6 hover:bg-primary hover:text-primary-foreground transition-all duration-300">
-                  <span className="text-2xl md:text-3xl font-serif">The Blueprint: $888</span>
-                </div>
-              </Link>
-            </div>
             
             {/* Social Links */}
             <div className="animate-fade-in animation-delay-1000">
@@ -206,7 +201,7 @@ export default function Home() {
             <p className="text-muted-foreground mb-8">
               Weekly deal flow, acquisition strategies, and revenue insights from someone actually doing it.
               <br />
-              <span className="text-sm">No courses to sell. Just real business.</span>
+              <span className="text-sm">Real deals. Real numbers. No fluff.</span>
             </p>
             <NewsletterSignup />
           </div>

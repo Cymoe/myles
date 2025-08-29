@@ -8,6 +8,7 @@ import Layout from '@/components/Layout';
 import ConditionalFooter from '@/components/ConditionalFooter';
 import ExitIntentPopup from '@/components/ExitIntentPopup';
 import StickyHeaderBar from '@/components/StickyHeaderBar';
+import WealthProfileWidget from '@/components/WealthProfileWidget';
 
 import "./globals.css";
 
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </Layout>
           <ConditionalFooter />
           <ExitIntentPopup />
+          <WealthProfileWidget />
         </Providers>
       </body>
     </html>

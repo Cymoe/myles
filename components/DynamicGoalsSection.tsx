@@ -26,13 +26,13 @@ export default function DynamicGoalsSection() {
 
   if (loading) {
     return (
-      <div className="max-w-4xl mx-auto my-24 p-12 bg-card dark:bg-card/50 border-l-4 border-l-primary border-t border-b border-r border-border">
+      <div className="max-w-4xl mx-auto my-8 md:my-24 p-6 md:p-12 bg-card dark:bg-card/50 border-l-4 border-l-primary border-t border-b border-r border-border">
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/3 mx-auto mb-8"></div>
-          <div className="space-y-3">
-            <div className="h-4 bg-gray-200 rounded"></div>
-            <div className="h-4 bg-gray-200 rounded"></div>
-            <div className="h-4 bg-gray-200 rounded"></div>
+          <div className="h-6 md:h-8 bg-gray-200 dark:bg-gray-800 rounded w-1/3 mx-auto mb-6 md:mb-8"></div>
+          <div className="space-y-2 md:space-y-3">
+            <div className="h-3 md:h-4 bg-gray-200 dark:bg-gray-800 rounded"></div>
+            <div className="h-3 md:h-4 bg-gray-200 dark:bg-gray-800 rounded"></div>
+            <div className="h-3 md:h-4 bg-gray-200 dark:bg-gray-800 rounded"></div>
           </div>
         </div>
       </div>
@@ -51,13 +51,13 @@ export default function DynamicGoalsSection() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto my-24 p-12 bg-card dark:bg-card/50 border-l-4 border-l-primary border-t border-b border-r border-border">
-      <div className="space-y-12">
+    <div className="max-w-4xl mx-auto my-8 md:my-24 p-6 md:p-12 bg-card dark:bg-card/50 border-l-4 border-l-primary border-t border-b border-r border-border">
+      <div className="space-y-8 md:space-y-12">
         {/* Section Header */}
         <div className="text-center">
-          <h2 className="font-light text-3xl text-foreground tracking-wide mb-2">Public Goals</h2>
-          <p className="text-muted-foreground font-light">
-            Send it into the ether and watch it return ✨ • Updated {getTimeAgo(lastUpdated)}
+          <h2 className="font-light text-2xl md:text-3xl text-foreground tracking-wide mb-2">Public Goals</h2>
+          <p className="text-sm md:text-base text-muted-foreground font-light">
+            Accountability in public • Updated {getTimeAgo(lastUpdated)}
           </p>
         </div>
         
@@ -68,7 +68,7 @@ export default function DynamicGoalsSection() {
 
           return (
             <div key={sectionName}>
-              <h3 className="font-semibold text-2xl text-foreground mb-4 tracking-wide">
+              <h3 className="font-semibold text-xl md:text-2xl text-foreground mb-3 md:mb-4 tracking-wide">
                 {sectionName}
               </h3>
               <div className="text-muted-foreground font-light">
@@ -126,15 +126,15 @@ export default function DynamicGoalsSection() {
                           // Render current batch in grid
                           if (currentBatch.length > 0) {
                             result.push(
-                              <div key={`batch-${index}`} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                              <div key={`batch-${index}`} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                                 {currentBatch.map((g, gIndex) => (
                                   <div key={gIndex}>
                                     {g.header && (
-                                      <h4 className="text-lg font-semibold text-foreground mb-3">
+                                      <h4 className="text-base md:text-lg font-semibold text-foreground mb-2 md:mb-3">
                                         {g.header}
                                       </h4>
                                     )}
-                                    <div className="space-y-2">
+                                    <div className="space-y-1 md:space-y-2 text-sm md:text-base">
                                       {g.items.map((item, itemIndex) => {
                                         let processedItem = item;
                                         let className = "";
@@ -179,15 +179,15 @@ export default function DynamicGoalsSection() {
                       // Render final batch
                       if (currentBatch.length > 0) {
                         result.push(
-                          <div key="final-batch" className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          <div key="final-batch" className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                             {currentBatch.map((g, gIndex) => (
                               <div key={gIndex}>
                                 {g.header && (
-                                  <h4 className="text-lg font-semibold text-gray-800 mb-3">
+                                  <h4 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
                                     {g.header}
                                   </h4>
                                 )}
-                                <div className="space-y-2">
+                                <div className="space-y-1 md:space-y-2 text-sm md:text-base">
                                   {g.items.map((item, itemIndex) => {
                                     let processedItem = item;
                                     let className = "";

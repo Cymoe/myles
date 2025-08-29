@@ -2,28 +2,19 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Quiz } from '@/components/wealth-profile-quiz/Quiz';
-import { wealthProfiles } from '@/components/wealth-profile-quiz/quizData';
+import WealthProfileQuiz from '@/components/WealthProfileQuiz';
 
 export default function WealthProfileQuizPage() {
-  const [quizStarted, setQuizStarted] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(false);
 
-  if (quizStarted) {
+  if (showQuiz) {
     return (
-      <div className="min-h-screen py-12">
-        <div className="container mx-auto">
-          {/* Quiz Header */}
-          <div className="text-center mb-8">
-            <Link href="/" className="text-muted-foreground hover:text-foreground inline-block mb-4">
-              ← Exit Quiz
-            </Link>
-            <h1 className="text-3xl md:text-4xl font-semibold">
-              Discover Your Wealth Profile
-            </h1>
-          </div>
-          
-          {/* Quiz Component */}
-          <Quiz />
+      <div className="min-h-screen flex items-center justify-center px-4 py-12">
+        <div className="w-full max-w-3xl">
+          <Link href="/" className="text-muted-foreground hover:text-foreground mb-8 inline-block">
+            ← Exit Quiz
+          </Link>
+          <WealthProfileQuiz />
         </div>
       </div>
     );
@@ -43,18 +34,28 @@ export default function WealthProfileQuizPage() {
           </h1>
           
           <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-            Discover which of the 4 wealth personalities drives your decisions and how to use it to build true freedom.
+            Discover which of the 7 wealth personalities drives your decisions and how to use it to achieve all three forms of freedom.
           </p>
         </div>
 
-        {/* The 4 Types Preview */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          {Object.entries(wealthProfiles).map(([key, profile]) => (
-            <div key={key} className="text-center p-4 bg-card border border-border rounded-lg">
-              <div className="text-2xl mb-2">{profile.emoji}</div>
-              <p className="text-sm font-medium">{profile.name.replace('The ', '')}</p>
-            </div>
-          ))}
+        {/* The 7 Types Preview */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+          <div className="text-center p-3 bg-card border border-border rounded-lg">
+            <div className="text-2xl mb-1">₿</div>
+            <p className="text-xs font-medium">Capital Titan</p>
+          </div>
+          <div className="text-center p-3 bg-card border border-border rounded-lg">
+            <div className="text-2xl mb-1">∞</div>
+            <p className="text-xs font-medium">Time Architect</p>
+          </div>
+          <div className="text-center p-3 bg-card border border-border rounded-lg">
+            <div className="text-2xl mb-1">🗺</div>
+            <p className="text-xs font-medium">Global Nomad</p>
+          </div>
+          <div className="text-center p-3 bg-card border border-border rounded-lg">
+            <div className="text-2xl mb-1">⚖️</div>
+            <p className="text-xs font-medium">Wealth Creator</p>
+          </div>
         </div>
 
         {/* CTA Box */}
@@ -64,10 +65,10 @@ export default function WealthProfileQuizPage() {
               Ready to Discover Your Type?
             </h2>
             <p className="text-muted-foreground mb-8">
-              12 quick questions. Get your personalized wealth roadmap instantly.
+              7 questions. 2 minutes. Personalized roadmap to wealth on your terms.
             </p>
             <button
-              onClick={() => setQuizStarted(true)}
+              onClick={() => setShowQuiz(true)}
               className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-lg font-medium rounded-lg"
             >
               <span>Start the Quiz</span>
@@ -80,7 +81,7 @@ export default function WealthProfileQuizPage() {
 
         {/* Trust Elements */}
         <div className="mt-12 text-center text-sm text-muted-foreground">
-          <p>Based on research from 1,000+ entrepreneurs who achieved financial, time, and location freedom</p>
+          <p>Based on analyzing 100+ successful remote business owners</p>
         </div>
       </div>
     </div>

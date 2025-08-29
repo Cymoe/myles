@@ -8,6 +8,17 @@ export async function POST(request: Request) {
   try {
     const { email, leadMagnet, quizResult, profileData } = await request.json();
 
+    // Map profile names to Beehiiv-friendly tags
+    const profileMapping: Record<string, string> = {
+      'The Capital Titan': 'capital-titan',
+      'The Time Architect': 'time-architect',
+      'The Global Nomad': 'global-nomad',
+      'The Empire Builder': 'empire-builder',
+      'The Freedom Designer': 'freedom-designer',
+      'The Remote Mogul': 'remote-mogul',
+      'The Wealth Creator': 'wealth-creator'
+    };
+
     if (!email) {
       return NextResponse.json(
         { error: 'Email is required' },
@@ -38,6 +49,7 @@ export async function POST(request: Request) {
     // Add subscriber to Beehiiv
     if (process.env.BEEHIIV_API_KEY && process.env.BEEHIIV_PUBLICATION_ID) {
       try {
+        // Step 1: Create the subscription
         const beehiivResponse = await fetch(
           `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions`,
           {
@@ -58,7 +70,11 @@ export async function POST(request: Request) {
                   name: 'wealth_profile',
                   value: quizResult
                 }
-              ] : undefined
+              ] : undefined,
+              // Add tags based on wealth profile
+              ...(quizResult && profileMapping[quizResult] ? {
+                tags: [`wealth-profile-${profileMapping[quizResult]}`]
+              } : {})
             })
           }
         );
@@ -66,7 +82,33 @@ export async function POST(request: Request) {
         if (!beehiivResponse.ok) {
           console.error('Beehiiv sync error:', await beehiivResponse.text());
         } else {
-          console.log('Successfully added to Beehiiv:', email);
+          const beehiivData = await beehiivResponse.json();
+          const subscriberId = beehiivData.data?.id;
+          
+          console.log('Successfully added to Beehiiv:', email, 'ID:', subscriberId);
+          
+          // Step 2: Add tags if we have a wealth profile and subscriber ID
+          if (subscriberId && quizResult && profileMapping[quizResult]) {
+            const tagResponse = await fetch(
+              `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions/${subscriberId}/tags`,
+              {
+                method: 'POST',
+                headers: {
+                  'Authorization': `Bearer ${process.env.BEEHIIV_API_KEY}`,
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  tags: [`wealth-profile-${profileMapping[quizResult]}`]
+                })
+              }
+            );
+            
+            if (!tagResponse.ok) {
+              console.error('Failed to add tags:', await tagResponse.text());
+            } else {
+              console.log('Successfully added wealth profile tag:', `wealth-profile-${profileMapping[quizResult]}`);
+            }
+          }
         }
       } catch (beehiivError) {
         // Don't fail the whole request if Beehiiv sync fails

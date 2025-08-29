@@ -53,8 +53,6 @@ export default function QuickStats() {
   const stats = [
     { icon: '📍', label: currentLocation },
     { icon: '🌍', label: `${totalCountries} Countries Visited`, hasTooltip: true },
-    { icon: '💼', label: `${activeProjects} Active Projects` },
-    { icon: '☕', label: `${espressoCount} Espressos in 2025` },
   ];
 
   return (
