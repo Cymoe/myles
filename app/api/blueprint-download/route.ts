@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
 
     // Send download email via Resend
     const { error: emailError } = await resend.emails.send({
-      from: 'Myles Webb <myles@mylescharleswebb.com>',
+      from: 'Myles Kameron <hello@myleskameron.com>',
       to: email,
       subject: 'Your Blueprint Starter Pack is here',
       html: `
@@ -107,7 +107,10 @@ export async function POST(request: NextRequest) {
               -Myles
             </p>
             <p style="font-size: 14px; color: #666; margin-top: 8px;">
-              P.S. - When you're ready for all 67 documents + deal flow, reply to this email. Blueprint Pro members get first look at every deal.
+              P.S. - When you're ready for all 67 documents, reply to this email. Special price for starter pack users: $697 (normally $888).
+            </p>
+            <p style="font-size: 14px; color: #666; margin-top: 8px;">
+              P.P.S. - Found a boring business for sale? Hit reply to share. We're tracking all deals for future opportunities.
             </p>
 
             <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 40px 0;">
@@ -115,7 +118,7 @@ export async function POST(request: NextRequest) {
             <p style="font-size: 12px; color: #666; text-align: center;">
               You're receiving this because you requested The Blueprint Starter Pack.<br>
               <a href="#" style="color: #666;">Unsubscribe</a> | 
-              <a href="https://mylescharleswebb.com" style="color: #666;">mylescharleswebb.com</a>
+              <a href="https://myleskameron.com" style="color: #666;">myleskameron.com</a>
             </p>
           </div>
         </body>

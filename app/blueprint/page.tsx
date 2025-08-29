@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 
 export default function BlueprintPage() {
@@ -12,8 +14,12 @@ export default function BlueprintPage() {
               The Blueprint
             </h1>
             <p className="text-xl text-muted-foreground animate-fade-in animation-delay-200">
-              Buy cash-flowing businesses without your own money. 67 battle-tested documents.
+              67 battle-tested documents from $80M+ in service business deals
             </p>
+            <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 text-red-600 rounded-full text-sm font-semibold animate-fade-in animation-delay-400">
+              <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
+              SOLD OUT
+            </div>
           </div>
         </div>
       </section>
@@ -95,82 +101,84 @@ export default function BlueprintPage() {
               </div>
             </div>
 
-            {/* Pricing Tiers */}
+            {/* Pricing */}
             <div className="border-t border-border/20 pt-20">
-              <h2 className="font-serif text-2xl md:text-3xl mb-12 text-center">Choose Your Path</h2>
-              
-              <div className="grid md:grid-cols-3 gap-8 mb-16">
-                {/* Starter Pack */}
-                <div className="border border-border p-8 rounded-lg text-center">
-                  <h3 className="font-serif text-xl mb-4">Starter Pack</h3>
-                  <p className="text-4xl font-serif text-primary mb-4">Free</p>
-                  <ul className="text-sm text-muted-foreground space-y-2 mb-8 text-left">
-                    <li>• 20 core documents</li>
-                    <li>• $50M Empire Formula</li>
-                    <li>• Deal finding templates</li>
-                    <li>• Basic valuation tools</li>
-                  </ul>
+              <div className="max-w-2xl mx-auto text-center">
+                <h2 className="font-serif text-2xl md:text-3xl mb-8">Investment</h2>
+                
+                <div className="p-8 bg-red-500/5 border-2 border-red-500/20 rounded-lg mb-12">
+                  <p className="text-lg text-muted-foreground mb-4">
+                    The complete Blueprint system
+                  </p>
+                  <div className="flex items-center justify-center gap-4 mb-4">
+                    <span className="text-2xl line-through text-muted-foreground">$1,497</span>
+                    <span className="text-4xl font-serif text-foreground">$888</span>
+                  </div>
+                  <p className="text-red-600 font-semibold mb-6">
+                    Currently Sold Out
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    We&apos;re updating the documents with new strategies from recent deals.<br/>
+                    Join the newsletter to be notified when we reopen.
+                  </p>
+                </div>
+                
+                <div className="space-y-6">
+                  <p className="text-lg text-muted-foreground">
+                    Want to see what&apos;s inside first?
+                  </p>
                   <Link 
                     href="/blueprint-free"
-                    className="block w-full bg-primary text-primary-foreground px-6 py-3 font-medium hover:opacity-90 transition-opacity"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors text-lg"
                   >
-                    Start Free
+                    Get 20 Free Documents →
                   </Link>
+                  <p className="text-xs text-muted-foreground">
+                    No credit card required. Download instantly.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            {/* FAQ */}
+            <div className="border-t border-border/20 pt-20 mt-20">
+              <h2 className="font-serif text-2xl md:text-3xl mb-12">Common Questions</h2>
+              
+              <div className="space-y-8">
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Why is it sold out?</h3>
+                  <p className="text-muted-foreground">
+                    We periodically close enrollment to update documents with new deal strategies and ensure quality. Plus, scarcity is real - too many people using the same tactics dilutes effectiveness.
+                  </p>
                 </div>
                 
-                {/* Blueprint Pro */}
-                <div className="border-2 border-primary p-8 rounded-lg text-center relative">
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-background px-4">
-                    <span className="text-xs font-semibold text-primary uppercase">Most Popular</span>
-                  </div>
-                  <h3 className="font-serif text-xl mb-4">Blueprint Pro</h3>
-                  <p className="text-4xl font-serif text-primary mb-4">$497</p>
-                  <ul className="text-sm text-muted-foreground space-y-2 mb-8 text-left">
-                    <li>• All 67 documents</li>
-                    <li>• Advanced strategies</li>
-                    <li>• Monthly updates</li>
-                    <li>• Bonus: Deal analyzer</li>
-                  </ul>
-                  <button 
-                    className="block w-full bg-muted text-muted-foreground px-6 py-3 cursor-not-allowed"
-                    disabled
-                  >
-                    Coming Soon
-                  </button>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">How is this different from expensive courses?</h3>
+                  <p className="text-muted-foreground">
+                    No videos, no calls, no community drama. Just 67 documents you can use immediately. Think of it as buying the answer key instead of taking the class.
+                  </p>
                 </div>
                 
-                {/* Blueprint Elite */}
-                <div className="border border-border p-8 rounded-lg text-center">
-                  <h3 className="font-serif text-xl mb-4">Blueprint Elite</h3>
-                  <p className="text-4xl font-serif text-primary mb-4">$2,997</p>
-                  <ul className="text-sm text-muted-foreground space-y-2 mb-8 text-left">
-                    <li>• Everything in Pro</li>
-                    <li>• Weekly deal flow</li>
-                    <li>• Live deal analysis</li>
-                    <li>• Co-investment opps</li>
-                  </ul>
-                  <button 
-                    className="block w-full bg-muted text-muted-foreground px-6 py-3 cursor-not-allowed"
-                    disabled
-                  >
-                    Coming Soon
-                  </button>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Is this for beginners?</h3>
+                  <p className="text-muted-foreground">
+                    Yes. The documents assume zero experience. Start with the Quick Start section, follow the 30-day roadmap, and you&apos;ll be analyzing deals within a week.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">What if I can&apos;t afford $888?</h3>
+                  <p className="text-muted-foreground">
+                    Start with the free 20-document Starter Pack. Use it to find and analyze deals. The knowledge alone is worth thousands. Upgrade when you&apos;re ready.
+                  </p>
                 </div>
               </div>
               
-              {/* Deal Club */}
-              <div className="bg-muted/50 p-8 rounded-lg text-center max-w-2xl mx-auto">
-                <h3 className="font-serif text-xl mb-4">Deal Club Membership</h3>
-                <p className="text-3xl font-serif text-primary mb-2">$297/month</p>
-                <p className="text-muted-foreground mb-6">
-                  10 curated deals weekly with our analysis + financing connections
+              <div className="mt-12 p-6 bg-muted/30 rounded-lg text-center">
+                <p className="text-sm text-muted-foreground">
+                  Questions? Email hello@myleskameron.com<br/>
+                  I personally read and respond within 24 hours.
                 </p>
-                <button 
-                  className="inline-block px-8 py-3 bg-muted text-muted-foreground cursor-not-allowed"
-                  disabled
-                >
-                  Launching Q1 2025
-                </button>
               </div>
             </div>
           </div>

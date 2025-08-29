@@ -6,6 +6,11 @@ export const getWelcomeEmailHtml = (userEmail: string, leadMagnet?: string, quiz
     return getQuizResultEmailHtml(userEmail, quizResult, profileData, baseUrl);
   }
   
+  // If this is from the exit intent popup
+  if (leadMagnet === '5 Boring Businesses That Print Money') {
+    return getExitIntentEmailHtml(userEmail, baseUrl);
+  }
+  
   // Otherwise, send the regular welcome email
   return `
 <!DOCTYPE html>
@@ -65,6 +70,10 @@ export const getWelcomeEmailHtml = (userEmail: string, leadMagnet?: string, quiz
     
     <p style="color: #8898aa; font-size: 14px; line-height: 20px; text-align: center; margin-bottom: 8px;">
       P.S. Hit reply anytime. I read everything.
+    </p>
+    
+    <p style="color: #8898aa; font-size: 14px; line-height: 20px; text-align: center; margin-bottom: 8px;">
+      P.P.S. Found a boring business for sale? Reply with details. We're tracking all deals for future opportunities.
     </p>
     
     <p style="color: #8898aa; font-size: 14px; line-height: 20px; text-align: center;">
@@ -187,3 +196,102 @@ const getQuizResultEmailHtml = (userEmail: string, profileName: string, profileD
 </html>
   `;
 };
+
+// Exit Intent Email Template
+const getExitIntentEmailHtml = (userEmail: string, baseUrl: string) => {
+  return `
+<\!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your 5 boring businesses guide is here</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif; background-color: #f6f9fc;">
+  <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px 20px;">
+    <h1 style="font-size: 28px; font-weight: 700; color: #333; margin-bottom: 20px;">
+      Your 5 boring businesses guide is here (open NOW)
+    </h1>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px;">
+      Hey,
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      Here's your guide:
+    </p>
+    
+    <div style="text-align: center; margin: 32px 0;">
+      <a href="${baseUrl}/downloads/five-boring-businesses-guide.pdf" style="background-color: #786254; color: #fff; text-decoration: none; padding: 16px 40px; font-size: 18px; font-weight: 600; border-radius: 4px; display: inline-block;">
+        Download Your Guide →
+      </a>
+    </div>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      These 5 businesses are boring as hell.
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px;">
+      But they're also:
+    </p>
+    
+    <ul style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px; padding-left: 20px;">
+      <li>Generating $1M+ annually</li>
+      <li>Selling for 3-5x EBITDA (not the 10x tech nonsense)</li>
+      <li>Run by regular people (not MBAs)</li>
+    </ul>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px; font-weight: 600;">
+      Quick preview:
+    </p>
+    
+    <div style="background-color: #f6f9fc; padding: 20px; border-radius: 8px; margin-bottom: 24px;">
+      <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 12px;">
+        <strong>Business #1: Mobile RV Repair</strong><br>
+        • Zero real estate costs<br>
+        • $300-500 per service call<br>
+        • One guy in Phoenix does $1.2M/year
+      </p>
+      
+      <p style="color: #404040; font-size: 16px; line-height: 26px; margin: 0;">
+        <strong>Business #2: Commercial Hood Cleaning</strong><br>
+        • Recurring revenue (restaurants need it monthly)<br>
+        • $800-2,000 per job<br>
+        • Work nights = zero competition
+      </p>
+    </div>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      Check the guide for the other 3.
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 32px;">
+      The craziest part? I bought one of these for $0 down.
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px; font-weight: 600;">
+      Reply and tell me which one interests you most.
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 32px;">
+      -Myles
+    </p>
+    
+    <p style="color: #666; font-size: 14px; line-height: 22px; margin-bottom: 32px;">
+      P.S. Tomorrow I'll show you exactly how to find these deals (before they hit the market).
+    </p>
+    
+    <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 32px 0;">
+    
+    <p style="color: #999; font-size: 14px; text-align: center;">
+      <a href="${baseUrl}/unsubscribe" style="color: #786254; text-decoration: underline;">Unsubscribe</a>
+      •
+      <a href="${baseUrl}" style="color: #786254; text-decoration: underline;">myleskameron.com</a>
+    </p>
+  </div>
+</body>
+</html>
+  `;
+};
+
+

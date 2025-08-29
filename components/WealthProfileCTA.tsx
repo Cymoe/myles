@@ -29,7 +29,7 @@ export default function WealthProfileCTA() {
             <div className="text-4xl mb-4">₿</div>
             <h3 className="font-semibold text-lg text-foreground mb-2">Capital Freedom</h3>
             <p className="text-sm text-muted-foreground">
-              Beyond income. Build systems that generate wealth after you're dead.
+              Beyond income. Build systems that generate wealth after you&apos;re dead.
             </p>
           </div>
           

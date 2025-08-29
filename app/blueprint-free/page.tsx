@@ -51,12 +51,13 @@ export default function BlueprintFreePage() {
             <ol className="space-y-3 text-muted-foreground">
               <li>1. Check your email (including spam) for download link</li>
               <li>2. Download all 20 documents immediately</li>
-              <li>3. Start with "The $50M Service Empire Formula"</li>
+              <li>3. Start with &ldquo;The $50M Service Empire Formula&rdquo;</li>
               <li>4. Take action within 48 hours (momentum matters)</li>
             </ol>
           </div>
           <p className="mt-8 text-sm text-muted-foreground">
-            Email not arriving? Contact support@mylescharleswebb.com
+            Email not arriving? Contact hello@myleskameron.com<br/>
+            <span className="text-xs">Blueprint buyers get first look at reader-submitted deals</span>
           </p>
         </div>
       </div>
@@ -117,8 +118,8 @@ export default function BlueprintFreePage() {
             {/* Testimonial */}
             <div className="bg-muted/50 p-8 rounded-lg mb-16">
               <p className="text-lg italic mb-4">
-                "I used just 3 of these documents to find and close my first deal in 67 days. 
-                $1.2M revenue business for $380K with seller financing. This stuff is dangerous."
+                &ldquo;I used just 3 of these documents to find and close my first deal in 67 days. 
+                $1.2M revenue business for $380K with seller financing. This stuff is dangerous.&rdquo;
               </p>
               <p className="text-sm text-muted-foreground">
                 - Marcus K., First-Time Buyer
@@ -154,33 +155,22 @@ export default function BlueprintFreePage() {
                   <p className="mt-4 text-sm text-red-500">{error}</p>
                 )}
                 <p className="mt-4 text-xs text-muted-foreground">
-                  No spam. Unsubscribe anytime. But you won't want to.
+                  No spam. Unsubscribe anytime. By submitting, you agree to receive emails about business acquisitions.<br/>
+                  <span className="font-semibold">P.S. Found a boring business for sale? Hit reply to share.</span>
                 </p>
               </form>
             </div>
 
             {/* What's Next */}
-            <div className="mt-16 text-center">
-              <h3 className="font-serif text-2xl mb-6">Want Everything?</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="p-6 border border-border rounded-lg">
-                  <h4 className="font-semibold mb-2">Blueprint Pro</h4>
-                  <p className="text-3xl font-serif text-primary mb-2">$497</p>
-                  <p className="text-sm text-muted-foreground">All 67 documents</p>
-                </div>
-                <div className="p-6 border border-border rounded-lg">
-                  <h4 className="font-semibold mb-2">Blueprint Elite</h4>
-                  <p className="text-3xl font-serif text-primary mb-2">$2,997</p>
-                  <p className="text-sm text-muted-foreground">Docs + Deal Flow</p>
-                </div>
-                <div className="p-6 border border-border rounded-lg">
-                  <h4 className="font-semibold mb-2">Deal Club</h4>
-                  <p className="text-3xl font-serif text-primary mb-2">$297/mo</p>
-                  <p className="text-sm text-muted-foreground">Weekly Deals</p>
-                </div>
-              </div>
-              <p className="mt-8 text-sm text-muted-foreground">
-                Available after you see the starter pack value
+            <div className="mt-16 text-center p-8 bg-muted/30 rounded-lg">
+              <h3 className="font-serif text-2xl mb-4">Want All 67 Documents?</h3>
+              <p className="text-lg text-muted-foreground mb-6">
+                The complete Blueprint system includes 47 additional advanced documents:<br/>
+                Aggressive negotiation scripts, no-money-down structures, and the $50M empire formula.
+              </p>
+              <p className="text-3xl font-semibold text-foreground mb-2">$888</p>
+              <p className="text-sm text-muted-foreground">
+                Available after you download the starter pack
               </p>
             </div>
           </div>
@@ -194,7 +184,7 @@ export default function BlueprintFreePage() {
             <h3 className="font-serif text-2xl mb-6">Why Free?</h3>
             <p className="text-lg text-muted-foreground mb-8">
               Because when you use these documents to buy your first business, 
-              you'll want everything else we have. And you'll happily pay for it.
+              you&apos;ll want everything else we have. And you&apos;ll happily pay for it.
             </p>
             <p className="text-muted-foreground">
               Plus, we make our real money on deals, not documents.

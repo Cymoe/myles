@@ -58,7 +58,7 @@ export default function WealthProfileWidget() {
           {/* Content */}
           <div className="p-3">
             <h3 className="font-semibold text-sm text-foreground mb-2">
-              What's Your Wealth Profile?
+              What&apos;s Your Wealth Profile?
             </h3>
             
             <p className="text-xs text-muted-foreground mb-3">

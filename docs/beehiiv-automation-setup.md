@@ -1,4 +1,38 @@
-# Beehiiv Wealth Profile Automation Setup
+# Beehiiv Automation Setup
+
+## Blueprint Starter Pack Automation
+
+### Quick Setup for Blueprint Nurture Sequence
+
+1. **Create Tag in Beehiiv**
+   - Go to **Audience → Tags**
+   - Create tag: `blueprint-starter-pack`
+
+2. **Import Email Sequence**
+   - Go to **Automations → Create New**
+   - Name: "Blueprint Starter Pack Nurture"
+   - Trigger: "When subscriber is tagged with `blueprint-starter-pack`"
+
+3. **Add Email Sequence** (Copy from `/emails/blueprint-nurture-sequence.md`):
+   - Email 1: Send immediately - "Did you start with document #7?"
+   - Email 2: Send after 3 days - "The $1.2M painting business nobody wanted"
+   - Email 3: Send after 5 days - "Why document #15 pisses people off"
+   - Email 4: Send after 10 days - "The #1 mistake (don't do this)"
+   - Email 5: Send after 14 days - "The other 47 documents (final notice)"
+
+4. **Set Up Conversion Tracking**
+   - Create tag: `blueprint-pro-purchased`
+   - Stop automation if this tag is added
+   - Track clicks on upgrade links
+
+5. **Monitor Performance**
+   - Check open rates (target: 40%+)
+   - Check click rates on upgrade links (target: 10%+)
+   - A/B test subject lines
+
+---
+
+## Wealth Profile Automation Setup
 
 ## Step 1: Create Custom Fields in Beehiiv
 

@@ -96,7 +96,8 @@ export default function NewsletterSignup() {
             </button>
           </div>
           <p className="text-xs text-muted-foreground/70 mt-3 text-center">
-            Weekly insights on buying, operating, and selling boring businesses. Unsubscribe anytime.
+            Weekly insights on buying, operating, and selling boring businesses. Unsubscribe anytime.<br/>
+            <span className="font-semibold">Found a deal? Reply to any email to share.</span>
           </p>
         </form>
       )}

@@ -78,7 +78,7 @@ export function QuizResults({ profileKey, scores, onRestart }: QuizResultsProps)
           {profile.emoji}
         </motion.div>
         <h1 className="text-3xl md:text-4xl font-bold mb-2">
-          You're {profile.name}
+          You&apos;re {profile.name}
         </h1>
         <p className="text-xl text-muted-foreground">
           {profile.tagline}
@@ -174,7 +174,7 @@ export function QuizResults({ profileKey, scores, onRestart }: QuizResultsProps)
             Get Your Personalized Wealth Roadmap
           </h2>
           <p className="text-muted-foreground mb-6">
-            Based on your {profile.name} profile, we'll send you a custom action plan with:
+            Based on your {profile.name} profile, we&apos;ll send you a custom action plan with:
           </p>
           <ul className="text-sm text-muted-foreground mb-6 space-y-1">
             <li>• Specific business models that match your profile</li>

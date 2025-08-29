@@ -35,6 +35,28 @@ export default function Home() {
             {/* Revenue Tracker - Dynamic from Notion */}
             <RevenueTrackerV2 />
             
+            {/* Blueprint Starter Pack CTA - Primary Offer */}
+            <div className="text-center my-12 p-8 bg-primary/10 border-2 border-primary/30 rounded-lg max-w-3xl mx-auto animate-fade-in">
+              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                Get 20 Business Acquisition Documents Free
+              </h2>
+              <p className="text-lg text-muted-foreground mb-2">
+                Battle-tested templates from $80M in closed deals
+              </p>
+              <p className="text-sm text-muted-foreground mb-6">
+                The exact documents I use to find, evaluate, and buy boring businesses
+              </p>
+              <Link 
+                href="/blueprint-free" 
+                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors text-lg"
+              >
+                Send Me The Starter Pack →
+              </Link>
+              <p className="text-xs text-muted-foreground mt-4">
+                Join 500+ operators building boring business empires
+              </p>
+            </div>
+            
             {/* Remote Ops Contextual CTA */}
             <div className="text-center my-8 p-4 bg-primary/5 border border-primary/20 rounded-lg max-w-2xl mx-auto">
               <p className="text-sm text-muted-foreground mb-2">
@@ -202,6 +224,10 @@ export default function Home() {
               Weekly deal flow, acquisition strategies, and revenue insights from someone actually doing it.
               <br />
               <span className="text-sm">Real deals. Real numbers. No fluff.</span>
+              <br />
+              <Link href="/blueprint-free" className="text-primary hover:underline text-sm mt-2 inline-block">
+                P.S. Get 20 free business acquisition documents →
+              </Link>
             </p>
             <NewsletterSignup />
           </div>

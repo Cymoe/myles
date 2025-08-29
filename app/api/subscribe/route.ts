@@ -71,9 +71,11 @@ export async function POST(request: Request) {
                   value: quizResult
                 }
               ] : undefined,
-              // Add tags based on wealth profile
+              // Add tags based on wealth profile or lead magnet
               ...(quizResult && profileMapping[quizResult] ? {
                 tags: [`wealth-profile-${profileMapping[quizResult]}`]
+              } : leadMagnet === '5 Boring Businesses That Print Money' ? {
+                tags: ['exit-intent-guide']
               } : {})
             })
           }
@@ -87,26 +89,36 @@ export async function POST(request: Request) {
           
           console.log('Successfully added to Beehiiv:', email, 'ID:', subscriberId);
           
-          // Step 2: Add tags if we have a wealth profile and subscriber ID
-          if (subscriberId && quizResult && profileMapping[quizResult]) {
-            const tagResponse = await fetch(
-              `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions/${subscriberId}/tags`,
-              {
-                method: 'POST',
-                headers: {
-                  'Authorization': `Bearer ${process.env.BEEHIIV_API_KEY}`,
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  tags: [`wealth-profile-${profileMapping[quizResult]}`]
-                })
-              }
-            );
+          // Step 2: Add tags if we have a subscriber ID and either a wealth profile or exit intent
+          if (subscriberId) {
+            let tagsToAdd = [];
             
-            if (!tagResponse.ok) {
-              console.error('Failed to add tags:', await tagResponse.text());
-            } else {
-              console.log('Successfully added wealth profile tag:', `wealth-profile-${profileMapping[quizResult]}`);
+            if (quizResult && profileMapping[quizResult]) {
+              tagsToAdd.push(`wealth-profile-${profileMapping[quizResult]}`);
+            } else if (leadMagnet === '5 Boring Businesses That Print Money') {
+              tagsToAdd.push('exit-intent-guide');
+            }
+            
+            if (tagsToAdd.length > 0) {
+              const tagResponse = await fetch(
+                `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions/${subscriberId}/tags`,
+                {
+                  method: 'POST',
+                  headers: {
+                    'Authorization': `Bearer ${process.env.BEEHIIV_API_KEY}`,
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    tags: tagsToAdd
+                  })
+                }
+              );
+              
+              if (!tagResponse.ok) {
+                console.error('Failed to add tags:', await tagResponse.text());
+              } else {
+                console.log('Successfully added tags:', tagsToAdd);
+              }
             }
           }
         }
