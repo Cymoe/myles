@@ -10,8 +10,59 @@ interface Deal {
   revenue: string;
   margin: string;
   highlights: string[];
-  soldDaysAgo: number;
+  baseSoldDaysAgo: number; // Base number to calculate from
 }
+
+// Calculate dynamic days based on current date
+const calculateDaysAgo = (baseDays: number): number => {
+  const daysSinceEpoch = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+  // Add variation based on current day to make it change daily
+  return baseDays + (daysSinceEpoch % 7);
+};
+
+// Additional deals that rotate in periodically
+const additionalDeals: Deal[] = [
+  {
+    id: '13',
+    businessType: 'IT Services',
+    location: 'Austin',
+    ebitda: '$925K',
+    revenue: '$2.9M',
+    margin: '32%',
+    highlights: ['Managed services model', '150+ clients under contract'],
+    baseSoldDaysAgo: 2
+  },
+  {
+    id: '14',
+    businessType: 'Auto Detailing',
+    location: 'Southern California',
+    ebitda: '$480K',
+    revenue: '$1.6M',
+    margin: '30%',
+    highlights: ['Fleet contracts', 'Mobile service units'],
+    baseSoldDaysAgo: 6
+  },
+  {
+    id: '15',
+    businessType: 'Property Management',
+    location: 'Phoenix',
+    ebitda: '$1.2M',
+    revenue: '$3.8M',
+    margin: '32%',
+    highlights: ['350 units under management', 'Property maintenance included'],
+    baseSoldDaysAgo: 4
+  },
+  {
+    id: '16',
+    businessType: 'Roofing Company',
+    location: 'Tennessee',
+    ebitda: '$1.6M',
+    revenue: '$5.2M',
+    margin: '31%',
+    highlights: ['Insurance restoration specialist', 'GAF certified'],
+    baseSoldDaysAgo: 8
+  }
+];
 
 const allDeals: Deal[] = [
   {
@@ -22,7 +73,7 @@ const allDeals: Deal[] = [
     revenue: '$3.4M',
     margin: '33%',
     highlights: ['11,000 sq ft facility', 'Near two interstates'],
-    soldDaysAgo: 3
+    baseSoldDaysAgo: 3
   },
   {
     id: '2',
@@ -32,7 +83,7 @@ const allDeals: Deal[] = [
     revenue: '$4.2M',
     margin: '36%',
     highlights: ['70% recurring revenue', '2-5 year contracts'],
-    soldDaysAgo: 7
+    baseSoldDaysAgo: 7
   },
   {
     id: '3',
@@ -42,7 +93,7 @@ const allDeals: Deal[] = [
     revenue: '$8.1M',
     margin: '33%',
     highlights: ['50% profit margins', '97% repeat customers'],
-    soldDaysAgo: 11
+    baseSoldDaysAgo: 11
   },
   {
     id: '4',
@@ -52,7 +103,7 @@ const allDeals: Deal[] = [
     revenue: '$2.1M',
     margin: '33%',
     highlights: ['86% client retention', 'Niche expertise'],
-    soldDaysAgo: 15
+    baseSoldDaysAgo: 15
   },
   {
     id: '5',
@@ -62,7 +113,7 @@ const allDeals: Deal[] = [
     revenue: '$2.8M',
     margin: '30%',
     highlights: ['300+ commercial accounts', 'All equipment included'],
-    soldDaysAgo: 5
+    baseSoldDaysAgo: 5
   },
   {
     id: '6',
@@ -72,7 +123,7 @@ const allDeals: Deal[] = [
     revenue: '$3.9M',
     margin: '33%',
     highlights: ['24/7 emergency service', '15-year reputation'],
-    soldDaysAgo: 9
+    baseSoldDaysAgo: 9
   },
   {
     id: '7',
@@ -82,7 +133,7 @@ const allDeals: Deal[] = [
     revenue: '$1.7M',
     margin: '36%',
     highlights: ['400 recurring clients', 'Autopay contracts'],
-    soldDaysAgo: 12
+    baseSoldDaysAgo: 12
   },
   {
     id: '8',
@@ -92,7 +143,7 @@ const allDeals: Deal[] = [
     revenue: '$2.4M',
     margin: '41%',
     highlights: ['Hotel contracts', 'Semi-absentee owner'],
-    soldDaysAgo: 4
+    baseSoldDaysAgo: 4
   },
   {
     id: '9',
@@ -102,7 +153,7 @@ const allDeals: Deal[] = [
     revenue: '$3.2M',
     margin: '34%',
     highlights: ['Quarterly service plans', 'B2B focused'],
-    soldDaysAgo: 8
+    baseSoldDaysAgo: 8
   },
   {
     id: '10',
@@ -112,7 +163,7 @@ const allDeals: Deal[] = [
     revenue: '$1.4M',
     margin: '39%',
     highlights: ['Government contracts', 'Minimal competition'],
-    soldDaysAgo: 14
+    baseSoldDaysAgo: 14
   },
   {
     id: '11',
@@ -122,7 +173,7 @@ const allDeals: Deal[] = [
     revenue: '$5.2M',
     margin: '35%',
     highlights: ['Fortune 500 clients', '5-year contracts'],
-    soldDaysAgo: 6
+    baseSoldDaysAgo: 6
   },
   {
     id: '12',
@@ -132,13 +183,13 @@ const allDeals: Deal[] = [
     revenue: '$4.1M',
     margin: '34%',
     highlights: ['New construction focus', '12 licensed plumbers'],
-    soldDaysAgo: 10
+    baseSoldDaysAgo: 10
   }
 ];
 
 export default function MissedDeals() {
   const [mounted, setMounted] = useState(false);
-  const [deals, setDeals] = useState<Deal[]>([]);
+  const [deals, setDeals] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -154,9 +205,40 @@ export default function MissedDeals() {
     
     // Simulate loading delay for skeleton
     setTimeout(() => {
-      // Randomly select 4 deals from the pool
-      const shuffled = [...allDeals].sort(() => 0.5 - Math.random());
-      setDeals(shuffled.slice(0, 4));
+      // Use date-based selection for consistent daily rotation
+      const today = new Date();
+      const dayOfYear = Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
+      
+      // Combine pools based on week number - show additional deals every other week
+      const weekNumber = Math.floor(dayOfYear / 7);
+      const dealPool = weekNumber % 2 === 0 ? 
+        [...allDeals, ...additionalDeals] : 
+        [...additionalDeals, ...allDeals];
+      
+      // Rotate through deals based on day of year
+      const startIndex = (dayOfYear * 3) % dealPool.length;
+      const selectedDeals = [];
+      const usedIndices = new Set();
+      
+      // Select 4 unique deals
+      for (let i = 0; i < 4; i++) {
+        let dealIndex = (startIndex + i * 3) % dealPool.length;
+        
+        // Ensure unique selection
+        while (usedIndices.has(dealIndex)) {
+          dealIndex = (dealIndex + 1) % dealPool.length;
+        }
+        usedIndices.add(dealIndex);
+        
+        const deal = { 
+          ...dealPool[dealIndex],
+          soldDaysAgo: calculateDaysAgo(dealPool[dealIndex].baseSoldDaysAgo),
+          isNew: dealPool[dealIndex].baseSoldDaysAgo <= 3 // Mark as new if sold recently
+        };
+        selectedDeals.push(deal);
+      }
+      
+      setDeals(selectedDeals);
       setIsLoading(false);
     }, 500);
     
@@ -245,34 +327,34 @@ export default function MissedDeals() {
 
           return (
           <div key={deal.id} className="relative group" style={{ 
-            height: isMobile ? '240px' : '280px',
-            marginTop: isMobile ? '60px' : '80px'
+            height: isMobile ? '280px' : '280px',
+            marginTop: isMobile ? '120px' : '80px'
           }}>
-            {/* Back card - reduced offset for better visibility */}
+            {/* Back card - using theme-aware colors */}
             <div 
-              className="absolute w-full h-full bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden transition-all duration-500 animate-fade-in"
+              className="absolute w-full h-full bg-muted/50 border border-border/50 rounded-lg overflow-hidden transition-all duration-500 animate-fade-in"
               style={{ 
-                transform: `translateX(0) translateY(${isMobile ? -60 : -80}px)`,
+                transform: `translateX(0) translateY(${isMobile ? -110 : -80}px)`,
                 boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
                 opacity: 0.85,
                 animationDelay: `${index * 100}ms`
               }}>
-              <div className="w-full bg-gray-400 dark:bg-gray-600 text-white text-center py-0.5 text-xs font-semibold tracking-wide">
+              <div className="w-full bg-muted-foreground/30 text-foreground text-center py-0.5 text-xs font-semibold tracking-wide">
                 SOLD
               </div>
               <div className="px-4 py-1">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-xs font-medium text-gray-600 dark:text-gray-400 truncate flex-1">{backDeal.name}</h3>
-                  <p className="text-xs font-bold text-gray-800 dark:text-gray-200">{backDeal.ebitda}</p>
+                  <h3 className="text-xs font-medium text-muted-foreground truncate flex-1">{backDeal.name}</h3>
+                  <p className="text-xs font-bold text-foreground/80">{backDeal.ebitda}</p>
                 </div>
               </div>
             </div>
             
-            {/* Middle card - reduced offset for better visibility */}
+            {/* Middle card - using theme-aware colors */}
             <div 
-              className="absolute w-full h-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-500 rounded-lg overflow-hidden transition-all duration-500 animate-fade-in"
+              className="absolute w-full h-full bg-muted border border-border/70 rounded-lg overflow-hidden transition-all duration-500 animate-fade-in"
               style={{ 
-                transform: `translateX(0) translateY(${isMobile ? -30 : -40}px)`,
+                transform: `translateX(0) translateY(${isMobile ? -55 : -40}px)`,
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                 opacity: 0.92,
                 animationDelay: `${index * 100 + 50}ms`
@@ -282,15 +364,15 @@ export default function MissedDeals() {
               </div>
               <div className="px-4 py-1">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-xs font-medium text-gray-700 dark:text-gray-200 truncate flex-1">{middleDeal.name}</h3>
-                  <p className="text-xs font-bold text-gray-900 dark:text-white">{middleDeal.ebitda}</p>
+                  <h3 className="text-xs font-medium text-muted-foreground truncate flex-1">{middleDeal.name}</h3>
+                  <p className="text-xs font-bold text-foreground">{middleDeal.ebitda}</p>
                 </div>
               </div>
             </div>
             
             {/* Main card - with pulse animation */}
             <div 
-              className="absolute w-full h-full bg-card border border-border rounded-lg transition-all duration-300 hover:translate-y-[-4px] hover:shadow-2xl animate-fade-in"
+              className="absolute w-full h-full bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 hover:translate-y-[-4px] hover:shadow-2xl animate-fade-in"
             style={{
                 animationDelay: `${index * 100 + 100}ms`,
                 transform: 'translateX(0) translateY(0) scale(1)',
@@ -299,15 +381,22 @@ export default function MissedDeals() {
             }}
           >
             {/* Sold Tag - Minimal */}
-            <div className="absolute top-3 right-3 bg-yellow-400 text-black px-2 py-0.5 rounded-sm text-xs font-bold">
-              Sold
+            <div className="absolute top-3 right-3 flex items-center gap-1">
+              {deal.isNew && (
+                <span className="bg-red-500 text-white px-1.5 py-0.5 rounded-sm text-xs font-bold animate-pulse">
+                  HOT
+                </span>
+              )}
+              <span className="bg-yellow-400 text-black px-2 py-0.5 rounded-sm text-xs font-bold">
+                Sold
+              </span>
             </div>
 
             {/* Deal Content */}
-            <div className="p-5">
+            <div className="p-3 h-full flex flex-col">
               {/* Business Type & Location */}
-              <div className="mb-4">
-                <h3 className="text-base font-semibold text-foreground mb-1 pr-12">
+              <div className="mb-2">
+                <h3 className="text-sm font-semibold text-foreground mb-0.5 pr-12">
                 {deal.businessType}
               </h3>
                 <p className="text-xs text-muted-foreground uppercase tracking-wide">
@@ -315,20 +404,20 @@ export default function MissedDeals() {
                 </p>
                 </div>
 
-              {/* EBITDA & Revenue - Clean Layout */}
-              <div className="space-y-3 mb-4">
+              {/* EBITDA & Revenue - Compact Layout */}
+              <div className="space-y-1.5 mb-2">
                 <div>
-                  <p className="text-xs text-muted-foreground mb-0.5">EBITDA</p>
-                  <p className="text-xl font-semibold text-foreground">{deal.ebitda}</p>
+                  <p className="text-xs text-muted-foreground">EBITDA</p>
+                  <p className="text-lg font-semibold text-foreground">{deal.ebitda}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground mb-0.5">Revenue</p>
+                  <p className="text-xs text-muted-foreground">Revenue</p>
                   <p className="text-sm text-foreground">{deal.revenue}</p>
                 </div>
               </div>
 
-              {/* Key Points - Clean bullets */}
-              <ul className="space-y-1 mb-4">
+              {/* Key Points - Compact bullets */}
+              <ul className="space-y-0.5 mb-2 flex-grow">
                 {deal.highlights.map((highlight, idx) => (
                   <li key={idx} className="text-xs text-muted-foreground">
                     • {highlight}
@@ -336,23 +425,13 @@ export default function MissedDeals() {
                   ))}
                 </ul>
 
-              {/* Days Ago - Bottom */}
-              <div className="text-xs text-muted-foreground/50">
-                Sold {deal.soldDaysAgo} days ago
+              {/* Bottom section - Compact */}
+              <div className="mt-auto">
+                {/* Days Ago */}
+                <div className="text-xs text-muted-foreground/50">
+                  Sold {deal.soldDaysAgo} days ago
+                </div>
               </div>
-            </div>
-            
-            {/* See More Link - appears on hover */}
-            <div className="absolute bottom-3 left-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <a 
-                href="#newsletter" 
-                className="text-xs text-primary hover:underline font-medium flex items-center gap-1"
-              >
-                See similar deals
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
             </div>
           </div>
           </div>

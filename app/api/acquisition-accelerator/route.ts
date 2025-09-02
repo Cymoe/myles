@@ -33,19 +33,18 @@ export async function POST(request: Request) {
           <p>Here's everything you need to get started:</p>
           
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3>📄 Your 20 Acquisition Documents (Download Now)</h3>
+            <h3>📄 Your Complete 32-Document Blueprint System (Download Now)</h3>
             <p><a href="https://myleskameron.com/downloads/blueprint-starter-pack/index.html" style="color: #0066cc;">Click here to access all documents</a></p>
             
-            <p style="margin-top: 15px;"><strong>Top documents to start with:</strong></p>
+            <p style="margin-top: 15px;"><strong>What's included:</strong></p>
             <ul style="margin: 10px 0;">
-              <li>30-Day Acquisition Timeline (your roadmap)</li>
-              <li>Service Business Selector Matrix</li>
-              <li>Creative Financing Bible</li>
-              <li>Business Broker Manipulation Guide</li>
-              <li>Quick Due Diligence Checklist</li>
-              <li>Hidden Deal Sources</li>
-              <li>LOI Template</li>
-              <li>Plus 13 more tactical guides...</li>
+              <li>Complete 32-document acquisition system</li>
+              <li>From finding deals to closing them</li>
+              <li>Creative financing strategies</li>
+              <li>Due diligence checklists</li>
+              <li>Negotiation scripts and templates</li>
+              <li>SBA loan guidance</li>
+              <li>Plus advanced strategies for scaling</li>
             </ul>
           </div>
           
@@ -56,6 +55,10 @@ export async function POST(request: Request) {
           </div>
           
           <p><strong>Pro tip:</strong> Download the documents now and review "The 30-Day Acquisition Timeline" first. It's your roadmap for everything that follows.</p>
+          
+          <p style="color: #666; font-size: 14px; margin-top: 20px;">
+          <em>Note: You're receiving the complete Blueprint system - all 32 documents we use in our own acquisitions. Nothing held back.</em>
+          </p>
           
           <p>If you have any questions, just reply to this email.</p>
           
