@@ -11,10 +11,18 @@ export default function ConditionalWealthWidget() {
     '/blueprint-special',  // Special pricing page
     '/blueprint-free',     // Email capture page
     '/wealth-profile-quiz', // Quiz page itself
-    '/wealth-profile-results' // Results page
+    '/wealth-profile-results', // Results page
+    '/downloads/blueprint', // Downloads page - users already converted
+    '/acquisition-accelerator', // Users already engaged with paid content
+    '/welcome', // Welcome page after signup
+    '/advisory' // Advisory services page
   ];
   
-  if (excludedPages.includes(pathname)) {
+  // Also exclude any downloads or checkout pages (pattern matching)
+  const isDownloadPage = pathname.startsWith('/downloads/');
+  const isCheckoutPage = pathname.includes('checkout') || pathname.includes('success');
+  
+  if (excludedPages.includes(pathname) || isDownloadPage || isCheckoutPage) {
     return null;
   }
 

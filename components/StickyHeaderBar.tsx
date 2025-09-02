@@ -53,8 +53,25 @@ export default function StickyHeaderBar() {
     }
   };
 
-  // Don't render on welcome or tool pages
-  if (pathname.startsWith('/welcome') || pathname.startsWith('/tools/')) {
+  // Don't render on post-conversion pages or tool pages
+  const excludedPaths = [
+    '/welcome',
+    '/tools/',
+    '/downloads/',  // Downloads page - users already have access
+    '/acquisition-accelerator',  // Paid content
+    '/advisory',  // Advisory services
+    '/wealth-profile-quiz',  // Quiz pages
+    '/wealth-profile-results',
+    '/blueprint-special',
+    '/blueprint-free'
+  ];
+  
+  const shouldExclude = excludedPaths.some(path => pathname.startsWith(path));
+  
+  // Also exclude checkout/success pages
+  const isCheckoutPage = pathname.includes('checkout') || pathname.includes('success');
+  
+  if (shouldExclude || isCheckoutPage) {
     return null;
   }
 
