@@ -120,7 +120,7 @@ export default function ExitIntentPopup() {
             <svg className="w-16 h-16 text-primary mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h3 className="text-xl font-semibold text-foreground mb-2">You're all set!</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-2">You&apos;re all set!</h3>
             <p className="text-muted-foreground">
               Deal alerts will hit your inbox weekly.
             </p>
@@ -130,7 +130,7 @@ export default function ExitIntentPopup() {
             {/* Deal Alert Header */}
             <div className="text-center mb-6">
               <h2 className="text-2xl font-medium text-foreground mb-3">
-                Hold up - there's a $2.1M EBITDA deal hitting tomorrow
+                Hold up - there&apos;s a $2.1M EBITDA deal hitting tomorrow
               </h2>
               <p className="text-base text-muted-foreground">
                 Get first access to off-market deals

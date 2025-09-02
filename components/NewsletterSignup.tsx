@@ -72,7 +72,7 @@ export default function NewsletterSignup() {
             </svg>
           </button>
           <p className="text-sm text-muted-foreground mt-3">
-            It's free. Unsubscribe anytime.
+            It&apos;s free. Unsubscribe anytime.
           </p>
         </div>
       ) : (

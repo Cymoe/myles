@@ -109,14 +109,14 @@ export default function Home() {
                     <p className="text-base font-medium">Why I like it:</p>
                     <ul className="space-y-2 text-sm">
                       <li>• 80% commercial contracts (stable revenue)</li>
-                      <li>• Owner retiring, kids don't want the business</li>
+                      <li>• Owner retiring, kids don&apos;t want the business</li>
                       <li>• Could easily add residential for 30% growth</li>
                       <li>• SBA pre-qualified at 90% LTV</li>
                     </ul>
                   </div>
                   
                   <div className="pt-4 border-t border-border">
-                    <p className="text-sm text-muted-foreground">Want the broker contact? Reply "SEND IT" and I'll intro you.</p>
+                    <p className="text-sm text-muted-foreground">Want the broker contact? Reply &quot;SEND IT&quot; and I&apos;ll intro you.</p>
                   </div>
                   
                   <p className="text-base">-Myles</p>
@@ -145,7 +145,7 @@ export default function Home() {
             {/* Simple Email Capture - Primary Offer */}
             <div className="text-center my-16 max-w-xl mx-auto animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-light text-foreground mb-2">
-                Don't miss your next deal
+                Don&apos;t miss your next deal
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Get my complete acquisition system free
@@ -158,7 +158,7 @@ export default function Home() {
                   Start the Accelerator →
                 </Link>
                 <p className="text-sm text-muted-foreground">
-                  It's free. Unsubscribe anytime.
+                  It&apos;s free. Unsubscribe anytime.
                 </p>
               </div>
             </div>
@@ -323,7 +323,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="max-w-xl mx-auto text-center">
             <h3 className="text-3xl md:text-4xl font-light text-foreground mb-8">
-              Don't miss your next deal
+              Don&apos;t miss your next deal
             </h3>
             <NewsletterSignup />
           </div>

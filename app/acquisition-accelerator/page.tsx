@@ -59,7 +59,7 @@ export default function AcquisitionAcceleratorPage() {
             Check your email for instant access to your documents.
           </p>
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-8 text-left">
-            <h3 className="font-serif text-xl mb-4">Here's what you're getting:</h3>
+            <h3 className="font-serif text-xl mb-4">Here&apos;s what you&apos;re getting:</h3>
             <ol className="space-y-3 text-muted-foreground">
               <li>1. <strong>Instant:</strong> 20+ acquisition documents in your inbox</li>
               <li>2. <strong>Tomorrow:</strong> Your first deal breakdown arrives</li>
@@ -101,7 +101,7 @@ export default function AcquisitionAcceleratorPage() {
       <section className="py-20 border-t border-border/20">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-light mb-16 text-center">What You'll Get:</h2>
+            <h2 className="text-3xl md:text-4xl font-light mb-16 text-center">What You&apos;ll Get:</h2>
             
             <div className="grid md:grid-cols-2 gap-12 md:gap-16 max-w-4xl mx-auto mb-16">
               <div>
@@ -190,7 +190,7 @@ export default function AcquisitionAcceleratorPage() {
                 )}
                 <p className="mt-4 text-xs text-muted-foreground">
                   No spam. Unsubscribe anytime.<br/>
-                  <span className="font-semibold">Questions? Reply to any email and I'll personally respond.</span>
+                  <span className="font-semibold">Questions? Reply to any email and I&apos;ll personally respond.</span>
                 </p>
               </form>
             </div>

@@ -52,6 +52,7 @@ export function ThemeToggle() {
         className={`relative inline-flex h-9 w-[7.5rem] items-center rounded-full ${getBackgroundColor()} transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900 ocean:focus:ring-offset-blue-900 sunset:focus:ring-offset-orange-100 border border-gray-400 dark:border-gray-600 ocean:border-blue-400 sunset:border-orange-400`}
         role="switch"
         aria-label="Toggle theme"
+        aria-checked={theme !== "light"}
       >
         <span className="sr-only">Toggle theme</span>
         <span

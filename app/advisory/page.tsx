@@ -28,7 +28,7 @@ export default function AdvisoryPage() {
                 window.location.href = 'mailto:hello@myleskameron.com?subject=SMB Acquisition Advisory Inquiry';
               }}
             >
-              Let's Discuss Your Deal <ArrowRight className="w-5 h-5" />
+              Let&apos;s Discuss Your Deal <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -46,7 +46,7 @@ export default function AdvisoryPage() {
               <h3 className="text-xl font-medium mb-4">Initial Consultation</h3>
               <p className="text-muted-foreground">
                 We review your target business, financial situation, and acquisition goals. 
-                I'll give you honest feedback on the deal's potential.
+                I&apos;ll give you honest feedback on the deal&apos;s potential.
               </p>
             </div>
             
@@ -75,7 +75,7 @@ export default function AdvisoryPage() {
       <section className="py-24 bg-muted/20">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-light mb-16 text-center">
-            What's Included
+            What&apos;s Included
           </h2>
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <div className="text-center">
@@ -226,7 +226,7 @@ export default function AdvisoryPage() {
               <Shield className="text-primary mx-auto mb-4" size={40} />
               <h3 className="font-medium text-xl mb-3">Risk Mitigation</h3>
               <p className="text-muted-foreground">
-                I've seen hundreds of deals. I know what can go wrong and how to protect you.
+                I&apos;ve seen hundreds of deals. I know what can go wrong and how to protect you.
               </p>
             </div>
             
@@ -351,7 +351,7 @@ export default function AdvisoryPage() {
                 Can you help with partnership deals?
               </h3>
               <p className="text-muted-foreground">
-                Absolutely. I've structured many deals with multiple buyers, equity partners, 
+                Absolutely. I&apos;ve structured many deals with multiple buyers, equity partners, 
                 and investor groups. The fee is split proportionally.
               </p>
             </div>
@@ -361,8 +361,8 @@ export default function AdvisoryPage() {
                 When should I contact you?
               </h3>
               <p className="text-muted-foreground">
-                As soon as you've identified a target business. Even before making an offer, 
-                I can help evaluate if it's worth pursuing.
+                As soon as you&apos;ve identified a target business. Even before making an offer, 
+                I can help evaluate if it&apos;s worth pursuing.
               </p>
             </div>
           </div>
@@ -377,7 +377,7 @@ export default function AdvisoryPage() {
               Ready to Buy Your First Business?
             </h2>
             <p className="text-xl mb-12 text-muted-foreground">
-              Let's discuss your target and how I can help you close successfully.
+              Let&apos;s discuss your target and how I can help you close successfully.
             </p>
             <div className="space-y-4">
               <button 

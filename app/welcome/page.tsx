@@ -48,7 +48,7 @@ export default function WelcomePage() {
               <span className="text-4xl">🤝</span>
             </div>
             
-            <h1 className="text-4xl font-light mb-4">You're in</h1>
+            <h1 className="text-4xl font-light mb-4">You&apos;re in</h1>
             <p className="text-xl text-muted-foreground">
               Deal flow starts now.
             </p>

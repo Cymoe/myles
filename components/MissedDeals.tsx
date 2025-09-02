@@ -191,7 +191,7 @@ export default function MissedDeals() {
           DEALS
         </p>
         <h2 className="text-3xl md:text-4xl font-light text-foreground mb-2">
-          You've already missed these opportunities...
+          You&apos;ve already missed these opportunities...
         </h2>
       </div>
 
@@ -243,74 +243,47 @@ export default function MissedDeals() {
             { name: 'Gutter Cleaning', location: 'OREGON', ebitda: '$650K', revenue: '$1.9M' } :
             { name: 'Window Cleaning', location: 'COLORADO', ebitda: '$1.1M', revenue: '$3.2M' };
 
-          // Randomize offset direction
-          const offsetDirection = index % 2 === 0 ? 1 : -1;
-          const backOffset = 4 * offsetDirection;
-          const middleOffset = 2 * offsetDirection;
-
           return (
           <div key={deal.id} className="relative group" style={{ 
             height: isMobile ? '240px' : '280px',
-            marginTop: isMobile ? '100px' : '140px'
+            marginTop: isMobile ? '60px' : '80px'
           }}>
-            {/* Back card - with subtle offset and gray SOLD banner */}
+            {/* Back card - reduced offset for better visibility */}
             <div 
               className="absolute w-full h-full bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden transition-all duration-500 animate-fade-in"
               style={{ 
-                transform: `translateX(${isMobile ? backOffset / 2 : backOffset}px) translateY(${isMobile ? '-80px' : '-120px'})`,
+                transform: `translateX(0) translateY(${isMobile ? -60 : -80}px)`,
                 boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
                 opacity: 0.85,
-                animationDelay: `${index * 100}ms`,
-                transition: 'all 0.5s ease'
-              }}
-              onMouseEnter={(e) => {
-                if (!isMobile) {
-                  e.currentTarget.style.transform = `translateX(${backOffset * 1.5}px) translateY(-122px) scale(1.01)`;
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isMobile) {
-                  e.currentTarget.style.transform = `translateX(${backOffset}px) translateY(-120px) scale(1)`;
-                }
+                animationDelay: `${index * 100}ms`
               }}>
-              <div className="w-full bg-gray-400 dark:bg-gray-600 text-white text-center py-1 text-xs font-semibold tracking-wide">
+              <div className="w-full bg-gray-400 dark:bg-gray-600 text-white text-center py-0.5 text-xs font-semibold tracking-wide">
                 SOLD
               </div>
-              <div className="px-5 py-2.5">
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-xs font-medium text-gray-600 dark:text-gray-400 truncate">{backDeal.name}</h3>
-                  <p className="text-sm font-bold text-gray-800 dark:text-gray-200">{backDeal.ebitda}</p>
+              <div className="px-4 py-1">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="text-xs font-medium text-gray-600 dark:text-gray-400 truncate flex-1">{backDeal.name}</h3>
+                  <p className="text-xs font-bold text-gray-800 dark:text-gray-200">{backDeal.ebitda}</p>
                 </div>
               </div>
             </div>
             
-            {/* Middle card - with subtle offset and muted yellow */}
+            {/* Middle card - reduced offset for better visibility */}
             <div 
               className="absolute w-full h-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-500 rounded-lg overflow-hidden transition-all duration-500 animate-fade-in"
               style={{ 
-                transform: `translateX(${isMobile ? middleOffset / 2 : middleOffset}px) translateY(${isMobile ? '-40px' : '-60px'})`,
+                transform: `translateX(0) translateY(${isMobile ? -30 : -40}px)`,
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                 opacity: 0.92,
-                animationDelay: `${index * 100 + 50}ms`,
-                transition: 'all 0.5s ease'
-              }}
-              onMouseEnter={(e) => {
-                if (!isMobile) {
-                  e.currentTarget.style.transform = `translateX(${middleOffset * 1.5}px) translateY(-62px) scale(1.01)`;
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isMobile) {
-                  e.currentTarget.style.transform = `translateX(${middleOffset}px) translateY(-60px) scale(1)`;
-                }
+                animationDelay: `${index * 100 + 50}ms`
               }}>
-              <div className="w-full bg-yellow-400/70 text-black text-center py-1 text-xs font-semibold tracking-wide">
+              <div className="w-full bg-yellow-400/70 text-black text-center py-0.5 text-xs font-semibold tracking-wide">
                 SOLD
               </div>
-              <div className="px-5 py-2.5">
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-xs font-medium text-gray-700 dark:text-gray-200 truncate">{middleDeal.name}</h3>
-                  <p className="text-sm font-bold text-gray-900 dark:text-white">{middleDeal.ebitda}</p>
+              <div className="px-4 py-1">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="text-xs font-medium text-gray-700 dark:text-gray-200 truncate flex-1">{middleDeal.name}</h3>
+                  <p className="text-xs font-bold text-gray-900 dark:text-white">{middleDeal.ebitda}</p>
                 </div>
               </div>
             </div>
@@ -390,7 +363,7 @@ export default function MissedDeals() {
       {/* CTA Below Cards */}
       <div className="text-center mt-12">
         <p className="text-muted-foreground mb-4">
-          Don't let the next one slip away
+          Don&apos;t let the next one slip away
         </p>
         <a 
           href="#newsletter" 
