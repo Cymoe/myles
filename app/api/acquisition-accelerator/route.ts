@@ -34,7 +34,7 @@ export async function POST(request: Request) {
           
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3>📄 Your Complete 32-Document Blueprint System (Download Now)</h3>
-            <p><a href="https://myleskameron.com/downloads/blueprint-starter-pack/index.html" style="color: #0066cc;">Click here to access all documents</a></p>
+            <p><a href="${process.env.NEXT_PUBLIC_BASE_URL || 'https://myleskameron.com'}/downloads/blueprint-starter-pack/all-documents" style="color: #0066cc;">Click here to access all documents</a></p>
             
             <p style="margin-top: 15px;"><strong>What's included:</strong></p>
             <ul style="margin: 10px 0;">

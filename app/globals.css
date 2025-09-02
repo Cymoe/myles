@@ -414,4 +414,20 @@
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
     }
   }
+  
+  /* Slide Up Animation for Mobile Popup */
+  .animate-slide-up {
+    animation: slideUpFromBottom 0.3s ease-out forwards;
+  }
+  
+  @keyframes slideUpFromBottom {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
