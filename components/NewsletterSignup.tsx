@@ -15,14 +15,14 @@ export default function NewsletterSignup() {
     setStatus('loading');
     
     try {
-      const response = await fetch('/api/subscribe', {
+      const response = await fetch('/api/acquisition-accelerator', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email,
-          leadMagnet: 'Weekly Newsletter',
+          source: 'newsletter-signup',
         }),
       });
 
@@ -31,9 +31,7 @@ export default function NewsletterSignup() {
       if (response.ok) {
         setStatus('success');
         setEmail('');
-        setTimeout(() => {
-          router.push('/welcome');
-        }, 500);
+        // No redirect - stay on page after success
       } else {
         console.error('Subscription error:', data.error);
         setStatus('idle');
@@ -68,11 +66,14 @@ export default function NewsletterSignup() {
             onClick={() => setShowForm(true)}
             className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-md"
           >
-            <span className="text-lg font-medium">Get Weekly Insights</span>
+            <span className="text-lg font-medium">Unlock private dealflow</span>
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
+          <p className="text-sm text-muted-foreground mt-3">
+            It's free. Unsubscribe anytime.
+          </p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="animate-fade-in">
@@ -81,7 +82,7 @@ export default function NewsletterSignup() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your best email"
+              placeholder="Email address"
               required
               className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
               disabled={status === 'loading'}
@@ -95,10 +96,6 @@ export default function NewsletterSignup() {
               {status === 'loading' ? 'Joining...' : 'Join Free'}
             </button>
           </div>
-          <p className="text-xs text-muted-foreground/70 mt-3 text-center">
-            Weekly insights on buying, operating, and selling boring businesses. Unsubscribe anytime.<br/>
-            <span className="font-semibold">Found a deal? Reply to any email to share.</span>
-          </p>
         </form>
       )}
     </div>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueprint Starter Pack - All Documents</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .success-box {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .document-card {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .document-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #786254;
+        }
+        .doc-number {
+            font-size: 0.9em;
+            color: #786254;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .doc-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #786254;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            background: #5a4a3e;
+            transform: scale(1.05);
+        }
+        .download-all-btn {
+            display: block;
+            background: #000;
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 30px auto;
+            max-width: 400px;
+            transition: all 0.3s ease;
+        }
+        .download-all-btn:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+        .note {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Blueprint Starter Pack</h1>
+        <p class="subtitle">8 Essential Documents from $80M+ in Deals</p>
+        
+        <div class="success-box">
+            ✅ Success! Your documents are ready for download.
+        </div>
+
+        <div class="warning">
+            ⏰ This page expires in 24 hours. Download all documents now and save them locally.
+        </div>
+        
+        <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
+            <p style="margin: 0; font-size: 0.95em;">
+                <strong>Note:</strong> You're receiving 8 carefully selected documents from our complete 67-document Blueprint system.<br>
+                Document numbers reflect their position in the full collection.
+            </p>
+        </div>
+
+        <a href="#" class="download-all-btn" onclick="downloadAll(); return false;">
+            📦 Download All 8 Documents (ZIP)
+        </a>
+
+        <h2>Download Individual Documents:</h2>
+        <p style="text-align: center; color: #666; font-size: 0.9em; margin-bottom: 20px;">
+            <strong>Tip:</strong> Click "View" to read online, or "Download" to save the document. 
+            To create a PDF, open the document and use your browser's "Print → Save as PDF" feature.
+        </p>
+        
+        <div class="documents-grid">
+            <div class="document-card">
+                <div class="doc-number">DOC #1</div>
+                <div class="doc-title">30-Day Acquisition Timeline</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                    <a href="doc-1-acquisition-timeline.html" class="download-btn" style="margin: 0;">View</a>
+                    <a href="/downloads/blueprint-pdfs/Blueprint_Doc01_30Day_Timeline.pdf" class="download-btn" download style="margin: 0; background: #444;">Download PDF</a>
+                </div>
+            </div>
+            
+            <div class="document-card">
+                <div class="doc-number">DOC #2</div>
+                <div class="doc-title">Service Business Selector</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                    <a href="doc-2-service-business-selector.html" class="download-btn" style="margin: 0;">View</a>
+                    <a href="/downloads/blueprint-pdfs/Blueprint_Doc02_Business_Selector.pdf" class="download-btn" download style="margin: 0; background: #444;">Download PDF</a>
+                </div>
+            </div>
+            
+            <div class="document-card">
+                <div class="doc-number">DOC #3</div>
+                <div class="doc-title">Creative Deal Structures</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                    <a href="doc-3-creative-financing-bible.html" class="download-btn" style="margin: 0;">View</a>
+                    <a href="/downloads/blueprint-pdfs/Blueprint_Doc03_Creative_Deal_Structures.pdf" class="download-btn" download style="margin: 0; background: #444;">Download PDF</a>
+                </div>
+            </div>
+            
+            <div class="document-card">
+                <div class="doc-number">DOC #6</div>
+                <div class="doc-title">Direct Owner Templates</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                    <a href="doc-6-direct-owner-templates.html" class="download-btn" style="margin: 0;">View</a>
+                    <a href="/downloads/blueprint-pdfs/Blueprint_Doc06_Owner_Contact_Templates.pdf" class="download-btn" download style="margin: 0; background: #444;">Download PDF</a>
+                </div>
+            </div>
+            
+            <div class="document-card">
+                <div class="doc-number">DOC #7</div>
+                <div class="doc-title">Off-Market Deal Funnel</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                    <a href="doc-7-off-market-deal-funnel.html" class="download-btn" style="margin: 0;">View</a>
+                    <a href="/downloads/blueprint-pdfs/Blueprint_Doc07_Off_Market_Deals.pdf" class="download-btn" download style="margin: 0; background: #444;">Download PDF</a>
+                </div>
+            </div>
+            
+            <div class="document-card">
+                <div class="doc-number">DOC #8</div>
+                <div class="doc-title">Quick Due Diligence</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                    <a href="doc-8-quick-due-diligence.html" class="download-btn" style="margin: 0;">View</a>
+                    <a href="/downloads/blueprint-pdfs/Blueprint_Doc08_Due_Diligence.pdf" class="download-btn" download style="margin: 0; background: #444;">Download PDF</a>
+                </div>
+            </div>
+            
+            <div class="document-card">
+                <div class="doc-number">DOC #11</div>
+                <div class="doc-title">Business Valuation 101</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                    <a href="doc-11-business-valuation-101.html" class="download-btn" style="margin: 0;">View</a>
+                    <a href="/downloads/blueprint-pdfs/Blueprint_Doc11_Valuation_Guide.pdf" class="download-btn" download style="margin: 0; background: #444;">Download PDF</a>
+                </div>
+            </div>
+            
+            <div class="document-card">
+                <div class="doc-number">BONUS</div>
+                <div class="doc-title">$50M Service Empire</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                    <a href="sample-document.html" class="download-btn" style="margin: 0;">View</a>
+                    <a href="/downloads/blueprint-pdfs/Blueprint_Bonus_50M_Formula.pdf" class="download-btn" download style="margin: 0; background: #444;">Download PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <p><strong>Quick Start Guide:</strong></p>
+            <ol style="text-align: left; max-width: 600px; margin: 20px auto;">
+                <li>Start with Doc #1 - The 30-Day Timeline shows you the exact steps</li>
+                <li>Use Doc #2 - Pick your business type with the Selector Matrix</li>
+                <li>Apply Doc #6 - Contact owners using proven templates</li>
+                <li>Take action within 48 hours - Momentum is everything</li>
+            </ol>
+            <p style="margin-top: 30px;">
+                <strong>Want all 67 documents?</strong><br>
+                The complete Blueprint system includes 59 additional advanced documents.<br>
+                <a href="/blueprint-special" style="color: #786254; font-weight: bold;">Get the complete system for $697 (save $191)</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function downloadAll() {
+            // In a real implementation, this would trigger a ZIP download
+            // For now, we'll download each file individually
+            const files = [
+                {url: '/downloads/blueprint-pdfs/Blueprint_Doc01_30Day_Timeline.pdf'},
+                {url: '/downloads/blueprint-pdfs/Blueprint_Doc02_Business_Selector.pdf'},
+                {url: '/downloads/blueprint-pdfs/Blueprint_Doc03_Creative_Deal_Structures.pdf'},
+                {url: '/downloads/blueprint-pdfs/Blueprint_Doc06_Owner_Contact_Templates.pdf'},
+                {url: '/downloads/blueprint-pdfs/Blueprint_Doc07_Off_Market_Deals.pdf'},
+                {url: '/downloads/blueprint-pdfs/Blueprint_Doc08_Due_Diligence.pdf'},
+                {url: '/downloads/blueprint-pdfs/Blueprint_Doc11_Valuation_Guide.pdf'},
+                {url: '/downloads/blueprint-pdfs/Blueprint_Bonus_50M_Formula.pdf'}
+            ];
+            
+            alert('Starting download of all 8 documents...\n\nNote: Your browser may ask permission to download multiple files.');
+            
+            files.forEach((file, index) => {
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = file.url;
+                    link.download = '';
+                    link.click();
+                }, index * 500); // Stagger downloads by 500ms
+            });
+        }
+    </script>
+</body>
+</html>

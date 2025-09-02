@@ -154,6 +154,11 @@ const config = {
   plugins: [
     require('@tailwindcss/typography'),
     require("tailwindcss-animate"),
+    // Add custom theme variants
+    function({ addVariant }: any) {
+      addVariant('ocean', '.ocean &')
+      addVariant('sunset', '.sunset &')
+    },
   ],
 } satisfies Config
 

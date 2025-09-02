@@ -149,6 +149,7 @@ export async function getCountriesData(): Promise<CountriesData | null> {
       });
       
       if (!page) {
+        console.log('No countries entry found in shared database');
         return null;
       }
     }
@@ -192,7 +193,7 @@ function parseCountriesData(page: any): CountriesData {
   // Get current location if available
   const currentLocation = getText(page.properties['Current Location']) || 
                           getText(page.properties['Location']) || 
-                          'Bali ⇄ Texas';
+                          'Bali ⇄ Texas ⇄ Zurich';
 
   return {
     countriesVisited: countriesList.length > 0 ? countriesList : [
@@ -228,7 +229,7 @@ export async function getCountriesAsRows(): Promise<CountriesData | null> {
 
     // Extract country names from each row
     const countriesList: string[] = [];
-    let currentLocation = 'Bali ⇄ Texas';
+    let currentLocation = 'Bali ⇄ Texas ⇄ Zurich';
     
     for (const page of response.results) {
       const pageData = page as any;

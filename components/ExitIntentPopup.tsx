@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 
 export default function ExitIntentPopup() {
@@ -18,7 +17,7 @@ export default function ExitIntentPopup() {
     if (pathname !== '/') return;
     
     // Test mode - uncomment the line below to see popup immediately
-    // setShowPopup(true);
+    setShowPopup(true);
     
     // Check if user has already seen popup this session
     const hasSeenPopup = sessionStorage.getItem('exitIntentShown');
@@ -60,14 +59,14 @@ export default function ExitIntentPopup() {
     setStatus('loading');
     
     try {
-      const response = await fetch('/api/subscribe', {
+      const response = await fetch('/api/acquisition-accelerator', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email,
-          leadMagnet: '5 Boring Businesses That Print Money',
+          source: 'exit-intent',
         }),
       });
 
@@ -75,19 +74,19 @@ export default function ExitIntentPopup() {
 
       if (response.ok) {
         setStatus('success');
+        // Don't redirect - let them see the success message
         setTimeout(() => {
           setShowPopup(false);
-          router.push('/welcome');
-        }, 1000);
+        }, 2000);
       } else {
         console.error('Subscription error:', data.error);
         setStatus('idle');
-        alert('Something went wrong. Please try again.');
+        alert(`Error: ${data.error || response.statusText || 'Something went wrong'}`);
       }
     } catch (error) {
       console.error('Network error:', error);
       setStatus('idle');
-      alert('Network error. Please try again.');
+      alert(`Network error: ${error instanceof Error ? error.message : 'Please check if the server is running'}`);
     }
   };
 
@@ -121,51 +120,41 @@ export default function ExitIntentPopup() {
             <svg className="w-16 h-16 text-primary mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h3 className="text-xl font-semibold text-foreground mb-2">Success!</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-2">You're all set!</h3>
             <p className="text-muted-foreground">
-              Check your email for the guide.
+              Deal alerts will hit your inbox weekly.
             </p>
           </div>
         ) : (
           <>
-            {/* Profile Image */}
+            {/* Deal Alert Header */}
             <div className="text-center mb-6">
-              <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border-2 border-primary/20">
-                <Image
-                  src="/images/myles_hero.JPG"
-                  alt="Myles Kameron"
-                  width={96}
-                  height={96}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              
-              <h2 className="text-2xl font-semibold text-foreground mb-2">
-                Wait! Before You Go...
+              <h2 className="text-2xl font-medium text-foreground mb-3">
+                Hold up - there's a $2.1M EBITDA deal hitting tomorrow
               </h2>
-              <p className="text-lg text-muted-foreground mb-1">
-                Get my free guide:
-              </p>
-              <p className="text-xl font-semibold text-primary">
-                &ldquo;5 Boring Businesses That Print Money&rdquo;
+              <p className="text-base text-muted-foreground">
+                Get first access to off-market deals
               </p>
             </div>
             
-            {/* Benefits */}
-            <ul className="space-y-2 mb-6 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-0.5">✓</span>
-                <span>Real businesses generating $1M+ annually</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-0.5">✓</span>
-                <span>Why they&apos;re undervalued (3-5x EBITDA)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-0.5">✓</span>
-                <span>How to find motivated sellers</span>
-              </li>
-            </ul>
+            {/* Recent Deals */}
+            <div className="space-y-3 mb-6">
+              <p className="text-sm font-medium text-foreground">Recent deals sent:</p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-center justify-between p-3 bg-background dark:bg-background/50 rounded-lg border border-border">
+                  <span className="text-foreground">Texas roofing company</span>
+                  <span className="text-muted-foreground">$1.8M EBITDA at 3x</span>
+                </li>
+                <li className="flex items-center justify-between p-3 bg-background dark:bg-background/50 rounded-lg border border-border">
+                  <span className="text-foreground">Southeast medical cleaning</span>
+                  <span className="text-muted-foreground">$1.5M EBITDA</span>
+                </li>
+                <li className="flex items-center justify-between p-3 bg-background dark:bg-background/50 rounded-lg border border-border">
+                  <span className="text-foreground">Midwest towing business</span>
+                  <span className="text-muted-foreground">$1.1M EBITDA</span>
+                </li>
+              </ul>
+            </div>
             
             {/* Form */}
             <form onSubmit={handleSubmit}>
@@ -184,7 +173,7 @@ export default function ExitIntentPopup() {
                 className="w-full py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-md font-medium disabled:opacity-50"
                 disabled={status === 'loading'}
               >
-                {status === 'loading' ? 'Sending...' : 'Send Me The Guide'}
+                {status === 'loading' ? 'Sending...' : 'Alert me about deals'}
               </button>
               <p className="text-xs text-muted-foreground/70 mt-3 text-center">
                 No spam. Unsubscribe anytime.

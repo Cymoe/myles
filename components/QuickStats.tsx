@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 export default function QuickStats() {
-  const [currentLocation, setCurrentLocation] = useState('Bali ⇄ Texas');
+  const [currentLocation, setCurrentLocation] = useState('Bali ⇄ Texas ⇄ Zurich');
   const [totalCountries, setTotalCountries] = useState(26);
   const [countriesThisMonth, setCountriesThisMonth] = useState(3);
   const [activeProjects, setActiveProjects] = useState(2);
@@ -20,7 +20,7 @@ export default function QuickStats() {
         if (response.ok) {
           const data = await response.json();
           setCountriesVisited(data.countriesVisited || []);
-          setCurrentLocation(data.currentLocation || 'Bali ⇄ Texas');
+          setCurrentLocation(data.currentLocation || 'Bali ⇄ Texas ⇄ Zurich');
           setTotalCountries(data.totalCountries || data.countriesVisited?.length || 26);
         }
       } catch (error) {

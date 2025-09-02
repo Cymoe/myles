@@ -33,14 +33,14 @@ export default function InlineLeadCapture({
     setStatus('loading');
     
     try {
-      const response = await fetch('/api/subscribe', {
+      const response = await fetch('/api/acquisition-accelerator', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email,
-          leadMagnet,
+          source: 'inline-capture',
         }),
       });
 
@@ -49,9 +49,7 @@ export default function InlineLeadCapture({
       if (response.ok) {
         setStatus('success');
         setEmail('');
-        setTimeout(() => {
-          router.push('/welcome');
-        }, 500);
+        // No redirect - stay on page
       } else {
         console.error('Subscription error:', data.error);
         setStatus('idle');

@@ -155,13 +155,13 @@ export default function BoringBusinessesPage() {
           {/* CTA */}
           <div className="mt-12 text-center">
             <p className="text-lg text-muted-foreground mb-6">
-              Want the complete acquisition playbook with scripts, contracts, and financing templates?
+              Want the complete acquisition system with 30 days of deal-making insights?
             </p>
             <a 
-              href="/blueprint" 
+              href="/acquisition-accelerator" 
               className="inline-block px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors rounded-md font-semibold"
             >
-              Get The Blueprint →
+              Start the Accelerator →
             </a>
           </div>
         </div>

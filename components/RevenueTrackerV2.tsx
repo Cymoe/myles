@@ -236,7 +236,7 @@ export default function RevenueTrackerV2() {
       <div className="text-center mb-8">
         <h2 className="font-light text-3xl text-foreground tracking-wide mb-2">Revenue Tracker</h2>
         <p className="text-base text-foreground/80 font-light mb-3 max-w-2xl mx-auto">
-          Building boring service businesses that print money. Target: $1M/year in profit.
+          Building boring service businesses that print. Target: $1M/year in profit.
         </p>
         <p className="text-muted-foreground font-light text-sm">
           Building in public • Updated {getTimeAgo(lastUpdated)}

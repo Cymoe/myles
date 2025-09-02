@@ -10,13 +10,13 @@
 ### Email 2: Quick Start Guide (Day 1)
 **Subject**: Start here (seriously)
 
-Most people download 20 documents and get overwhelmed. Don't be most people.
+Most people download the documents and get overwhelmed. Don't be most people.
 
 Here's exactly what to do today:
 
-1. Read "The $50M Service Empire Formula" (Document #1)
-2. Fill out the "Service Business Selector Matrix" (Document #5) 
-3. Send ONE email using templates in Document #6
+1. Read "30-Day Acquisition Timeline" (Document #1)
+2. Fill out the "Service Business Selector Matrix" (Document #2) 
+3. Send ONE email using templates in Document #4
 
 That's it. Three things. Should take 90 minutes.
 
@@ -57,7 +57,7 @@ What are you waiting for?
 
 -Myles
 
-P.S. - Marcus upgraded to Blueprint Pro after his first deal. The advanced negotiation scripts in the full version saved him $200K on purchase price.
+P.S. - Marcus upgraded to the full Blueprint after his first deal. The advanced negotiation scripts in the complete system saved him $200K on purchase price.
 
 ---
 
@@ -120,7 +120,7 @@ I'm betting on your success.
 
 Ready to go all in?
 
-[Get Blueprint Pro - 24 hours only: $397 instead of $497]
+[Get The Complete Blueprint - 24 hours only: $697]
 
 -Myles
 
@@ -180,7 +180,7 @@ This is your sign to stop waiting.
 
 [Get Blueprint Pro Now →]
 
-Still $497. Still the best investment you'll make.
+Still $697. Still the best investment you'll make.
 
 -Myles
 
@@ -223,9 +223,9 @@ P.S. - If you picked A, you need Blueprint Elite yesterday. The deal flow alone 
 
 ### Conversion Metrics to Track
 
-- Starter Pack → Pro: Target 20%
-- Pro → Elite: Target 25%  
-- Elite → Deal Club: Target 40%
+- Starter Pack → Full Blueprint: Target 20%
+- Full Blueprint → Deal Flow Access: Target 25%  
+- Deal Flow → Deal Club: Target 40%
 - Deal Club → Actual Deals: Target 10%
 
 ### Key Psychology

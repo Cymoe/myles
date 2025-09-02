@@ -33,7 +33,7 @@ export async function GET() {
           'Thailand', 'Indonesia', 'Singapore', 'Japan', 'Australia',
           'New Zealand'
         ],
-        currentLocation: 'Bali ⇄ Texas',
+        currentLocation: 'Bali ⇄ Texas ⇄ Zurich',
         totalCountries: 26
       });
     }
@@ -52,7 +52,7 @@ export async function GET() {
         'Thailand', 'Indonesia', 'Singapore', 'Japan', 'Australia',
         'New Zealand'
       ],
-      currentLocation: 'Bali ⇄ Texas',
+      currentLocation: 'Bali ⇄ Texas ⇄ Zurich',
       totalCountries: 26
     });
   }

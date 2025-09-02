@@ -1,28 +1,40 @@
 import Link from 'next/link';
-import { FileText, Calculator, CheckCircle, TrendingUp } from 'lucide-react';
+import { Calculator, CheckCircle, TrendingUp } from 'lucide-react';
 
 export default function WelcomePage() {
   const resources = [
     {
-      title: "Revenue Tracking Spreadsheet",
-      description: "Track monthly revenue, calculate growth rates, and monitor progress to $1M",
+      title: "Revenue Tracker",
+      subtitle: "Track your way to $1M",
+      description: "Monthly revenue tracking with automated growth calculations",
       icon: Calculator,
       link: "/tools/revenue-tracker",
-      color: "text-green-600"
+      gradient: "from-emerald-500 to-green-600",
+      bgGradient: "from-emerald-500/10 to-green-600/10",
+      iconBg: "bg-emerald-500/10",
+      number: "01"
     },
     {
-      title: "5 Boring Businesses That Print Money",
-      description: "Detailed breakdown of the best sectors to buy into and why they work",
+      title: "5 Boring Businesses",
+      subtitle: "That absolutely print",
+      description: "Detailed breakdowns of the best sectors to acquire",
       icon: TrendingUp,
       link: "/tools/boring-businesses",
-      color: "text-blue-600"
+      gradient: "from-blue-500 to-indigo-600",
+      bgGradient: "from-blue-500/10 to-indigo-600/10",
+      iconBg: "bg-blue-500/10",
+      number: "02"
     },
     {
-      title: "The Boring Business Checklist",
-      description: "27 questions to evaluate any acquisition opportunity",
+      title: "Deal Checklist",
+      subtitle: "27 must-ask questions",
+      description: "Complete evaluation framework for any acquisition",
       icon: CheckCircle,
       link: "/tools/business-checklist",
-      color: "text-purple-600"
+      gradient: "from-purple-500 to-pink-600",
+      bgGradient: "from-purple-500/10 to-pink-600/10",
+      iconBg: "bg-purple-500/10",
+      number: "03"
     }
   ];
 
@@ -33,12 +45,12 @@ export default function WelcomePage() {
           {/* Welcome Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-6">
-              <FileText className="w-10 h-10 text-primary" />
+              <span className="text-4xl">🤝</span>
             </div>
             
-            <h1 className="text-4xl font-serif mb-4">Welcome to the Inner Circle</h1>
+            <h1 className="text-4xl font-light mb-4">You're in</h1>
             <p className="text-xl text-muted-foreground">
-              Your boring business resources are ready.
+              Deal flow starts now.
             </p>
           </div>
 
@@ -59,29 +71,52 @@ export default function WelcomePage() {
           </div>
 
           {/* Resources Grid */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-semibold mb-6">Your Resources:</h2>
-            <div className="grid md:grid-cols-1 gap-6">
+          <div id="resources" className="mb-12 scroll-mt-24">
+            <div className="text-center mb-8">
+              <p className="text-sm uppercase tracking-wider text-muted-foreground mb-2">
+                Join and get instant access to:
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
               {resources.map((resource, index) => (
                 <Link
                   key={index}
                   href={resource.link}
-                  className="group bg-card p-6 rounded-lg border border-border hover:border-primary transition-all hover:shadow-lg"
+                  className="group relative overflow-hidden"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className={`${resource.color} group-hover:scale-110 transition-transform`}>
-                      <resource.icon className="w-8 h-8" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                        {resource.title}
-                      </h3>
-                      <p className="text-muted-foreground">
-                        {resource.description}
-                      </p>
-                    </div>
-                    <div className="text-muted-foreground group-hover:text-primary transition-colors">
-                      →
+                  {/* Card Container */}
+                  <div className="relative h-full bg-card rounded-xl border border-border p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1">
+                    {/* Background Gradient */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${resource.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl`} />
+                    
+                    {/* Content */}
+                    <div className="relative space-y-4">
+                      {/* Number Badge */}
+                      <div className="absolute -top-2 -right-2 text-4xl font-bold text-muted-foreground/10">
+                        {resource.number}
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg ${resource.iconBg} group-hover:scale-110 transition-transform duration-300`}>
+                        <resource.icon className={`w-6 h-6 bg-gradient-to-r ${resource.gradient} bg-clip-text text-transparent`} />
+                      </div>
+                      
+                      {/* Title and Subtitle */}
+                      <div>
+                        <h3 className="text-lg font-semibold text-foreground mb-1">
+                          {resource.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {resource.subtitle}
+                        </p>
+                      </div>
+                      
+                      {/* Arrow */}
+                      <div className="flex items-center text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                        <span className="mr-1">Access now</span>
+                        <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                      </div>
                     </div>
                   </div>
                 </Link>

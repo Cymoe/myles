@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import React from 'react';
-import { Inter, Playfair_Display } from 'next/font/google';
-
 import Footer from '../components/Footer';
 import Providers from './providers';
 import Layout from '@/components/Layout';
@@ -9,20 +7,9 @@ import ConditionalFooter from '@/components/ConditionalFooter';
 import ExitIntentPopup from '@/components/ExitIntentPopup';
 import StickyHeaderBar from '@/components/StickyHeaderBar';
 import ConditionalWealthWidget from '@/components/ConditionalWealthWidget';
+import ScrollToTop from '@/components/ScrollToTop';
 
 import "./globals.css";
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const playfair = Playfair_Display({ 
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: "Myles Kameron | Remote Contractor CEO",
@@ -38,9 +25,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
-      <body className={`${inter.className} bg-background text-foreground antialiased`}>
+    <html lang="en" className="scroll-smooth">
+      <body className="bg-background text-foreground antialiased">
         <Providers>
+          <ScrollToTop />
           <StickyHeaderBar />
           <Layout>
             <main className="min-h-screen">{children}</main>

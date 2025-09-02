@@ -14,26 +14,12 @@ export default function ProductSystem() {
           The Boring Business System
         </h2>
         <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto">
-          Everything you need to go from employee to remote business owner
+          Your complete journey from employee to remote business owner
         </p>
       </div>
 
       {/* Product Cards Container */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-8 relative">
-        
-        {/* Connection Lines - Desktop Only */}
-        <div className="hidden lg:block absolute top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 w-20 h-0.5 bg-primary/30"></div>
-        <div className="hidden lg:block absolute top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-primary">
-            <path d="M9 5L15 12L9 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-        <div className="hidden lg:block absolute top-1/2 left-2/3 transform -translate-x-1/2 -translate-y-1/2 w-20 h-0.5 bg-primary/30"></div>
-        <div className="hidden lg:block absolute top-1/2 left-2/3 transform -translate-x-1/2 -translate-y-1/2">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-primary">
-            <path d="M9 5L15 12L9 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
 
         {/* Step 0: Wealth Profile Quiz */}
         <div 
@@ -103,28 +89,28 @@ export default function ProductSystem() {
             </div>
             
             <h3 className="text-2xl font-semibold text-foreground mb-3">
-              The Blueprint
+              The Acquisition Accelerator
             </h3>
             <p className="text-base text-muted-foreground mb-6">
-              Buy Your First Cash-Flowing Business
+              Your Complete Business Buying System
             </p>
             
             <ul className="space-y-3 mb-8 text-sm text-muted-foreground flex-grow">
               <li className="flex items-start">
                 <span className="text-primary mr-2">•</span>
-                <span>Off-market deal sourcing secrets</span>
+                <span>8 essential documents (instant download)</span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2">•</span>
-                <span>Creative financing (little money down)</span>
+                <span>30-day email course (starts tomorrow)</span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2">•</span>
-                <span>Due diligence & valuation framework</span>
+                <span>Deal sourcing to closing strategies</span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2">•</span>
-                <span>47 documents from $80M+ in closed deals</span>
+                <span>Creative financing blueprints</span>
               </li>
             </ul>
 
@@ -132,14 +118,14 @@ export default function ProductSystem() {
               <div className="flex items-end justify-between">
                 <div>
                   <span className="text-3xl font-semibold text-foreground">FREE</span>
-                  <span className="text-sm text-muted-foreground block mt-1">20 documents</span>
+                  <span className="text-sm text-muted-foreground block mt-1">Complete package</span>
                 </div>
               </div>
               <Link 
-                href="/blueprint-free" 
+                href="/acquisition-accelerator" 
                 className="block w-full bg-primary text-primary-foreground px-6 py-3.5 text-base font-medium hover:opacity-90 transition-all duration-200 rounded-lg text-center shadow-sm hover:shadow-md"
               >
-                Get Started Free →
+                Start Accelerator →
               </Link>
             </div>
           </div>
@@ -152,19 +138,25 @@ export default function ProductSystem() {
           onMouseLeave={() => setHoveredCard(null)}
         >
           <div className="bg-background dark:bg-card p-8 rounded-lg border-2 border-border hover:border-primary transition-all duration-300 h-full flex flex-col min-h-[480px] relative overflow-hidden">
-            {/* Phase Badge */}
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide mb-4 self-start">
-              SCALE
+            {/* Freedom Badge - Replacing the old SCALE badge */}
+            <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full mb-4 self-start">
+              <span className="text-xs font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+                SCALE TO FREEDOM
+              </span>
             </div>
             
             <h3 className="text-2xl font-semibold text-foreground mb-3">
               Remote Ops
             </h3>
             <p className="text-base text-muted-foreground mb-6">
-              Run It From Anywhere
+              Stop Trading Time for Money
             </p>
             
             <ul className="space-y-3 mb-8 text-sm text-muted-foreground flex-grow">
+              <li className="flex items-start">
+                <span className="text-primary mr-2">•</span>
+                <span>Build a business that runs without you</span>
+              </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2">•</span>
                 <span>Remote management systems</span>
@@ -172,10 +164,6 @@ export default function ProductSystem() {
               <li className="flex items-start">
                 <span className="text-primary mr-2">•</span>
                 <span>Hiring & training frameworks</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <span>Operations playbooks by industry</span>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2">•</span>

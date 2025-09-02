@@ -103,6 +103,76 @@
     /* Typography in dark mode */
     --title-color: 0 0% 95%; /* Light gray for headings */
   }
+  
+  .ocean {
+    /* Ocean Theme Color System */
+    --background: 195 53% 95%; /* #EBF4F6 - Light Blue-Gray */
+    --foreground: 200 47% 20%; /* #1B3A4B - Deep Ocean Blue */
+    
+    --card: 195 39% 92%; /* #E0EBF0 - Soft Blue */
+    --card-foreground: 200 47% 20%;
+ 
+    --popover: 195 39% 92%;
+    --popover-foreground: 200 47% 20%;
+ 
+    /* Ocean Blue Primary */
+    --primary: 195 100% 39%; /* #006494 - Ocean Blue */
+    --primary-foreground: 195 53% 95%;
+ 
+    --secondary: 180 30% 85%; /* #C4E0E5 - Seafoam */
+    --secondary-foreground: 200 47% 20%;
+ 
+    --muted: 180 30% 85%; /* #C4E0E5 */
+    --muted-foreground: 200 30% 35%; /* #3D5A6C */
+ 
+    --accent: 180 70% 45%; /* #18A999 - Teal Accent */
+    --accent-foreground: 195 53% 95%;
+ 
+    --destructive: 355 70% 50%; /* Coral Red */
+    --destructive-foreground: 0 0% 98%;
+ 
+    --border: 195 25% 80%; /* #B8D4DB - Soft Blue Border */
+    --input: 195 39% 92%;
+    --ring: 195 100% 39%;
+ 
+    /* Typography in ocean mode */
+    --title-color: 200 47% 20%; /* Deep ocean blue for headings */
+  }
+  
+  .sunset {
+    /* Sunset Theme Color System */
+    --background: 30 100% 97%; /* #FFF5EB - Warm Cream */
+    --foreground: 15 75% 28%; /* #79341A - Burnt Sienna */
+    
+    --card: 25 100% 95%; /* #FFE8D6 - Peach Cream */
+    --card-foreground: 15 75% 28%;
+ 
+    --popover: 25 100% 95%;
+    --popover-foreground: 15 75% 28%;
+ 
+    /* Sunset Orange Primary */
+    --primary: 20 96% 55%; /* #FF7F3F - Sunset Orange */
+    --primary-foreground: 30 100% 97%;
+ 
+    --secondary: 350 100% 88%; /* #FFB3BA - Soft Pink */
+    --secondary-foreground: 15 75% 28%;
+ 
+    --muted: 40 70% 88%; /* #F7E7CE - Champagne */
+    --muted-foreground: 20 50% 40%; /* #996B4D */
+ 
+    --accent: 340 82% 59%; /* #EA5455 - Coral */
+    --accent-foreground: 30 100% 97%;
+ 
+    --destructive: 0 84% 60%; /* Bright Red */
+    --destructive-foreground: 0 0% 98%;
+ 
+    --border: 25 50% 85%; /* #F2D4B8 - Soft Peach Border */
+    --input: 25 100% 95%;
+    --ring: 20 96% 55%;
+ 
+    /* Typography in sunset mode */
+    --title-color: 15 75% 28%; /* Burnt sienna for headings */
+  }
 }
 
 @layer base {
@@ -117,7 +187,7 @@
   
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-inter), sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.7;
     letter-spacing: -0.01em;
@@ -125,8 +195,8 @@
   
   /* Typography Base Styles */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair), serif;
-    font-weight: 500;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
     line-height: 1.2;
     letter-spacing: -0.02em;
     @apply text-[hsl(var(--title-color))];
@@ -134,30 +204,47 @@
   
   h1 {
     @apply text-5xl md:text-6xl lg:text-7xl;
+    font-weight: 300; /* Light for large headers */
   }
   
   h2 {
     @apply text-3xl md:text-4xl lg:text-5xl;
+    font-weight: 300; /* Light */
   }
   
   h3 {
     @apply text-2xl md:text-3xl;
+    font-weight: 400; /* Regular */
   }
   
   h4 {
     @apply text-xl md:text-2xl;
+    font-weight: 400; /* Regular */
   }
   
   h5 {
     @apply text-lg md:text-xl;
+    font-weight: 500; /* Medium */
   }
   
   h6 {
     @apply text-base md:text-lg;
+    font-weight: 500; /* Medium */
   }
   
   p {
     @apply text-base leading-relaxed;
+  }
+  
+  /* Button and CTA styles */
+  button, a.btn, .btn {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 500; /* Medium weight for buttons */
+  }
+  
+  /* Bold text override */
+  strong, b {
+    font-weight: 700; /* Bold for emphasis */
   }
   
   /* Selection Styles */
@@ -292,6 +379,39 @@
     to {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+  
+  /* Slide Up Animation for Stacked Cards */
+  .animate-slideUp {
+    animation: slideUp 0.5s ease-out forwards;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Subtle Pulse Animation for Cards */
+  .animate-subtle-pulse {
+    animation: subtlePulse 3s ease-in-out 1.5s;
+  }
+  
+  @keyframes subtlePulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+      transform: scale(1.02);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
     }
   }
 }

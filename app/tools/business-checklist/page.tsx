@@ -230,10 +230,10 @@ export default function BusinessChecklistPage() {
               Found a business that scores 60%+? Time to make an offer.
             </p>
             <a 
-              href="/blueprint" 
+              href="/acquisition-accelerator" 
               className="inline-block px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors rounded-md font-semibold"
             >
-              Get The Complete Acquisition Blueprint →
+              Start the Accelerator →
             </a>
           </div>
         </div>

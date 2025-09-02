@@ -7,7 +7,7 @@ export const getWelcomeEmailHtml = (userEmail: string, leadMagnet?: string, quiz
   }
   
   // If this is from the exit intent popup
-  if (leadMagnet === '5 Boring Businesses That Print Money') {
+  if (leadMagnet === 'Exit Intent Deal Alerts' || leadMagnet === '5 Boring Businesses That Print Money') {
     return getExitIntentEmailHtml(userEmail, baseUrl);
   }
   
@@ -89,13 +89,16 @@ export const getWelcomeEmailHtml = (userEmail: string, leadMagnet?: string, quiz
 
 const getQuizResultEmailHtml = (userEmail: string, profileName: string, profileData: any, baseUrl: string) => {
   const profileEmojis: Record<string, string> = {
-    'The Freedom Architect': '🏖️',
-    'The Empire Builder': '🏰',
-    'The Impact Investor': '🌍',
-    'The Security Strategist': '🛡️'
+    'The Capital Titan': '₿',
+    'The Time Architect': '∞',
+    'The Global Nomad': '🗺',
+    'The Empire Builder': '₿∞',
+    'The Freedom Designer': '∞🗺',
+    'The Remote Mogul': '₿🗺',
+    'The Wealth Creator': '₿∞🗺'
   };
 
-  const profileKey = profileData?.profile || '';
+  const profileKey = profileData?.profile?.id || '';
   const emoji = profileEmojis[profileName] || '💰';
 
   return `
@@ -121,36 +124,60 @@ const getQuizResultEmailHtml = (userEmail: string, profileName: string, profileD
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
       Based on your quiz results, you're <strong>${profileName}</strong>. This means you value ${
-        profileKey === 'freedomArchitect' ? 'time and location freedom above pure wealth accumulation' :
-        profileKey === 'empireBuilder' ? 'building something significant and creating lasting impact' :
-        profileKey === 'impactInvestor' ? 'using wealth as a tool for positive change in the world' :
-        'financial stability and predictable growth above risky ventures'
+        profileKey === 'capital-titan' ? 'building generational wealth above all else' :
+        profileKey === 'time-architect' ? 'time freedom as your most precious asset' :
+        profileKey === 'global-nomad' ? 'location independence and global experiences' :
+        profileKey === 'empire-builder' ? 'wealth and time freedom through smart systems' :
+        profileKey === 'freedom-designer' ? 'ultimate flexibility in how and where you live' :
+        profileKey === 'remote-mogul' ? 'building wealth from anywhere in the world' :
+        profileKey === 'wealth-creator' ? 'achieving the holy trinity of wealth, time, and location freedom' :
+        'creating a balanced approach to wealth building'
       }.
     </p>
 
     <div style="background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin: 24px 0;">
       <h2 style="font-size: 18px; font-weight: 600; color: #333; margin-top: 0;">Your Wealth Building Path:</h2>
       <ul style="color: #404040; font-size: 16px; line-height: 26px; margin: 0; padding-left: 20px;">
-        ${profileKey === 'freedomArchitect' ? `
-          <li>Build automated income systems</li>
-          <li>Focus on high-margin, low-maintenance businesses</li>
-          <li>Develop remote work capabilities</li>
-          <li>Create multiple revenue streams for security</li>
-        ` : profileKey === 'empireBuilder' ? `
-          <li>Focus on scalable business models</li>
-          <li>Reinvest profits for compound growth</li>
-          <li>Build strong teams and systems</li>
-          <li>Pursue strategic acquisitions</li>
-        ` : profileKey === 'impactInvestor' ? `
-          <li>Invest in sustainable businesses</li>
-          <li>Build brands with strong missions</li>
-          <li>Create value for all stakeholders</li>
-          <li>Measure success beyond financials</li>
+        ${profileKey === 'capital-titan' ? `
+          <li>Focus on businesses with strong exit potential</li>
+          <li>Build systems that scale without your time</li>
+          <li>Track ROI on everything you do</li>
+          <li>Consider the "Die With Zero" philosophy</li>
+        ` : profileKey === 'time-architect' ? `
+          <li>Build businesses with recurring revenue</li>
+          <li>Master delegation and automation</li>
+          <li>Focus on high-margin, low-touch models</li>
+          <li>Hire a virtual assistant this week</li>
+        ` : profileKey === 'global-nomad' ? `
+          <li>Build location-agnostic businesses</li>
+          <li>Master geo-arbitrage strategies</li>
+          <li>Create systems for managing remote teams</li>
+          <li>Set up international banking structure</li>
+        ` : profileKey === 'empire-builder' ? `
+          <li>Focus on businesses that scale through systems</li>
+          <li>Build to sell from day one</li>
+          <li>Document all business processes</li>
+          <li>Hire key operators early</li>
+        ` : profileKey === 'freedom-designer' ? `
+          <li>Build multiple passive income streams</li>
+          <li>Optimize for lifestyle over pure wealth</li>
+          <li>Reduce fixed costs by 20%</li>
+          <li>Plan working vacations regularly</li>
+        ` : profileKey === 'remote-mogul' ? `
+          <li>Leverage global talent and markets</li>
+          <li>Master asynchronous communication</li>
+          <li>Set up tax-friendly operations</li>
+          <li>Join remote entrepreneur masterminds</li>
+        ` : profileKey === 'wealth-creator' ? `
+          <li>Continue optimizing all three pillars</li>
+          <li>Document your systems for others</li>
+          <li>Start mentoring others on the journey</li>
+          <li>Define your "enough is enough" number</li>
         ` : `
-          <li>Diversify income sources</li>
-          <li>Build substantial emergency funds</li>
-          <li>Focus on proven business models</li>
-          <li>Prioritize consistent cash flow</li>
+          <li>Take a more focused approach</li>
+          <li>Choose your primary wealth pillar</li>
+          <li>Build systems around that priority</li>
+          <li>Expand to other pillars over time</li>
         `}
       </ul>
     </div>
@@ -205,12 +232,12 @@ const getExitIntentEmailHtml = (userEmail: string, baseUrl: string) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your 5 boring businesses guide is here</title>
+  <title>You're on the deal list</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif; background-color: #f6f9fc;">
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px 20px;">
     <h1 style="font-size: 28px; font-weight: 700; color: #333; margin-bottom: 20px;">
-      Your 5 boring businesses guide is here (open NOW)
+      You're now getting first access to off-market deals
     </h1>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px;">
@@ -218,59 +245,60 @@ const getExitIntentEmailHtml = (userEmail: string, baseUrl: string) => {
     </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
-      Here's your guide:
+      Perfect timing. I just got word of a $2.1M EBITDA manufacturing deal that's about to hit the market.
     </p>
-    
-    <div style="text-align: center; margin: 32px 0;">
-      <a href="${baseUrl}/downloads/five-boring-businesses-guide.pdf" style="background-color: #786254; color: #fff; text-decoration: none; padding: 16px 40px; font-size: 18px; font-weight: 600; border-radius: 4px; display: inline-block;">
-        Download Your Guide →
-      </a>
-    </div>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
-      These 5 businesses are boring as hell.
+      You'll get the details tomorrow morning before it goes public.
     </p>
     
-    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px;">
-      But they're also:
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px; font-weight: 600;">
+      Here's what you can expect:
     </p>
     
     <ul style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px; padding-left: 20px;">
-      <li>Generating $1M+ annually</li>
-      <li>Selling for 3-5x EBITDA (not the 10x tech nonsense)</li>
-      <li>Run by regular people (not MBAs)</li>
+      <li>First look at businesses before they hit the market</li>
+      <li>Owner contact info when available</li>
+      <li>My take on valuation and deal structure</li>
+      <li>Red flags I spot</li>
     </ul>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px; font-weight: 600;">
-      Quick preview:
+      Recent deals I've sent:
     </p>
     
     <div style="background-color: #f6f9fc; padding: 20px; border-radius: 8px; margin-bottom: 24px;">
       <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 12px;">
-        <strong>Business #1: Mobile RV Repair</strong><br>
-        • Zero real estate costs<br>
-        • $300-500 per service call<br>
-        • One guy in Phoenix does $1.2M/year
+        <strong>Texas Roofing Company</strong><br>
+        • $1.8M EBITDA at 3x multiple<br>
+        • Owner retiring, seller financing available<br>
+        • Sold in 45 days
       </p>
       
       <p style="color: #404040; font-size: 16px; line-height: 26px; margin: 0;">
-        <strong>Business #2: Commercial Hood Cleaning</strong><br>
-        • Recurring revenue (restaurants need it monthly)<br>
-        • $800-2,000 per job<br>
-        • Work nights = zero competition
+        <strong>Southeast Medical Cleaning</strong><br>
+        • $1.5M EBITDA, recession-proof<br>
+        • 5-year contracts with hospitals<br>
+        • Currently under LOI
       </p>
     </div>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
-      Check the guide for the other 3.
+      Not every deal is a fit, but when the right one comes along, you'll be ready.
     </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 32px;">
-      The craziest part? I bought one of these for $0 down.
+      BTW - if you're serious about buying, grab the free acquisition toolkit. It has everything you need to evaluate and close deals.
     </p>
     
+    <div style="text-align: center; margin: 32px 0;">
+      <a href="${baseUrl}/acquisition-accelerator" style="background-color: #786254; color: #fff; text-decoration: none; padding: 16px 40px; font-size: 18px; font-weight: 600; border-radius: 4px; display: inline-block;">
+        Get the Free Acquisition Toolkit →
+      </a>
+    </div>
+    
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px; font-weight: 600;">
-      Reply and tell me which one interests you most.
+      Have a specific type of business in mind? Reply and let me know.
     </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 32px;">

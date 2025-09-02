@@ -3,6 +3,7 @@ import Link from 'next/link';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import DynamicGoalsSection from '@/components/DynamicGoalsSection';
 import RevenueTrackerV2 from '@/components/RevenueTrackerV2';
+import MissedDeals from '@/components/MissedDeals';
 import QuickStats from '@/components/QuickStats';
 import InlineLeadCapture from '@/components/InlineLeadCapture';
 import ProductSystem from '@/components/ProductSystem';
@@ -32,58 +33,152 @@ export default function Home() {
               <QuickStats />
             </div>
             
-            {/* Revenue Tracker - Dynamic from Notion */}
-            <RevenueTrackerV2 />
+            {/* Resource Preview - What They Get */}
+            <div className="my-12 animate-fade-in">
+              <p className="text-center text-sm text-muted-foreground mb-6">Join and get instant access to:</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                <div className="bg-card p-5 rounded-lg border border-border">
+                  <h4 className="font-medium text-base mb-1">Revenue Tracker</h4>
+                  <p className="text-sm text-muted-foreground">Track your way to $1M</p>
+                </div>
+                <div className="bg-card p-5 rounded-lg border border-border">
+                  <h4 className="font-medium text-base mb-1">5 Boring Businesses</h4>
+                  <p className="text-sm text-muted-foreground">That absolutely print</p>
+                </div>
+                <div className="bg-card p-5 rounded-lg border border-border">
+                  <h4 className="font-medium text-base mb-1">Deal Checklist</h4>
+                  <p className="text-sm text-muted-foreground">27 must-ask questions</p>
+                </div>
+              </div>
+            </div>
             
-            {/* Blueprint Starter Pack CTA - Primary Offer */}
-            <div className="text-center my-12 p-8 bg-primary/10 border-2 border-primary/30 rounded-lg max-w-3xl mx-auto animate-fade-in">
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
-                Get 20 Business Acquisition Documents Free
+            {/* Deal Flow Email Capture */}
+            <div id="newsletter" className="text-center my-12 animate-fade-in scroll-mt-20">
+              <h3 className="text-2xl md:text-3xl font-light text-foreground mb-4">
+                Get weekly deal flow
+              </h3>
+              <NewsletterSignup />
+            </div>
+            
+            {/* Missed Deals Section - Creates FOMO */}
+            <MissedDeals />
+            
+            {/* Email Preview Section */}
+            <div className="my-16 max-w-3xl mx-auto animate-fade-in">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl md:text-3xl font-light text-foreground">
+                  Deals like this land in your inbox every week
+                </h3>
+              </div>
+              
+              {/* Email Preview Container */}
+              <div className="bg-white dark:bg-card border border-border rounded-lg shadow-lg overflow-hidden">
+                {/* Email Header */}
+                <div className="border-b border-border p-4 bg-gray-50 dark:bg-background/50">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium">From: Myles Kameron</p>
+                      <p className="text-sm text-muted-foreground">Subject: 🔥 Hot deal: $1.8M EBITDA roofing company (Texas)</p>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Thursday, 9:00 AM</p>
+                  </div>
+                </div>
+                
+                {/* Email Body */}
+                <div className="p-6 space-y-4">
+                  <p className="text-base">Hey,</p>
+                  
+                  <p className="text-base">Found this roofing company in Dallas. Numbers are insane:</p>
+                  
+                  <div className="bg-gray-50 dark:bg-background/50 p-4 rounded-lg space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-sm text-muted-foreground">Revenue:</span>
+                      <span className="font-medium">$5.2M</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-sm text-muted-foreground">EBITDA:</span>
+                      <span className="font-medium">$1.8M (35% margins)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-sm text-muted-foreground">Asking:</span>
+                      <span className="font-medium">$5.4M (3x multiple)</span>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <p className="text-base font-medium">Why I like it:</p>
+                    <ul className="space-y-2 text-sm">
+                      <li>• 80% commercial contracts (stable revenue)</li>
+                      <li>• Owner retiring, kids don't want the business</li>
+                      <li>• Could easily add residential for 30% growth</li>
+                      <li>• SBA pre-qualified at 90% LTV</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-border">
+                    <p className="text-sm text-muted-foreground">Want the broker contact? Reply "SEND IT" and I'll intro you.</p>
+                  </div>
+                  
+                  <p className="text-base">-Myles</p>
+                  
+                  {/* Reply/Send Button - Bottom Right */}
+                  <div className="flex justify-end mt-6">
+                    <a 
+                      href="#newsletter"
+                      className="group relative inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all shadow-sm"
+                    >
+                      <span>Get deals like this</span>
+                      <svg className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                      
+                      {/* Hover Tooltip */}
+                      <span className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                        Join the list →
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Simple Email Capture - Primary Offer */}
+            <div className="text-center my-16 max-w-xl mx-auto animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-light text-foreground mb-2">
+                Don't miss your next deal
               </h2>
-              <p className="text-lg text-muted-foreground mb-2">
-                Battle-tested templates from $80M in closed deals
+              <p className="text-lg text-muted-foreground mb-8">
+                Get my complete acquisition system free
               </p>
-              <p className="text-sm text-muted-foreground mb-6">
-                The exact documents I use to find, evaluate, and buy boring businesses
-              </p>
-              <Link 
-                href="/blueprint-free" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors text-lg"
-              >
-                Send Me The Starter Pack →
-              </Link>
-              <p className="text-xs text-muted-foreground mt-4">
-                Join 500+ operators building boring business empires
-              </p>
+              <div className="space-y-4">
+                <Link 
+                  href="/acquisition-accelerator" 
+                  className="block w-full px-6 py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-lg hover:opacity-90 transition-all text-lg"
+                >
+                  Start the Accelerator →
+                </Link>
+                <p className="text-sm text-muted-foreground">
+                  It's free. Unsubscribe anytime.
+                </p>
+              </div>
             </div>
             
-            {/* Remote Ops Contextual CTA */}
-            <div className="text-center my-8 p-4 bg-primary/5 border border-primary/20 rounded-lg max-w-2xl mx-auto">
-              <p className="text-sm text-muted-foreground mb-2">
-                Want to learn how I manage these businesses remotely?
-              </p>
-              <Link href="https://www.remoteops.ai/" target="_blank" className="text-primary hover:underline text-sm font-semibold">
-                Check out Remote Ops →
-              </Link>
-            </div>
+            {/* SMB Challenge CTA - Now in Product System */}
             
-            {/* Revenue Tracking Lead Capture */}
-            <InlineLeadCapture 
+            {/* Revenue Tracking Lead Capture - Hidden for now */}
+            {/* <InlineLeadCapture 
               title="Want My Revenue Tracking Template?"
               description="The exact spreadsheet I use to track monthly revenue, growth rates, and progress to $1M. Includes automated calculations and goal tracking."
               buttonText="Get the Free Template"
               leadMagnet="Revenue Tracking Template"
               className="my-12"
-            />
+            /> */}
             
             {/* Product System Section */}
             <ProductSystem />
             
-            {/* Public Goals Section - Dynamic from Notion */}
-            <DynamicGoalsSection />
-            
             {/* Editorial Content Section - Sorelle Style Layout */}
-            <div className="max-w-7xl mx-auto mb-20">
+            <div className="max-w-7xl mx-auto mb-12">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
                 
                 {/* Left Column - Text Content */}
@@ -124,6 +219,11 @@ export default function Home() {
                   <p className="text-muted-foreground font-light leading-snug">
                     If you want inspiration, go watch a TED talk. If you want to get rich buying unglamorous businesses that actually make money, stick around.
                   </p>
+                  
+                  <p className="text-muted-foreground font-light leading-snug mt-4">
+                    <span className="text-foreground">Found a deal?</span> I help serious buyers close their first acquisition. 
+                    <Link href="/advisory" className="text-primary hover:underline">Learn more →</Link>
+                  </p>
                 </div>
                 
                 {/* Right Column - Portrait Image */}
@@ -141,6 +241,9 @@ export default function Home() {
                 
               </div>
             </div>
+            
+            {/* Public Goals Section - Dynamic from Notion */}
+            <DynamicGoalsSection />
             
             {/* Wealth Profile CTA */}
             <WealthProfileCTA />
@@ -215,20 +318,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-24 bg-card/20">
+      {/* Deal Flow Section */}
+      <section id="newsletter" className="py-24 bg-card/20">
         <div className="container mx-auto px-6">
           <div className="max-w-xl mx-auto text-center">
-            <h3 className="font-serif text-3xl mb-6">The Boring Business Bulletin</h3>
-            <p className="text-muted-foreground mb-8">
-              Weekly deal flow, acquisition strategies, and revenue insights from someone actually doing it.
-              <br />
-              <span className="text-sm">Real deals. Real numbers. No fluff.</span>
-              <br />
-              <Link href="/blueprint-free" className="text-primary hover:underline text-sm mt-2 inline-block">
-                P.S. Get 20 free business acquisition documents →
-              </Link>
-            </p>
+            <h3 className="text-3xl md:text-4xl font-light text-foreground mb-8">
+              Don't miss your next deal
+            </h3>
             <NewsletterSignup />
           </div>
         </div>
