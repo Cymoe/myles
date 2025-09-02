@@ -418,7 +418,7 @@ export default function MissedDeals() {
 
               {/* Key Points - Compact bullets */}
               <ul className="space-y-0.5 mb-2 flex-grow">
-                {deal.highlights.map((highlight, idx) => (
+                {deal.highlights.map((highlight: string, idx: number) => (
                   <li key={idx} className="text-xs text-muted-foreground">
                     • {highlight}
                     </li>
