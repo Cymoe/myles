@@ -142,46 +142,22 @@ function ThankYouContent() {
         {/* Quick Start Resources */}
         <div className="bg-white shadow-lg rounded-lg p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Get started immediately:
+            Get started with these free resources:
           </h2>
           
-          <div className="space-y-6">
-            {/* Free Resources */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                1) Download these free resources:
-              </h3>
-              <div className="space-y-2">
-                <a href="/downloads/blueprint" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
-                  → 32 Business Acquisition Blueprints
-                </a>
-                <a href="/tools/fifty-boring-businesses" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
-                  → 50 Boring Businesses That Print
-                </a>
-                <a href="/tools/business-checklist" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
-                  → 27 Questions Before You Buy
-                </a>
-                <a href="/tools/revenue-tracker" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
-                  → Revenue Tracking Template
-                </a>
-              </div>
-            </div>
-
-            {/* Work With Me */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                2) Ready to buy?
-              </h3>
-              <p className="text-gray-700 mb-4">
-                I work with a small group of buyers 1-on-1. Let&apos;s talk.
-              </p>
-              <a 
-                href="/advisory" 
-                className="inline-block bg-black text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 transition"
-              >
-                Schedule a Strategy Call →
-              </a>
-            </div>
+          <div className="space-y-2">
+            <a href="/downloads/blueprint-starter" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
+              → Business Acquisition Blueprints
+            </a>
+            <a href="/tools/fifty-boring-businesses" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
+              → 50 Boring Businesses That Print
+            </a>
+            <a href="/tools/business-checklist" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
+              → 27 Questions Before You Buy
+            </a>
+            <a href="/tools/revenue-tracker" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
+              → Revenue Tracking Template
+            </a>
           </div>
         </div>
 

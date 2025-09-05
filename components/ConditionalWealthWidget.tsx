@@ -13,10 +13,15 @@ export default function ConditionalWealthWidget() {
     '/wealth-profile-quiz', // Quiz page itself
     '/wealth-profile-results', // Results page
     '/downloads/blueprint', // Downloads page - users already converted
+    '/downloads/blueprint-starter', // Starter pack page - users already converted
     '/acquisition-accelerator', // Users already engaged with paid content
     '/welcome', // Welcome page after signup
     '/advisory', // Advisory services page
-    '/thank-you' // Thank you page after newsletter signup
+    '/thank-you', // Thank you page after newsletter signup
+    '/tools/fifty-boring-businesses', // Free resource
+    '/tools/business-checklist', // Free resource
+    '/tools/revenue-tracker', // Free resource
+    '/tools/boring-businesses' // Free resource
   ];
   
   // Also exclude any downloads or checkout pages (pattern matching)

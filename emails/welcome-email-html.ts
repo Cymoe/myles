@@ -55,8 +55,8 @@ export const getWelcomeEmailHtml = (userEmail: string, leadMagnet?: string, quiz
     </h3>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px;">
-      👉 <a href="${baseUrl}/downloads/blueprint" style="color: #786254; text-decoration: none; font-weight: 600;">32 Business Acquisition Blueprints</a>
-      <span style="color: #666; font-size: 14px;">- My complete playbook</span>
+      👉 <a href="${baseUrl}/downloads/blueprint-starter" style="color: #786254; text-decoration: none; font-weight: 600;">Business Acquisition Blueprints</a>
+      <span style="color: #666; font-size: 14px;">- 5 essential documents</span>
     </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px;">
@@ -97,10 +97,6 @@ export const getWelcomeEmailHtml = (userEmail: string, leadMagnet?: string, quiz
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
       -Myles
-    </p>
-    
-    <p style="color: #999; font-size: 14px; line-height: 20px;">
-      P.S. Serious about buying? I work with a small group of buyers 1-on-1. <a href="${baseUrl}/advisory" style="color: #786254;">Details here</a>.
     </p>
     
     <hr style="border: none; border-top: 1px solid #e6ebf1; margin: 32px 0;">
