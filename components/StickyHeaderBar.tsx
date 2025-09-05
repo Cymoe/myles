@@ -64,7 +64,8 @@ export default function StickyHeaderBar() {
     '/wealth-profile-quiz',  // Quiz pages
     '/wealth-profile-results',
     '/blueprint-special',
-    '/blueprint-free'
+    '/blueprint-free',
+    '/sell-your-business'  // Sell your business page
   ];
   
   const shouldExclude = excludedPaths.some(path => pathname.startsWith(path));

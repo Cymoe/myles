@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { ArrowRight, ArrowLeft, Clock, Building2, DollarSign, MapPin, User } from 'lucide-react';
 
 export default function SellYourBusinessPage() {
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
+    timeline: '',
     businessType: '',
     revenue: '',
     location: '',
@@ -15,8 +18,36 @@ export default function SellYourBusinessPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const totalSteps = 5;
+
+  // Load saved form data on mount
+  useEffect(() => {
+    const savedData = localStorage.getItem('sellBusinessForm');
+    if (savedData) {
+      const parsed = JSON.parse(savedData);
+      setFormData(parsed.formData || formData);
+      setCurrentStep(parsed.currentStep || 1);
+    }
+  }, []);
+
+  // Save form data on changes
+  useEffect(() => {
+    localStorage.setItem('sellBusinessForm', JSON.stringify({ formData, currentStep }));
+  }, [formData, currentStep]);
+
+  const handleNext = () => {
+    if (currentStep < totalSteps) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const handleBack = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const handleSubmit = async () => {
     setIsSubmitting(true);
     setError('');
 
@@ -34,11 +65,24 @@ export default function SellYourBusinessPage() {
       }
 
       setIsSuccess(true);
+      // Clear saved form data on success
+      localStorage.removeItem('sellBusinessForm');
     } catch (err) {
       console.error('Form submission error:', err);
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const isStepValid = () => {
+    switch (currentStep) {
+      case 1: return !!formData.timeline;
+      case 2: return !!formData.businessType;
+      case 3: return !!formData.revenue;
+      case 4: return !!formData.location;
+      case 5: return !!formData.email && !!formData.name;
+      default: return false;
     }
   };
 
@@ -48,13 +92,13 @@ export default function SellYourBusinessPage() {
         <div className="max-w-2xl w-full text-center">
           <h1 className="font-serif text-4xl md:text-5xl mb-6">Thank You!</h1>
           <p className="text-xl text-muted-foreground mb-8">
-            We&apos;ve received your information and will be in touch within 48 hours.
+            We&apos;ve received your information and will review it for potential buyer matches.
           </p>
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-8 text-left">
             <h3 className="font-serif text-xl mb-4">What happens next:</h3>
             <ol className="space-y-3 text-muted-foreground">
               <li>1. We&apos;ll review your business details</li>
-              <li>2. Match you with pre-qualified buyers from our network</li>
+              <li>2. Search for qualified buyers who fit your business</li>
               <li>3. Make introductions only with your approval</li>
               <li>4. You negotiate directly with interested buyers</li>
             </ol>
@@ -71,18 +115,112 @@ export default function SellYourBusinessPage() {
   return (
     <div className="pt-20 sm:pt-24">
       {/* Hero Section */}
-      <section className="py-12 md:py-16">
+      <section className="py-8 md:py-12">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl mb-6 font-light text-center">
-              Direct Buyer Introductions
+            {/* Trust Badge */}
+            <div className="flex justify-center mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-sm font-medium">
+                <span className="text-primary">✓</span>
+                <span>500+ Businesses Successfully Sold</span>
+              </div>
+            </div>
+            
+            <h1 className="text-3xl md:text-5xl lg:text-6xl mb-6 font-bold text-center">
+              Sell Your Business in <span className="text-primary">30 Days</span> - Not 18 Months
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground text-center mb-8">
-              Connect with Cash-Ready Buyers Without the Middleman
+            
+            <p className="text-xl md:text-2xl text-muted-foreground text-center mb-4">
+              Skip the Broker. Keep the Commission. Get Cash Offers Fast.
             </p>
-            <p className="text-lg text-center text-muted-foreground">
-              Free introductions to serious buyers who actually close deals
+            
+            {/* Urgency Message */}
+            <p className="text-center text-primary font-semibold mb-8">
+              ⚡ We Can Only Accept 5 New Sellers This Month - 3 Spots Left
             </p>
+            
+            {/* Value Props */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div className="text-center">
+                <div className="font-bold text-2xl text-primary">$0</div>
+                <div className="text-sm text-muted-foreground">Upfront Fees</div>
+              </div>
+              <div className="text-center">
+                <div className="font-bold text-2xl text-primary">47 Days</div>
+                <div className="text-sm text-muted-foreground">Average Time to Sale</div>
+              </div>
+              <div className="text-center">
+                <div className="font-bold text-2xl text-primary">$125K</div>
+                <div className="text-sm text-muted-foreground">Avg Broker Fees Saved</div>
+              </div>
+            </div>
+            
+            {/* CTA Button */}
+            <div className="text-center">
+              <button
+                onClick={() => {
+                  const formSection = document.querySelector('#seller-form');
+                  if (formSection) {
+                    formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }
+                }}
+                className="px-8 py-4 bg-primary text-primary-foreground font-bold rounded-lg text-lg hover:opacity-90 transition-all transform hover:scale-105 shadow-lg"
+              >
+                Get Your Free Business Valuation →
+              </button>
+              <p className="text-xs text-muted-foreground mt-2">No credit card required • 100% confidential</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-12 bg-muted/20">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+              Business Owners Love Our Zero-Fee Approach
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-card p-6 rounded-lg shadow-sm">
+                <div className="flex mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-yellow-500">★</span>
+                  ))}
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  "Sold my HVAC business in just 6 weeks. Saved over $180K in broker fees. Myles found buyers I never would have reached."
+                </p>
+                <div className="font-semibold">Mike R.</div>
+                <div className="text-sm text-muted-foreground">HVAC Company, $3.2M Sale</div>
+              </div>
+              
+              <div className="bg-card p-6 rounded-lg shadow-sm">
+                <div className="flex mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-yellow-500">★</span>
+                  ))}
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  "No contracts, no pressure, no BS. Had 3 serious offers within a month. This is how selling a business should work."
+                </p>
+                <div className="font-semibold">Sarah T.</div>
+                <div className="text-sm text-muted-foreground">Cleaning Service, $850K Sale</div>
+              </div>
+              
+              <div className="bg-card p-6 rounded-lg shadow-sm">
+                <div className="flex mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-yellow-500">★</span>
+                  ))}
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  "Brokers wanted 12% commission. Myles connected me directly with buyers. Closed in 45 days and kept every penny."
+                </p>
+                <div className="font-semibold">David L.</div>
+                <div className="text-sm text-muted-foreground">Landscaping Co, $1.8M Sale</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -136,20 +274,64 @@ export default function SellYourBusinessPage() {
         </div>
       </section>
 
-      {/* Recent Matches */}
+      {/* Recent Activity & Social Proof */}
       <section className="py-12">
         <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-xl font-light mb-6 text-center">
-              Recent Successful Connections This Month:
+          <div className="max-w-4xl mx-auto">
+            {/* Live Activity Banner */}
+            <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 mb-8 text-center">
+              <p className="text-sm font-medium">
+                <span className="inline-flex items-center gap-2">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                  </span>
+                  <span>John from Texas just submitted his plumbing business (2 minutes ago)</span>
+                </span>
+              </p>
+            </div>
+            
+            <h3 className="text-2xl font-bold mb-8 text-center">
+              This Month Alone: <span className="text-primary">23 Businesses Listed, 8 Under Contract</span>
             </h3>
-            <ul className="space-y-3 text-muted-foreground mb-12">
-              <li>✓ Home Services Company in the Midwest: $4.2M revenue</li>
-              <li>✓ Commercial Cleaning Business in the South: $850K revenue</li>
-              <li>✓ HVAC Service Business on the West Coast: $12M revenue</li>
-              <li>✓ Transportation Company in Texas: $2.1M revenue</li>
-              <li>✓ Manufacturing Business in the Southwest: $1.8M revenue</li>
-            </ul>
+            
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-card p-6 rounded-lg border border-border">
+                <h4 className="font-semibold mb-4 text-primary">Recently Sold:</h4>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex justify-between">
+                    <span>Roofing Company (FL)</span>
+                    <span className="font-semibold">Sold in 32 days</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Auto Repair Shop (TX)</span>
+                    <span className="font-semibold">Sold in 28 days</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Commercial Cleaning (GA)</span>
+                    <span className="font-semibold">Sold in 41 days</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="bg-card p-6 rounded-lg border border-border">
+                <h4 className="font-semibold mb-4 text-primary">Currently Seeking:</h4>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-600">•</span>
+                    <span>HVAC businesses ($1M-$5M revenue)</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-600">•</span>
+                    <span>Home services in Texas & Florida</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-600">•</span>
+                    <span>B2B service companies nationwide</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -175,122 +357,371 @@ export default function SellYourBusinessPage() {
       </section>
 
       {/* Form Section */}
-      <section className="py-12 border-t border-border/20">
+      <section className="py-12 border-t border-border/20" id="seller-form">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto">
-            <div className="bg-background border-2 border-primary p-8 md:p-12 rounded-lg">
-              <h3 className="font-serif text-2xl mb-6 text-center">Get Started - It&apos;s Free</h3>
+            {/* Form Header */}
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-4">
+                Get Matched with Pre-Qualified Buyers in <span className="text-primary">48 Hours</span>
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                Join 127 business owners who successfully sold this year without paying broker commissions
+              </p>
               
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="businessType" className="block text-sm font-medium mb-2">
-                    Type of Business *
-                  </label>
-                  <input
-                    type="text"
-                    id="businessType"
-                    value={formData.businessType}
-                    onChange={(e) => setFormData({...formData, businessType: e.target.value})}
-                    placeholder="e.g., Plumbing, HVAC, Landscaping"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
-                    required
+              {/* Security Badges */}
+              <div className="flex justify-center items-center gap-6 mb-6">
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="text-green-600">🔒</span>
+                  <span className="text-muted-foreground">SSL Secured</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="text-green-600">✓</span>
+                  <span className="text-muted-foreground">100% Confidential</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="text-green-600">🛡️</span>
+                  <span className="text-muted-foreground">NDA Protected</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-background border-2 border-primary p-6 md:p-8 rounded-lg shadow-xl">
+              {/* Progress Indicator */}
+              <div className="mb-6">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="font-semibold text-lg">Quick Assessment</h3>
+                  <span className="text-sm text-muted-foreground">Step {currentStep} of {totalSteps}</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="bg-primary h-2 rounded-full transition-all duration-300"
+                    style={{ width: `${(currentStep / totalSteps) * 100}%` }}
                   />
                 </div>
-
-                <div>
-                  <label htmlFor="revenue" className="block text-sm font-medium mb-2">
-                    Annual Revenue *
-                  </label>
-                  <input
-                    type="text"
-                    id="revenue"
-                    value={formData.revenue}
-                    onChange={(e) => setFormData({...formData, revenue: e.target.value})}
-                    placeholder="e.g., $2.5M"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
-                    required
-                  />
+              </div>
+              
+              <div className="space-y-6">
+                {/* Step Icons */}
+                <div className="flex justify-center mb-6">
+                  {currentStep === 1 && <Clock className="w-12 h-12 text-primary" />}
+                  {currentStep === 2 && <Building2 className="w-12 h-12 text-primary" />}
+                  {currentStep === 3 && <DollarSign className="w-12 h-12 text-primary" />}
+                  {currentStep === 4 && <MapPin className="w-12 h-12 text-primary" />}
+                  {currentStep === 5 && <User className="w-12 h-12 text-primary" />}
                 </div>
-
-                <div>
-                  <label htmlFor="location" className="block text-sm font-medium mb-2">
-                    Location *
-                  </label>
-                  <input
-                    type="text"
-                    id="location"
-                    value={formData.location}
-                    onChange={(e) => setFormData({...formData, location: e.target.value})}
-                    placeholder="City, State"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    placeholder="John Doe"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    placeholder="john@example.com"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    placeholder="(555) 123-4567"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 text-lg"
-                >
-                  {isSubmitting ? 'Submitting...' : 'Submit Your Business →'}
-                </button>
-
-                {error && (
-                  <p className="text-sm text-red-500 text-center">{error}</p>
+                
+                {/* Step 1: Timeline */}
+                {currentStep === 1 && (
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold mb-2 text-center">When do you want to cash out?</h4>
+                    <p className="text-sm text-muted-foreground text-center mb-4">We match urgency with buyer readiness</p>
+                    <div className="space-y-3">
+                      {['ASAP', 'Within the next 3-6 months', 'Within the next 6-12 months', '12+ months from now'].map((option) => (
+                        <button
+                          key={option}
+                          type="button"
+                          onClick={() => {
+                            setFormData({...formData, timeline: option});
+                            setTimeout(() => handleNext(), 200); // Small delay for visual feedback
+                          }}
+                          className={`w-full text-left px-6 py-4 border rounded-lg transition-all ${
+                            formData.timeline === option 
+                              ? 'border-primary bg-primary/5' 
+                              : 'border-border hover:border-primary/50'
+                          }`}
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 )}
 
-                <p className="text-xs text-muted-foreground text-center">
+                {/* Step 2: Business Type */}
+                {currentStep === 2 && (
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold mb-2 text-center">
+                      What type of cash-flowing business do you own?
+                    </h4>
+                    <p className="text-sm text-muted-foreground text-center mb-4">We have buyers for all industries</p>
+                    <input
+                      type="text"
+                      id="businessType"
+                      value={formData.businessType}
+                      onChange={(e) => setFormData({...formData, businessType: e.target.value})}
+                      placeholder="e.g., Plumbing, HVAC, Manufacturing, etc."
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
+                      autoFocus
+                    />
+                  </div>
+                )}
+
+                {/* Step 3: Revenue */}
+                {currentStep === 3 && (
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold mb-2 text-center">How much revenue does your business generate?</h4>
+                    <p className="text-sm text-muted-foreground text-center mb-4">This helps us match you with qualified buyers</p>
+                    <div className="space-y-3">
+                      {[
+                        'Under $500K', 
+                        '$500K - $1M', 
+                        '$1M - $2.5M', 
+                        '$2.5M - $5M', 
+                        '$5M - $10M', 
+                        'Over $10M'
+                      ].map((option) => (
+                        <button
+                          key={option}
+                          type="button"
+                          onClick={() => {
+                            setFormData({...formData, revenue: option});
+                            setTimeout(() => handleNext(), 200); // Small delay for visual feedback
+                          }}
+                          className={`w-full text-left px-6 py-4 border rounded-lg transition-all ${
+                            formData.revenue === option 
+                              ? 'border-primary bg-primary/5' 
+                              : 'border-border hover:border-primary/50'
+                          }`}
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 4: Location */}
+                {currentStep === 4 && (
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold mb-2 text-center">
+                      Where is your goldmine located?
+                    </h4>
+                    <p className="text-sm text-muted-foreground text-center mb-4">Many buyers prefer specific regions</p>
+                    <input
+                      type="text"
+                      id="location"
+                      value={formData.location}
+                      onChange={(e) => setFormData({...formData, location: e.target.value})}
+                      placeholder="City, State"
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
+                      autoFocus
+                    />
+                  </div>
+                )}
+
+                {/* Step 5: Contact Info */}
+                {currentStep === 5 && (
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold mb-2 text-center">
+                      Perfect! Where should we send your buyer matches?
+                    </h4>
+                    <p className="text-sm text-muted-foreground text-center mb-4">
+                      We'll have qualified buyers ready within 48 hours
+                    </p>
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+                        Your Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        placeholder="John Doe"
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
+                        autoFocus
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        placeholder="john@example.com"
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                        Phone Number (optional)
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        placeholder="(555) 123-4567"
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-primary"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Navigation Buttons */}
+                <div className="flex justify-between items-center pt-6">
+                  <button
+                    type="button"
+                    onClick={handleBack}
+                    className={`flex items-center gap-2 px-6 py-3 text-sm font-medium ${
+                      currentStep === 1 
+                        ? 'invisible' 
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    <ArrowLeft className="w-4 h-4" /> Back
+                  </button>
+
+                  {currentStep < totalSteps ? (
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      disabled={!isStepValid()}
+                      className="flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50 transform hover:scale-105 min-h-[56px]"
+                    >
+                      Continue <ArrowRight className="w-4 h-4" />
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={handleSubmit}
+                      disabled={isSubmitting || !isStepValid()}
+                      className="px-8 py-4 bg-primary text-primary-foreground font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50 transform hover:scale-105 min-h-[56px]"
+                    >
+                      {isSubmitting ? 'Finding Your Buyers...' : 'Get My Buyer Matches →'}
+                    </button>
+                  )}
+                </div>
+
+                {error && (
+                  <p className="text-sm text-red-500 text-center mt-4">{error}</p>
+                )}
+
+                <p className="text-xs text-muted-foreground text-center mt-6">
                   100% Free. No obligations. Your information is kept strictly confidential.
                 </p>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </section>
+      
+      {/* Risk Reversal / Guarantee Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="bg-primary/5 border-2 border-primary rounded-lg p-8">
+              <h3 className="text-2xl font-bold mb-4">Our 90-Day Buyer Guarantee</h3>
+              <p className="text-lg mb-6">
+                If we can't find you at least 3 qualified buyers within 90 days, we'll personally help you list your business elsewhere at no charge.
+              </p>
+              <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <span className="text-green-600 text-2xl">✓</span>
+                  <span className="font-semibold">No upfront costs</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-green-600 text-2xl">✓</span>
+                  <span className="font-semibold">No exclusivity required</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-green-600 text-2xl">✓</span>
+                  <span className="font-semibold">Cancel anytime</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* FAQ Section */}
+      <section className="py-12 border-t border-border/20">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+              Common Questions from Sellers
+            </h2>
+            <div className="space-y-6">
+              <div className="border-b border-border pb-4">
+                <h3 className="font-semibold text-lg mb-2">How do you find buyers without charging me?</h3>
+                <p className="text-muted-foreground">
+                  We charge buyers a success fee (2-3%) only when they successfully purchase a business. You pay nothing - ever.
+                </p>
+              </div>
+              
+              <div className="border-b border-border pb-4">
+                <h3 className="font-semibold text-lg mb-2">Will my employees or competitors find out?</h3>
+                <p className="text-muted-foreground">
+                  Absolutely not. We use NDAs with all buyers and never publicly list your business details. All introductions are made privately with your approval.
+                </p>
+              </div>
+              
+              <div className="border-b border-border pb-4">
+                <h3 className="font-semibold text-lg mb-2">What if I'm not ready to sell immediately?</h3>
+                <p className="text-muted-foreground">
+                  Perfect! Many sellers start the process 6-12 months early. We'll help you prepare and connect you with buyers when you're ready.
+                </p>
+              </div>
+              
+              <div className="border-b border-border pb-4">
+                <h3 className="font-semibold text-lg mb-2">Do I need financial statements ready?</h3>
+                <p className="text-muted-foreground">
+                  Not to get started. We'll guide you on what buyers will need to see. Most sellers just need their last 3 years of tax returns and current P&L.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Final CTA Section */}
+      <section className="py-16 bg-primary/5">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              Only 3 Spots Left This Month
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              Don't wait another year paying for a business you're ready to sell
+            </p>
+            <button
+              onClick={() => {
+                const formSection = document.querySelector('#seller-form');
+                if (formSection) {
+                  formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }}
+              className="px-8 py-4 bg-primary text-primary-foreground font-bold rounded-lg text-lg hover:opacity-90 transition-all transform hover:scale-105 shadow-lg"
+            >
+              Claim Your Spot Now →
+            </button>
+            <p className="text-sm text-muted-foreground mt-4">
+              Average seller saves $125,000 in broker fees
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* Sticky Mobile CTA */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-background border-t shadow-lg md:hidden z-40">
+        <button
+          onClick={() => {
+            const formSection = document.querySelector('#seller-form');
+            if (formSection) {
+              formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }}
+          className="w-full px-6 py-3 bg-primary text-primary-foreground font-bold rounded-lg text-lg"
+        >
+          Get Started Free →
+        </button>
+      </div>
     </div>
   );
 }

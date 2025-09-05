@@ -5,10 +5,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { businessType, revenue, location, email, name, phone } = await request.json();
+    const { timeline, businessType, revenue, location, email, name, phone } = await request.json();
 
     // Validate required fields
-    if (!businessType || !revenue || !location || !email || !name) {
+    if (!timeline || !businessType || !revenue || !location || !email || !name) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -22,6 +22,7 @@ export async function POST(request: Request) {
       subject: `New Business For Sale: ${businessType} - ${revenue}`,
       html: `
         <h2>New Business Seller Inquiry</h2>
+        <p><strong>Timeline:</strong> ${timeline}</p>
         <p><strong>Business Type:</strong> ${businessType}</p>
         <p><strong>Annual Revenue:</strong> ${revenue}</p>
         <p><strong>Location:</strong> ${location}</p>
@@ -42,13 +43,14 @@ export async function POST(request: Request) {
         
         <h3>What happens next:</h3>
         <ol>
-          <li>We'll review your business details within 24-48 hours</li>
-          <li>We'll search our network of 100,000+ buyers for matches</li>
-          <li>We'll reach out only if we find qualified buyers interested in your type of business</li>
+          <li>We'll review your business details</li>
+          <li>Search for qualified buyers who match your business</li>
+          <li>Reach out if we find qualified buyers interested</li>
           <li>All introductions are made with your approval</li>
         </ol>
         
         <h3>Your Business Details:</h3>
+        <p><strong>Timeline:</strong> ${timeline}</p>
         <p><strong>Type:</strong> ${businessType}</p>
         <p><strong>Revenue:</strong> ${revenue}</p>
         <p><strong>Location:</strong> ${location}</p>
