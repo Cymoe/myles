@@ -25,7 +25,7 @@ export default function SellYourBusinessPage() {
     const savedData = localStorage.getItem('sellBusinessForm');
     if (savedData) {
       const parsed = JSON.parse(savedData);
-      setFormData(parsed.formData || formData);
+      setFormData(f => parsed.formData || f);
       setCurrentStep(parsed.currentStep || 1);
     }
   }, []);
@@ -189,7 +189,7 @@ export default function SellYourBusinessPage() {
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-4">
-                  "Sold my HVAC business in just 6 weeks. Saved over $180K in broker fees. Myles found buyers I never would have reached."
+                  &ldquo;Sold my HVAC business in just 6 weeks. Saved over $180K in broker fees. Myles found buyers I never would have reached.&rdquo;
                 </p>
                 <div className="font-semibold">Mike R.</div>
                 <div className="text-sm text-muted-foreground">HVAC Company, $3.2M Sale</div>
@@ -202,7 +202,7 @@ export default function SellYourBusinessPage() {
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-4">
-                  "No contracts, no pressure, no BS. Had 3 serious offers within a month. This is how selling a business should work."
+                  &ldquo;No contracts, no pressure, no BS. Had 3 serious offers within a month. This is how selling a business should work.&rdquo;
                 </p>
                 <div className="font-semibold">Sarah T.</div>
                 <div className="text-sm text-muted-foreground">Cleaning Service, $850K Sale</div>
@@ -215,7 +215,7 @@ export default function SellYourBusinessPage() {
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-4">
-                  "Brokers wanted 12% commission. Myles connected me directly with buyers. Closed in 45 days and kept every penny."
+                  &ldquo;Brokers wanted 12% commission. Myles connected me directly with buyers. Closed in 45 days and kept every penny.&rdquo;
                 </p>
                 <div className="font-semibold">David L.</div>
                 <div className="text-sm text-muted-foreground">Landscaping Co, $1.8M Sale</div>
@@ -517,7 +517,7 @@ export default function SellYourBusinessPage() {
                       Perfect! Where should we send your buyer matches?
                     </h4>
                     <p className="text-sm text-muted-foreground text-center mb-4">
-                      We'll have qualified buyers ready within 48 hours
+                      We&apos;ll have qualified buyers ready within 48 hours
                     </p>
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -619,7 +619,7 @@ export default function SellYourBusinessPage() {
             <div className="bg-primary/5 border-2 border-primary rounded-lg p-8">
               <h3 className="text-2xl font-bold mb-4">Our 90-Day Buyer Guarantee</h3>
               <p className="text-lg mb-6">
-                If we can't find you at least 3 qualified buyers within 90 days, we'll personally help you list your business elsewhere at no charge.
+                If we can&apos;t find you at least 3 qualified buyers within 90 days, we&apos;ll personally help you list your business elsewhere at no charge.
               </p>
               <div className="flex flex-col md:flex-row justify-center items-center gap-6">
                 <div className="flex items-center gap-2">
@@ -663,16 +663,16 @@ export default function SellYourBusinessPage() {
               </div>
               
               <div className="border-b border-border pb-4">
-                <h3 className="font-semibold text-lg mb-2">What if I'm not ready to sell immediately?</h3>
+                <h3 className="font-semibold text-lg mb-2">What if I&apos;m not ready to sell immediately?</h3>
                 <p className="text-muted-foreground">
-                  Perfect! Many sellers start the process 6-12 months early. We'll help you prepare and connect you with buyers when you're ready.
+                  Perfect! Many sellers start the process 6-12 months early. We&apos;ll help you prepare and connect you with buyers when you&apos;re ready.
                 </p>
               </div>
               
               <div className="border-b border-border pb-4">
                 <h3 className="font-semibold text-lg mb-2">Do I need financial statements ready?</h3>
                 <p className="text-muted-foreground">
-                  Not to get started. We'll guide you on what buyers will need to see. Most sellers just need their last 3 years of tax returns and current P&L.
+                  Not to get started. We&apos;ll guide you on what buyers will need to see. Most sellers just need their last 3 years of tax returns and current P&L.
                 </p>
               </div>
             </div>
@@ -688,7 +688,7 @@ export default function SellYourBusinessPage() {
               Only 3 Spots Left This Month
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Don't wait another year paying for a business you're ready to sell
+              Don&apos;t wait another year paying for a business you&apos;re ready to sell
             </p>
             <button
               onClick={() => {
