@@ -26,6 +26,16 @@ export default function Home() {
               <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed mx-auto px-4 text-center">
                 <span className="block md:inline">I buy, sell, and operate boring businesses</span>
               </p>
+              
+              {/* Intro Paragraph */}
+              <div className="max-w-2xl mx-auto mt-8 px-4">
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  I&apos;ve spent the last decade running and acquiring service businesses that most people overlook—plumbing, 
+                  painting, turf, roofing, etc. The unsexy stuff that prints cash. Now I share the best deals I find 
+                  with a small group of serious buyers. No hype, no courses to sell. Just real opportunities 
+                  with actual numbers.
+                </p>
+              </div>
             </div>
             
             {/* Quick Stats Bar */}
@@ -158,6 +168,18 @@ export default function Home() {
             {/* Product System Section */}
             <ProductSystem />
             
+            {/* Public Goals Section - Dynamic from Notion */}
+            <div className="my-16">
+              <div className="text-center mb-8">
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                  Below you&apos;ll find my personal and business goals, shared publicly because I believe in 
+                  the power of public accountability. When you declare your intentions to the world, 
+                  you&apos;re more likely to follow through.
+                </p>
+              </div>
+              <DynamicGoalsSection />
+            </div>
+            
             {/* Editorial Content Section - Sorelle Style Layout */}
             <div className="max-w-7xl mx-auto mb-12">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
@@ -222,9 +244,6 @@ export default function Home() {
                 
               </div>
             </div>
-            
-            {/* Public Goals Section - Dynamic from Notion */}
-            <DynamicGoalsSection />
             
             {/* Wealth Profile CTA */}
             <WealthProfileCTA />

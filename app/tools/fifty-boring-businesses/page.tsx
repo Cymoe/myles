@@ -77,7 +77,7 @@ export default function FiftyBoringBusinessesPage() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-serif mb-6">
-              50 Boring Businesses That Print Money
+              50 Boring Businesses That Print
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               The complete guide to businesses Baby Boomers are desperate to sell

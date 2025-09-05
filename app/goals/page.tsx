@@ -22,6 +22,15 @@ export default function GoalsPage() {
       <section className="luxury-spacing">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
+            {/* Intro about public accountability */}
+            <div className="mb-16 text-center">
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                I believe in public accountability. Below you&apos;ll find my personal and business goals, 
+                shared openly because declaring intentions creates commitment. When you tell the world what 
+                you&apos;re going to do, you&apos;re more likely to actually do it.
+              </p>
+            </div>
+            
             {/* 2025 Goals */}
             <div className="mb-16">
               <h2 className="font-serif text-2xl mb-6">2025</h2>
