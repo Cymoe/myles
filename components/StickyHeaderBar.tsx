@@ -92,7 +92,7 @@ export default function StickyHeaderBar() {
               onClick={handleClick}
               className="text-sm sm:text-base font-semibold hover:underline"
             >
-              The Boring Business Checklist - 27 Questions Before You Buy →
+              27 Questions Before You Buy →
             </button>
           </div>
           

@@ -15,6 +15,10 @@ export default function Footer() {
           <Link href="/advisory" className="hover:text-primary transition-colors">
             Advisory Services
           </Link>
+          <span className="text-muted-foreground/50">•</span>
+          <a href="https://smbdealsheet.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+            Newsletter
+          </a>
         </div>
         
         {/* Personal Signature */}

@@ -29,10 +29,10 @@ export async function POST(request: Request) {
     // Send welcome email
     const emailSubject = quizResult 
       ? `Your ${quizResult} Wealth Profile is ready 🎯`
-      : 'Texas roofing company - $1.8M EBITDA at 3.2x';
+      : 'Welcome to Deal Flow';
       
     const { data, error } = await resend.emails.send({
-      from: 'Myles Kameron <hello@myleskameron.com>',
+      from: 'Myles Kameron - SMB Deal Sheet <hello@myleskameron.com>',
       to: [email],
       subject: emailSubject,
       html: getWelcomeEmailHtml(email, leadMagnet || 'resources', quizResult, profileData),

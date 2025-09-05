@@ -18,78 +18,81 @@ export const getWelcomeEmailHtml = (userEmail: string, leadMagnet?: string, quiz
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Texas roofing company - $1.8M EBITDA at 3.2x</title>
+  <title>Welcome to Deal Flow</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif; background-color: #f6f9fc;">
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px 20px;">
-    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
-      Hey Deal Hunters!
-    </p>
-    
-    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
-      I'm excited to share some new businesses worth checking out. First up...
-    </p>
-    
-    <h3 style="font-size: 20px; font-weight: 600; color: #333; margin-bottom: 16px;">
-      NEW DEALS
-    </h3>
-    
-    <div style="background: #f8f9fa; border-left: 4px solid #786254; padding: 20px; margin: 0 0 20px 0; border-radius: 0 8px 8px 0;">
-      <p style="color: #404040; font-size: 16px; line-height: 24px; margin-bottom: 12px;">
-        <strong>1/ Texas Roofing Company</strong><br>
-        📍 Location: Dallas, TX<br>
-        💰 Asking Price: $5,760,000<br>
-        💼 EBITDA: $1,800,000<br>
-        📊 Revenue: $5,200,000<br>
-        📅 Established: 1996
-      </p>
-      
-      <p style="color: #666; font-size: 14px; line-height: 20px; margin-bottom: 0;">
-        <strong>💭 My 2 Cents:</strong> Strong margins at 34%, recurring commercial contracts, and seller financing make this attractive. Owner retiring after 28 years and willing to carry 25% seller financing. Main risk is key employee retention. I'd negotiate to 2.8x with performance earnout. This is a turnkey operation with established systems.
-      </p>
+    <div style="text-align: center; margin-bottom: 30px;">
+      <img src="${baseUrl}/images/myles_hero.JPG" alt="Myles Kameron" style="width: 150px; height: auto; border-radius: 8px; margin-bottom: 20px;">
+      <h1 style="font-size: 28px; font-weight: 700; color: #333; margin: 0;">
+        Hey Deal Hunters
+      </h1>
     </div>
     
-    <div style="background: #f8f9fa; border-left: 4px solid #786254; padding: 20px; margin: 0 0 20px 0; border-radius: 0 8px 8px 0;">
-      <p style="color: #404040; font-size: 16px; line-height: 24px; margin-bottom: 12px;">
-        <strong>2/ HVAC Service Company</strong><br>
-        📍 Location: Phoenix, AZ<br>
-        💰 Asking Price: $3,200,000<br>
-        💼 EBITDA: $850,000<br>
-        📊 Revenue: $3,100,000<br>
-        📅 Established: 2008
-      </p>
-      
-      <p style="color: #666; font-size: 14px; line-height: 20px; margin-bottom: 0;">
-        <strong>💭 My 2 Cents:</strong> Phoenix market is booming and AC is non-negotiable. 60% recurring maintenance contracts provide stable cash flow. Fleet of 12 trucks included. Key is their 24/7 service model and 4.8 Google rating with 500+ reviews. SBA lendable with strong cash flow coverage.
-      </p>
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      Myles here. Thanks for joining.
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      You're now part of a small group of people who are actively looking to buy businesses. Not dreamers. Not "someday" people. But people ready to make moves.
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      Here's what to expect:
+    </p>
+    
+    <div style="background: #f8f9fa; border-radius: 8px; padding: 20px; margin: 0 0 24px 0;">
+      <ul style="color: #404040; font-size: 16px; line-height: 26px; margin: 0; padding-left: 20px;">
+        <li style="margin-bottom: 12px;"><strong>Real deals:</strong> I share actual businesses for sale with real numbers</li>
+        <li style="margin-bottom: 12px;"><strong>My take:</strong> What I like, what I don't, and what I'd pay</li>
+        <li style="margin-bottom: 12px;"><strong>Deal flow:</strong> Curated opportunities sent regularly</li>
+        <li style="margin-bottom: 0;"><strong>No fluff:</strong> Just deals and analysis</li>
+      </ul>
     </div>
     
-    <hr style="border: none; border-top: 1px solid #e6ebf1; margin: 32px 0;">
-    
     <h3 style="font-size: 20px; font-weight: 600; color: #333; margin-bottom: 16px;">
-      YOUR RESOURCES
+      Your free resources:
     </h3>
-    
-    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px;">
-      Here's what I promised you:
-    </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px;">
       👉 <a href="${baseUrl}/downloads/blueprint" style="color: #786254; text-decoration: none; font-weight: 600;">32 Business Acquisition Blueprints</a>
+      <span style="color: #666; font-size: 14px;">- My complete playbook</span>
     </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px;">
-      👉 <a href="${baseUrl}/tools/fifty-boring-businesses" style="color: #786254; text-decoration: none; font-weight: 600;">50 Boring Businesses That Print Money</a>
+      👉 <a href="${baseUrl}/tools/fifty-boring-businesses" style="color: #786254; text-decoration: none; font-weight: 600;">50 Boring Businesses That Print</a>
+      <span style="color: #666; font-size: 14px;">- The best business models to buy</span>
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px;">
+      👉 <a href="${baseUrl}/tools/business-checklist" style="color: #786254; text-decoration: none; font-weight: 600;">27 Questions Before You Buy</a>
+      <span style="color: #666; font-size: 14px;">- Due diligence checklist</span>
     </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
-      👉 <a href="${baseUrl}/tools/revenue-tracker" style="color: #786254; text-decoration: none; font-weight: 600;">The Business Acquisition Checklist</a>
+      👉 <a href="${baseUrl}/tools/revenue-tracker" style="color: #786254; text-decoration: none; font-weight: 600;">Revenue Tracking Template</a>
+      <span style="color: #666; font-size: 14px;">- Track business performance</span>
     </p>
     
-    <hr style="border: none; border-top: 1px solid #e6ebf1; margin: 32px 0;">
+    <div style="background: #786254; color: white; border-radius: 8px; padding: 20px; margin: 24px 0; text-align: center;">
+      <p style="font-size: 16px; line-height: 24px; margin: 0 0 12px 0;">
+        <strong>Important:</strong> Move this email to your primary inbox
+      </p>
+      <p style="font-size: 14px; line-height: 20px; margin: 0;">
+        Gmail likes to hide deal emails in Promotions. Don't miss out.
+      </p>
+    </div>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      One more thing...
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      Reply to this email and tell me: What kind of business are you looking to buy? I read every response and often find deals that match what people are looking for.
+    </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px;">
-      See you tomorrow with more deals,
+      Talk soon,
     </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
@@ -97,7 +100,7 @@ export const getWelcomeEmailHtml = (userEmail: string, leadMagnet?: string, quiz
     </p>
     
     <p style="color: #999; font-size: 14px; line-height: 20px;">
-      P.S. Ready to acquire? I work with buyers 1-on-1. <a href="${baseUrl}/advisory" style="color: #786254;">Book a call</a>.
+      P.S. Serious about buying? I work with a small group of buyers 1-on-1. <a href="${baseUrl}/advisory" style="color: #786254;">Details here</a>.
     </p>
     
     <hr style="border: none; border-top: 1px solid #e6ebf1; margin: 32px 0;">

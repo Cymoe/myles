@@ -111,12 +111,8 @@ function ThankYouContent() {
               </div>
               <div className="ml-4">
                 <p className="text-gray-800">
-                  <strong>Reply &quot;YES&quot;</strong> to the email and I&apos;ll send you 2 bonuses:
+                  <strong>Reply to the email</strong> and tell me what kind of business you&apos;re looking to buy. I read every response and often find deals that match.
                 </p>
-                <ul className="mt-2 space-y-1 text-gray-600">
-                  <li>• My list of 50+ best business types for first-time buyers</li>
-                  <li>• Deal analysis spreadsheet I use for every acquisition</li>
-                </ul>
               </div>
             </div>
           </div>
@@ -130,15 +126,15 @@ function ThankYouContent() {
           <ul className="space-y-3 text-gray-700">
             <li className="flex items-start">
               <span className="text-black mr-2">✓</span>
-              Real deals with actual numbers every Tuesday and Thursday
+              Real deals with actual numbers sent regularly
             </li>
             <li className="flex items-start">
               <span className="text-black mr-2">✓</span>
-              My honest take on each opportunity (the good and the bad)
+              My take on what I like, don&apos;t like, and what I&apos;d pay
             </li>
             <li className="flex items-start">
               <span className="text-black mr-2">✓</span>
-              Market insights from my own acquisition journey
+              No fluff - just deals and analysis
             </li>
           </ul>
         </div>
@@ -160,10 +156,13 @@ function ThankYouContent() {
                   → 32 Business Acquisition Blueprints
                 </a>
                 <a href="/tools/fifty-boring-businesses" className="block text-[#786254] hover:underline">
-                  → 50 Boring Businesses That Print Money
+                  → 50 Boring Businesses That Print
+                </a>
+                <a href="/tools/business-checklist" className="block text-[#786254] hover:underline">
+                  → 27 Questions Before You Buy
                 </a>
                 <a href="/tools/revenue-tracker" className="block text-[#786254] hover:underline">
-                  → Business Acquisition Checklist
+                  → Revenue Tracking Template
                 </a>
               </div>
             </div>
@@ -171,10 +170,10 @@ function ThankYouContent() {
             {/* Work With Me */}
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                2) Ready to buy in the next 6-12 months?
+                2) Ready to buy?
               </h3>
               <p className="text-gray-700 mb-4">
-                If you have $50K+ to invest and want help finding, analyzing, and closing a deal, let&apos;s talk.
+                I work with a small group of buyers 1-on-1. Let&apos;s talk.
               </p>
               <a 
                 href="/advisory" 
