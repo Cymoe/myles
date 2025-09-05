@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Editorial Style */}
-      <section className="flex items-center justify-center relative bg-background pt-12">
+      <section className="flex items-center justify-center relative bg-background pt-20 sm:pt-24">
         <div className="container mx-auto px-8 py-12">
           <div className="max-w-4xl mx-auto">
             

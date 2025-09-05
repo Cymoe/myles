@@ -33,14 +33,14 @@ export default function InlineLeadCapture({
     setStatus('loading');
     
     try {
-      const response = await fetch('/api/acquisition-accelerator', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email,
-          source: 'inline-capture',
+          leadMagnet,
         }),
       });
 

@@ -15,14 +15,14 @@ export default function NewsletterSignup() {
     setStatus('loading');
     
     try {
-      const response = await fetch('/api/acquisition-accelerator', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email,
-          source: 'newsletter-signup',
+          leadMagnet: 'Free Tools Bundle',
         }),
       });
 
@@ -31,7 +31,8 @@ export default function NewsletterSignup() {
       if (response.ok) {
         setStatus('success');
         setEmail('');
-        // No redirect - stay on page after success
+        // Redirect to thank you page with tracking
+        window.location.href = `/thank-you?email=${encodeURIComponent(email)}&source=newsletter-signup`;
       } else {
         console.error('Subscription error:', data.error);
         setStatus('idle');

@@ -6,10 +6,10 @@ export const getWelcomeEmailHtml = (userEmail: string, leadMagnet?: string, quiz
     return getQuizResultEmailHtml(userEmail, quizResult, profileData, baseUrl);
   }
   
-  // If this is from the exit intent popup
-  if (leadMagnet === 'Exit Intent Deal Alerts' || leadMagnet === '5 Boring Businesses That Print Money') {
-    return getExitIntentEmailHtml(userEmail, baseUrl);
-  }
+  // If this is from the exit intent popup - removed, now they get regular welcome email
+  // if (leadMagnet === 'Exit Intent Deal Alerts' || leadMagnet === '50 Boring Businesses That Print Money') {
+  //   return getExitIntentEmailHtml(userEmail, baseUrl);
+  // }
   
   // Otherwise, send the regular welcome email
   return `
@@ -18,65 +18,91 @@ export const getWelcomeEmailHtml = (userEmail: string, leadMagnet?: string, quiz
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your boring business resources are ready</title>
+  <title>Texas roofing company - $1.8M EBITDA at 3.2x</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif; background-color: #f6f9fc;">
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px 20px;">
-    <div style="text-align: center; margin-bottom: 30px;">
-      <img src="${baseUrl}/images/myles_hero.JPG" alt="Myles Kameron" style="width: 80px; height: 80px; border-radius: 50%;">
-    </div>
-    
-    <h1 style="font-size: 28px; font-weight: 700; color: #333; text-align: center; margin-bottom: 30px;">
-      Welcome to the Boring Business Club
-    </h1>
-    
-    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px;">
-      Hey there,
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      Hey Deal Hunters!
     </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
-      Thanks for joining. Your ${leadMagnet || 'resources'} are ready:
+      I'm excited to share some new businesses worth checking out. First up...
     </p>
     
-    <div style="text-align: center; margin: 32px 0;">
-      <a href="${baseUrl}/welcome" style="background-color: #786254; color: #fff; text-decoration: none; padding: 12px 32px; font-size: 16px; font-weight: 600; border-radius: 4px; display: inline-block;">
-        Access Your Resources →
-      </a>
+    <h3 style="font-size: 20px; font-weight: 600; color: #333; margin-bottom: 16px;">
+      NEW DEALS
+    </h3>
+    
+    <div style="background: #f8f9fa; border-left: 4px solid #786254; padding: 20px; margin: 0 0 20px 0; border-radius: 0 8px 8px 0;">
+      <p style="color: #404040; font-size: 16px; line-height: 24px; margin-bottom: 12px;">
+        <strong>1/ Texas Roofing Company</strong><br>
+        📍 Location: Dallas, TX<br>
+        💰 Asking Price: $5,760,000<br>
+        💼 EBITDA: $1,800,000<br>
+        📊 Revenue: $5,200,000<br>
+        📅 Established: 1996
+      </p>
+      
+      <p style="color: #666; font-size: 14px; line-height: 20px; margin-bottom: 0;">
+        <strong>💭 My 2 Cents:</strong> Strong margins at 34%, recurring commercial contracts, and seller financing make this attractive. Owner retiring after 28 years and willing to carry 25% seller financing. Main risk is key employee retention. I'd negotiate to 2.8x with performance earnout. This is a turnkey operation with established systems.
+      </p>
     </div>
     
+    <div style="background: #f8f9fa; border-left: 4px solid #786254; padding: 20px; margin: 0 0 20px 0; border-radius: 0 8px 8px 0;">
+      <p style="color: #404040; font-size: 16px; line-height: 24px; margin-bottom: 12px;">
+        <strong>2/ HVAC Service Company</strong><br>
+        📍 Location: Phoenix, AZ<br>
+        💰 Asking Price: $3,200,000<br>
+        💼 EBITDA: $850,000<br>
+        📊 Revenue: $3,100,000<br>
+        📅 Established: 2008
+      </p>
+      
+      <p style="color: #666; font-size: 14px; line-height: 20px; margin-bottom: 0;">
+        <strong>💭 My 2 Cents:</strong> Phoenix market is booming and AC is non-negotiable. 60% recurring maintenance contracts provide stable cash flow. Fleet of 12 trucks included. Key is their 24/7 service model and 4.8 Google rating with 500+ reviews. SBA lendable with strong cash flow coverage.
+      </p>
+    </div>
+    
+    <hr style="border: none; border-top: 1px solid #e6ebf1; margin: 32px 0;">
+    
+    <h3 style="font-size: 20px; font-weight: 600; color: #333; margin-bottom: 16px;">
+      YOUR RESOURCES
+    </h3>
+    
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px;">
-      Inside you'll find:
-    </p>
-    
-    <ul style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px; padding-left: 20px;">
-      <li>Revenue Tracking Spreadsheet</li>
-      <li>5 Boring Businesses That Print Money</li>
-      <li>The Business Acquisition Checklist</li>
-    </ul>
-    
-    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 16px;">
-      Every Thursday, I'll send you real deals I'm looking at, what's working in my portfolio, and tactical insights from the trenches.
-    </p>
-    
-    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 32px;">
-      No theory. Just what's working.
+      Here's what I promised you:
     </p>
     
     <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px;">
-      – Myles
+      👉 <a href="${baseUrl}/downloads/blueprint" style="color: #786254; text-decoration: none; font-weight: 600;">32 Business Acquisition Blueprints</a>
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px;">
+      👉 <a href="${baseUrl}/tools/fifty-boring-businesses" style="color: #786254; text-decoration: none; font-weight: 600;">50 Boring Businesses That Print Money</a>
+    </p>
+    
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      👉 <a href="${baseUrl}/tools/revenue-tracker" style="color: #786254; text-decoration: none; font-weight: 600;">The Business Acquisition Checklist</a>
     </p>
     
     <hr style="border: none; border-top: 1px solid #e6ebf1; margin: 32px 0;">
     
-    <p style="color: #8898aa; font-size: 14px; line-height: 20px; text-align: center; margin-bottom: 8px;">
-      P.S. Hit reply anytime. I read everything.
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 8px;">
+      See you tomorrow with more deals,
     </p>
     
-    <p style="color: #8898aa; font-size: 14px; line-height: 20px; text-align: center; margin-bottom: 8px;">
-      P.P.S. Found a boring business for sale? Reply with details. We're tracking all deals for future opportunities.
+    <p style="color: #404040; font-size: 16px; line-height: 26px; margin-bottom: 24px;">
+      -Myles
     </p>
     
-    <p style="color: #8898aa; font-size: 14px; line-height: 20px; text-align: center;">
+    <p style="color: #999; font-size: 14px; line-height: 20px;">
+      P.S. Ready to acquire? I work with buyers 1-on-1. <a href="${baseUrl}/advisory" style="color: #786254;">Book a call</a>.
+    </p>
+    
+    <hr style="border: none; border-top: 1px solid #e6ebf1; margin: 32px 0;">
+    
+    <p style="color: #8898aa; font-size: 12px; line-height: 20px; text-align: center;">
       <a href="${baseUrl}/unsubscribe" style="color: #786254; text-decoration: underline;">Unsubscribe</a>
       •
       <a href="${baseUrl}" style="color: #786254; text-decoration: underline;">myleskameron.com</a>

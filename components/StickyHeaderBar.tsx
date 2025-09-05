@@ -56,6 +56,7 @@ export default function StickyHeaderBar() {
   // Don't render on post-conversion pages or tool pages
   const excludedPaths = [
     '/welcome',
+    '/thank-you',  // Thank you page after newsletter signup
     '/tools/',
     '/downloads/',  // Downloads page - users already have access
     '/acquisition-accelerator',  // Paid content

@@ -68,9 +68,26 @@ export default function BoringBusinessesPage() {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-serif mb-4">5 Boring Businesses That Print Money</h1>
+            <h1 className="text-4xl font-serif mb-4">50 Boring Businesses That Print Money</h1>
             <p className="text-muted-foreground text-lg">
               Real businesses you can buy for 3-5x earnings and sell for 10-15x to PE
+            </p>
+          </div>
+
+          {/* Full Guide CTA */}
+          <div className="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400 dark:border-yellow-600 p-6 rounded-lg mb-12 text-center">
+            <h2 className="text-xl font-semibold mb-3">📚 Get the Complete List of 50 Businesses</h2>
+            <p className="text-muted-foreground mb-4">
+              This page shows our top 5 picks. Want all 50 boring businesses that are selling right now?
+            </p>
+            <a 
+              href="/tools/fifty-boring-businesses" 
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors rounded-md font-medium"
+            >
+              View the Full Guide (50 Businesses) →
+            </a>
+            <p className="text-sm text-muted-foreground mt-3">
+              Includes Silver Tsunami data, valuation multiples, and how to find each type
             </p>
           </div>
 
@@ -89,6 +106,7 @@ export default function BoringBusinessesPage() {
           </div>
 
           {/* Business Profiles */}
+          <h2 className="text-2xl font-semibold mb-6 text-center">Top 5 Picks for First-Time Buyers</h2>
           <div className="space-y-8">
             {businesses.map((business, index) => (
               <div key={index} className="bg-card p-8 rounded-lg border border-border">

@@ -15,7 +15,8 @@ export default function ConditionalWealthWidget() {
     '/downloads/blueprint', // Downloads page - users already converted
     '/acquisition-accelerator', // Users already engaged with paid content
     '/welcome', // Welcome page after signup
-    '/advisory' // Advisory services page
+    '/advisory', // Advisory services page
+    '/thank-you' // Thank you page after newsletter signup
   ];
   
   // Also exclude any downloads or checkout pages (pattern matching)

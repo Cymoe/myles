@@ -7,7 +7,7 @@ import { ArrowRight, CheckCircle, Target, Shield, DollarSign, Users, Zap, Trophy
 
 export default function AdvisoryPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pt-20 sm:pt-24">
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center">
         <div className="container mx-auto px-6 z-10">

@@ -39,7 +39,7 @@ export const WelcomeEmail = ({
             />
             
             <Heading style={heading}>
-              Welcome to the Boring Business Club
+              Your resources are ready
             </Heading>
             
             <Text style={paragraph}>
@@ -65,17 +65,10 @@ export const WelcomeEmail = ({
 
             <Text style={list}>
               • Revenue Tracking Spreadsheet<br />
-              • 5 Boring Businesses That Print Money<br />
+              • 50 Boring Businesses That Print Money<br />
               • The Business Acquisition Checklist
             </Text>
 
-            <Text style={paragraph}>
-              Every Thursday, I'll send you real deals I'm looking at, what's working in my portfolio, and tactical insights from the trenches.
-            </Text>
-
-            <Text style={paragraph}>
-              No theory. Just what's working.
-            </Text>
 
             <Text style={signature}>
               – Myles

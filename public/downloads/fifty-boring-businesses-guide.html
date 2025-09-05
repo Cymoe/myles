@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>50 Boring Businesses That Print Money - Myles Kameron</title>
+  <meta http-equiv="refresh" content="0; url=/tools/fifty-boring-businesses">
+  <script>window.location.href = '/tools/fifty-boring-businesses';</script>
+  <style>
+    @page { 
+      size: 8.5in 11in; 
+      margin: 0.75in;
+    }
+    
+    @media print {
+      body { margin: 0; }
+      .page-break { page-break-after: always; }
+      h2 { page-break-before: always; }
+      h2:first-of-type { page-break-before: avoid; }
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: white;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+      color: #222;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    
+    .subtitle {
+      font-size: 22px;
+      color: #666;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+    
+    .intro-box {
+      background: #f0f0f0;
+      border-left: 5px solid #786254;
+      padding: 30px;
+      margin: 30px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .intro-box h2 {
+      margin-top: 0;
+      color: #786254;
+    }
+    
+    .silver-tsunami-box {
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    
+    h2 {
+      font-size: 32px;
+      margin-top: 50px;
+      margin-bottom: 25px;
+      color: #222;
+      font-weight: 600;
+      border-bottom: 3px solid #786254;
+      padding-bottom: 10px;
+    }
+    
+    h3 {
+      font-size: 22px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: #333;
+      font-weight: 600;
+    }
+    
+    h4 {
+      font-size: 18px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #444;
+      font-weight: 600;
+    }
+    
+    p {
+      margin-bottom: 15px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    
+    ul, ol {
+      margin-bottom: 20px;
+      margin-left: 30px;
+    }
+    
+    li {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    
+    .category-box {
+      background: #fafafa;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 25px 0;
+    }
+    
+    .category-box h3 {
+      margin-top: 0;
+      color: #786254;
+      font-size: 24px;
+    }
+    
+    .business-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .business-item {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .business-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-color: #786254;
+    }
+    
+    .business-item h4 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      color: #333;
+      font-size: 17px;
+    }
+    
+    .business-item p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .key-stat {
+      font-weight: 600;
+      color: #786254;
+    }
+    
+    .top-picks {
+      background: #fff9c4;
+      border: 2px solid #f9a825;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    
+    .top-picks h3 {
+      margin-top: 0;
+      color: #f57c00;
+    }
+    
+    .formula-box {
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    
+    .cta-box {
+      background: #786254;
+      color: white;
+      padding: 40px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 40px 0;
+    }
+    
+    .cta-box h3 {
+      color: white;
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+    
+    .cta-box p {
+      color: #f0f0f0;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    
+    .cta-box a {
+      color: white;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    
+    strong {
+      font-weight: 600;
+    }
+    
+    .author {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 2px solid #e0e0e0;
+      text-align: center;
+      color: #666;
+    }
+    
+    .stat-highlight {
+      background: #ffeaa7;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <h1>50 Boring Businesses That Print Money</h1>
+  <p class="subtitle">The complete guide to businesses Baby Boomers are desperate to sell</p>
+  
+  <div class="intro-box">
+    <h2>Why This Guide Exists</h2>
+    <p>I used to share just 5 boring businesses. But that's doing you a disservice.</p>
+    <p>With <span class="stat-highlight">12 million Baby Boomer-owned businesses</span> changing hands in the next 5 years, and <span class="stat-highlight">$10-14 trillion</span> in business value transferring, you deserve the complete picture.</p>
+    <p>These 50 businesses represent the most frequently bought and sold SMBs in America. They're boring. They're unsexy. And they're making their owners wealthy.</p>
+  </div>
+
+  <div class="silver-tsunami-box">
+    <h3>🌊 The Silver Tsunami is Real</h3>
+    <ul>
+      <li><strong>10,000 Boomers retire daily</strong> (19% own businesses)</li>
+      <li><strong>78% of these businesses are profitable</strong></li>
+      <li><strong>60% have no succession plan</strong></li>
+      <li><strong>Average owner age: 71</strong> (up from 65 a decade ago)</li>
+      <li><strong>Service businesses dominate:</strong> 38% of all SMB sales</li>
+    </ul>
+    <p style="margin-top: 20px;"><strong>Translation:</strong> It's a buyer's market for the next decade.</p>
+  </div>
+
+  <h2>The 50 Businesses (By Category)</h2>
+
+  <div class="category-box">
+    <h3>🔧 Essential Service Businesses</h3>
+    <p class="key-stat">Why they sell: Can't be outsourced, recession-resistant, simple operations</p>
+    <div class="business-grid">
+      <div class="business-item">
+        <h4>1. HVAC Services</h4>
+        <p>$150-250/hr • Recurring maintenance • Year-round demand</p>
+      </div>
+      <div class="business-item">
+        <h4>2. Plumbing Services</h4>
+        <p>$125-200/hr • Emergency calls = premium pricing</p>
+      </div>
+      <div class="business-item">
+        <h4>3. Electrical Contractors</h4>
+        <p>Licensed trade • High barriers to entry • $100-175/hr</p>
+      </div>
+      <div class="business-item">
+        <h4>4. Pest Control Services</h4>
+        <p>Monthly recurring • 85%+ retention rates • High margins</p>
+      </div>
+      <div class="business-item">
+        <h4>5. Commercial Cleaning</h4>
+        <p>Contracted revenue • Night work • Scale with crews</p>
+      </div>
+      <div class="business-item">
+        <h4>6. Residential Cleaning</h4>
+        <p>Weekly/biweekly recurring • $100-200 per clean</p>
+      </div>
+      <div class="business-item">
+        <h4>7. Landscaping/Lawn Care</h4>
+        <p>Seasonal contracts • Route density = profits</p>
+      </div>
+      <div class="business-item">
+        <h4>8. Pool Services</h4>
+        <p>Weekly maintenance • $100-150/pool • Warm climate gold</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-box">
+    <h3>🚗 Automotive & Equipment</h3>
+    <p class="key-stat">Why they sell: Aging vehicle fleet, essential services, repeat customers</p>
+    <div class="business-grid">
+      <div class="business-item">
+        <h4>9. Auto Repair Shops</h4>
+        <p>Average car age: 12.5 years • Loyal customer base</p>
+      </div>
+      <div class="business-item">
+        <h4>10. Mobile RV Repair</h4>
+        <p>10M+ RVs • $125-200/hr • Booked months out</p>
+      </div>
+      <div class="business-item">
+        <h4>11. Car Washes</h4>
+        <p>Semi-passive • Membership models • High multiples</p>
+      </div>
+      <div class="business-item">
+        <h4>12. Auto Detailing</h4>
+        <p>Mobile or fixed • $150-500/car • Corporate fleets</p>
+      </div>
+      <div class="business-item">
+        <h4>13. Equipment Rental</h4>
+        <p>Construction boom • Daily/weekly rates • Asset value</p>
+      </div>
+      <div class="business-item">
+        <h4>14. Mobile Mechanic</h4>
+        <p>Convenience premium • Fleet contracts • No overhead</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-box">
+    <h3>🏠 Home Services</h3>
+    <p class="key-stat">Why they sell: Housing stock aging, essential maintenance, premium pricing</p>
+    <div class="business-grid">
+      <div class="business-item">
+        <h4>15. Roofing Companies</h4>
+        <p>Insurance work • $10-30K jobs • Storm chasers</p>
+      </div>
+      <div class="business-item">
+        <h4>16. Window Replacement</h4>
+        <p>Energy efficiency push • $500-1500/window</p>
+      </div>
+      <div class="business-item">
+        <h4>17. Garage Door Services</h4>
+        <p>Repair + replacement • $500-5000 jobs</p>
+      </div>
+      <div class="business-item">
+        <h4>18. Flooring/Carpet</h4>
+        <p>New construction + remodels • High ticket</p>
+      </div>
+      <div class="business-item">
+        <h4>19. Cabinet Making</h4>
+        <p>Custom work • $10-50K projects • Referral based</p>
+      </div>
+      <div class="business-item">
+        <h4>20. Gutter Services</h4>
+        <p>Cleaning + installation • Recurring maintenance</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-box">
+    <h3>🍔 Food & Hospitality</h3>
+    <p class="key-stat">Why they sell: Owner burnout, proven systems, location value</p>
+    <div class="business-grid">
+      <div class="business-item">
+        <h4>21. Pizza Shops</h4>
+        <p>Simple ops • High margins on dough • Delivery boom</p>
+      </div>
+      <div class="business-item">
+        <h4>22. Coffee Shops</h4>
+        <p>Morning rush • Loyal customers • High frequency</p>
+      </div>
+      <div class="business-item">
+        <h4>23. Food Trucks</h4>
+        <p>Low overhead • Event income • Flexible locations</p>
+      </div>
+      <div class="business-item">
+        <h4>24. Sandwich Shops</h4>
+        <p>Lunch crowd • Corporate catering • Simple menu</p>
+      </div>
+      <div class="business-item">
+        <h4>25. Vending Routes</h4>
+        <p>Semi-passive • Location contracts • Scale easily</p>
+      </div>
+      <div class="business-item">
+        <h4>26. Commercial Catering</h4>
+        <p>B2B focus • Recurring clients • High tickets</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-box">
+    <h3>🏪 Retail & Distribution</h3>
+    <p class="key-stat">Why they sell: Protected territories, established relationships, simple operations</p>
+    <div class="business-grid">
+      <div class="business-item">
+        <h4>27. Liquor Stores</h4>
+        <p>Limited licenses • Recession-resistant • High margins</p>
+      </div>
+      <div class="business-item">
+        <h4>28. Convenience Stores</h4>
+        <p>Location dependent • Add gas = 2x revenue</p>
+      </div>
+      <div class="business-item">
+        <h4>29. Laundromats</h4>
+        <p>Semi-passive • Cash business • High multiples</p>
+      </div>
+      <div class="business-item">
+        <h4>30. Dry Cleaners</h4>
+        <p>Recurring customers • Business contracts</p>
+      </div>
+      <div class="business-item">
+        <h4>31. Self-Storage</h4>
+        <p>90%+ occupancy • Passive income • REITs competing</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-box">
+    <h3>🚚 Transportation & Logistics</h3>
+    <p class="key-stat">Why they sell: E-commerce boom, essential services, asset-backed</p>
+    <div class="business-grid">
+      <div class="business-item">
+        <h4>32. Trucking Companies</h4>
+        <p>Dedicated routes • Contract freight • Owner-operators</p>
+      </div>
+      <div class="business-item">
+        <h4>33. Moving Companies</h4>
+        <p>Local + long distance • Peak season pricing</p>
+      </div>
+      <div class="business-item">
+        <h4>34. Delivery Routes</h4>
+        <p>FedEx/Amazon DSP • Protected territories</p>
+      </div>
+      <div class="business-item">
+        <h4>35. Medical Transport</h4>
+        <p>Non-emergency • Insurance pays • Recurring</p>
+      </div>
+      <div class="business-item">
+        <h4>36. School Bus Services</h4>
+        <p>Contract revenue • Predictable schedule</p>
+      </div>
+      <div class="business-item">
+        <h4>37. Courier Services</h4>
+        <p>Legal/medical focus • Rush delivery premiums</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-box">
+    <h3>💼 Professional Services</h3>
+    <p class="key-stat">Why they sell: Aging owners, established books, recurring revenue</p>
+    <div class="business-grid">
+      <div class="business-item">
+        <h4>38. Accounting Firms</h4>
+        <p>Annual recurring • Tax season surge • Sticky clients</p>
+      </div>
+      <div class="business-item">
+        <h4>39. Insurance Agencies</h4>
+        <p>Renewal commissions • Cross-sell opportunities</p>
+      </div>
+      <div class="business-item">
+        <h4>40. Property Management</h4>
+        <p>% of rent • Scalable • Recession-resistant</p>
+      </div>
+      <div class="business-item">
+        <h4>41. Funeral Homes</h4>
+        <p>$7-12K average sale • Preneed sales • Stable demand</p>
+      </div>
+      <div class="business-item">
+        <h4>42. Veterinary Clinics</h4>
+        <p>Pet spending boom • Recurring visits • High margins</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-box">
+    <h3>🏗️ Specialty & Industrial</h3>
+    <p class="key-stat">Why they sell: Specialized knowledge, commercial contracts, equipment value</p>
+    <div class="business-grid">
+      <div class="business-item">
+        <h4>43. Machine Shops</h4>
+        <p>Custom fabrication • B2B focus • Repeat orders</p>
+      </div>
+      <div class="business-item">
+        <h4>44. Sign Manufacturing</h4>
+        <p>Local businesses need • Vehicle wraps boom</p>
+      </div>
+      <div class="business-item">
+        <h4>45. Commercial Hood Cleaning</h4>
+        <p>Fire code required • Night work • $800-2K/job</p>
+      </div>
+      <div class="business-item">
+        <h4>46. Parking Lot Striping</h4>
+        <p>Every 2-3 years • One truck = $1M potential</p>
+      </div>
+      <div class="business-item">
+        <h4>47. Roll-Off Dumpsters</h4>
+        <p>Construction demand • $400-800/rental</p>
+      </div>
+      <div class="business-item">
+        <h4>48. Party/Event Rentals</h4>
+        <p>Weekend work • High margins • Seasonal peaks</p>
+      </div>
+      <div class="business-item">
+        <h4>49. Commercial Laundry</h4>
+        <p>Hotel/restaurant contracts • Route density</p>
+      </div>
+      <div class="business-item">
+        <h4>50. Septic Services</h4>
+        <p>Essential service • Rural focus • Repeat customers</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-picks">
+    <h3>🏆 My Top 10 for First-Time Buyers</h3>
+    <p>Based on ease of operation, financing availability, and profit margins:</p>
+    <ol>
+      <li><strong>Laundromats</strong> - Semi-passive, simple operations</li>
+      <li><strong>Car Washes</strong> - Membership models, appreciating assets</li>
+      <li><strong>Self-Storage</strong> - 90%+ occupancy, minimal labor</li>
+      <li><strong>Vending Routes</strong> - Part-time possible, scale slowly</li>
+      <li><strong>Commercial Cleaning</strong> - Contracted revenue, night work</li>
+      <li><strong>Property Management</strong> - % based income, virtual possible</li>
+      <li><strong>Pest Control Routes</strong> - Subscription model, high retention</li>
+      <li><strong>Mobile RV Repair</strong> - High hourly rates, growing market</li>
+      <li><strong>Pool Service Routes</strong> - Recurring weekly, route density</li>
+      <li><strong>Insurance Agencies</strong> - Renewal commissions, work from home</li>
+    </ol>
+  </div>
+
+  <div class="formula-box">
+    <h2>The Boring Business Success Formula</h2>
+    <h3>What makes these businesses goldmines:</h3>
+    <ol>
+      <li><strong>Essential Services</strong> - People need them regardless of economy</li>
+      <li><strong>Local Market Protection</strong> - Can't be outsourced to cheaper locations</li>
+      <li><strong>Recurring Revenue Models</strong> - Monthly/quarterly/annual contracts</li>
+      <li><strong>Simple Operations</strong> - Can be learned in 30-90 days</li>
+      <li><strong>Asset Light or Asset Backed</strong> - Either low capital or sellable assets</li>
+      <li><strong>Fragmented Markets</strong> - No Amazon or Walmart to compete with</li>
+      <li><strong>SBA Financeable</strong> - Banks understand and will lend</li>
+    </ol>
+  </div>
+  
+  <h2>How to Find These Businesses</h2>
+  
+  <h3>1. Direct Outreach (Best Results)</h3>
+  <ul>
+    <li>Google Maps: Search business type + your city</li>
+    <li>Call/email everyone with <10 reviews</li>
+    <li>Message template: "Looking to acquire a [business type] in [city]. If timing and terms were right, would you consider selling?"</li>
+    <li>Expect 10-15% response rate</li>
+  </ul>
+
+  <h3>2. Industry Associations</h3>
+  <ul>
+    <li>Join local trade associations</li>
+    <li>Attend meetings (everyone knows who's thinking of selling)</li>
+    <li>Sponsor events = instant credibility</li>
+  </ul>
+
+  <h3>3. Intermediaries</h3>
+  <ul>
+    <li>Business brokers (especially for $500K-$2M deals)</li>
+    <li>Industry suppliers (they know everyone)</li>
+    <li>Commercial real estate brokers (businesses + real estate)</li>
+    <li>Local CPAs and attorneys</li>
+  </ul>
+
+  <h3>4. Online Marketplaces</h3>
+  <ul>
+    <li>BizBuySell (largest, but competitive)</li>
+    <li>BizQuest, BusinessesForSale</li>
+    <li>Industry-specific sites</li>
+    <li>Facebook groups for business owners</li>
+  </ul>
+
+  <h2>Valuation Quick Guide</h2>
+  <p>Most boring businesses sell for <strong>2-4x Seller's Discretionary Earnings (SDE)</strong></p>
+  
+  <h3>Typical Multiples by Type:</h3>
+  <ul>
+    <li><strong>Service businesses:</strong> 2.5-3.5x SDE</li>
+    <li><strong>Retail (with property):</strong> 3-4x SDE</li>
+    <li><strong>Manufacturing:</strong> 3-4.5x SDE</li>
+    <li><strong>Recurring revenue models:</strong> 3.5-5x SDE</li>
+    <li><strong>Professional services:</strong> 3-5x SDE</li>
+  </ul>
+  
+  <p><strong>Red flag:</strong> If they're asking more than 5x SDE, walk away (unless it's a very special situation).</p>
+
+  <h2>Your 30-Day Action Plan</h2>
+  <ol>
+    <li><strong>Week 1:</strong> Pick 3 business types from this list</li>
+    <li><strong>Week 2:</strong> Find 30 businesses in each category (90 total)</li>
+    <li><strong>Week 3:</strong> Send outreach messages to all 90</li>
+    <li><strong>Week 4:</strong> Meet with everyone who responds</li>
+  </ol>
+  
+  <p><strong>Goal:</strong> Get 5-10 meetings. Find 1-2 motivated sellers. Make 1 offer.</p>
+
+  <div class="cta-box">
+    <h3>Want The Complete Acquisition System?</h3>
+    <p>This list is just the beginning. The real money is made in the deal structure.</p>
+    <p><strong>The Acquisition Accelerator</strong> includes:</p>
+    <ul style="text-align: left; margin-left: 15%; color: white; font-size: 18px;">
+      <li>All 32 Blueprint documents from $80M+ in deals</li>
+      <li>Creative financing structures that require little cash down</li>
+      <li>Due diligence checklists that save you from bad deals</li>
+      <li>Negotiation scripts that get sellers to finance 50-90%</li>
+      <li>30-day email course walking you through your first deal</li>
+    </ul>
+    <p style="font-size: 24px; margin-top: 30px;">
+      Get it all free at: <a href="https://myleskameron.com">myleskameron.com</a>
+    </p>
+  </div>
+  
+  <div class="author">
+    <p><strong>-Myles Kameron</strong></p>
+    <p>P.S. While you're reading this, another Boomer just decided to retire. The opportunity won't last forever.</p>
+  </div>
+</body>
+</html>

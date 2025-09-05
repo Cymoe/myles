@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from 'react';
 import Footer from '../components/Footer';
 import Providers from './providers';
-import Layout from '@/components/Layout';
+import ConditionalLayout from '@/components/ConditionalLayout';
 import ConditionalFooter from '@/components/ConditionalFooter';
 import ExitIntentPopup from '@/components/ExitIntentPopup';
 import StickyHeaderBar from '@/components/StickyHeaderBar';
@@ -30,9 +30,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <ScrollToTop />
           <StickyHeaderBar />
-          <Layout>
+          <ConditionalLayout>
             <main className="min-h-screen">{children}</main>
-          </Layout>
+          </ConditionalLayout>
           <ConditionalFooter />
           <ExitIntentPopup />
           <ConditionalWealthWidget />

@@ -9,8 +9,8 @@ export default function WealthProfileQuizPage() {
 
   if (showQuiz) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-3xl">
+      <div className="min-h-screen pt-20 sm:pt-24 pb-12 px-4">
+        <div className="w-full max-w-3xl mx-auto">
           <Link href="/" className="text-muted-foreground hover:text-foreground mb-8 inline-block">
             ← Exit Quiz
           </Link>
@@ -21,8 +21,8 @@ export default function WealthProfileQuizPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="max-w-2xl w-full">
+    <div className="min-h-screen pt-20 sm:pt-24 pb-12 px-4 flex items-center">
+      <div className="max-w-2xl w-full mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <Link href="/" className="text-muted-foreground hover:text-foreground mb-8 inline-block">

@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     // Send welcome email
     const emailSubject = quizResult 
       ? `Your ${quizResult} Wealth Profile is ready 🎯`
-      : 'Your boring business resources are ready 🎯';
+      : 'Texas roofing company - $1.8M EBITDA at 3.2x';
       
     const { data, error } = await resend.emails.send({
       from: 'Myles Kameron <hello@myleskameron.com>',
@@ -74,7 +74,7 @@ export async function POST(request: Request) {
               // Add tags based on wealth profile or lead magnet
               ...(quizResult && profileMapping[quizResult] ? {
                 tags: [`wealth-profile-${profileMapping[quizResult]}`]
-              } : leadMagnet === '5 Boring Businesses That Print Money' ? {
+              } : leadMagnet === '50 Boring Businesses That Print Money' ? {
                 tags: ['exit-intent-guide']
               } : {})
             })
@@ -95,7 +95,7 @@ export async function POST(request: Request) {
             
             if (quizResult && profileMapping[quizResult]) {
               tagsToAdd.push(`wealth-profile-${profileMapping[quizResult]}`);
-            } else if (leadMagnet === '5 Boring Businesses That Print Money') {
+            } else if (leadMagnet === '50 Boring Businesses That Print Money') {
               tagsToAdd.push('exit-intent-guide');
             }
             

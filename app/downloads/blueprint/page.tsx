@@ -71,7 +71,7 @@ export default function BlueprintDownloadsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-24 pb-12 px-4">
+    <div className="min-h-screen bg-background pt-20 sm:pt-24 pb-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">

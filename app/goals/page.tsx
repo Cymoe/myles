@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function GoalsPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20 sm:pt-24">
       {/* Hero Section */}
       <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 gradient-radial opacity-20" />

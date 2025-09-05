@@ -380,17 +380,19 @@ export default function MissedDeals() {
                 animation: `fadeIn 0.8s ease-out ${index * 100 + 100}ms backwards, subtlePulse 3s ease-in-out ${index * 100 + 1500}ms 1`
             }}
           >
-            {/* Sold Tag - Minimal */}
-            <div className="absolute top-3 right-3 flex items-center gap-1">
-              {deal.isNew && (
-                <span className="bg-red-500 text-white px-1.5 py-0.5 rounded-sm text-xs font-bold animate-pulse">
+            {/* SOLD Banner - Consistent with background cards */}
+            <div className="w-full bg-yellow-400 text-black text-center py-1.5 text-xs font-bold tracking-wide">
+              SOLD
+            </div>
+
+            {/* HOT Badge for new deals */}
+            {deal.isNew && (
+              <div className="absolute top-10 right-3 z-10">
+                <span className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold animate-pulse shadow-lg">
                   HOT
                 </span>
-              )}
-              <span className="bg-yellow-400 text-black px-2 py-0.5 rounded-sm text-xs font-bold">
-                Sold
-              </span>
-            </div>
+              </div>
+            )}
 
             {/* Deal Content */}
             <div className="p-3 h-full flex flex-col">

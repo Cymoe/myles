@@ -59,14 +59,14 @@ export default function ExitIntentPopup() {
     setStatus('loading');
     
     try {
-      const response = await fetch('/api/acquisition-accelerator', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email,
-          source: 'exit-intent',
+          leadMagnet: 'Exit Intent Deal Alerts',
         }),
       });
 

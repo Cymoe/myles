@@ -15,11 +15,11 @@ export default function WelcomePage() {
       number: "01"
     },
     {
-      title: "5 Boring Businesses",
+      title: "50 Boring Businesses",
       subtitle: "That absolutely print",
       description: "Detailed breakdowns of the best sectors to acquire",
       icon: TrendingUp,
-      link: "/tools/boring-businesses",
+      link: "/tools/fifty-boring-businesses",
       gradient: "from-blue-500 to-indigo-600",
       bgGradient: "from-blue-500/10 to-indigo-600/10",
       iconBg: "bg-blue-500/10",
@@ -65,7 +65,7 @@ export default function WelcomePage() {
                 <strong className="text-foreground">2. Access Your Resources:</strong> Everything is available below (bookmark this page)
               </li>
               <li>
-                <strong className="text-foreground">3. Weekly Insights:</strong> Every Thursday, I&apos;ll share real deals and what I&apos;m seeing in the market
+                <strong className="text-foreground">3. Deal Flow:</strong> When good deals come through, I&apos;ll send them your way
               </li>
             </ol>
           </div>
