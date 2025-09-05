@@ -14,6 +14,7 @@ export default function NewsletterExportPage({ params }: { params: { id: string 
 
   useEffect(() => {
     fetchDeal()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id])
 
   const fetchDeal = async () => {

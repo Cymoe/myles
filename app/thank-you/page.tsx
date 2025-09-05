@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import Script from 'next/script'
 
-export default function ThankYouPage() {
+function ThankYouContent() {
   const searchParams = useSearchParams()
   const email = searchParams.get('email')
   const source = searchParams.get('source')
@@ -86,7 +86,7 @@ export default function ThankYouPage() {
         {/* Next Steps */}
         <div className="bg-white shadow-lg rounded-lg p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Here's what to do next:
+            Here&apos;s what to do next:
           </h2>
           
           <div className="space-y-6">
@@ -111,7 +111,7 @@ export default function ThankYouPage() {
               </div>
               <div className="ml-4">
                 <p className="text-gray-800">
-                  <strong>Reply "YES"</strong> to the email and I'll send you 2 bonuses:
+                  <strong>Reply &quot;YES&quot;</strong> to the email and I&apos;ll send you 2 bonuses:
                 </p>
                 <ul className="mt-2 space-y-1 text-gray-600">
                   <li>• My list of 50+ best business types for first-time buyers</li>
@@ -125,7 +125,7 @@ export default function ThankYouPage() {
         {/* What to Expect */}
         <div className="bg-gray-100 rounded-lg p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Here's what you can expect:
+            Here&apos;s what you can expect:
           </h2>
           <ul className="space-y-3 text-gray-700">
             <li className="flex items-start">
@@ -174,7 +174,7 @@ export default function ThankYouPage() {
                 2) Ready to buy in the next 6-12 months?
               </h3>
               <p className="text-gray-700 mb-4">
-                If you have $50K+ to invest and want help finding, analyzing, and closing a deal, let's talk.
+                If you have $50K+ to invest and want help finding, analyzing, and closing a deal, let&apos;s talk.
               </p>
               <a 
                 href="/advisory" 
@@ -198,5 +198,13 @@ export default function ThankYouPage() {
       </div>
     </div>
     </>
+  )
+}
+
+export default function ThankYouPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center">Loading...</div>}>
+      <ThankYouContent />
+    </Suspense>
   )
 }

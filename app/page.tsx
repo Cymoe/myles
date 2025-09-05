@@ -33,25 +33,6 @@ export default function Home() {
               <QuickStats />
             </div>
             
-            {/* Resource Preview - What They Get */}
-            <div className="my-12 animate-fade-in">
-              <p className="text-center text-sm text-muted-foreground mb-6">Join and get instant access to:</p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-                <div className="bg-card p-5 rounded-lg border border-border">
-                  <h4 className="font-medium text-base mb-1">Revenue Tracker</h4>
-                  <p className="text-sm text-muted-foreground">Track your way to $1M</p>
-                </div>
-                <div className="bg-card p-5 rounded-lg border border-border">
-                  <h4 className="font-medium text-base mb-1">5 Boring Businesses</h4>
-                  <p className="text-sm text-muted-foreground">That absolutely print</p>
-                </div>
-                <div className="bg-card p-5 rounded-lg border border-border">
-                  <h4 className="font-medium text-base mb-1">Deal Checklist</h4>
-                  <p className="text-sm text-muted-foreground">27 must-ask questions</p>
-                </div>
-              </div>
-            </div>
-            
             {/* Deal Flow Email Capture */}
             <div id="newsletter" className="text-center my-12 animate-fade-in scroll-mt-20">
               <h3 className="text-2xl md:text-3xl font-light text-foreground mb-4">

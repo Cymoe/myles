@@ -123,7 +123,7 @@ export default function FiftyBoringBusinessesPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-semibold mb-4">What's Inside the Guide</h2>
+              <h2 className="text-3xl font-semibold mb-4">What&apos;s Inside the Guide</h2>
               <p className="text-lg text-muted-foreground">
                 50 businesses organized into 6 categories, each with acquisition strategies
               </p>
@@ -160,7 +160,7 @@ export default function FiftyBoringBusinessesPage() {
 
             {/* What You'll Learn */}
             <div className="bg-primary/5 rounded-lg p-8 mb-12">
-              <h3 className="text-2xl font-semibold mb-6 text-center">What You'll Learn</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-center">What You&apos;ll Learn</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
@@ -187,7 +187,7 @@ export default function FiftyBoringBusinessesPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary mt-1">✓</span>
-                    <span>The "Boring Business Success Formula"</span>
+                    <span>The &quot;Boring Business Success Formula&quot;</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary mt-1">✓</span>
@@ -262,7 +262,7 @@ export default function FiftyBoringBusinessesPage() {
               Ready to Find Your Boring Business?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              While you're reading this, another Boomer just decided to retire. The opportunity won't last forever.
+              While you&apos;re reading this, another Boomer just decided to retire. The opportunity won&apos;t last forever.
             </p>
             
             <button
