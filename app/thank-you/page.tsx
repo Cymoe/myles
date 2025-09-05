@@ -152,16 +152,16 @@ function ThankYouContent() {
                 1) Download these free resources:
               </h3>
               <div className="space-y-2">
-                <a href="/downloads/blueprint" className="block text-[#786254] hover:underline">
+                <a href="/downloads/blueprint" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
                   → 32 Business Acquisition Blueprints
                 </a>
-                <a href="/tools/fifty-boring-businesses" className="block text-[#786254] hover:underline">
+                <a href="/tools/fifty-boring-businesses" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
                   → 50 Boring Businesses That Print
                 </a>
-                <a href="/tools/business-checklist" className="block text-[#786254] hover:underline">
+                <a href="/tools/business-checklist" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
                   → 27 Questions Before You Buy
                 </a>
-                <a href="/tools/revenue-tracker" className="block text-[#786254] hover:underline">
+                <a href="/tools/revenue-tracker" target="_blank" rel="noopener noreferrer" className="block text-[#786254] hover:underline">
                   → Revenue Tracking Template
                 </a>
               </div>
