@@ -21,7 +21,8 @@ export default function ConditionalWealthWidget() {
     '/tools/fifty-boring-businesses', // Free resource
     '/tools/business-checklist', // Free resource
     '/tools/revenue-tracker', // Free resource
-    '/tools/boring-businesses' // Free resource
+    '/tools/boring-businesses', // Free resource
+    '/sell-your-business' // Sell your business page
   ];
   
   // Also exclude any downloads or checkout pages (pattern matching)

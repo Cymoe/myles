@@ -77,19 +77,19 @@ export default function AcquisitionAcceleratorPage() {
   }
 
   return (
-    <div className="min-h-screen pt-20 sm:pt-24">
+    <div className="pt-20 sm:pt-24">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative py-8 md:py-12 overflow-hidden">
         <div className="absolute inset-0 gradient-radial opacity-20" />
         <div className="container mx-auto px-6 z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-sm font-semibold text-primary mb-4 tracking-wide uppercase">
-              Complete System: 100% Free
+            <p className="text-sm font-semibold text-primary mb-2 tracking-wide uppercase">
+              The Complete Business Buying System
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 font-light">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 font-light">
               The Acquisition Accelerator
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
               20+ acquisition documents + 30 days of deal insights.<br />
               <span className="text-foreground font-semibold">Everything you need to find and close deals.</span>
             </p>
@@ -98,10 +98,10 @@ export default function AcquisitionAcceleratorPage() {
       </section>
 
       {/* What You Get Section */}
-      <section className="py-20 border-t border-border/20">
+      <section className="pt-8 pb-12 md:pt-12 md:pb-16 border-t border-border/20">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-light mb-16 text-center">What You&apos;ll Get:</h2>
+            <h2 className="text-3xl md:text-4xl font-light mb-8 text-center">What You&apos;ll Get:</h2>
             
             <div className="grid md:grid-cols-2 gap-12 md:gap-16 max-w-4xl mx-auto mb-16">
               <div>
@@ -147,17 +147,6 @@ export default function AcquisitionAcceleratorPage() {
                   </li>
                 </ul>
               </div>
-            </div>
-
-            {/* Social Proof */}
-            <div className="bg-muted/50 p-8 rounded-lg mb-16">
-              <p className="text-lg italic mb-4">
-                &ldquo;The deal breakdowns alone saved me $200K on my first acquisition. 
-                Seeing real numbers and terms changed everything.&rdquo;
-              </p>
-              <p className="text-sm text-muted-foreground">
-                - Sarah T., Closed $1.8M Deal
-              </p>
             </div>
 
             {/* Email Capture Form */}
