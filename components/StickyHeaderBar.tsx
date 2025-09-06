@@ -60,7 +60,6 @@ export default function StickyHeaderBar() {
     '/tools/',
     '/downloads/',  // Downloads page - users already have access
     '/acquisition-accelerator',  // Paid content
-    '/advisory',  // Advisory services
     '/wealth-profile-quiz',  // Quiz pages
     '/wealth-profile-results',
     '/blueprint-special',

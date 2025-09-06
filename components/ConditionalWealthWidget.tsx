@@ -16,7 +16,6 @@ export default function ConditionalWealthWidget() {
     '/downloads/blueprint-starter', // Starter pack page - users already converted
     '/acquisition-accelerator', // Users already engaged with paid content
     '/welcome', // Welcome page after signup
-    '/advisory', // Advisory services page
     '/thank-you', // Thank you page after newsletter signup
     '/tools/fifty-boring-businesses', // Free resource
     '/tools/business-checklist', // Free resource

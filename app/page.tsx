@@ -225,7 +225,7 @@ export default function Home() {
                   
                   <p className="text-muted-foreground font-light leading-snug mt-4">
                     <span className="text-foreground">Found a deal?</span> I help serious buyers close their first acquisition. 
-                    <Link href="/advisory" className="text-primary hover:underline">Learn more →</Link>
+                    <a href="mailto:hello@myleskameron.com?subject=Business Acquisition Advisory Inquiry" className="text-primary hover:underline">Email me →</a>
                   </p>
                 </div>
                 

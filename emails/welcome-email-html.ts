@@ -336,6 +336,10 @@ const getExitIntentEmailHtml = (userEmail: string, baseUrl: string) => {
     
     <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 32px 0;">
     
+    <p style="color: #666; font-size: 14px; line-height: 20px; margin-bottom: 16px;">
+      <strong>P.S.</strong> Future deal emails will come from SMB Deal Sheet (smbdealsheet.com). Make sure to add that domain to your safe sender list so you don't miss any deals!
+    </p>
+    
     <p style="color: #999; font-size: 14px; text-align: center;">
       <a href="${baseUrl}/unsubscribe" style="color: #786254; text-decoration: underline;">Unsubscribe</a>
       •

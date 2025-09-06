@@ -61,7 +61,7 @@ export default function AcquisitionAcceleratorPage() {
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-8 text-left">
             <h3 className="font-serif text-xl mb-4">Here&apos;s what you&apos;re getting:</h3>
             <ol className="space-y-3 text-muted-foreground">
-              <li>1. <strong>Instant:</strong> 20+ acquisition documents in your inbox</li>
+              <li>1. <strong>Instant:</strong> 32 acquisition blueprints in your inbox</li>
               <li>2. <strong>Tomorrow:</strong> Your first deal breakdown arrives</li>
               <li>3. <strong>30 Days:</strong> Daily insights on finding and closing deals</li>
               <li>4. <strong>Lifetime:</strong> Access to all materials and updates</li>
@@ -90,7 +90,7 @@ export default function AcquisitionAcceleratorPage() {
               The Acquisition Accelerator
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-              20+ acquisition documents + 30 days of deal insights.<br />
+              32 acquisition blueprints + 30 days of deal insights.<br />
               <span className="text-foreground font-semibold">Everything you need to find and close deals.</span>
             </p>
           </div>
@@ -121,7 +121,7 @@ export default function AcquisitionAcceleratorPage() {
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 flex-shrink-0">•</span>
-                    <span>Plus 17 more acquisition documents</span>
+                    <span>32 total acquisition blueprints</span>
                   </li>
                 </ul>
               </div>
@@ -198,7 +198,7 @@ export default function AcquisitionAcceleratorPage() {
             </p>
             <p className="text-muted-foreground">
               If you find a great business, I can help you close it for 2-3% of the deal value.<br/>
-              <Link href="/advisory" className="text-primary hover:underline">Learn about advisory →</Link>
+              <a href="mailto:hello@myleskameron.com?subject=Business Acquisition Advisory Inquiry" className="text-primary hover:underline">Email me about advisory services →</a>
             </p>
           </div>
         </div>
