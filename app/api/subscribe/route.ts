@@ -26,24 +26,31 @@ export async function POST(request: Request) {
       );
     }
 
-    // Send welcome email
-    const emailSubject = quizResult 
-      ? `Your ${quizResult} Wealth Profile is ready 🎯`
-      : 'Welcome to Deal Flow';
+    // Skip welcome email for quiz results - they get a dedicated results email
+    let emailData = null;
+    let emailError = null;
+    
+    if (!quizResult) {
+      // Only send welcome email for non-quiz subscriptions
+      const emailSubject = 'Welcome to Deal Flow';
       
-    const { data, error } = await resend.emails.send({
-      from: 'Myles Kameron - SMB Deal Sheet <hello@myleskameron.com>',
-      to: [email],
-      subject: emailSubject,
-      html: getWelcomeEmailHtml(email, leadMagnet || 'resources', quizResult, profileData),
-    });
+      const { data, error } = await resend.emails.send({
+        from: 'Myles Kameron - SMB Deal Sheet <hello@myleskameron.com>',
+        to: [email],
+        subject: emailSubject,
+        html: getWelcomeEmailHtml(email, leadMagnet || 'resources', quizResult, profileData),
+      });
+      
+      emailData = data;
+      emailError = error;
 
-    if (error) {
-      console.error('Resend error:', error);
-      return NextResponse.json(
-        { error: 'Failed to send email' },
-        { status: 500 }
-      );
+      if (error) {
+        console.error('Resend error:', error);
+        return NextResponse.json(
+          { error: 'Failed to send email' },
+          { status: 500 }
+        );
+      }
     }
 
     // Add subscriber to Beehiiv
@@ -128,10 +135,12 @@ export async function POST(request: Request) {
       }
     }
 
-    console.log('Email sent successfully:', data);
+    if (emailData) {
+      console.log('Email sent successfully:', emailData);
+    }
 
     return NextResponse.json(
-      { success: true, message: 'Welcome email sent' },
+      { success: true, message: quizResult ? 'Subscription successful' : 'Welcome email sent' },
       { status: 200 }
     );
   } catch (error) {
