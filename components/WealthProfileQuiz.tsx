@@ -73,16 +73,6 @@ export default function WealthProfileQuiz({ onComplete }: QuizProps) {
           }),
         });
 
-        // Schedule follow-up email sequence
-        await fetch('/api/schedule-wealth-emails', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email,
-            profileId: profile.id
-          }),
-        });
-
         // Redirect to results page
         router.push('/wealth-profile-results');
       } else {
