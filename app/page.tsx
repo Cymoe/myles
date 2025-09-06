@@ -330,6 +330,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Ocean Image Section */}
+      <section className="relative h-48 md:h-64 overflow-hidden">
+        <Image
+          src="/images/ocean.png"
+          alt="Ocean cliff view"
+          fill
+          className="object-cover opacity-60"
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+      </section>
+
     </>
   );
 }
