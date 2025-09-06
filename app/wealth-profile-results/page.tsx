@@ -13,6 +13,9 @@ export default function WealthProfileResultsPage() {
   } | null>(null);
 
   useEffect(() => {
+    // Scroll to top on mount
+    window.scrollTo(0, 0);
+    
     // Get results from localStorage
     const savedResults = localStorage.getItem('wealthProfileResults');
     if (!savedResults) {

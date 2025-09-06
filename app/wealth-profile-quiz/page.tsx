@@ -1,11 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import WealthProfileQuiz from '@/components/WealthProfileQuiz';
 
 export default function WealthProfileQuizPage() {
   const [showQuiz, setShowQuiz] = useState(false);
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (showQuiz) {
     return (
