@@ -54,6 +54,12 @@ export async function POST(request: Request) {
     }
 
     // Add subscriber to Beehiiv
+    console.log('Beehiiv config:', {
+      hasApiKey: !!process.env.BEEHIIV_API_KEY,
+      hasPublicationId: !!process.env.BEEHIIV_PUBLICATION_ID,
+      publicationId: process.env.BEEHIIV_PUBLICATION_ID
+    });
+    
     if (process.env.BEEHIIV_API_KEY && process.env.BEEHIIV_PUBLICATION_ID) {
       try {
         // Step 1: Create the subscription
@@ -89,12 +95,15 @@ export async function POST(request: Request) {
         );
 
         if (!beehiivResponse.ok) {
-          console.error('Beehiiv sync error:', await beehiivResponse.text());
+          const errorText = await beehiivResponse.text();
+          console.error('Beehiiv sync error:', errorText);
+          console.error('Beehiiv response status:', beehiivResponse.status);
         } else {
           const beehiivData = await beehiivResponse.json();
           const subscriberId = beehiivData.data?.id;
           
           console.log('Successfully added to Beehiiv:', email, 'ID:', subscriberId);
+          console.log('Full Beehiiv response:', JSON.stringify(beehiivData, null, 2));
           
           // Step 2: Add tags if we have a subscriber ID and either a wealth profile or exit intent
           if (subscriberId) {

@@ -70,7 +70,7 @@ export default function ExitIntentPopup() {
         },
         body: JSON.stringify({
           email,
-          leadMagnet: 'Exit Intent Deal Alerts',
+          leadMagnet: '50 Boring Businesses That Print Money',
         }),
       });
 
