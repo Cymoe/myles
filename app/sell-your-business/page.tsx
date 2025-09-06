@@ -118,40 +118,28 @@ export default function SellYourBusinessPage() {
       <section className="py-8 md:py-12">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            {/* Trust Badge */}
-            <div className="flex justify-center mb-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-sm font-medium">
-                <span className="text-primary">✓</span>
-                <span>500+ Businesses Successfully Sold</span>
-              </div>
-            </div>
             
             <h1 className="text-3xl md:text-5xl lg:text-6xl mb-6 font-bold text-center">
-              Sell Your Business in <span className="text-primary">30 Days</span> - Not 18 Months
+              Sell Your Business Without Broker Fees
             </h1>
             
-            <p className="text-xl md:text-2xl text-muted-foreground text-center mb-4">
-              Skip the Broker. Keep the Commission. Get Cash Offers Fast.
-            </p>
-            
-            {/* Urgency Message */}
-            <p className="text-center text-primary font-semibold mb-8">
-              ⚡ We Can Only Accept 5 New Sellers This Month - 3 Spots Left
+            <p className="text-xl md:text-2xl text-muted-foreground text-center mb-8">
+              We connect business sellers with qualified buyers. Free for sellers.
             </p>
             
             {/* Value Props */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <div className="text-center">
                 <div className="font-bold text-2xl text-primary">$0</div>
-                <div className="text-sm text-muted-foreground">Upfront Fees</div>
+                <div className="text-sm text-muted-foreground">Cost to Sellers</div>
               </div>
               <div className="text-center">
-                <div className="font-bold text-2xl text-primary">47 Days</div>
-                <div className="text-sm text-muted-foreground">Average Time to Sale</div>
+                <div className="font-bold text-2xl text-primary">Direct</div>
+                <div className="text-sm text-muted-foreground">Buyer Connections</div>
               </div>
               <div className="text-center">
-                <div className="font-bold text-2xl text-primary">$125K</div>
-                <div className="text-sm text-muted-foreground">Avg Broker Fees Saved</div>
+                <div className="font-bold text-2xl text-primary">No Contracts</div>
+                <div className="text-sm text-muted-foreground">Full Control</div>
               </div>
             </div>
             
@@ -166,7 +154,7 @@ export default function SellYourBusinessPage() {
                 }}
                 className="px-8 py-4 bg-primary text-primary-foreground font-bold rounded-lg text-lg hover:opacity-90 transition-all transform hover:scale-105 shadow-lg"
               >
-                Get Your Free Business Valuation →
+                Get Started →
               </button>
               <p className="text-xs text-muted-foreground mt-2">No credit card required • 100% confidential</p>
             </div>
@@ -174,56 +162,6 @@ export default function SellYourBusinessPage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-12 bg-muted/20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
-              Business Owners Love Our Zero-Fee Approach
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-card p-6 rounded-lg shadow-sm">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-500">★</span>
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  &ldquo;Sold my HVAC business in just 6 weeks. Saved over $180K in broker fees. Myles found buyers I never would have reached.&rdquo;
-                </p>
-                <div className="font-semibold">Mike R.</div>
-                <div className="text-sm text-muted-foreground">HVAC Company, $3.2M Sale</div>
-              </div>
-              
-              <div className="bg-card p-6 rounded-lg shadow-sm">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-500">★</span>
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  &ldquo;No contracts, no pressure, no BS. Had 3 serious offers within a month. This is how selling a business should work.&rdquo;
-                </p>
-                <div className="font-semibold">Sarah T.</div>
-                <div className="text-sm text-muted-foreground">Cleaning Service, $850K Sale</div>
-              </div>
-              
-              <div className="bg-card p-6 rounded-lg shadow-sm">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-500">★</span>
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  &ldquo;Brokers wanted 12% commission. Myles connected me directly with buyers. Closed in 45 days and kept every penny.&rdquo;
-                </p>
-                <div className="font-semibold">David L.</div>
-                <div className="text-sm text-muted-foreground">Landscaping Co, $1.8M Sale</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Comparison Table */}
       <section className="py-12 border-t border-b border-border/20">
@@ -274,67 +212,6 @@ export default function SellYourBusinessPage() {
         </div>
       </section>
 
-      {/* Recent Activity & Social Proof */}
-      <section className="py-12">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            {/* Live Activity Banner */}
-            <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 mb-8 text-center">
-              <p className="text-sm font-medium">
-                <span className="inline-flex items-center gap-2">
-                  <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                  </span>
-                  <span>John from Texas just submitted his plumbing business (2 minutes ago)</span>
-                </span>
-              </p>
-            </div>
-            
-            <h3 className="text-2xl font-bold mb-8 text-center">
-              This Month Alone: <span className="text-primary">23 Businesses Listed, 8 Under Contract</span>
-            </h3>
-            
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-card p-6 rounded-lg border border-border">
-                <h4 className="font-semibold mb-4 text-primary">Recently Sold:</h4>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex justify-between">
-                    <span>Roofing Company (FL)</span>
-                    <span className="font-semibold">Sold in 32 days</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Auto Repair Shop (TX)</span>
-                    <span className="font-semibold">Sold in 28 days</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Commercial Cleaning (GA)</span>
-                    <span className="font-semibold">Sold in 41 days</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-card p-6 rounded-lg border border-border">
-                <h4 className="font-semibold mb-4 text-primary">Currently Seeking:</h4>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-center gap-2">
-                    <span className="text-green-600">•</span>
-                    <span>HVAC businesses ($1M-$5M revenue)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-green-600">•</span>
-                    <span>Home services in Texas & Florida</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-green-600">•</span>
-                    <span>B2B service companies nationwide</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* How We Get Paid Section */}
       <section className="py-12 border-t border-border/20">
@@ -363,27 +240,11 @@ export default function SellYourBusinessPage() {
             {/* Form Header */}
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold mb-4">
-                Get Matched with Pre-Qualified Buyers in <span className="text-primary">48 Hours</span>
+                Tell Us About Your Business
               </h2>
               <p className="text-muted-foreground mb-6">
-                Join 127 business owners who successfully sold this year without paying broker commissions
+                We&apos;ll search for qualified buyers who match
               </p>
-              
-              {/* Security Badges */}
-              <div className="flex justify-center items-center gap-6 mb-6">
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="text-green-600">🔒</span>
-                  <span className="text-muted-foreground">SSL Secured</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="text-green-600">✓</span>
-                  <span className="text-muted-foreground">100% Confidential</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="text-green-600">🛡️</span>
-                  <span className="text-muted-foreground">NDA Protected</span>
-                </div>
-              </div>
             </div>
             
             <div className="bg-background border-2 border-primary p-6 md:p-8 rounded-lg shadow-xl">
@@ -685,7 +546,7 @@ export default function SellYourBusinessPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">
-              Only 3 Spots Left This Month
+              Ready to Sell?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Don&apos;t wait another year paying for a business you&apos;re ready to sell
@@ -699,10 +560,10 @@ export default function SellYourBusinessPage() {
               }}
               className="px-8 py-4 bg-primary text-primary-foreground font-bold rounded-lg text-lg hover:opacity-90 transition-all transform hover:scale-105 shadow-lg"
             >
-              Claim Your Spot Now →
+              Get Started →
             </button>
             <p className="text-sm text-muted-foreground mt-4">
-              Average seller saves $125,000 in broker fees
+              Connect with qualified buyers today
             </p>
           </div>
         </div>
