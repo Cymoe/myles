@@ -7,10 +7,10 @@ import WealthProfileQuiz from '@/components/WealthProfileQuiz';
 export default function WealthProfileQuizPage() {
   const [showQuiz, setShowQuiz] = useState(false);
 
-  // Scroll to top on mount
+  // Scroll to top on mount and when quiz starts
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [showQuiz]);
 
   if (showQuiz) {
     return (
