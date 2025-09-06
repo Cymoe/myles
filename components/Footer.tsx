@@ -19,6 +19,10 @@ export default function Footer() {
           <Link href="/sell-your-business" className="hover:text-primary transition-colors">
             Sell Your Business
           </Link>
+          <span className="text-muted-foreground/50">•</span>
+          <Link href="/now" className="hover:text-primary transition-colors">
+            Now
+          </Link>
         </div>
         
         {/* Personal Signature */}
@@ -32,7 +36,9 @@ export default function Footer() {
         </div>
         
         {/* Copyright */}
-        <p className="font-light text-sm text-center">© 2025 Myles Kameron. All rights reserved.</p>
+        <p className="font-light text-sm text-center">
+          © 2025 Myles Kameron. All rights reserved.
+        </p>
       </div>
     </footer>
   );

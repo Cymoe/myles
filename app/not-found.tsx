@@ -30,6 +30,10 @@ export default function NotFound() {
           Looks like this deal fell through.
         </p>
         
+        <p className="text-sm text-muted-foreground mb-8">
+          Lost? Here&apos;s <Link href="/now" className="underline hover:text-primary transition-colors">where I am now</Link> →
+        </p>
+        
         {/* Actions */}
         <div className="space-y-4">
           <Link 

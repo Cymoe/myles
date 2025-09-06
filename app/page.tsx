@@ -208,7 +208,7 @@ export default function Home() {
                   </div>
                   
                   <p className="text-muted-foreground font-light leading-snug">
-                    Hit financial freedom at 33. Now I run everything remotely. No office. No commute.
+                    Hit financial freedom at 33. Now I run everything <Link href="/now" className="hover:text-primary hover:underline transition-colors">remotely</Link>. No office. No commute.
                   </p>
                   
                   <p className="text-muted-foreground font-light leading-snug">
@@ -278,45 +278,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Links Section - Editorial Style */}
-      <section className="py-32 bg-card dark:bg-card/50">
-        <div className="container mx-auto px-8">
-          <div className="max-w-5xl mx-auto">
-            
-            {/* Section Header */}
-            <div className="text-center mb-16">
-              <div className="w-16 h-px bg-primary mx-auto mb-8"></div>
-              <h2 className="text-2xl font-light text-foreground tracking-wide">Explore</h2>
-            </div>
-            
-            <div className="flex justify-center gap-8 max-w-2xl mx-auto">
-              <Link href="/now" className="group flex-1">
-                <div className="bg-background dark:bg-card p-8 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 border border-border text-center">
-                  <h3 className="text-xl font-light text-foreground mb-3 tracking-wide">Now</h3>
-                  <p className="text-muted-foreground font-light text-sm leading-relaxed">
-                    Current location & focus
-                  </p>
-                  <div className="mt-4 text-primary group-hover:text-primary/80 transition-colors">
-                    <span className="text-sm tracking-wide">VIEW →</span>
-                  </div>
-                </div>
-              </Link>
-              
-              <Link href="/archive" className="group flex-1">
-                <div className="bg-background dark:bg-card p-8 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 border border-border text-center">
-                  <h3 className="text-xl font-light text-foreground mb-3 tracking-wide">Archive</h3>
-                  <p className="text-muted-foreground font-light text-sm leading-relaxed">
-                    Essays & deeper thoughts
-                  </p>
-                  <div className="mt-4 text-primary group-hover:text-primary/80 transition-colors">
-                    <span className="text-sm tracking-wide">EXPLORE →</span>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Deal Flow Section */}
       <section id="newsletter" className="py-24 bg-card/20">
