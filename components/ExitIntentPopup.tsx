@@ -17,9 +17,6 @@ export default function ExitIntentPopup() {
     // Only show popup on homepage
     if (pathname !== '/') return;
     
-    // Test mode - uncomment the line below to see popup immediately
-    setShowPopup(true);
-    
     // Check if user has already seen popup this session
     const hasSeenPopup = sessionStorage.getItem('exitIntentShown');
     if (hasSeenPopup) return;
@@ -42,10 +39,16 @@ export default function ExitIntentPopup() {
       if (timeout) clearTimeout(timeout);
     };
 
-    // Only activate on desktop (exit intent doesn't work well on mobile)
+    // Desktop: Use exit intent
     if (window.innerWidth > 768) {
       document.addEventListener('mouseout', handleMouseLeave);
       document.addEventListener('mouseenter', handleMouseEnter);
+    } else {
+      // Mobile: Show after 30 seconds
+      timeout = setTimeout(() => {
+        setShowPopup(true);
+        sessionStorage.setItem('exitIntentShown', 'true');
+      }, 30000); // 30 seconds
     }
 
     return () => {
