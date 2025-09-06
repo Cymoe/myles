@@ -173,27 +173,45 @@ export default function WealthProfileQuiz({ onComplete }: QuizProps) {
 
       {/* Answers */}
       <div className="space-y-3">
-        {question.answers.map((answer, index) => (
-          <button
-            key={index}
-            onClick={() => handleAnswer(index)}
-            className="w-full p-4 text-left bg-background hover:bg-muted border border-border hover:border-primary rounded-lg transition-all duration-200 group"
-          >
+        {question.answers.map((answer, index) => {
+          const isSelected = answers[question.id] === index;
+          return (
+            <button
+              key={index}
+              onClick={() => handleAnswer(index)}
+              className={`w-full p-4 text-left border rounded-lg transition-all duration-200 group ${
+                isSelected 
+                  ? 'bg-primary/10 border-primary' 
+                  : 'bg-background hover:bg-muted border-border hover:border-primary'
+              }`}
+            >
             <div className="flex items-center justify-between">
-              <span className="text-foreground group-hover:text-primary transition-colors">
+              <span className={`transition-colors ${isSelected ? 'text-primary' : 'text-foreground group-hover:text-primary'}`}>
                 {answer.text}
               </span>
-              <svg 
-                className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-              </svg>
+              {isSelected ? (
+                <svg 
+                  className="w-5 h-5 text-primary" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+              ) : (
+                <svg 
+                  className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              )}
             </div>
           </button>
-        ))}
+          );
+        })}
       </div>
 
       {/* Navigation */}

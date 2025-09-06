@@ -18,7 +18,7 @@ export const getWealthProfileResultsEmailHtml = (
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif; background-color: #f6f9fc;">
   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px 20px;">
     
-    {/* Header */}
+    <!-- Header -->
     <div style="text-align: center; margin-bottom: 40px;">
       <div style="font-size: 48px; margin-bottom: 20px;">${profile.icon}</div>
       <h1 style="font-size: 32px; font-weight: 700; color: #333; margin-bottom: 10px;">
@@ -29,11 +29,11 @@ export const getWealthProfileResultsEmailHtml = (
       </p>
     </div>
     
-    {/* Your Wealth DNA */}
+    <!-- Your Wealth DNA -->
     <div style="background-color: #f8f9fa; padding: 30px; border-radius: 8px; margin-bottom: 30px;">
       <h2 style="font-size: 24px; color: #333; margin-bottom: 20px;">Your Wealth DNA</h2>
       
-      {/* Percentage Bars */}
+      <!-- Percentage Bars -->
       <div style="margin-bottom: 20px;">
         <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
           <span style="font-size: 14px; color: #666;">₿ Capital Freedom</span>
@@ -69,7 +69,7 @@ export const getWealthProfileResultsEmailHtml = (
       </p>
     </div>
     
-    {/* Your Recommended Path */}
+    <!-- Your Recommended Path -->
     <div style="background-color: #f8f9fa; padding: 30px; border-radius: 8px; margin-bottom: 30px;">
       <h2 style="font-size: 24px; color: #333; margin-bottom: 20px;">Your Path Forward</h2>
       <p style="color: #666; font-size: 16px; line-height: 26px; margin-bottom: 20px;">
@@ -84,14 +84,14 @@ export const getWealthProfileResultsEmailHtml = (
       </ol>
     </div>
     
-    {/* CTA */}
+    <!-- CTA -->
     <div style="text-align: center; margin: 40px 0;">
       <a href="${baseUrl}/wealth-profile-results" style="background-color: #786254; color: #fff; text-decoration: none; padding: 14px 32px; font-size: 16px; font-weight: 600; border-radius: 4px; display: inline-block;">
         View Your Full Profile →
       </a>
     </div>
     
-    {/* What's Next */}
+    <!-- What's Next -->
     <div style="border-top: 1px solid #e6ebf1; padding-top: 30px; margin-top: 40px;">
       <h3 style="font-size: 20px; color: #333; margin-bottom: 15px;">What happens next?</h3>
       <p style="color: #666; font-size: 16px; line-height: 26px; margin-bottom: 15px;">
@@ -102,7 +102,7 @@ export const getWealthProfileResultsEmailHtml = (
       </p>
     </div>
     
-    {/* Footer */}
+    <!-- Footer -->
     <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e6ebf1;">
       <p style="color: #8898aa; font-size: 14px; line-height: 20px; text-align: center; margin-bottom: 10px;">
         Questions? Just hit reply. I read everything.
