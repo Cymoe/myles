@@ -20,8 +20,11 @@ export default function SellYourBusinessPage() {
 
   const totalSteps = 5;
 
-  // Load saved form data on mount
+  // Load saved form data on mount and scroll to top
   useEffect(() => {
+    // Always scroll to top on initial page load
+    window.scrollTo(0, 0);
+    
     const savedData = localStorage.getItem('sellBusinessForm');
     if (savedData) {
       const parsed = JSON.parse(savedData);
@@ -67,6 +70,8 @@ export default function SellYourBusinessPage() {
       setIsSuccess(true);
       // Clear saved form data on success
       localStorage.removeItem('sellBusinessForm');
+      // Scroll to top when showing thank you page
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       console.error('Form submission error:', err);
       setError(err instanceof Error ? err.message : 'An error occurred');
