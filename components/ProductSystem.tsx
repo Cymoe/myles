@@ -7,7 +7,7 @@ export default function ProductSystem() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   return (
-    <div id="product-system" className="max-w-7xl mx-auto my-24 px-4">
+    <div id="product-system" className="max-w-7xl mx-auto my-24 px-4 scroll-mt-20">
       {/* Header */}
       <div className="text-center mb-12">
         <h2 className="font-light text-3xl md:text-4xl text-foreground tracking-wide mb-4">

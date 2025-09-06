@@ -36,7 +36,7 @@ export default function UnsubscribePage() {
           </div>
           
           <h1 className="text-2xl font-light text-foreground mb-4">
-            You've been unsubscribed
+            You&apos;ve been unsubscribed
           </h1>
           
           <p className="text-muted-foreground mb-8">
