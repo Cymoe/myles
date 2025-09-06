@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { usePathname, useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function ExitIntentPopup() {
   const [showPopup, setShowPopup] = useState(false);
@@ -105,7 +106,18 @@ export default function ExitIntentPopup() {
       />
       
       {/* Popup */}
-      <div className="relative bg-background dark:bg-card border border-border rounded-lg shadow-2xl max-w-md w-full p-8 animate-scale-in">
+      <div className="relative bg-background dark:bg-card border border-border rounded-lg shadow-2xl max-w-md w-full overflow-hidden animate-scale-in">
+        {/* Ocean Background - Subtle */}
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="/images/hero_2.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority={false}
+          />
+        </div>
+        <div className="relative z-10 p-8">
         {/* Close button */}
         <button
           onClick={handleClose}
@@ -181,6 +193,7 @@ export default function ExitIntentPopup() {
             </form>
           </>
         )}
+        </div>
       </div>
     </div>
   );
