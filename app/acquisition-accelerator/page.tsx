@@ -194,7 +194,7 @@ export default function AcquisitionAcceleratorPage() {
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="font-serif text-2xl mb-6">Why Free?</h3>
             <p className="text-lg text-muted-foreground mb-8">
-              I make money when you close deals, not from selling courses.
+              I make money when you close deals.
             </p>
             <p className="text-muted-foreground">
               If you find a great business, I can help you close it for 2-3% of the deal value.<br/>

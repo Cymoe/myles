@@ -385,14 +385,6 @@ export default function MissedDeals() {
               SOLD
             </div>
 
-            {/* HOT Badge for new deals */}
-            {deal.isNew && (
-              <div className="absolute top-10 right-3 z-10">
-                <span className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold animate-pulse shadow-lg">
-                  HOT
-                </span>
-              </div>
-            )}
 
             {/* Deal Content */}
             <div className="p-3 h-full flex flex-col">
