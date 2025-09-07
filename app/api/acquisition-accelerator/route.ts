@@ -124,24 +124,32 @@ export async function POST(request: Request) {
       
       // Step 2: Add the tag separately (like we do in subscribe endpoint)
       if (subscriptionId) {
-        const tagResponse = await fetch(
-          `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions/${subscriptionId}/tags`,
-          {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${process.env.BEEHIIV_API_KEY}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              tags: ['smb-challenge']
-            })
-          }
-        );
+        console.log('Attempting to add tag to subscriber:', subscriptionId);
+        const tagUrl = `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions/${subscriptionId}/tags`;
+        console.log('Tag URL:', tagUrl);
+        
+        const tagResponse = await fetch(tagUrl, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.BEEHIIV_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            tags: ['smb-challenge']
+          })
+        });
+        
+        console.log('Tag response status:', tagResponse.status);
         
         if (!tagResponse.ok) {
-          console.error('Failed to add tags:', await tagResponse.text());
+          const errorText = await tagResponse.text();
+          console.error('Failed to add tags:', {
+            status: tagResponse.status,
+            error: errorText
+          });
         } else {
-          console.log('Successfully added tag: smb-challenge');
+          const tagData = await tagResponse.json();
+          console.log('Successfully added tag: smb-challenge', tagData);
         }
       }
     }
