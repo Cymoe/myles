@@ -66,7 +66,7 @@ export async function POST(request: Request) {
           Myles Kameron</p>
           
           <p style="color: #666; font-size: 14px; margin-top: 30px;">
-          P.S. Add hello@myleskameron.com to your contacts to ensure you receive all 30 lessons.
+          P.S. Add myles@mail.smbdealsheet.com to your contacts to ensure you receive all 30 lessons.
           </p>
         </div>
       `,
@@ -82,7 +82,14 @@ export async function POST(request: Request) {
 
     // Add to Beehive with smb-challenge tag
     console.log('Attempting to add to Beehiiv with tag: smb-challenge');
-    const beehiveResponse = await fetch(
+    console.log('Beehiiv env check:', {
+      hasApiKey: !!process.env.BEEHIIV_API_KEY,
+      apiKeyLength: process.env.BEEHIIV_API_KEY?.length,
+      pubId: process.env.BEEHIIV_PUBLICATION_ID
+    });
+    
+    try {
+      const beehiveResponse = await fetch(
       `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions`,
       {
         method: 'POST',
@@ -152,6 +159,10 @@ export async function POST(request: Request) {
           console.log('Successfully added tag: smb-challenge', tagData);
         }
       }
+    }
+    } catch (beehiivError) {
+      console.error('Beehiiv API error:', beehiivError);
+      // Don't fail the whole request - user still gets their welcome email
     }
 
     return NextResponse.json({ success: true });

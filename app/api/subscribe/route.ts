@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { email, leadMagnet, quizResult, profileData } = await request.json();
+    const { email, leadMagnet, quizResult, profileData, source, tags } = await request.json();
 
     // Map profile names to Beehiiv-friendly tags
     const profileMapping: Record<string, string> = {
@@ -75,7 +75,7 @@ export async function POST(request: Request) {
               email: email,
               reactivate_existing: true,
               send_welcome_email: false, // We already sent one via Resend
-              utm_source: 'website',
+              utm_source: source || 'website',
               utm_medium: leadMagnet || 'organic',
               referring_site: 'myleskameron.com',
               custom_fields: quizResult ? [
@@ -105,14 +105,20 @@ export async function POST(request: Request) {
           console.log('Successfully added to Beehiiv:', email, 'ID:', subscriberId);
           console.log('Full Beehiiv response:', JSON.stringify(beehiivData, null, 2));
           
-          // Step 2: Add tags if we have a subscriber ID and either a wealth profile or exit intent
+          // Step 2: Add tags if we have a subscriber ID and either a wealth profile or exit intent or passed tags
           if (subscriberId) {
             let tagsToAdd = [];
             
+            // Add wealth profile tag if present
             if (quizResult && profileMapping[quizResult]) {
               tagsToAdd.push(`wealth-profile-${profileMapping[quizResult]}`);
             } else if (leadMagnet === '50 Boring Businesses That Print Money') {
               tagsToAdd.push('exit-intent-guide');
+            }
+            
+            // Add any tags passed from the request
+            if (tags && Array.isArray(tags)) {
+              tagsToAdd.push(...tags);
             }
             
             if (tagsToAdd.length > 0) {

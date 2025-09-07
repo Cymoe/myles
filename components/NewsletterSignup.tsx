@@ -4,10 +4,24 @@ import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { useRouter } from 'next/navigation';
 
-export default function NewsletterSignup() {
+interface NewsletterSignupProps {
+  placeholder?: string;
+  buttonText?: string;
+  source?: string;
+  tags?: string[];
+  showButton?: boolean;
+}
+
+export default function NewsletterSignup({ 
+  placeholder = "Email address",
+  buttonText = "Unlock private dealflow",
+  source = "newsletter-signup",
+  tags = [],
+  showButton = true
+}: NewsletterSignupProps) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(!showButton);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -23,6 +37,8 @@ export default function NewsletterSignup() {
         body: JSON.stringify({
           email,
           leadMagnet: 'Free Tools Bundle',
+          source,
+          tags,
         }),
       });
 
@@ -32,7 +48,7 @@ export default function NewsletterSignup() {
         setStatus('success');
         setEmail('');
         // Redirect to thank you page with tracking
-        window.location.href = `/thank-you?email=${encodeURIComponent(email)}&source=newsletter-signup`;
+        window.location.href = `/thank-you?email=${encodeURIComponent(email)}&source=${source}`;
       } else {
         console.error('Subscription error:', data.error);
         setStatus('idle');
@@ -67,7 +83,7 @@ export default function NewsletterSignup() {
             onClick={() => setShowForm(true)}
             className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-md"
           >
-            <span className="text-lg font-medium">Unlock private dealflow</span>
+            <span className="text-lg font-medium">{buttonText}</span>
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -83,7 +99,7 @@ export default function NewsletterSignup() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email address"
+              placeholder={placeholder}
               required
               className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
               disabled={status === 'loading'}
