@@ -380,16 +380,16 @@ export default function BlueprintDownloadsPage() {
           </ol>
           
           <div className="mt-8 p-6 bg-background rounded-lg border border-border">
-            <p className="text-foreground font-semibold mb-2">Want the 30-Day Email Course?</p>
+            <p className="text-foreground font-semibold mb-2">Need Help With Your First Deal?</p>
             <p className="text-muted-foreground mb-4">
-              Join the Acquisition Accelerator to get daily lessons on finding and buying businesses.
+              I help serious buyers close their first acquisition. Found a business you like? Let&apos;s talk.
             </p>
-            <Link
-              href="/acquisition-accelerator"
+            <a
+              href="mailto:hello@myleskameron.com?subject=Deal Advisory"
               className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
             >
-              Join the Accelerator →
-            </Link>
+              Email me about advisory →
+            </a>
           </div>
         </div>
       </div>
