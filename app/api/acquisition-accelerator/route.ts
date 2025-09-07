@@ -97,6 +97,7 @@ export async function POST(request: Request) {
           utm_medium: 'website',
           utm_campaign: 'free-accelerator',
           referring_site: 'myleskameron.com/acquisition-accelerator',
+          tags: ['smb-challenge'],
           custom_fields: [
             {
               name: 'Lead Type',
@@ -111,23 +112,15 @@ export async function POST(request: Request) {
       const errorData = await beehiveResponse.json();
       console.error('Beehiive subscription error:', errorData);
     } else {
-      // Tag subscriber for both blueprint and course
       const subscriptionData = await beehiveResponse.json();
-      const subscriptionId = subscriptionData.data.id;
-
-      await fetch(
-        `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions/${subscriptionId}`,
-        {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.BEEHIIV_API_KEY}`,
-          },
-          body: JSON.stringify({
-            tags: ['smb-challenge']
-          }),
-        }
-      );
+      console.log('Successfully added to Beehiiv:', email, 'with tag: smb-challenge');
+      
+      // If you need to add additional tags later, use the same pattern as subscribe endpoint
+      const subscriptionId = subscriptionData.data?.id;
+      if (subscriptionId) {
+        // Could add more tags here if needed using the /tags endpoint
+        console.log('Subscriber ID:', subscriptionId);
+      }
     }
 
     return NextResponse.json({ success: true });
