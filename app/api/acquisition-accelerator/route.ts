@@ -80,7 +80,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Add to Beehive with acquisition-accelerator tag
+    // Add to Beehive with smb-challenge tag
+    console.log('Attempting to add to Beehiiv with tag: smb-challenge');
     const beehiveResponse = await fetch(
       `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions`,
       {
@@ -109,17 +110,39 @@ export async function POST(request: Request) {
     );
 
     if (!beehiveResponse.ok) {
-      const errorData = await beehiveResponse.json();
-      console.error('Beehiive subscription error:', errorData);
+      const errorText = await beehiveResponse.text();
+      console.error('Beehiiv subscription failed:', {
+        status: beehiveResponse.status,
+        statusText: beehiveResponse.statusText,
+        error: errorText
+      });
+      // Don't fail the whole request - user still gets welcome email
     } else {
       const subscriptionData = await beehiveResponse.json();
-      console.log('Successfully added to Beehiiv:', email, 'with tag: smb-challenge');
-      
-      // If you need to add additional tags later, use the same pattern as subscribe endpoint
       const subscriptionId = subscriptionData.data?.id;
+      console.log('Successfully added to Beehiiv:', email, 'ID:', subscriptionId);
+      
+      // Step 2: Add the tag separately (like we do in subscribe endpoint)
       if (subscriptionId) {
-        // Could add more tags here if needed using the /tags endpoint
-        console.log('Subscriber ID:', subscriptionId);
+        const tagResponse = await fetch(
+          `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions/${subscriptionId}/tags`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${process.env.BEEHIIV_API_KEY}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              tags: ['smb-challenge']
+            })
+          }
+        );
+        
+        if (!tagResponse.ok) {
+          console.error('Failed to add tags:', await tagResponse.text());
+        } else {
+          console.log('Successfully added tag: smb-challenge');
+        }
       }
     }
 
