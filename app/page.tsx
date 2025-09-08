@@ -160,11 +160,11 @@ export default function Home() {
             
             {/* Effortless Abundance Guide - Secondary Offer */}
             <div className="my-16 max-w-4xl mx-auto animate-fade-in">
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 rounded-2xl p-8 md:p-12 border border-purple-100 dark:border-purple-900/50">
+              <div className="bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-950/20 dark:to-slate-950/20 rounded-2xl p-8 md:p-12 border border-gray-200 dark:border-gray-800/50">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                   <div className="space-y-4 relative">
                     <div className="flex items-center gap-3">
-                      <span className="inline-block px-3 py-1 bg-purple-600 text-white text-xs font-semibold rounded-full">NEW GUIDE</span>
+                      <span className="inline-block px-3 py-1 bg-slate-700 text-white text-xs font-semibold rounded-full">NEW GUIDE</span>
                       {/* Tiny golden snitch hint */}
                       <div className="relative w-5 h-5 opacity-70 animate-pulse" title="Catch the golden snitch for a special edition...">
                         <div className="absolute inset-0 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500 rounded-full shadow-sm shadow-yellow-400/50">
@@ -178,22 +178,22 @@ export default function Home() {
                       </div>
                     </div>
                     <h3 className="text-2xl md:text-3xl font-light text-foreground">
-                      The Effortless Abundance Guide
+                      Effortless Abundance Guide
                     </h3>
                     <p className="text-muted-foreground">
                       How to cultivate an ultra-wealthy mind. Master the thought patterns and daily rituals of high-net-worth individuals.
                     </p>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
+                        <span className="text-slate-600 dark:text-slate-400 mr-2">✓</span>
                         5 thought patterns for effortless abundance
                       </li>
                       <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
+                        <span className="text-slate-600 dark:text-slate-400 mr-2">✓</span>
                         The &quot;Abundance Ignition&quot; morning routine
                       </li>
                       <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
+                        <span className="text-slate-600 dark:text-slate-400 mr-2">✓</span>
                         Business decision-making templates
                       </li>
                     </ul>
@@ -204,7 +204,7 @@ export default function Home() {
                   <div className="text-center md:text-right">
                     <Link 
                       href="/effortless-abundance" 
-                      className="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-all shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center gap-2 px-8 py-4 bg-slate-800 text-white font-medium rounded-lg hover:bg-slate-900 transition-all shadow-lg hover:shadow-xl"
                     >
                       Get Your Free Guide
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -243,10 +243,10 @@ export default function Home() {
                 </p>
                 
                 {/* Mindset Connection */}
-                <div className="mt-6 p-4 bg-purple-50 dark:bg-purple-950/10 rounded-lg inline-block">
+                <div className="mt-6 p-4 bg-slate-50 dark:bg-slate-950/10 rounded-lg inline-block">
                   <p className="text-sm text-muted-foreground">
-                    <span className="text-purple-600 dark:text-purple-400 font-medium">Pro tip:</span> Goals without the right mindset are just wishes. 
-                    <Link href="/effortless-abundance" className="text-purple-600 dark:text-purple-400 underline hover:no-underline ml-1">
+                    <span className="text-slate-600 dark:text-slate-400 font-medium">Pro tip:</span> Goals without the right mindset are just wishes. 
+                    <Link href="/effortless-abundance" className="text-slate-600 dark:text-slate-400 underline hover:no-underline ml-1">
                       Learn the mental frameworks I use →
                     </Link>
                   </p>

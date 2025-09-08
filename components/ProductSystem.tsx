@@ -75,7 +75,7 @@ export default function ProductSystem() {
                 href="https://www.wealtharchetypes.com/test"
                 target="_blank"
                 rel="noopener noreferrer" 
-                className="block w-full bg-[#EAB308] text-black px-6 py-3.5 text-base font-medium hover:bg-[#D97706] transition-all duration-200 rounded-lg text-center shadow-sm hover:shadow-md"
+                className="block w-full bg-[#374151] text-white px-6 py-3.5 text-base font-medium hover:bg-[#1F2937] transition-all duration-200 rounded-lg text-center shadow-sm hover:shadow-md"
               >
                 Take the Quiz →
               </a>
