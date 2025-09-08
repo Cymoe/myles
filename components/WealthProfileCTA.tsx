@@ -70,8 +70,10 @@ export default function WealthProfileCTA() {
           Take the 2-minute Wealth Profile quiz to discover your natural path to all three types of freedom
         </p>
         
-        <Link 
-          href="/wealth-profile-quiz"
+        <a 
+          href="https://www.wealtharchetypes.com/test"
+          target="_blank"
+          rel="noopener noreferrer"
           className={`inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-lg font-medium ${
             isHovered ? 'transform scale-105' : ''
           }`}
@@ -80,7 +82,7 @@ export default function WealthProfileCTA() {
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
           </svg>
-        </Link>
+        </a>
         
         <p className="text-xs text-muted-foreground/70 mt-4">
           Free quiz. No BS. Takes 2 minutes.

@@ -28,9 +28,14 @@ export default function ProductSystem() {
           onMouseLeave={() => setHoveredCard(null)}
         >
           <div className="bg-background dark:bg-card p-8 rounded-lg border-2 border-border hover:border-primary transition-all duration-300 h-full flex flex-col min-h-[480px] relative overflow-hidden">
-            {/* Phase Badge */}
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide mb-4 self-start">
-              DISCOVER
+            {/* Sponsored Badge */}
+            <div className="flex items-center justify-between mb-4">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide">
+                DISCOVER
+              </div>
+              <div className="text-xs text-muted-foreground/70 italic">
+                by WealthArchetypes
+              </div>
             </div>
             
             <h3 className="text-2xl font-semibold text-foreground mb-3">
@@ -66,12 +71,14 @@ export default function ProductSystem() {
                   <span className="text-sm text-muted-foreground block mt-1">Start here</span>
                 </div>
               </div>
-              <Link 
-                href="/wealth-profile-quiz" 
+              <a 
+                href="https://www.wealtharchetypes.com/test"
+                target="_blank"
+                rel="noopener noreferrer" 
                 className="block w-full bg-[#EAB308] text-black px-6 py-3.5 text-base font-medium hover:bg-[#D97706] transition-all duration-200 rounded-lg text-center shadow-sm hover:shadow-md"
               >
                 Take the Quiz →
-              </Link>
+              </a>
             </div>
           </div>
         </div>

@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/abundance-automation/process",
+      "schedule": "0 9 * * *"
+    }
+  ]
+}

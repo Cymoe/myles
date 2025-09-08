@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { addSubscriber } from '@/lib/abundance-automation';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -207,6 +208,16 @@ export async function POST(request: Request) {
     } catch (beehiivError) {
       console.error('Beehiiv API error:', beehiivError);
       // Don't fail the whole request - user still gets their guide email
+    }
+    
+    // Add subscriber to automation system
+    try {
+      const isFromGoldenSnitch = source === 'golden-snitch' || source === 'golden-snitch-wealth-codes';
+      addSubscriber(email, isFromGoldenSnitch);
+      console.log('Added to automation system:', email, 'Wealth Codes:', isFromGoldenSnitch);
+    } catch (automationError) {
+      console.error('Failed to add to automation system:', automationError);
+      // Don't fail the request - they still get their guide
     }
 
     return NextResponse.json({ success: true });

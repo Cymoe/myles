@@ -6,12 +6,85 @@ import { Input } from '@/components/ui/input';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 
+// Deal rotation bank - 6 weeks of varied deals
+const dealRotations = [
+  // Week 1
+  {
+    headline: "there's a $2.1M EBITDA deal hitting tomorrow",
+    deals: [
+      { company: "Florida HVAC company", ebitda: "$2.1M EBITDA", multiple: "at 3x" },
+      { company: "Texas medical billing", ebitda: "$1.5M EBITDA", multiple: "" },
+      { company: "Southeast towing business", ebitda: "$1.1M EBITDA", multiple: "" }
+    ]
+  },
+  // Week 2
+  {
+    headline: "we found a $2.4M landscaping empire for sale",
+    deals: [
+      { company: "Arizona landscaping empire", ebitda: "$2.4M EBITDA", multiple: "at 3.5x" },
+      { company: "Midwest commercial cleaning", ebitda: "$1.3M EBITDA", multiple: "" },
+      { company: "Carolina pest control", ebitda: "$950K EBITDA", multiple: "" }
+    ]
+  },
+  // Week 3
+  {
+    headline: "this $2.8M plumbing roll-up closes next month",
+    deals: [
+      { company: "California plumbing roll-up", ebitda: "$2.8M EBITDA", multiple: "at 4x" },
+      { company: "Texas painting contractor", ebitda: "$1.6M EBITDA", multiple: "" },
+      { company: "Atlanta pressure washing", ebitda: "$850K EBITDA", multiple: "" }
+    ]
+  },
+  // Week 4
+  {
+    headline: "there's a $3.1M multi-state roofing deal available",
+    deals: [
+      { company: "Multi-state roofing", ebitda: "$3.1M EBITDA", multiple: "at 3.5x" },
+      { company: "Phoenix pool service", ebitda: "$1.4M EBITDA", multiple: "" },
+      { company: "Nashville HVAC", ebitda: "$1.2M EBITDA", multiple: "" }
+    ]
+  },
+  // Week 5
+  {
+    headline: "a $2.5M restoration company just listed",
+    deals: [
+      { company: "Southeast restoration company", ebitda: "$2.5M EBITDA", multiple: "at 3x" },
+      { company: "Dallas electrical contractor", ebitda: "$1.7M EBITDA", multiple: "" },
+      { company: "Orlando lawn care", ebitda: "$900K EBITDA", multiple: "" }
+    ]
+  },
+  // Week 6
+  {
+    headline: "there's a $2.2M waste management deal closing soon",
+    deals: [
+      { company: "Texas waste management", ebitda: "$2.2M EBITDA", multiple: "at 3.5x" },
+      { company: "Miami window cleaning", ebitda: "$1.1M EBITDA", multiple: "" },
+      { company: "Tennessee tree service", ebitda: "$1.3M EBITDA", multiple: "" }
+    ]
+  }
+];
+
+// Function to get current week's deals
+function getCurrentDeals() {
+  // Get the current date and calculate weeks since Jan 1, 2024 (arbitrary start date)
+  const startDate = new Date('2024-01-01');
+  const currentDate = new Date();
+  const weeksSinceStart = Math.floor((currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 7));
+  
+  // Rotate through the 6 weeks of deals
+  const weekIndex = weeksSinceStart % 6;
+  return dealRotations[weekIndex];
+}
+
 export default function ExitIntentPopup() {
   const [showPopup, setShowPopup] = useState(false);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
   const pathname = usePathname();
   const router = useRouter();
+  
+  // Get this week's deals
+  const currentDeals = getCurrentDeals();
 
   useEffect(() => {
     // Only show popup on homepage
@@ -145,7 +218,7 @@ export default function ExitIntentPopup() {
             {/* Deal Alert Header */}
             <div className="text-center mb-6">
               <h2 className="text-2xl font-medium text-foreground mb-3">
-                Hold up - there&apos;s a $2.1M EBITDA deal hitting tomorrow
+                Hold up - {currentDeals.headline}
               </h2>
               <p className="text-base text-muted-foreground">
                 Get first access to off-market deals
@@ -156,18 +229,14 @@ export default function ExitIntentPopup() {
             <div className="space-y-3 mb-6">
               <p className="text-sm font-medium text-foreground">Recent deals sent:</p>
               <ul className="space-y-2 text-sm">
-                <li className="flex items-center justify-between p-3 bg-background dark:bg-background/50 rounded-lg border border-border">
-                  <span className="text-foreground">Texas roofing company</span>
-                  <span className="text-muted-foreground">$1.8M EBITDA at 3x</span>
-                </li>
-                <li className="flex items-center justify-between p-3 bg-background dark:bg-background/50 rounded-lg border border-border">
-                  <span className="text-foreground">Southeast medical cleaning</span>
-                  <span className="text-muted-foreground">$1.5M EBITDA</span>
-                </li>
-                <li className="flex items-center justify-between p-3 bg-background dark:bg-background/50 rounded-lg border border-border">
-                  <span className="text-foreground">Midwest towing business</span>
-                  <span className="text-muted-foreground">$1.1M EBITDA</span>
-                </li>
+                {currentDeals.deals.map((deal, index) => (
+                  <li key={index} className="flex items-center justify-between p-3 bg-background dark:bg-background/50 rounded-lg border border-border">
+                    <span className="text-foreground">{deal.company}</span>
+                    <span className="text-muted-foreground">
+                      {deal.ebitda} {deal.multiple}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
             

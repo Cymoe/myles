@@ -131,13 +131,15 @@ export default function WealthProfileWidget() {
                 </div>
               </div>
               
-              <Link 
-                href="/wealth-profile-quiz"
+              <a 
+                href="https://www.wealtharchetypes.com/test"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block w-full text-center px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold rounded-lg text-base"
                 onClick={handleCloseMobilePopup}
               >
                 Take the 2-Min Quiz →
-              </Link>
+              </a>
               
               <p className="text-xs text-muted-foreground/60 mt-4 text-center pb-2">
                 Free personalized roadmap included • No email required
@@ -200,12 +202,14 @@ export default function WealthProfileWidget() {
               <div className="text-xl">🛡️</div>
             </div>
             
-            <Link 
-              href="/wealth-profile-quiz"
+            <a 
+              href="https://www.wealtharchetypes.com/test"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full text-center px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium rounded"
             >
               Take the 2-Min Quiz →
-            </Link>
+            </a>
             
             <p className="text-xs text-muted-foreground/60 mt-3 text-center">
               Free personalized roadmap included
