@@ -131,6 +131,28 @@ const config = {
           from: { opacity: "0", transform: "scale(0.95)" },
           to: { opacity: "1", transform: "scale(1)" },
         },
+        "flutter": {
+          "0%, 100%": { transform: "rotate(-15deg)" },
+          "50%": { transform: "rotate(15deg)" },
+        },
+        "sparkle": {
+          "0%, 100%": { 
+            opacity: "0.5",
+            filter: "brightness(1)",
+          },
+          "50%": { 
+            opacity: "1",
+            filter: "brightness(1.5) drop-shadow(0 0 8px rgba(255, 215, 0, 0.8))",
+          },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "spin-slow": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -139,6 +161,10 @@ const config = {
         "fade-up": "fade-up 0.8s ease-out",
         "slide-in": "slide-in 0.3s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
+        "flutter": "flutter 0.3s ease-in-out infinite",
+        "sparkle": "sparkle 2s ease-in-out infinite",
+        "float": "float 3s ease-in-out infinite",
+        "spin-slow": "spin-slow 20s linear infinite",
       },
       transitionDuration: {
         '400': '400ms',

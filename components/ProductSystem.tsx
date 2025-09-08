@@ -76,6 +76,7 @@ export default function ProductSystem() {
           </div>
         </div>
 
+
         {/* Step 1: The Blueprint */}
         <div 
           className="relative group"

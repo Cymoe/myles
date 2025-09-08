@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Navigation Links */}
         <div className="flex justify-center space-x-6 text-sm">
           <Link href="/acquisition-accelerator" className="hover:text-primary transition-colors">
-            Free Accelerator
+            <span className="hidden sm:inline">Free </span>Accelerator
           </Link>
           <span className="text-muted-foreground/50">•</span>
           <a href="https://smbdealsheet.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
@@ -17,7 +17,7 @@ export default function Footer() {
           </a>
           <span className="text-muted-foreground/50">•</span>
           <Link href="/sell-your-business" className="hover:text-primary transition-colors">
-            Sell Your Business
+            Sell<span className="hidden sm:inline"> Your Business</span>
           </Link>
           <span className="text-muted-foreground/50">•</span>
           <Link href="/now" className="hover:text-primary transition-colors">

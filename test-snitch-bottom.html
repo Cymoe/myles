@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Snitch Bottom Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: system-ui;
+            min-height: 100vh;
+            background: #f0f0f0;
+        }
+        
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border-radius: 4px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background: #6366f1;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #5558e3;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h1>🏆 Golden Snitch Bottom Appearance Test</h1>
+        <p>The snitch now has <strong>4 starting positions</strong>:</p>
+        <ul>
+            <li>Left side (appears from -100px)</li>
+            <li>Right side (appears from screen width + 100px)</li>
+            <li>Top (appears from -100px)</li>
+            <li><strong>Bottom (NEW!)</strong> - appears from screen height + 100px</li>
+        </ul>
+        
+        <h3>Special Bottom Behavior:</h3>
+        <ul>
+            <li>First 2 appearances: Random from all 4 sides</li>
+            <li>After 2nd appearance: 50% chance to appear from bottom!</li>
+            <li>Bottom snitch does a fun "loop-de-loop" flight pattern</li>
+            <li>Starting X position varies randomly when coming from bottom</li>
+        </ul>
+        
+        <div class="status">
+            <strong>Current timing:</strong><br>
+            - First: 5-8 seconds<br>
+            - Repeats: Every 15-20 seconds<br>
+            - Flight duration: 4 seconds<br>
+            - Max appearances: 10 per session
+        </div>
+        
+        <h3>Test Controls:</h3>
+        <button onclick="clearAndRefresh()">Clear Storage & Refresh</button>
+        <button onclick="checkStatus()">Check Current Status</button>
+    </div>
+    
+    <script>
+        function clearAndRefresh() {
+            localStorage.removeItem('golden-snitch-caught');
+            sessionStorage.removeItem('snitch-appearances');
+            location.reload();
+        }
+        
+        function checkStatus() {
+            const caught = localStorage.getItem('golden-snitch-caught');
+            const appearances = sessionStorage.getItem('snitch-appearances') || '0';
+            alert(`Status:\n- Caught: ${caught ? 'Yes' : 'No'}\n- Appearances: ${appearances}\n- Can appear from bottom: ${parseInt(appearances) >= 2 ? 'Yes!' : 'Not yet'}`);
+        }
+    </script>
+</body>
+</html>

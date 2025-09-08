@@ -41,7 +41,22 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [hasStickyBanner, setHasStickyBanner] = useState(false);
   const pathname = usePathname();
+
+  React.useEffect(() => {
+    const checkStickyBanner = () => {
+      // Check if sticky banner is visible by looking for scroll position and session storage
+      const isScrolled = window.scrollY > 100;
+      const isDismissed = sessionStorage.getItem('stickyHeaderDismissed');
+      setHasStickyBanner(isScrolled && !isDismissed);
+    };
+
+    window.addEventListener('scroll', checkStickyBanner);
+    checkStickyBanner();
+
+    return () => window.removeEventListener('scroll', checkStickyBanner);
+  }, []);
 
   const isActive = (href: string) => {
     if (href === '/#about') {
@@ -51,7 +66,9 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-background/80 backdrop-blur-md text-foreground fixed top-0 w-full z-50 border-b border-border/10">
+    <header className={`bg-background/80 backdrop-blur-md text-foreground fixed w-full z-50 border-b border-border/10 transition-all duration-300 ${
+      hasStickyBanner ? 'top-12' : 'top-0'
+    }`}>
       <nav className="container mx-auto px-6 lg:px-8 max-w-7xl py-4 sm:py-6" aria-label="Global">
         <div className="flex items-center justify-between">
           <div className="">

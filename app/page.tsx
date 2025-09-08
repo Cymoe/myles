@@ -8,12 +8,16 @@ import QuickStats from '@/components/QuickStats';
 import InlineLeadCapture from '@/components/InlineLeadCapture';
 import ProductSystem from '@/components/ProductSystem';
 import WealthProfileCTA from '@/components/WealthProfileCTA';
+import GoldenSnitch from '@/components/GoldenSnitch';
 
 export default function Home() {
   return (
     <>
+      {/* Golden Snitch - Magical Easter Egg */}
+      <GoldenSnitch />
+      
       {/* Hero Section - Editorial Style */}
-      <section className="flex items-center justify-center relative bg-background pt-20 sm:pt-24">
+      <section className="flex items-center justify-center relative bg-background">
         <div className="container mx-auto px-8 py-12">
           <div className="max-w-4xl mx-auto">
             
@@ -154,6 +158,67 @@ export default function Home() {
               </div>
             </div>
             
+            {/* Effortless Abundance Guide - Secondary Offer */}
+            <div className="my-16 max-w-4xl mx-auto animate-fade-in">
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 rounded-2xl p-8 md:p-12 border border-purple-100 dark:border-purple-900/50">
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div className="space-y-4 relative">
+                    <div className="flex items-center gap-3">
+                      <span className="inline-block px-3 py-1 bg-purple-600 text-white text-xs font-semibold rounded-full">NEW GUIDE</span>
+                      {/* Tiny golden snitch hint */}
+                      <div className="relative w-5 h-5 opacity-70 animate-pulse" title="Catch the golden snitch for a special edition...">
+                        <div className="absolute inset-0 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500 rounded-full shadow-sm shadow-yellow-400/50">
+                          <div className="absolute inset-[2px] bg-gradient-to-br from-yellow-200 to-yellow-400 rounded-full" />
+                          <div className="absolute top-[1px] left-[1px] w-1 h-1 bg-white rounded-full opacity-80" />
+                        </div>
+                        <div className="absolute top-1/2 -translate-y-1/2">
+                          <div className="absolute -left-[4px] w-[4px] h-[2px] bg-white/60 rounded-full" />
+                          <div className="absolute -right-[4px] w-[4px] h-[2px] bg-white/60 rounded-full" />
+                        </div>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-light text-foreground">
+                      The Effortless Abundance Guide
+                    </h3>
+                    <p className="text-muted-foreground">
+                      How to cultivate an ultra-wealthy mind. Master the thought patterns and daily rituals of high-net-worth individuals.
+                    </p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        5 thought patterns for effortless abundance
+                      </li>
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        The &quot;Abundance Ignition&quot; morning routine
+                      </li>
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        Business decision-making templates
+                      </li>
+                    </ul>
+                    <p className="text-xs text-muted-foreground/60 italic mt-3">
+                      💫 Psst... seekers who catch the golden snitch unlock hidden wealth codes
+                    </p>
+                  </div>
+                  <div className="text-center md:text-right">
+                    <Link 
+                      href="/effortless-abundance" 
+                      className="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-all shadow-lg hover:shadow-xl"
+                    >
+                      Get Your Free Guide
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                    <p className="mt-4 text-sm text-muted-foreground">
+                      Instant download • No spam
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             {/* SMB Challenge CTA - Now in Product System */}
             
             {/* Revenue Tracking Lead Capture - Hidden for now */}
@@ -176,6 +241,16 @@ export default function Home() {
                   the power of public accountability. When you declare your intentions to the world, 
                   you&apos;re more likely to follow through.
                 </p>
+                
+                {/* Mindset Connection */}
+                <div className="mt-6 p-4 bg-purple-50 dark:bg-purple-950/10 rounded-lg inline-block">
+                  <p className="text-sm text-muted-foreground">
+                    <span className="text-purple-600 dark:text-purple-400 font-medium">Pro tip:</span> Goals without the right mindset are just wishes. 
+                    <Link href="/effortless-abundance" className="text-purple-600 dark:text-purple-400 underline hover:no-underline ml-1">
+                      Learn the mental frameworks I use →
+                    </Link>
+                  </p>
+                </div>
               </div>
               <DynamicGoalsSection />
             </div>
@@ -287,6 +362,22 @@ export default function Home() {
               Don&apos;t miss your next deal
             </h3>
             <NewsletterSignup />
+            
+            {/* Alternative Offer */}
+            <div className="mt-12 pt-12 border-t border-border">
+              <p className="text-sm text-muted-foreground mb-4">
+                Want mindset work instead of deals?
+              </p>
+              <Link 
+                href="/effortless-abundance" 
+                className="inline-flex items-center text-purple-600 dark:text-purple-400 hover:underline text-sm font-medium"
+              >
+                Get The Effortless Abundance Guide
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
